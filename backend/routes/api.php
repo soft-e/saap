@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PersonaController;
+use App\Http\Controllers\Api\AdministradorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('personas',PersonaController::class);
+
+Route::resource('administradores',AdministradorController::class);
+
