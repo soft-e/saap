@@ -17,4 +17,8 @@ class Persona extends Model
         'email',
         'password'
     ];
+    public function administrador()
+    {
+        return $this->hasOne(Administrador::class);
+    }
 }
