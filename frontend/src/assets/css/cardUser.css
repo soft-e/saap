@@ -1,0 +1,10 @@
+.cardUser{
+  font-size: 20px;
+  padding: 18px 0px 18px 0px;
+  display: flex ;
+  justify-content: space-around;
+  align-items: center;
+}
+.cardUser .icono{
+  font-size: 40px;
+}
