@@ -1,0 +1,16 @@
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  /*text-align: center;*/
+  background: rgba(255, 255, 255, 0.027);
+  box-shadow: 0 -4px 30px rgba(255, 255, 255, 0.226);
+  backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(4.4px);
+  border-top: 1px solid rgba(251, 181, 0, 0.69);
+	height: 8%;
+  /*padding: 10px;*/
+  
+}

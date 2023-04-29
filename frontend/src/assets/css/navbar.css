@@ -1,0 +1,48 @@
+/* Navbar */
+#navbar {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.027);
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.226);
+  backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(4.4px);
+  border-bottom: 1px solid rgba(251, 181, 0, 0.69);
+	height: 8%;
+}
+
+#navbar .logo img {
+	height: 60px;
+}
+
+#navbar a {
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
+  text-decoration: none;
+  
+}
+
+#navbar .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+  
+}
+
+#navbar ul {
+	display: flex;
+}
+
+#navbar ul li {
+	
+  list-style: none;
+  margin-right: 40px;
+  
+}
+
+#navbar .textologo {
+	margin-left: 40px;
+  text-transform: uppercase;
+}
+
