@@ -1,4 +1,5 @@
 import "../assets/css/buttonBoxAdmin.css";
+import {Link}from "react-router-dom";
 import CardUser from "../components/CardUser";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileContract } from '@fortawesome/free-solid-svg-icons';
@@ -77,6 +78,7 @@ function ButtonBoxAdmin(){
       Parqueo
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
+    <Link to="/personal">
     <button
       className="hvr-shrink"
     >
@@ -84,6 +86,7 @@ function ButtonBoxAdmin(){
       Personal
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
+    </Link>
   </div>
 </div>
 }
