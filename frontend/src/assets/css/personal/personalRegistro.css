@@ -1,0 +1,65 @@
+
+.cardPersonal{
+    width: 80%;
+    height: 84%;
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+}
+
+.cardRegistroPersonal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding: 1% 7%;
+  /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.281);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(251, 181, 0, 0.69);
+    color: black;
+}
+
+input{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 0px;
+    text-indent: 5px;
+    font-size:medium;
+}
+
+select{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 0px;
+    text-indent: 5px;
+    font-size:medium;
+}
+
+
+.espacioBoton{
+    width: auto;
+    padding: 10px 0px;
+}
+
+.btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    padding: 5px 32px;
+    font-family: 'Poppins', sans-serif;
+    background-color:#debc40;
+    border-width: 1px;
+}
