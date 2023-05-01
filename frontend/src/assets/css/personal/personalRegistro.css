@@ -4,7 +4,7 @@
     height: 84%;
     display: flex;
     justify-content: center;
-    padding: 0px;
+    padding: 1%;
 }
 
 .cardRegistroPersonal{
@@ -15,7 +15,7 @@
     height: fit-content;
     padding: 1% 7%;
   /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.281);
+    background: rgba(255, 255, 255, 0.637);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
     backdrop-filter: blur(5px);

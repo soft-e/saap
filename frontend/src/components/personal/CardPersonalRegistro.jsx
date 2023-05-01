@@ -5,7 +5,7 @@ export function CardPersonalRegistro(){
     return(
         <div className='cardRegistroPersonal'>
             <form> 
-                <h1>Datos del Empleado</h1>
+                <h2>Datos del Empleado</h2> 
                 <div id="input">
                     <label htmlFor="">
                         Celula de Intentidad:
@@ -38,7 +38,7 @@ export function CardPersonalRegistro(){
                 </div>
                 <div id="input">
                     <label htmlFor="">
-                        Telefono:
+                        Tipo de Empleado:
                     </label>
                     <select name="ad" onchange="crearlink(this.form)">
                         <option selected> Guardia </option>
