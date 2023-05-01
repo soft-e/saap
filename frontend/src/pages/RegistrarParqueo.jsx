@@ -1,8 +1,7 @@
 import "../assets/css/Parqueo.css";
-import {Formik} from "formik";
 import ButtonBoxAdmin from "../components/ButtonBoxAdmin";
 
-function Parqueo(){
+function RegistroParqueo(){
   return (
     <>
       <ButtonBoxAdmin/>
@@ -39,4 +38,4 @@ function Parqueo(){
     </>
   )
 }
-export default Parqueo;
+export default RegistroParqueo;

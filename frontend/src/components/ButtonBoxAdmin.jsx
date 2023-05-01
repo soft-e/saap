@@ -11,7 +11,6 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 import "hover.css"
 

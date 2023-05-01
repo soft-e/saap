@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/PersonalPage";
-import Parqueo from "./pages/Parqueo";
+import RegistroParqueo from "./pages/RegistrarParqueo";
 import './App.css'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/personal" element={<PersonalPage/>}/>
-        <Route path="/parqueo" element={<Parqueo/>}/>
+        <Route path="/parqueo" element={<RegistroParqueo/>}/>
       </Routes>
       <Footer/>
     </div>

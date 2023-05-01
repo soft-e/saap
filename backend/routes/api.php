@@ -21,7 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('personas',PersonaController::class);
+Route::resource('personas', PersonaController::class);
 
-Route::resource('administradores',AdministradorController::class);
-
+Route::resource('administradores', AdministradorController::class);
