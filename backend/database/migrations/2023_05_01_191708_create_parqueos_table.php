@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdministradorsTable extends Migration
+class CreateParqueosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateAdministradorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('administradors', function (Blueprint $table) {
+        Schema::create('parqueos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('persona_id')->constrained('personas');
+            $table->string('nombre_bloque');
+            $table->string('numero_sitios');
+            //$table->unsignedBigInteger('empleado_id');
             $table->timestamps();
+            //$table->foreign('empleado_id')->references('id')->on('empleados')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateAdministradorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('administradors');
+        Schema::dropIfExists('parqueos');
     }
 }
