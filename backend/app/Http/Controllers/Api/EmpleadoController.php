@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Persona;
-use App\Models\Administrador;
+use App\Models\Empleado;
 
-class AdministradorController extends Controller
+class EmpleadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        $administradores = Administrador::with('persona')->get();
-        return response()->json($administradores,200);
+        $empleados = Empleado::with('persona')->get();
+        return response()->json($empleados,200);
     }
 
     /**
@@ -49,15 +49,15 @@ class AdministradorController extends Controller
             'email'=>$request->input('email'),
             'password'=>$request->input('password')
         ]);
-        $administrador = new Administrador([
-            
+        $empleado = new Empleado([
+            'nombre_cargo'=>$request->input('nombre_cargo')
         ]);
-        //$persona->administrador()->save($administrador);
-        $administrador->persona()->associate($persona);
-        $administrador->save();
+        //$persona->empleado$empleado()->save($empleado);
+        $empleado->persona()->associate($persona);
+        $empleado->save();
 
         return response()->json([
-            'message'=>'Administrador creado exitosamente'
+            'message'=>'Empleado creado exitosamente'
         ],201);
     }
 
@@ -69,11 +69,11 @@ class AdministradorController extends Controller
      */
     public function show($id)
     {
-        $administrador = Administrador::with('persona')->find($id);
-        if (!$administrador) {
-            return response()->json(['message' => 'Administrador no encontrado'], 404);
+        $empleado = Empleado::with('persona')->find($id);
+        if(!$empleado){
+            return response()->json(['message'=>'Empleado no encontrado'],404);
         }
-        return response()->json($administrador, 200);
+        return response()->json($empleado,200);
     }
 
     /**
@@ -85,11 +85,11 @@ class AdministradorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $administrador = Administrador::with('persona')->find($id);
-        if (!$administrador) {
-            return response()->json(['message' => 'Administrador no encontrado'], 404);
+        $empleado = Empleado::with('persona')->find($id);
+        if (!$empleado) {
+            return response()->json(['message' => 'Empleado no encontrado'], 404);
         }
-        $persona = $administrador->persona;
+        $persona = $empleado->persona;
         $persona->nombre = $request->input('nombre', $persona->nombre);
         $persona->apellido_paterno = $request->input('apellido_paterno', $persona->apellido_paterno);
         $persona->apellido_materno = $request->input('apellido_materno', $persona->apellido_materno);
@@ -97,12 +97,16 @@ class AdministradorController extends Controller
         $persona->telefono = $request->input('telefono', $persona->telefono);
         $persona->email = $request->input('email', $persona->email);
         $persona->password = $request->input('password', $persona->password);
+
+        $empleado = new Empleado([
+            'nombre_cargo'=>$request->input('nombre_cargo')
+        ]);
         
         $persona->save();
         
-        $administrador->save();
+        $empleado->save();
         return response()->json([
-            'message' => 'Administrador actualizado exitosamente'
+            'message' => 'Empleado actualizado exitosamente'
         ], 200);
     }
 
@@ -114,12 +118,12 @@ class AdministradorController extends Controller
      */
     public function destroy($id)
     {
-        $administrador = Administrador::findOrFail($id);
-        $persona = $administrador->persona;
+        $empleado = Empleado::findOrFail($id);
+        $persona = $empleado->persona;
 
-        $administrador->delete();
+        $empleado -> delete();
         $persona->delete();
+        return response()->json(['message'=>'empleado eliminado correctamente']);
 
-        return response()->json(['message' => 'Administrador eliminado correctamente']);
     }
 }
