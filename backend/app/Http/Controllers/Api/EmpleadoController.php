@@ -40,6 +40,7 @@ class EmpleadoController extends Controller
             'password'=>'required|string'
         ]);
          */
+        
         $persona = Persona::create([
             'nombre'=>$request->input('nombre'),
             'apellido_paterno'=>$request->input('apellido_paterno'),

@@ -15,11 +15,11 @@ class Empleado extends Model
     {
         return $this->belongsTo(Persona::class);
     }
-    /*
+    
     public function parqueos(){
         return $this->hasMany(Parqueo::class);
     }
-    */
+    
     /*
     public function contratacion(){
         return $this->hasMany(Contratacion::class);
