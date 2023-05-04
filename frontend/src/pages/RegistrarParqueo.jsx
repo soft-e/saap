@@ -8,21 +8,26 @@ const endpoint='http://localhost:8000/api';
 
 function RegistroParqueo(){
   const [nombre_bloque,setnombre_bloque]=useState('');
-  const [numero_sitios,setnumero_sitios]=useState(0);
+  const [cantidad_sitios,setcantidad_sitios]=useState(0);
+  const empleado_id=1;
+
   const navigate=useNavigate();
 
   const store=async(e)=>{
     e.preventDefault();
     await axios.post(`${endpoint}/parqueos`,{
-      nombre_bloque:nombre_bloque,numero_sitios:numero_sitios})
+      nombre_bloque:nombre_bloque,
+      cantidad_sitios:cantidad_sitios,
+      empleado_id:empleado_id})
     navigate('/admin');
   }
 
   function handleCancel(event) {
     event.preventDefault();
     setnombre_bloque('');
-    setnumero_sitios('');
+    setcantidad_sitios('');
   }
+  
   
   return (
     <>
@@ -44,8 +49,8 @@ function RegistroParqueo(){
         <div id="input">
           <label htmlFor=""> Numeros de Espacios:</label>
           <input 
-            value={numero_sitios}
-            onChange={(e)=>setnumero_sitios(e.target.value)}
+            value={cantidad_sitios}
+            onChange={(e)=>setcantidad_sitios(e.target.value)}
             type="number" 
             id="inputText"
             placeholder="Escribe el Numero de espacios"

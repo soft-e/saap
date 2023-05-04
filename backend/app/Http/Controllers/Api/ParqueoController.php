@@ -16,7 +16,7 @@ class ParqueoController extends Controller
     public function index()
     {
         $parqueos = Parqueo::all();
-        return response()->json([$parqueos],200);
+        return response()->json([$parqueos], 200);
     }
 
     /**
@@ -28,11 +28,11 @@ class ParqueoController extends Controller
     public function store(Request $request)
     {
         $parqueo = new Parqueo;
-        $parqueo ->nombre_bloque = $request->nombre_bloque;
-        $parqueo ->cantidad_sitios = $request->cantidad_sitios;
-        $parqueo ->empleado_id = $request-> empleado_id;
-        $parqueo ->save();
-        return response()->json([$parqueo],201);
+        $parqueo->empleado_id = $request->empleado_id;
+        $parqueo->nombre_bloque = $request->nombre_bloque;
+        $parqueo->cantidad_sitios = $request->cantidad_sitios;
+        $parqueo->save();
+        return response()->json([$parqueo], 201);
     }
 
     /**
@@ -45,7 +45,7 @@ class ParqueoController extends Controller
     {
         $parqueo = Parqueo::find($id);
         if (!$parqueo) {
-            return response()->json(['message'=>'parqueo no encontrado'],404);
+            return response()->json(['message' => 'parqueo no encontrado'], 404);
         }
 
         return response()->json(['data' => $parqueo]);
@@ -62,10 +62,10 @@ class ParqueoController extends Controller
     {
         $parqueo = Parqueo::find($id);
         if (!$parqueo) {
-            return response()->json(['message'=>'Parqueo no encontrado'],404);
+            return response()->json(['message' => 'Parqueo no encontrado'], 404);
         }
         $parqueo->update($request->all());
-        return response()->json(['data' => $parqueo],200);
+        return response()->json(['data' => $parqueo], 200);
     }
 
     /**
@@ -78,8 +78,8 @@ class ParqueoController extends Controller
     {
         $parqueo = Parqueo::find($id);
         if (!$parqueo) {
-            return response()->json(['message'=>'Parqueo no encontrado'],404);
-            }
+            return response()->json(['message' => 'Parqueo no encontrado'], 404);
+        }
         $parqueo->delete();
         return response()->json(['message' => 'Parqueo eliminado']);
     }
