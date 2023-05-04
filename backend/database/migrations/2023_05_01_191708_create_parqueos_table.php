@@ -16,10 +16,10 @@ class CreateParqueosTable extends Migration
         Schema::create('parqueos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_bloque');
-            $table->string('numero_sitios');
-            //$table->unsignedBigInteger('empleado_id');
+            $table->integer('cantidad_sitios');
+            $table->unsignedBigInteger('empleado_id');
             $table->timestamps();
-            //$table->foreign('empleado_id')->references('id')->on('empleados')->onDelete('cascade');
+            $table->foreign('empleado_id')->references('id')->on('empleados')->onDelete('cascade');
         });
     }
 
