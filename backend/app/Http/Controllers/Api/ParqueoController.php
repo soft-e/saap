@@ -16,7 +16,7 @@ class ParqueoController extends Controller
     public function index()
     {
         $parqueos = Parqueo::all();
-        return response()->json(['data' => $parqueos]);
+        return response()->json([$parqueos],200);
     }
 
     /**
@@ -27,8 +27,12 @@ class ParqueoController extends Controller
      */
     public function store(Request $request)
     {
-        $parqueo = Parqueo::create($request->all());
-        return response()->json(['data' => $parqueo],201);
+        $parqueo = new Parqueo;
+        $parqueo ->nombre_bloque = $request->nombre_bloque;
+        $parqueo ->cantidad_sitios = $request->cantidad_sitios;
+        $parqueo ->empleado_id = $request-> empleado_id;
+        $parqueo ->save();
+        return response()->json([$parqueo],201);
     }
 
     /**
@@ -60,11 +64,8 @@ class ParqueoController extends Controller
         if (!$parqueo) {
             return response()->json(['message'=>'Parqueo no encontrado'],404);
         }
-
         $parqueo->update($request->all());
-        return response()->json(['data' => $parqueo]);
-
-
+        return response()->json(['data' => $parqueo],200);
     }
 
     /**
@@ -79,7 +80,6 @@ class ParqueoController extends Controller
         if (!$parqueo) {
             return response()->json(['message'=>'Parqueo no encontrado'],404);
             }
-
         $parqueo->delete();
         return response()->json(['message' => 'Parqueo eliminado']);
     }
