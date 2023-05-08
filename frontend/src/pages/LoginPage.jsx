@@ -1,9 +1,18 @@
 import "../assets/css/loginPage.css";
 import {Formik} from "formik";
-
+import Navbar from "../components/Navbar";
+import { useEffect } from "react";
+import { useUsers } from "../context/UserProvider";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LoginPage(){
-  return <div>
+  const navigate = useNavigate();
+  return <>
+    <Navbar accion="dashboard" />
+    <div className="divFormulario">
+
+    </div>
     <div id="titulo">
     <h1>
 			Sistema de Apoyo a la Administracion de Parqueos <br />
@@ -44,7 +53,9 @@ function LoginPage(){
           <button
             className="botonInicioSesion"
             type="submit"
+            onClick={()=>navigate("/admin")}
           >
+            <Link></Link>
             Iniciar
           </button>
         </div>
@@ -52,6 +63,6 @@ function LoginPage(){
       </form>
     </div>
     
-  </div>
+  </>
 }
 export default LoginPage;
