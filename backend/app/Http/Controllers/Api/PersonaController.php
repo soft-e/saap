@@ -80,8 +80,12 @@ class PersonaController extends Controller
      */
     public function destroy($id)
     {
-        $persona = Persona::findOrFail($id);
+        $empleado = Empleado::findOrFail($id);
+        $persona = $empleado->persona;
+
+        $empleado->delete();
         $persona->delete();
-        return response()->json(null,204);
+
+        return response()->json(['message' => 'Empleado eliminado correctamente']);
     }
 }
