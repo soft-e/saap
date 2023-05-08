@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/PersonalPage";
 import RegistroParqueo from "./pages/RegistrarParqueo";
+import RegistroVehiculo from "./pages/RegistroVehiculo";
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/parqueo" element={<RegistroParqueo/>}/>
+        <Route path="/Rvehiculo" element={<RegistroVehiculo/>}/>
       </Routes>
       <Footer/>
     </div>

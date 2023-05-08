@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
-class EmpleadoSeeder extends Seeder
+class Empleados extends Seeder
 {
     /**
      * Run the database seeds.
