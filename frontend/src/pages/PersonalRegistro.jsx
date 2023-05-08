@@ -1,12 +1,12 @@
 import ButtonBoxAdmin from "../components/ButtonBoxAdmin";
-import { CardPersonalRegistro } from "../components/personal/CardPersonalRegistro";
+import FormularioRegistroPersonas from "../components/personal/CardPersonalRegistro";
 import '../assets/css/personal/personalRegistro.css';
 
 function PersonalRegistro(){
     return <div className="caja">
         <ButtonBoxAdmin/>
         <div className="cardPersonal">
-            <CardPersonalRegistro/>
+            <FormularioRegistroPersonas/>
         </div>
     </div>
   }

@@ -54,12 +54,24 @@ select{
     justify-content: center;
 }
 
-button{
-    width: 90%;
+.stylesButton{
+    width: 80%;
     display: flex;
     justify-content: center;
     padding: 5px 32px;
     font-family: 'Poppins', sans-serif;
     background-color:#debc40;
     border-width: 1px;
+    cursor: pointer;
+}
+
+.stylesButton:hover{
+    width: 90%;
+    background-color:#c49e18;
+}
+
+.styleErrores{
+    font-size: 0.8rem;
+    color: #eb2929;
+    padding: 10px 20px;
 }
