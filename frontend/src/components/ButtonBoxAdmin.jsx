@@ -11,6 +11,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
+
 import "hover.css"
 
 function ButtonBoxAdmin(){
@@ -70,11 +71,9 @@ function ButtonBoxAdmin(){
       Quejas
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
-    <button
-      className="hvr-shrink"
-    >
+    <button className="hvr-shrink">
       <FontAwesomeIcon icon={faCar} />
-      Parqueo
+          Parqueo
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
     <button

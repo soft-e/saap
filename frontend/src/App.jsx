@@ -7,6 +7,8 @@ import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/PersonalPage";
 import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
+import RegistroParqueo from "./pages/RegistrarParqueo";
+import RegistroVehiculo from "./pages/RegistroVehiculo";
 import './App.css'
 
 function App() {
@@ -23,10 +25,12 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/adminr" element={<AdminPageR/>}/>
         <Route path="*" element={<NotFound/>}/>
+        <Route path="/parqueo" element={<RegistroParqueo/>}/>
+        <Route path="/Rvehiculo" element={<RegistroVehiculo/>}/>
       </Routes>
       <Footer/>
     </div>
   );
-};
+}
 
 export default App;

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     protected $fillable =[
         'nombre',
         'apellido_paterno',
@@ -17,8 +17,12 @@ class Persona extends Model
         'email',
         'password'
     ];
-    public function administrador()
+    /*public function administrador()
     {
         return $this->hasOne(Administrador::class);
+    }
+    */
+    public function empleado(){
+        return $this->hasOne(Empleado::class);
     }
 }
