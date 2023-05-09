@@ -23,7 +23,7 @@
   justify-content: flex-start;
   float: left;
   width: 20%;
-  height: 84%;
+  height: 100%;
   /* From https://css.glass */
 background: rgba(255, 255, 255, 0.027);
 
@@ -34,6 +34,4 @@ border-right: 1px solid rgba(251, 181, 0, 0.69);
 padding-left: 0.5%;
 padding-right: 0.5%;
 }
-
-
 
