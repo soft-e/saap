@@ -23,7 +23,7 @@
   justify-content: flex-start;
   float: left;
   width: 20%;
-  height: -webkit-fill-available;
+  height: 84vh;
   /* From https://css.glass */
 background: rgba(255, 255, 255, 0.16);
 
