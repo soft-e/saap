@@ -15,8 +15,8 @@
 
 #navbar a {
 	color: #fff;
-	font-size: 14px;
-	font-weight: 400;
+	font-size: 21px;
+	font-weight: bold;
 	text-transform: uppercase;
   text-decoration: none;
   
@@ -38,8 +38,7 @@
 	
   list-style: none;
   margin-right: 40px;
-  
-}
+	}
 
 #navbar .textologo {
 	margin-left: 40px;
