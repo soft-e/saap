@@ -6,15 +6,9 @@ import Navbar from "../components/Navbar";
 function TemplatePage(){
   return<>
   <Navbar accion="iniciar sesion"/>
-  <div
-    className="espacioPagina"
-  >
-    
+  <div className="espacioPagina">
     <ButtonBoxAdmin />
-    <div
-      className="espacioDeTrabajo"
-    >
-
+    <div className="espacioDeTrabajo">
     </div>
   </div>
   </> 
