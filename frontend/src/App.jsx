@@ -26,8 +26,8 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
-        <Route path="/Rparqueo" element={<RegistroParqueo/>}/>
-        <Route path="/Rvehiculo" element={<RegistroDTvehiculo/>}/>      
+        <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
+        <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/>      
       </Routes>
       <Footer/>
     </div>

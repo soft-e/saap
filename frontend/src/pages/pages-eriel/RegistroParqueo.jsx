@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-const endPoint='http://localhost:8001/api';
+const endPoint='http://localhost:8000/api';
 
 function RegistroParqueo() {
 
