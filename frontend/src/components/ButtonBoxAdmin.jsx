@@ -11,9 +11,13 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "hover.css"
 
 function ButtonBoxAdmin(){
+  const navigate = useNavigate();
+
   return <div
   className="cajaBotones"
 >
@@ -37,6 +41,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/atencion")}
     >
       <FontAwesomeIcon icon={faCalendarDays} />
       Atencion
