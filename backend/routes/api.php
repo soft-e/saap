@@ -6,8 +6,8 @@ use App\Http\Controllers\Api\PersonaController;
 use App\Http\Controllers\Api\AdministradorController;
 use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\EmpleadoController;
-use App\Http\Controllers\Api\ContratacionController;
 use App\Http\Controllers\Api\ParqueoController;
+use App\Http\Controllers\api\VehiculoController;
 
 
 /*
@@ -25,12 +25,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('personas',PersonaController::class);
+Route::resource('personas', PersonaController::class);
 
 //Route::resource('administradores',AdministradorController::class);
-Route::resource('empleados',EmpleadoController::class);
+Route::resource('empleados', EmpleadoController::class);
 
 //Route::resource('cargos',CargoController::class);
 
 //Route::resource('contrataciones',ContratacionController::class);
-Route::resource('parqueos',ParqueoController::class);
+Route::resource('parqueos', ParqueoController::class);
+Route::resource('vehiculos', VehiculoController::class);
