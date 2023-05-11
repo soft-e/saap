@@ -40,7 +40,7 @@ function ButtonBoxAdmin(){
       className="hvr-shrink"
     >
       <FontAwesomeIcon icon={faCalendarDays} />
-      Horario de Atencion
+      Atencion
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
     <button

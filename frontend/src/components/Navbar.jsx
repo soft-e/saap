@@ -1,7 +1,28 @@
 import {Link}from "react-router-dom";
 import "../assets/css/navbar.css"
 
-function Navbar(){
+function Navbar(props){
+  function Login(){
+    return <Link to="/login">{props.accion}</Link>
+  }
+  function Dashboard(){
+    return <Link to="/">{props.accion}</Link>
+  }
+  function Logout(){
+    return <Link to="/">{props.accion}</Link>
+  }
+  function Accion(){
+    if(props.accion=="iniciar sesion"){
+      return Login();
+    }
+    if(props.accion=="dashboard"){
+      return Dashboard();
+    }
+    if (props.accion=="cerrar sesion") {
+      return Logout(); 
+    }
+  }
+  
   return(
     <>
       <nav id="navbar">
@@ -13,9 +34,7 @@ function Navbar(){
           </div>
           <ul className="nav">
             <li>
-              <Link to="/login">
-                <h1>Iniciar Sesion</h1>
-              </Link>
+              <Accion/>
             </li>
           </ul>
         </div>
