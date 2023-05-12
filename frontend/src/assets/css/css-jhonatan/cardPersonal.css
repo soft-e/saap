@@ -32,7 +32,7 @@
   
   .col {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   
   @media (min-width: 576px) {
@@ -68,7 +68,7 @@
     background-color: #debc40;
     color: #000;
     padding: 10px;
-    font-size: medium;
+    font-size: large;
     text-align: center;
   }
   
