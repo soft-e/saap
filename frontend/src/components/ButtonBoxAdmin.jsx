@@ -47,9 +47,7 @@ function ButtonBoxAdmin(){
       className="hvr-shrink"
       >
       <FontAwesomeIcon icon={faDollarSign} />
-      <Link to="/tarifa">
       Tarifa
-      </Link>
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
     <button
@@ -85,9 +83,7 @@ function ButtonBoxAdmin(){
       className="hvr-shrink"
     >
       <FontAwesomeIcon icon={faUsers} /> 
-      <Link to="/personal">
       Personal
-      </Link>
       <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
     </button>
     
