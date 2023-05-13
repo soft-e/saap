@@ -12,6 +12,7 @@ import TemplatePage from "./pages/TemplatePage";
 import './App.css'
 import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
+import Parqueo from "./pages/pages-deysi/Parqueo";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -30,6 +31,8 @@ function App() {
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>      
+     <Route path="/parqueo" element={<Parqueo/>}/>
+     
       </Routes>
       <Footer/>
     </div>
