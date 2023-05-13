@@ -19,7 +19,7 @@ const PlazasOcupadas = ({ plazas, handleClick }) => {
      onClick={() => handleClick(plaza.id)}
 
    >
-    <h3 >  {plaza.id} </h3> 
+    <h3 >  {plaza.id} </h3>
     
    
    </div>
