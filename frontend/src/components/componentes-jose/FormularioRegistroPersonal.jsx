@@ -2,7 +2,7 @@ import '../../assets/css/css-jose/formularioRegistroPersonas.css'
 import React from 'react';
 import { Formik } from "formik";
 
-const FormularioRegistroPersonas = () => {
+export const FormularioRegistroPersonas = () => {
 
     return(
         <div className='cardRegistroPersonal'>
