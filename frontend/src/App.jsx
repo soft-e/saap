@@ -4,7 +4,8 @@ import PrincipalPage from './pages/PrincipalPage';
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
-import PersonalPage from "./pages/PersonalPage";
+import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
+import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -30,7 +31,8 @@ function App() {
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
-        <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/>      
+        <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
+        <Route path="/tarifa" element={<TarifaPage/>}/>      
       </Routes>
       <Footer/>
     </div>
