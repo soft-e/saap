@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
+import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/personal" element={<PersonalPage/>}/>
+        <Route path="/personal/registro" element={<RegistrarPersonal/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>

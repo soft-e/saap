@@ -4,7 +4,7 @@ import {
   getUsersRequest
 }from "../api/user.api";
 
-import { UserContext } from "./userContext";
+import { UserContext } from "./UserContext";
 
 export const useUsers =()=>{
   const context = useContext(UserContext);
