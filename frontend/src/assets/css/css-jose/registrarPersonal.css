@@ -1,0 +1,8 @@
+.registrarPersonal{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    overflow: auto;
+}

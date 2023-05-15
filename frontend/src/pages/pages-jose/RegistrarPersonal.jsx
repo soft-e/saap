@@ -1,16 +1,19 @@
 import "../../assets/css/templatePage.css";
-import { Navbar } from "../../components/Navbar";
-import { ButtonBoxAdmin } from "../../components/ButtonBoxAdmin";
+import "../../assets/css/css-jose/registrarPersonal.css"
+import Navbar from "../../components/Navbar";
+import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import { FormularioRegistroPersonas } from '../../components/componentes-jose/FormularioRegistroPersonal'
 
 function RegistrarPersonal(){
     return <>
-        <Navbar accion="cerrar cesion"/>
+        <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">
             <ButtonBoxAdmin />
-            <FormularioRegistroPersonas/>
+            <div className="registrarPersonal">
+                <FormularioRegistroPersonas/>
+            </div>
         </div>
-        <h1>hola</h1>
     </>
 }
-export default RegistrarPersonal();
+
+export default RegistrarPersonal;
