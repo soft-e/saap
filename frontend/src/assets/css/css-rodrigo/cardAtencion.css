@@ -1,0 +1,51 @@
+.card{
+  color:white;
+  display: flex; 
+  width:30%;
+  background: rgba(0, 0, 0, 0.808);
+
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+border-radius: 16px;
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(251, 181, 0, 0.69);
+
+padding-left: 0.5%;
+padding-right: 0.5%;
+}
+.titulo{
+  text-transform: uppercase;
+  padding-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+.hora{
+  padding-top: 2%;
+  padding-left: 5%;
+  font-size:larger
+}
+
+.hora_apertura{
+  padding-left: 10%;
+  font-weight: bold;
+}
+
+.hora_cierre{
+  padding-left: 21%;
+  font-weight: bold;
+}
+
+.seccion_boton{
+  padding-top: 10%;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+}
+.boton_editar{
+  width: 90%;
+  border: none;
+  background-color: #debc40;
+  font-size:medium;
+  padding: 2% 1% 2% 1%;
+  border-radius: 6px;
+}
