@@ -1,17 +1,16 @@
-.card{
+.cardAtencion{
   color:white;
   display: flex; 
   width:30%;
+  flex-direction: column;
   background: rgba(0, 0, 0, 0.808);
-
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-border-radius: 16px;
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(251, 181, 0, 0.69);
-
-padding-left: 0.5%;
-padding-right: 0.5%;
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.226);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(251, 181, 0, 0.69);
+  padding-left: 0.5%;
+  padding-right: 0.5%;
 }
 .titulo{
   text-transform: uppercase;
@@ -31,7 +30,7 @@ padding-right: 0.5%;
 }
 
 .hora_cierre{
-  padding-left: 21%;
+  padding-left: 19%;
   font-weight: bold;
 }
 

@@ -36,7 +36,7 @@ useEffect(()=>{
     <ButtonBoxAdmin />
     <div className="espacioDeTrabajo">
       <div
-        className="formulario"
+        className="formularioAtencion"
       >
         <Formik
         initialValues={atencion}
@@ -53,42 +53,62 @@ useEffect(()=>{
         {
           ({handleChange,handleSubmit,values,isSubmitting})=>(
             <form
-              className="espacioForm"
+              className="espacioFormAtencion"
               onSubmit={handleSubmit}
             >
-              <h1>Actualizar Hora de Atencion</h1>
-              <h2>
+              <h1
+                className="h1Atencion"
+              >Actualizar Hora de Atencion</h1>
+              <h2
+                className="h2TipoAtencion"
+              >
                 {atencion.tipo_atencion}
               </h2>
-              <h2>
-                hora de apertura
-              </h2>
-              <input 
-                type="text"
-                name="hora_apertura"
-                placeholder="introduce una nueva hora de apertura"
-                onChange={handleChange}
-                value={values.hora_apertura}
-              />
-              <h2>
-                hora de cierre
-              </h2>
-              <input 
-                type="text" 
-                name="hora_cierre"
-                placeholder="introduce una nueva hora de cierre"
-                onChange={handleChange}
-                value={values.hora_cierre}
-              />
               <div
-                className="boton"
+                className="contenedorInputs"
+              >
+                <h2
+                  className="h2Atencion"
+                >
+                  hora de apertura
+                </h2>
+                <input 
+                  className="inputAtencion"
+                  type="text"
+                  name="hora_apertura"
+                  placeholder="introduce una nueva hora de apertura"
+                  onChange={handleChange}
+                  value={values.hora_apertura}
+                />
+                <h2
+                  className="h2Atencion"
+                >
+                  hora de cierre
+                </h2>
+                <input 
+                  className="inputAtencion"
+                  type="text" 
+                  name="hora_cierre"
+                  placeholder="introduce una nueva hora de cierre"
+                  onChange={handleChange}
+                  value={values.hora_cierre}
+                />
+              </div>
+
+              <div
+                className="espacioBotonesAtencion"
               >
                 <button
-                className="boton"
                 type="submit"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Actualizando": "Actualizar"}
+              </button>
+                
+              <button
+                onClick={()=>navigate("/atencion")}
+              >
+                Cancelar
               </button>
               </div>
               

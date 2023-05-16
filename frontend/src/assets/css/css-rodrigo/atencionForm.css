@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 .espacioPagina{
   width: 100%;
   height: 84%;
@@ -8,23 +10,67 @@
   display: flex;
   justify-content: flex-end;
 }
-.formulario{
+.formularioAtencion{
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  
 }
-.espacioForm{
-  height: 50%;
-  width: 60%;
+.espacioFormAtencion{
+  padding-top: 0.6%;
+  padding-left: 1%;
+  padding-right: 1%;
   background: rgba(0, 0, 0, 0.808);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.226);
   border-radius: 16px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(251, 181, 0, 0.69);
   
+  
+}
+.inputAtencion{
+  
+  font-family: 'Poppins', sans-serif;
+	/*background: #000;*/
+	/*color: #fff;*/
+	line-height: 1.5;
+  font-size: large;
+  font-weight: 500;
+  padding-left: 1%; 
+}
+.h1Atencion{
+  text-align: center;
+  
+  font-size:x-large
+}
+.h2TipoAtencion{
+  text-align: center;
+  font-size: x-large;
+  font-weight: 500;
+  color: #debc40;
+}
+.h2Atencion{
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+}
+.contenedorInputs{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.espacioBotonesAtencion{
+  padding-top: 7%;
+  padding-bottom: 4%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.espacioBotonesAtencion button{
+  font-size: medium;
+  padding: 2%;
+  border-radius: 6px;
+  background-color: #debc40;
+  width: 45%;
 }

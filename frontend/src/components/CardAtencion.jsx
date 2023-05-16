@@ -6,7 +6,7 @@ function CardAtencion({atencion}){
   const navigate = useNavigate();
   return(
     <div
-      className="card"
+      className="cardAtencion"
     >
       <header>
         <h2

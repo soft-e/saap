@@ -27,7 +27,7 @@ function AtencionPage(){
         className="espacioDeTrabajo"
       >
         <div
-          className="cards"
+          className="cardsAtencion"
         >
           {renderMain()}
         </div>
