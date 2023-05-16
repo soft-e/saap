@@ -9,17 +9,19 @@ import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
+import AtencionPage from "./pages/pages-rodrigo/AtencionPage";
 import './App.css'
 import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
+import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
+import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 
 function App() {
   //const [count, setCount] = useState(0)
   //logout="Cerrar Sesion";
-  
   return (
     <div id="mainheader">
-      
+      <AtencionContextProvider>
       <Routes>
         <Route path="/" element={<PrincipalPage/>}/>
         <Route path="/login" element={<LoginPage/>} />
@@ -27,10 +29,13 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
+        <Route path="/atencion" element={<AtencionPage/>}/>
+        <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>      
       </Routes>
+      </AtencionContextProvider>
       <Footer/>
     </div>
   );
