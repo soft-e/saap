@@ -3,11 +3,12 @@ import React from 'react';
 import { Formik } from "formik";
 import axios from 'axios';
 import { useState } from 'react';
-import {link, useNavigate} from 'react-router-dom';
+import { useNavigate}  from 'react-router-dom';
 
 const endPoint='http://127.0.0.1:8000/api/registrarEmpleados';
 
-export const FormularioRegistroPersonas = () => {
+export function FormularioRegistroPersonas() {
+
     const [ci, setCi] = useState('')
     const [nombre, setNombre] = useState('')
     const [apellido_paterno, setApellido_paterno] = useState('')
@@ -30,7 +31,7 @@ export const FormularioRegistroPersonas = () => {
             email: email,
             password: password,
         })
-        navigate('/')
+        navigate('/personal')
     }
     
     return(
@@ -121,7 +122,7 @@ export const FormularioRegistroPersonas = () => {
                         id='password'
                         name='password'
                         placeholder='escribe tu contraseña aqui'
-                        value={values.password}
+                        value={password}
                         onChange={ (e) => setPassword(e.target.value) }
                         />
                     </div>
@@ -135,10 +136,10 @@ export const FormularioRegistroPersonas = () => {
     );
     
 }
-
-
 /**
 export const FormularioRegistroPersonas = () => {
+
+    const navigate = useNavigate()
 
     return(
         <div className='cardRegistroPersonal'>
@@ -204,7 +205,8 @@ export const FormularioRegistroPersonas = () => {
                 onSubmit={ async (valores, {resetForm}, e) => {
                     resetForm();
                     console.log(valores);
-                    await axios.post(`${endPoint}/registrarEmpleados`,{valores})
+                    e.preventDefault()
+                    await axios.post(endPoint,{valores})
                     navigate('/');
                     console.log('formulario Enviado');
                 }}
