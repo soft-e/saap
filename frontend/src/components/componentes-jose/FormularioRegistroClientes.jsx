@@ -1,4 +1,4 @@
-gitimport '../../assets/css/css-jose/formularioRegistroPersonas.css'
+import '../../assets/css/css-jose/formularioRegistroPersonas.css'
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
