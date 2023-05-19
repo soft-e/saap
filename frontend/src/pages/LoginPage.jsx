@@ -20,7 +20,7 @@ function LoginPage(){
 		</h1>
     </div>
     <div
-      className="formulario"
+      className="formularioLogin"
     >
       <form action=""
         id="login"

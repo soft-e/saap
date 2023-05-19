@@ -26,6 +26,7 @@ function ButtonBoxAdmin(){
   >
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/test")}
     >
       <FontAwesomeIcon icon={faHouse} />
       Inicio

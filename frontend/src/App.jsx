@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
-//import AdminPageR from "./pages/AdminPageR";
+import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
 import AtencionPage from "./pages/pages-rodrigo/AtencionPage";
@@ -15,12 +15,26 @@ import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
+import { UserContext } from "./context/userContext";
+import { UserContextProvider } from "./context/UserProvider";
 
 function App() {
   //const [count, setCount] = useState(0)
   //logout="Cerrar Sesion";
+  const user = {
+    id:"2",
+    nombre: "Rodrigo",
+    apellido_paterno:"",
+    apellido_materno:"",
+    ci:"",
+    telefono:"",
+    email:"",
+    password:"",
+  };
   return (
     <div id="mainheader">
+      <UserContextProvider>
+      <UserContext.Provider value={user}>
       <AtencionContextProvider>
       <Routes>
         <Route path="/" element={<PrincipalPage/>}/>
@@ -34,8 +48,11 @@ function App() {
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>      
+        <Route path="/test" element={<AdminPageR/>}/>
       </Routes>
       </AtencionContextProvider>
+      </UserContext.Provider>
+      </UserContextProvider>
       <Footer/>
     </div>
   );

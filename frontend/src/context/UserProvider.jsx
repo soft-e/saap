@@ -1,7 +1,11 @@
 import { useContext, useState } from "react";
 
 import {
-  getUsersRequest
+  getUsersRequest,
+  getUserRequest,
+  createUserRequest,
+  updateUserRequest,
+  deleteUserRequest
 }from "../api/user.api";
 
 import { UserContext } from "./userContext";
@@ -23,12 +27,22 @@ export const UserContextProvider = ({children})=>{
     const response = await getUsersRequest();
     setUsers(response.data);
   };
+
+  const getUser = async(id)=>{
+    try {
+      const response = await getUserRequest(id);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
   return(
     <UserContext.Provider
       value={{
         users,
         loadUsers,
+        getUser
       }}
     >
       {children}

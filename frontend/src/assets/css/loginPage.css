@@ -6,20 +6,20 @@
   padding-top: 2%;
   
 }
-.formulario{
+.formularioLogin{
   padding-top: 4%;
   display: flex;
   justify-content: center;
 }
 
-.formulario #input{
+.formularioLogin #input{
   color: black;
   display: flex;
   flex-direction: column;
   padding-bottom: 7%;
 }
 
-.formulario #login h1{
+.formularioLogin #login h1{
   color: black;
 }
 #login{
@@ -49,7 +49,7 @@
   background-color:#debc40;
   border-width: 1px;
 }
-.formulario #inputText{
+.formularioLogin #inputText{
   border: 1px solid black;
   border-radius: 4px;
   padding: 5px 0px;
