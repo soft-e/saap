@@ -1,5 +1,4 @@
 import "../assets/css/buttonBoxAdmin.css";
-import {Link}from "react-router-dom";
 import CardUser from "../components/CardUser";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileContract } from '@fortawesome/free-solid-svg-icons';
@@ -12,9 +11,12 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import "hover.css"
 
 function ButtonBoxAdmin(){
+  const navigate = useNavigate();
+
   return <div
   className="cajaBotones"
 >
@@ -38,6 +40,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/atencion")}
     >
       <FontAwesomeIcon icon={faCalendarDays} />
       Atencion
@@ -73,6 +76,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/registroparqueo")}
     >
       <FontAwesomeIcon icon={faCar} />
       Parqueo
@@ -81,6 +85,7 @@ function ButtonBoxAdmin(){
     
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/personal")}
     >
       <FontAwesomeIcon icon={faUsers} /> 
       Personal

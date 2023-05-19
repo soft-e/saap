@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\api\VehiculoController;
 use App\Http\Controllers\api\TarifaController;
+use App\Http\Controllers\api\HorarioAtencionController;
 
 
 /*
@@ -38,4 +39,5 @@ Route::post('registrarEmpleados', [EmpleadoController::class, 'store']);
 //Route::resource('contrataciones',ContratacionController::class);
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
-Route::resource('tarifa', TarifaController::class);
+//Route::resource('tarifa', TarifaController::class);
+Route::resource('hatencion',HorarioAtencionController::class);
