@@ -9,7 +9,7 @@ class Sitios extends Model
 {
     use HasFactory;
     protected $fillable = ['estado'];
-
+    
     public function parqueo()
     {
         return $this->belongsTo(Parqueo::class);

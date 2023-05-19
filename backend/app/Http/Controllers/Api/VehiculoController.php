@@ -8,6 +8,7 @@ use App\Models\vehiculo;
 
 class VehiculoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,7 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

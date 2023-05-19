@@ -3,6 +3,8 @@
 import '../../assets/css/css-deysi/plazasOcupadas.css';
 // eslint-disable-next-line react/prop-types
 const PlazasOcupadas = ({ plazas, handleClick }) => {
+
+
   return (
 
     <div>
@@ -15,7 +17,7 @@ const PlazasOcupadas = ({ plazas, handleClick }) => {
  {plazas.map((plaza) => (
    <div
      key={plaza.id}
-     className={`plaza-ocupada ${plaza.estado ? 'ocupada' : ''}`}
+     className={`plaza-ocupada ${plaza.estado ? 'ocupado' : ''}`}
      onClick={() => handleClick(plaza.id)}
 
    >

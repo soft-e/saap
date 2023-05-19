@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {Route,Routes} from "react-router-dom";
 import PrincipalPage from './pages/PrincipalPage';
 //import Navbar from './components/Navbar';
@@ -13,6 +14,10 @@ import './App.css'
 import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
 import Parqueo from "./pages/pages-deysi/Parqueo";
+import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
+import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
+
+
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -31,8 +36,13 @@ function App() {
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>      
+
      <Route path="/parqueo" element={<Parqueo/>}/>
+     <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
+     <Route path="/asignarsitio" element={<AsignarSitio/>}/>
      
+     
+
       </Routes>
       <Footer/>
     </div>

@@ -15,8 +15,8 @@ class ParqueoController extends Controller
      */
     public function index()
     {
-        $tarifas = Tarifa::all();
-        return response()->json($tarifas);
+        $parqueo = Parqueo::all();
+        return response()->json($parqueo);
     }
 
     /**

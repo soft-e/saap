@@ -9,7 +9,6 @@
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
   }
-  
   .plaza-ocupada {
     width: 80px;
     height: 100px;
@@ -18,7 +17,7 @@
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-  
+    margin-top: 10px;
   background-color: #c41c34;
     margin-bottom: 10px;
     cursor: pointer;
@@ -30,7 +29,7 @@
     background-color: #c41c34;
   }
   
-  .plaza-ocupada.ocupada {
+  .plaza-ocupada.ocupado {
     
     
     background-image: url('../../images/images-deysi/carrito.jpg');

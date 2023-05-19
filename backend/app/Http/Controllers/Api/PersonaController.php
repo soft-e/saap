@@ -78,7 +78,7 @@ class PersonaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   /* public function destroy($id)
     {
         $empleado = Empleado::findOrFail($id);
         $persona = $empleado->persona;
@@ -87,5 +87,5 @@ class PersonaController extends Controller
         $persona->delete();
 
         return response()->json(['message' => 'Empleado eliminado correctamente']);
-    }
+    }*/
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\AdministradorController;
 use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
+use App\Http\Controllers\Api\PlazaController;
+use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\api\VehiculoController;
 use App\Http\Controllers\api\TarifaController;
 
@@ -36,4 +38,7 @@ Route::resource('empleados', EmpleadoController::class);
 //Route::resource('contrataciones',ContratacionController::class);
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
-Route::resource('tarifa', TarifaController::class);
+//Route::resource('tarifa', TarifaController::class);
+
+Route::resource('plazas', PlazaController::class);
+Route::resource('sitio_clientes', SitioClienteController::class);

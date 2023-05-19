@@ -28,18 +28,7 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        /**
-        $request->validate([
-            
-            'nombre'=>'required|string',
-            'apellido_paterno'=>'required|string',
-            'apellido_materno'=>'required|string',
-            'ci'=>'required|string',
-            'telefono'=>'required|string',
-            'email'=>'required|string',
-            'password'=>'required|string'
-        ]);
-         */
+       
         
         $persona = Persona::create([
             'nombre'=>$request->input('nombre'),

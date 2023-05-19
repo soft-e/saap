@@ -1,82 +1,99 @@
-import  { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Component } from "react";
+import { Link } from "react-router-dom";
 import "../../assets/css/templatePage.css";
-import '../../assets/css/css-deysi/parqueo.css';
-  import Navbar from '../../components/Navbar';
- import PlazasOcupadas from './PlazasOcupadas';
-import ButtonBoxAdmin from '../../components/ButtonBoxAdmin';
-  import PlazasDisponibles from './PlazasDisponibles';
-  class Parqueo extends Component {
-    state = {
-      plazas: [
-        { id: 1, nombre: 'Plaza ', estado: 'disponible' },
-        { id: 2, nombre: 'Plaza ', estado: 'disponible' },
-        { id: 3, nombre: 'Plaza ', estado: 'ocupada' },
-        { id: 4, nombre: 'Plaza ', estado: 'disponible' },
-        { id: 5, nombre: 'Plaza ', estado: 'ocupada' },
-        { id: 6, nombre: 'Plaza ', estado: 'ocupada' },
-        { id: 7, nombre: 'Plaza ', estado: 'ocupada' },
-        { id: 8, nombre: 'Plaza ', estado: 'ocupada' },
+import "../../assets/css/css-deysi/parqueo.css";
+import Navbar from "../../components/Navbar";
+import PlazasOcupadas from "./PlazasOcupadas";
+import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
+import PlazasDisponibles from "./PlazasDisponibles";
+import axios from "axios";
+const endPoint = "http://localhost:8000/api";
+class Parqueo extends Component {
+  /*state = {
+     
+       plazas: [
+        { id: 1, nombre: 'Plaza ', estado: 'libre' },
+        { id: 2, nombre: 'Plaza ', estado: 'libre' },
+        { id: 3, nombre: 'Plaza ', estado: 'ocupado' },
+        { id: 4, nombre: 'Plaza ', estado: 'libre' },
+        { id: 5, nombre: 'Plaza ', estado: 'ocupado' },
+        { id: 6, nombre: 'Plaza ', estado: 'ocupado' },
+        { id: 7, nombre: 'Plaza ', estado: 'ocupado' },
+        { id: 8, nombre: 'Plaza ', estado: 'ocupado' },
         
-        { id: 9, nombre: 'Plaza ', estado: 'disponible' },
-        { id: 10, nombre: 'Plaza ', estado: 'disponible' },
-        { id: 11, nombre: 'Plaza ', estado: 'disponible' },
-        { id: 12, nombre: 'Plaza ', estado: 'disponible' },
+        { id: 9, nombre: 'Plaza ', estado: 'libre' },
+        { id: 10, nombre: 'Plaza ', estado: 'libre' },
+        { id: 11, nombre: 'Plaza ', estado: 'libre' },
+        { id: 12, nombre: 'Plaza ', estado: 'libre' },
 
         
       ],
-    };
-  
-    handleClick = (id) => {
-      const plazas = this.state.plazas.map((plaza) => {
-        if (plaza.id === id) {
-          plaza.estado = plaza.estado === 'disponible' ? 'ocupada' : 'disponible';
-        }
-        return plaza;
-      });
-      this.setState({ plazas });
-    };
-  
-    render() {
-      const plazasDisponibles = this.state.plazas.filter(plaza => plaza.estado === 'disponible');
-      const plazasOcupadas = this.state.plazas.filter(plaza => plaza.estado === 'ocupada');
-  
-      return (
-        <>
-         <Navbar accion="iniciar sesion"/>
-        <div className="espacioPagina">
-           
-         <ButtonBoxAdmin/>
+    };*/
 
-         
-         
-        
-         <div  className='.con'>
-        <h1 className='p'></h1>
-        </div> 
-        <div className='.containers' id='b'>
-              <Link to="/login"> 
-              <button>registro de sitios</button>
-              </Link>
-        </div>
-        <div  className='.con'>
-        <h1 className='p'></h1>
-        </div> 
-       
-        <div className="parqueo">
-          <PlazasDisponibles plazas={plazasDisponibles} handleClick={this.handleClick} />
-          <PlazasOcupadas plazas={plazasOcupadas} handleClick={this.handleClick}/>
-        </div>
+  state = {
+    plazas: [],
+  };
 
-        </div>
-       
-        </>
-      );
-    }
+  componentDidMount() {
+    axios.get(`${endPoint}/plazas`).then((response) => {
+      this.setState({ plazas: response.data });
+    });
   }
-  
-  export default Parqueo;
-  
- 
-  
- 
+
+  handleClick = (id) => {
+    const plazas = this.state.plazas.map((plaza) => {
+      if (plaza.id === id) {
+        plaza.estado = plaza.estado === "libre" ? "ocupado" : "libre";
+      }
+      return plaza;
+    });
+    this.setState({ plazas });
+  };
+
+  render() {
+    const plazasDisponibles = this.state.plazas.filter(
+      (plaza) => plaza.estado === "libre"
+    );
+    const plazasOcupadas = this.state.plazas.filter(
+      (plaza) => plaza.estado === "ocupado"
+    );
+
+    return (
+      <>
+        <Navbar accion="iniciar sesion" />
+        <div className="espacioPagina">
+          <ButtonBoxAdmin />
+
+          <div className=".con">
+            <h1 className="p"></h1>
+          </div>
+          <div
+            className=".containers"
+            id="b"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <Link to="/registrarSitio" style={{ textDecoration: "none" }}>
+              <button className="button">registro de sitios</button>
+            </Link>
+          </div>
+          <div className=".con">
+            <h1 className="p"></h1>
+          </div>
+
+          <div className="parqueo">
+            <PlazasDisponibles
+              plazas={plazasDisponibles}
+              handleClick={this.handleClick}
+            />
+            <PlazasOcupadas
+              plazas={plazasOcupadas}
+              handleClick={this.handleClick}
+            />
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+
+export default Parqueo;
