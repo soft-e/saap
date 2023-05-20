@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\api\VehiculoController;
 use App\Http\Controllers\api\TarifaController;
+use App\Http\Controllers\api\HorarioAtencionController;
 
 
 /*
@@ -40,5 +41,9 @@ Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
 //Route::resource('tarifa', TarifaController::class);
 
+
 Route::resource('plazas', PlazaController::class);
 Route::resource('sitio_clientes', SitioClienteController::class);
+
+Route::resource('hatencion',HorarioAtencionController::class);
+ 

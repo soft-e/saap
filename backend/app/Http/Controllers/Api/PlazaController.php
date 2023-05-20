@@ -55,29 +55,68 @@ class PlazaController extends Controller
      */
    
 
-
-
-     public function update(Request $request, $id)
+     /*public function update(Request $request, $id)
      {
          // Valida los datos enviados en la solicitud
          $request->validate([
              'estado' => 'required' // Agrega cualquier otra validación que necesites
          ]);
-     
-         // Actualiza la plaza utilizando el método update del modelo
-         $updated = Plaza::where('id', $id)->update(['estado' => $request->input('estado')]);
-     
-         if ($updated) {
-             // Si se actualizó correctamente, busca la plaza actualizada y retorna la respuesta
-             $plaza = Plaza::find($id);
-             return response()->json($plaza);
-         } else {
-             // Si no se pudo actualizar, retorna una respuesta de error
-             return response()->json(['message' => 'Error al actualizar la plaza'], 500);
-         }
+ 
+         // Actualiza el estado del sitio a "ocupado" en la tabla "plazas"
+         $plaza = Plaza::findOrFail($id);
+         $plaza->estado = 'ocupado';
+         $plaza->save();
+ 
+         // Devuelve la respuesta con la plaza actualizada
+         return response()->json($plaza);
      }
-     
-     
+
+     */
+     public function updateEstado(Request $request, $id)
+    {
+        $plaza = Plaza::findOrFail($id);
+        $plaza->estado = 'ocupado'; // Actualiza el estado del sitio a 'ocupado'
+        $plaza->save();
+           
+        return response()->json($plaza);
+    }
+
+   /* public function update(Request $request, $id)
+    {
+        $plaza = Plaza::findOrFail($id);
+        $plaza->nombre = $request->nombre;
+        $plaza->estado = $request->estado;
+        
+        $plaza->save();
+        return response()->json($plaza);
+    }
+    */
+
+    public function update(Request $request, Plaza $plaza)
+{
+    // Validar y procesar los datos recibidos
+    $validatedData = $request->validate([
+        'estado' => 'required',
+        'nombre' => 'required'
+        // Otros campos y reglas de validación
+    ]);
+
+    // Actualizar los datos en la base de datos
+    $plaza->estado = $validatedData['estado'];
+    $plaza->nombre = $validatedData['nombre'];
+    // Actualizar otros campos si es necesario
+    $plaza->save();
+
+    // Redireccionar o devolver una respuesta según tus necesidades
+    return redirect()->back()->with('success', 'Plaza actualizada correctamente');
+}
+
+
+
+
+
+
+
 
      
     /**

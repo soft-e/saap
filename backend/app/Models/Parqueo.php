@@ -10,7 +10,6 @@ class Parqueo extends Model
     use HasFactory;
     protected $table = 'parqueos';
     protected $fillable=['nombre_bloque','numero_sitios'];
-       
     
     public function empleado(){
         return $this->belongsTo(Empleado::class);

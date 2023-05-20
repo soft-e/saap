@@ -40,6 +40,7 @@ class AsignarSitio extends Component {
       });
   };
 
+
   handleParqueoChange = (event) => {
     this.setState({ selectedParqueo: event.target.value });
   };
@@ -48,46 +49,64 @@ class AsignarSitio extends Component {
     this.setState({ selectedSitio: event.target.value });
   };
 
-  handleFinalizar = (event) => {
-    event.preventDefault();
-    const { selectedParqueo, selectedSitio } = this.state;
+// ...
 
-    if (!selectedParqueo || !selectedSitio) {
-      console.log("Debes seleccionar un parqueo y un sitio");
-      return;
-    }
+handleFinalizar = (event) => {
+  event.preventDefault();
+  const { selectedParqueo, selectedSitio } = this.state;
 
-    axios.post("http://localhost:8000/api/sitio_clientes", {
+  if (!selectedParqueo || !selectedSitio) {
+    console.log("Debes seleccionar un parqueo y un sitio");
+    return;
+  }
+
+  axios
+    .post("http://localhost:8000/api/sitio_clientes", {
       parqueo_id: selectedParqueo,
-      sitio_id: selectedSitio
+      sitio_id: selectedSitio,
     })
-      .then((response) => {
-        console.log("Asignación registrada con éxito:", response.data);
+    .then((response) => {
+      console.log("Asignación registrada con éxito:", response.data);
 
-        // Actualizar el estado del sitio a "ocupado" en la tabla "plazas"
-        axios.put(`http://localhost:8000/api/plazas/${selectedSitio}`, {
-          estado: "ocupado"
+      // Actualizar el estado del sitio a "ocupado" en la tabla "plazas"
+      axios
+        .put(`http://localhost:8000/api/plazas/${selectedSitio}`, {
+          estado: "ocupado",
         })
-          .then((response) => {
-            console.log("Estado del sitio actualizado:", response.data);
+        .then((response) => {
+          console.log("Estado del sitio actualizado:", response.data);
 
-            // Restablecer los valores seleccionados
-            this.setState({
-              selectedParqueo: "",
-              selectedSitio: ""
-            });
-
-            // Actualizar la lista de sitios libres
-            this.obtenerSitiosLibres();
-          })
-          .catch((error) => {
-            console.error("Error al actualizar el estado del sitio:", error);
+          // Restablecer los valores seleccionados
+          this.setState({
+            selectedParqueo: "",
+            selectedSitio: "",
           });
-      })
-      .catch((error) => {
-        console.error("Error al registrar la asignación:", error);
-      });
-  };
+
+          // Actualizar la lista de sitios libres
+          this.obtenerSitiosLibres();
+        })
+        .catch((error) => {
+          console.error("Error al actualizar el estado del sitio:", error);
+        });
+    })
+    .catch((error) => {
+      console.error("Error al registrar la asignación:", error);
+    });
+};
+
+// ...
+
+
+
+
+ 
+
+
+
+
+
+
+  
 
   handleCancel = (event) => {
     event.preventDefault();
