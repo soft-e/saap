@@ -17,7 +17,7 @@ import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
-import { UserContext } from "./context/userContext";
+import { UserContext } from "./context/UserContext";
 import { UserContextProvider } from "./context/UserProvider";
 
 function App() {
