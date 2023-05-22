@@ -1,25 +1,35 @@
+import "../../assets/css/css-jhonatan/tarifapage.css"
+import React, { useEffect } from "react";
+import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-import Navbar from "../../components/Navbar.jsx";
-import React, { useEffect, useState } from 'react';
-import CardTarifa from "../../components/CardTarifa.jsx";
-import '../../assets/css/css-jhonatan/cardTarifa.css';
+import { useTarifas } from "../../context/context-jhonatan/TarifaProvider";
+import CardTarifa from "../../components/CardTarifa";
 
+function TarifaPage() {
+  const { tarifas, loadTarifas } = useTarifas();
 
-function TarifaPage(){
+  useEffect(() => {
+    loadTarifas();
+  }, []);
 
-    return<>
-    <Navbar accion="cerrar sesion"/>
-    <div className="espacioPagina">
-      <ButtonBoxAdmin />
-      <div className="contenedor_personal">
-      <h1 className="title">Tarifa</h1>
-        <button className="button">Registrar Tarifa</button>
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <CardTarifa/>
+  function renderMain() {
+    if (tarifas.length === 0) return <h1>No se tiene tarifas registradas</h1>;
+    return tarifas.map((tarifa) => <CardTarifa tarifa={tarifa} key={tarifa.id} />);
+  }
+
+  return (
+    <>
+      <Navbar accion="iniciar sesion" />
+      <div className="espacioPagina">
+        <ButtonBoxAdmin />
+        <div className="espacioDeTrabajo">
+          <div className="cardsTarifa">
+            {renderMain()}
+          </div>
         </div>
       </div>
-    </div>
-    </> 
-  }
+    </>
+  );
+}
 
 export default TarifaPage;

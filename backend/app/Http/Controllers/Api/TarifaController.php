@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Tarifa;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Models\Tarifa;
 
 class TarifaController extends Controller
 {
@@ -15,18 +15,8 @@ class TarifaController extends Controller
      */
     public function index()
     {
-        $tarifas = Tarifa::get();
-        return response()->json($tarifas);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('tarifas.create');
+        $Ctarifas = Tarifa::all();
+        return response()->json($Ctarifas);
     }
 
     /**
@@ -37,10 +27,10 @@ class TarifaController extends Controller
      */
     public function store(Request $request)
     {
-        $tarifa = new Tarifa;
-        $tarifa->costo_tarifa = $request->costo_tarifa;
-        $tarifa->save();
-        return redirect()->route('tarifa.index');
+        $Ctarifa = new Tarifa;
+        $Ctarifa->costo_tarifa = $request->costo_tarifa;
+        $Ctarifa->save();
+        return response()->json($Ctarifa);
     }
 
     /**
@@ -51,20 +41,8 @@ class TarifaController extends Controller
      */
     public function show($id)
     {
-        $tarifa = Tarifa::findOrFail($id);
-        return view('tarifas.show', compact('tarifa'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $tarifa = Tarifa::findOrFail($id);
-        return view('tarifas.edit', compact('tarifa'));
+        $Ctarifa = Tarifa::findOrFail($id);
+        return response()->json($Ctarifa);
     }
 
     /**
@@ -76,10 +54,10 @@ class TarifaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tarifa = Tarifa::findOrFail($id);
-        $tarifa->costo_tarifa = $request->costo_tarifa;
-        $tarifa->save();
-        return redirect()->route('tarifa.index');
+        $Ctarifa = Tarifa::findOrFail($id);
+        $Ctarifa->costo_tarifa = $request->costo_tarifa;
+        $Ctarifa->save();
+        return response()->json($Ctarifa);
     }
 
     /**
@@ -90,8 +68,8 @@ class TarifaController extends Controller
      */
     public function destroy($id)
     {
-        $tarifa = Tarifa::findOrFail($id);
-        $tarifa->delete();
-        return redirect()->route('tarifa.index');
+        $Ctarifa = Tarifa::findOrFail($id);
+        $Ctarifa->delete();
+        return response()->json(['message' => 'Tarifa eliminada']);
     }
 }

@@ -15,7 +15,7 @@ class TarifaSeeder extends Seeder
     public function run()
     {
         Tarifa::create([
-            'costo_tarifa' => 1000,
+            'costo_tarifa' => '1000',
         ]);
     }
 }

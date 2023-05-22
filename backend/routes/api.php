@@ -37,5 +37,5 @@ Route::resource('empleados', EmpleadoController::class);
 //Route::resource('contrataciones',ContratacionController::class);
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
-//Route::resource('tarifa', TarifaController::class);
+Route::resource('ctarifa', TarifaController::class);
 Route::resource('hatencion',HorarioAtencionController::class);

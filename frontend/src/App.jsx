@@ -15,6 +15,8 @@ import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
+import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider";
+import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -22,6 +24,7 @@ function App() {
   return (
     <div id="mainheader">
       <AtencionContextProvider>
+      <TarifaContextProvider>
       <Routes>
         <Route path="/" element={<PrincipalPage/>}/>
         <Route path="/login" element={<LoginPage/>} />
@@ -33,8 +36,10 @@ function App() {
         <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
-        <Route path="/tarifa" element={<TarifaPage/>}/>      
+        <Route path="/tarifa" element={<TarifaPage/>}/>
+        <Route path="/tarifa/edit/:id" element={<TarifaForm/>}/>      
       </Routes>
+      </TarifaContextProvider>
       </AtencionContextProvider>
       <Footer/>
     </div>
