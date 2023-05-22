@@ -14,7 +14,7 @@ export function FormularioRegistroPersonas() {
     const [apellido_paterno, setApellido_paterno] = useState('')
     const [apellido_materno, setApellido_materno] = useState('')
     const [telefono, setTelefono] = useState('')
-    const [nombre_cargo, setNombre_cargo] = useState('guardia')
+    const [nombre_cargo, setNombre_cargo] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
@@ -35,11 +35,12 @@ export function FormularioRegistroPersonas() {
     }
     
     return(
-        <div className='cardRegistroPersonal'>
+        <div className='cardRegistroPersonal_j'>
             <form onSubmit={store}>
                 <div>
                     <label htmlFor='ci'>Celula de Identidad</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='ci'
                         name='ci'
@@ -51,6 +52,7 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='nombre'>nombres</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='nombre'
                         name='nombre'
@@ -62,6 +64,7 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='apellido_paterno'>Apellido Paterno</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='apellido_paterno'    
                         name='apellido_paterno'
@@ -73,6 +76,7 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='apellido_materno'>Apellido Materno</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='apellido_materno'
                         name='apellido_materno'
@@ -84,6 +88,7 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='telefono'>Telefono</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='telefono'
                         name='telefono'
@@ -95,9 +100,9 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='nombre_cargo'>Empleado</label>
                     <select 
-                        type='text' 
-                        id='nombre_cargo'
-                        name="nombre_cargo"
+                        className='select_j'
+                        value={ nombre_cargo }
+                        onChange={ (e) => setNombre_cargo(e.target.value)}
                     >
                         <option value='Administrador'> Administrador </option>
                         <option value='Guardia'> Guardia </option>
@@ -107,6 +112,7 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='email'>Correo Electronico</label>
                     <input 
+                        className='input_j'
                         type='email'
                         id='email'
                         name='email'
@@ -118,6 +124,7 @@ export function FormularioRegistroPersonas() {
                 <div>
                     <label htmlFor='password'>Contraseña</label>
                     <input 
+                        className='input_j'
                         type='password'
                         id='password'
                         name='password'
@@ -126,8 +133,8 @@ export function FormularioRegistroPersonas() {
                         onChange={ (e) => setPassword(e.target.value) }
                         />
                     </div>
-                    <div className="espacioBoton">
-                        <button  className='stylesButton' type="submit">
+                    <div className="espacioBoton_j">
+                        <button  className='stylesButton_j' type="submit">
                             Guardar
                         </button>
                     </div>

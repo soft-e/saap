@@ -9,7 +9,7 @@ function RegistrarPersonal(){
         <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">
             <ButtonBoxAdmin />
-            <div className="registrarPersonal">
+            <div className="registrarPersonal_j">
                 <FormularioRegistroPersonas/>
             </div>
         </div>

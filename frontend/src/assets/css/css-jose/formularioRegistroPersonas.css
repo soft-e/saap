@@ -1,4 +1,4 @@
-.cardRegistroPersonal{
+.cardRegistroPersonal_j{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -15,7 +15,7 @@
     color: black;
 }
 
-input{
+.input_j{
     width: 100%;
     border: 1px solid black;
     border-radius: 4px;
@@ -24,7 +24,7 @@ input{
     font-size:medium;
 }
 
-select{
+.select_j{
     width: 100%;
     border: 1px solid black;
     border-radius: 4px;
@@ -34,18 +34,18 @@ select{
 }
 
 
-.espacioBoton{
+.espacioBoton_j{
     width: auto;
     padding: 10px 0px;
 }
 
-.btn{
+.btn_j{
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.stylesButton{
+.stylesButton_j{
     width: 80%;
     display: flex;
     justify-content: center;
@@ -56,12 +56,12 @@ select{
     cursor: pointer;
 }
 
-.stylesButton:hover{
+.stylesButton_j:hover{
     width: 90%;
     background-color:#c49e18;
 }
 
-.styleErrores{
+.styleErrores_j{
     font-size: 0.8rem;
     color: #eb2929;
     padding: 10px 20px;

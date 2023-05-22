@@ -32,11 +32,12 @@ export function FormularioRegistroClientes() {
     }
     
     return(
-        <div className='cardRegistroPersonal'>
+        <div className='cardRegistroPersonal_j'>
             <form onSubmit={store}>
                 <div>
                     <label htmlFor='ci'>Celula de Identidad</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='ci'
                         name='ci'
@@ -48,6 +49,7 @@ export function FormularioRegistroClientes() {
                 <div>
                     <label htmlFor='nombre'>nombres</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='nombre'
                         name='nombre'
@@ -58,7 +60,8 @@ export function FormularioRegistroClientes() {
                 </div>
                 <div>
                     <label htmlFor='apellido_paterno'>Apellido Paterno</label>
-                    <input 
+                    <input
+                        className='input_j' 
                         type='text'
                         id='apellido_paterno'    
                         name='apellido_paterno'
@@ -70,6 +73,7 @@ export function FormularioRegistroClientes() {
                 <div>
                     <label htmlFor='apellido_materno'>Apellido Materno</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='apellido_materno'
                         name='apellido_materno'
@@ -81,6 +85,7 @@ export function FormularioRegistroClientes() {
                 <div>
                     <label htmlFor='telefono'>Telefono</label>
                     <input 
+                        className='input_j'
                         type='text'
                         id='telefono'
                         name='telefono'
@@ -92,6 +97,7 @@ export function FormularioRegistroClientes() {
                 <div>
                     <label htmlFor='email'>Correo Electronico</label>
                     <input 
+                        className='input_j'
                         type='email'
                         id='email'
                         name='email'
@@ -100,8 +106,8 @@ export function FormularioRegistroClientes() {
                         onChange={ (e) => setEmail(e.target.value) }
                     />
                 </div>
-                <div className="espacioBoton">
-                    <button  className='stylesButton' type="submit">
+                <div className="espacioBoton_j">
+                    <button  className='stylesButton_j' type="submit">
                         Guardar
                     </button>
                 </div>
