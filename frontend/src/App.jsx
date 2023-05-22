@@ -7,6 +7,7 @@ import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal";
 import RegistrarClientes from "./pages/pages-jose/RegistrarClientes";
+import ListarDocentes from "./pages/pages-jose/ListarDocentes";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/personal/registro" element={<RegistrarPersonal/>}/>
         <Route path="/registrarclientes" element={<RegistrarClientes/>}/>
+        <Route path="/listardocentes" element={<ListarDocentes/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
