@@ -22,13 +22,14 @@ function RegistroParqueo() {
         nombre_bloque:nombre_bloque,
         cantidad_sitios:cantidad_sitios,
         empleado_id:empleado_id})
-        navigate('/admin');
+        navigate('/parqueos');
     }
     function handleCancel(event) {
         event.preventDefault();
         setnombre_bloque('');
         setcantidad_sitios('');
     }
+
 
     return<>
         <Navbar accion="iniciar sesion"/>
@@ -62,7 +63,10 @@ function RegistroParqueo() {
                                     />
                                 </div>
                                 <div className='contenedorBotonP'>
-                                    <button className='botonInicioSesion' type='submit'>
+                                    <button 
+                                        className='botonInicioSesion' 
+                                        type='submit'
+                                    >
                                         Registrar
                                     </button>
                                     <button 
@@ -80,50 +84,5 @@ function RegistroParqueo() {
             </div>
         </div>
     </> 
-
-    
-    /*return(
-        <div className='padre' onSubmit={store}>
-            <form action="" className='formulario'>
-                <div className='contenedor'>
-                    <h1 id='titulo'>Registro de Parqueo</h1>
-                    <div id='input' className='input1'>
-                        <label>Nombre de Parqueo</label>
-                        <input 
-                            type="text" 
-                            value={nombre_bloque}
-                            onChange={(e)=>setnombre_bloque(e.target.value)}
-                            id='inputText'
-                            placeholder='Escribe el nombre'
-                            required
-                        />
-                    </div>
-                    <div id='input' className='input2'>
-                        <label>Numero de Espacios</label>
-                        <input
-                            value={cantidad_sitios}
-                            onChange={(e)=>setcantidad_sitios(e.target.value)}
-                            type="number" 
-                            id='inputText'
-                            placeholder='Escribe el numero de espacios'
-                            required
-                        />
-                    </div>
-                    <div className='espacioBoton'>
-                        <button className='botonInicioSesion' type='submit'>
-                            Registrar
-                        </button>
-                        <button 
-                            className='botonInicioSesion' 
-                            type='submit'
-                            onClick={handleCancel}
-                        >
-                            Cancelar
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    ) */
 }
 export default RegistroParqueo;
