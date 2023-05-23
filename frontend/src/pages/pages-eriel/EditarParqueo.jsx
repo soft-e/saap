@@ -12,6 +12,7 @@ function EditarParqueo() {
     const empleado_id=1;
     const navigate=useNavigate();
     const {id}=useParams();
+    const eriel-02="prueba2";
 
     const update=async(e)=>{
         e.preventDefault();
