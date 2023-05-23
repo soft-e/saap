@@ -13,8 +13,6 @@ import AtencionPage from "./pages/pages-rodrigo/AtencionPage";
 import './App.css'
 import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
-import Parqueos from "./pages/pages-eriel/Parqueos";
-import EditarParqueo from "./pages/pages-eriel/EditarParqueo";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 
@@ -35,8 +33,6 @@ function App() {
         <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
-        <Route path="/parqueos" element={<Parqueos/>}/> 
-        <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>      
       </Routes>
       </AtencionContextProvider>
