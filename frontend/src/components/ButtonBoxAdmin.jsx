@@ -77,7 +77,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
-      onClick={()=>navigate("/registroparqueo")}
+      onClick={()=>navigate("/parqueos")}
     >
       <FontAwesomeIcon icon={faCar} />
       Parqueo
