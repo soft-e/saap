@@ -43,10 +43,15 @@ function CardAtencion({atencion}){
         className="seccion_boton"
       >
       <button
-        className="boton_editar"
+        className="botonEditarAtencion"
         onClick={()=>navigate("/atencion/edit/"+atencion.id)}
       >
         Editar
+      </button>
+      <button
+        className="botonBorrarAtencion"
+      >
+        Borrar
       </button>
       </div>
       

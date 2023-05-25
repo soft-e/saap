@@ -18,7 +18,7 @@ function AtencionPage(){
   }
 
   return <>
-    <Navbar accion="iniciar sesion" />
+    <Navbar accion="cerrar sesion" />
     <div
       className="espacioPagina"
     >
@@ -27,9 +27,17 @@ function AtencionPage(){
         className="espacioDeTrabajo"
       >
         <div
-          className="cardsAtencion"
-        >
-          {renderMain()}
+            className="tituloAtencion"
+          >
+            <h1>Horario de Atencion</h1>
+            <button
+              className="botonAtencion"
+            >Registrar Horario de Atencion</button>
+          </div>
+          <div
+            className="cardsAtencion"
+          >
+            {renderMain()}
         </div>
       </div>
     </div>
