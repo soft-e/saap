@@ -104,7 +104,6 @@ export function FormularioRegistroPersonas() {
                         value={ nombre_cargo }
                         onChange={ (e) => setNombre_cargo(e.target.value)}
                     >
-                        <option value='Administrador'> Administrador </option>
                         <option value='Guardia'> Guardia </option>
                         <option value='Secretaria'>Secretaria</option>
                     </select>
