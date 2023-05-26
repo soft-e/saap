@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
+import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal"
+import ListarDocentes from "./pages/pages-jose/ListarDocentes"
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -27,6 +29,8 @@ function App() {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/admin" element={<AdminPage/>}/>
         <Route path="/personal" element={<PersonalPage/>}/>
+        <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
+        <Route path="/listardocentes" element={<ListarDocentes/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
