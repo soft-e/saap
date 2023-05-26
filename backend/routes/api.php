@@ -10,11 +10,7 @@ use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\Api\VehiculoController;
 use App\Http\Controllers\Api\TarifaController;
 use App\Http\Controllers\Api\HorarioAtencionController;
-<<<<<<< HEAD
 use App\Http\Controllers\Api\DocenteController;
-=======
-
->>>>>>> origin/main
 
 /*
 |--------------------------------------------------------------------------
