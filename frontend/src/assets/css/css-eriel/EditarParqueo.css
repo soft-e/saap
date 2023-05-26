@@ -1,0 +1,60 @@
+.editarParqueoPadre{
+    width: 100%;
+    height: 100%;
+}
+
+
+.Modal{
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.5);
+    align-items:center;
+    justify-content:center;
+    display: flex;
+}
+.padreEditarParqueo{
+    display: flex;
+    flex-direction: column;
+    border:1px solid rgba(251, 181, 0, 0.69);
+    border-radius: 5px;
+    width: 25%;
+    padding: 1%;
+    background: rgba(203, 198, 198, 0.625);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.cuerpoEditarParqueo{
+    display: flex;
+    flex-direction: column;
+}
+.cuerpoEditarParqueo input{
+    color: black;
+    height: 25px;
+    margin-top: 4%;
+    border-radius: 4px;
+}
+.cuerpoEditarParqueo label{
+    color: black;
+    padding-top: 2%;
+}
+.botonEditarParqueo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+}
+.Btn-actualizar{
+    border-radius: 5px;
+    height:35px;
+    width: 100px;
+    cursor: pointer;
+    background: #debc40;
+}
+.tituloEditarParqueo{
+    color:black;
+}

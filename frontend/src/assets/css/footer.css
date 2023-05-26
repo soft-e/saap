@@ -14,3 +14,41 @@
   /*padding: 10px;*/
   
 }
+.contenedorFooder{
+  padding-top: 18px;
+  justify-content: center;
+  display: flex;
+}
+.contenedorFooder h3{
+  color: rgba(195, 207, 34, 0.888);
+}
+#a{
+  margin-left: 10px;
+}
+.facebook{
+  color:  #385898;
+}
+.whatsapp{
+  color: #075e54;
+}
+.gmail{
+  color: rgb(207, 34, 34);
+}
+.facebook:hover{
+  font-size: 20px;
+  color:  #385898;
+  /*transform: translateY(-3px);*/
+  text-decoration:solid;
+}
+.whatsapp:hover{
+  font-size: 20px;
+  color: #075e54;
+  /*transform: translateY(-3px);*/
+  text-decoration:solid;
+}
+.gmail:hover{
+  font-size: 20px;
+  color: rgb(207, 34, 34);
+  /*transform: translateY(-3px);*/
+  text-decoration:solid;
+}
