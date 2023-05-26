@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\Api\VehiculoController;
 use App\Http\Controllers\Api\TarifaController;
 use App\Http\Controllers\Api\HorarioAtencionController;
+use App\Http\Controllers\Api\PlazaController;
+use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\Api\DocenteController;
 
 /*
@@ -40,4 +42,8 @@ Route::resource('docentes', DocenteController::class);
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
 //Route::resource('tarifa', TarifaController::class);
+
+Route::resource('plazas',PlazaController::class);
+
+Route::resource('sitio_clientes',SitioClienteController::class);
 Route::resource('atencion',HorarioAtencionController::class);
