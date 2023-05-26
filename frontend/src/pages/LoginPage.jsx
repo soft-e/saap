@@ -1,8 +1,7 @@
 import "../assets/css/loginPage.css";
-import {Formik} from "formik";
+
 import Navbar from "../components/Navbar";
-import { useEffect } from "react";
-import { useUsers } from "../context/UserProvider";
+
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
