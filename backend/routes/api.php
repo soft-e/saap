@@ -7,9 +7,9 @@ use App\Http\Controllers\Api\AdministradorController;
 use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
-use App\Http\Controllers\api\VehiculoController;
-use App\Http\Controllers\api\TarifaController;
-use App\Http\Controllers\api\HorarioAtencionController;
+use App\Http\Controllers\Api\VehiculoController;
+use App\Http\Controllers\Api\TarifaController;
+use App\Http\Controllers\Api\HorarioAtencionController;
 
 
 /*
