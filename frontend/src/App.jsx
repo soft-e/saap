@@ -39,6 +39,7 @@ function App() {
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
+        <Route path="/atencion/new" element={<AtencionForm/>}/>
         <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
