@@ -2,7 +2,9 @@ import { useContext,useState } from "react";
 import { 
   getAtencionesRequest,
   getAtencionRequest,
-  updateAtencionRequest  
+  updateAtencionRequest,
+  createAtencionRequest,
+  deleteAtencionRequest
 }from "../../api/atencion.api";
 
 import { AtencionContext } from "./AtencionContext";
@@ -41,6 +43,24 @@ export const AtencionContextProvider = ({children})=>{
       console.error(error);
     }
   };
+  const deleteAtencion = async(id)=>{
+    try {
+      const response = await deleteAtencionRequest(id);
+      setAtenciones(atenciones.filter(
+        (atencion)=>atencion.id != id
+      ));
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const createAtencion = async(atencion)=>{
+    try {
+      const response = await createAtencionRequest(atencion);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return(
     <AtencionContext.Provider
@@ -48,7 +68,9 @@ export const AtencionContextProvider = ({children})=>{
         atenciones,
         loadAtenciones,
         getAtencion,
-        updateAtencion
+        updateAtencion,
+        createAtencion,
+        deleteAtencion
       }}
     >
       {children}
