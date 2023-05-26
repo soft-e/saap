@@ -32,12 +32,13 @@ function App() {
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
+        <Route path="/atencion/new" element={<AtencionForm/>}/>
         <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
-        <Route path="/tarifa" element={<TarifaPage/>}/>      
+        <Route path="/tarifa" element={<TarifaPage/>}/>
       </Routes>
       </AtencionContextProvider>
       <Footer/>
