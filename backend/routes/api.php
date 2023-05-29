@@ -11,7 +11,9 @@ use App\Http\Controllers\api\VehiculoController;
 use App\Http\Controllers\api\TarifaController;
 use App\Http\Controllers\api\HorarioAtencionController;
 use App\Http\Controllers\api\DocenteController;
-
+use App\Http\Controllers\Api\MensajeController;
+use App\Http\Controllers\Api\PlazaController;
+use App\Http\Controllers\Api\SitioClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +34,25 @@ Route::resource('personas', PersonaController::class);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
+Route::post('registrarempleados', [EmpleadoController::class, 'store']);
+Route::resource('docentes', DocenteController::class);
 
 //Route::resource('cargos',CargoController::class);
 
 //Route::resource('contrataciones',ContratacionController::class);
+
+//RUTAS DE ERIEL
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
 Route::resource('ctarifa', TarifaController::class);
 Route::resource('hatencion',HorarioAtencionController::class);
+Route::resource('mensajes', MensajeController::class);
+//RUTAS DE ERIEL
+
+
+//Route::resource('tarifa', TarifaController::class);
+
+Route::resource('plazas', PlazaController::class);
+
+Route::resource('sitio_clientes', SitioClienteController::class);
+Route::resource('atencion', HorarioAtencionController::class);

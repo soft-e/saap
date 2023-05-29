@@ -24,13 +24,13 @@ class EmpleadoSeeder extends Seeder
             ],
             [
                 'nombre_cargo'=>'secretaria',
-                'persona_id'=>2,
+                'persona_id'=>4,
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now(),
             ],
             [
                 'nombre_cargo'=>'guardia',
-                'persona_id'=>3,
+                'persona_id'=>4,
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now(),
             ]
