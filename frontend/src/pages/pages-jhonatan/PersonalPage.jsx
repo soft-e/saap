@@ -24,9 +24,10 @@ function PersonalPage(){
       <ButtonBoxAdmin />
       <div className="contenedor_personal">
         <h1 className="title">Personal</h1>
-        <button className="button"
-          onClick={()=>navigate("/personal/registrar")}
-        >Registrar Personal</button>
+        <button 
+          className="button"
+          onClick={ () => navigate("/personal/registrar") }
+          >Registrar Personal</button>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {empleados.map((empleado) => (
             <CardPersonal key={empleado.id} empleado={empleado} />
