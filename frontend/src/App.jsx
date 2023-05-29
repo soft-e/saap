@@ -26,7 +26,9 @@ import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
 import ContratoPage from "./pages/pages-rodrigo/ContratoPage"
 import ContratoCliente from "./pages/pages-rodrigo/ContratoClientePage";
 import ContratoVehiculo from "./pages/pages-rodrigo/ContratoVehiculoPage";
-import ContratoSitioCliente from "./pages/pages-rodrigo/ContratoSitioCliente";
+import ContratoSitioCliente from "./pages/pages-rodrigo/ContratoSitioClientePage";
+import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";
+import { PersonaContextProvider } from "./context/context-rodrigo/PersonaProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -36,6 +38,8 @@ function App() {
   //logout="Cerrar Sesion";
   return (
     <div id="mainheader">
+      <PersonaContextProvider>
+      <DocenteContextProvider>
       <AtencionContextProvider>
       <Routes>
         <Route path="/" element={<PrincipalPage/>}/>
@@ -63,6 +67,8 @@ function App() {
         <Route path="/contrato/new/sitio" element={<ContratoSitioCliente/>}/>
       </Routes>
       </AtencionContextProvider>
+      </DocenteContextProvider>
+      </PersonaContextProvider>
       <Footer/>
     </div>
   );

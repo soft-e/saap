@@ -4,6 +4,7 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import CardListItemSitio from "../../components/components-rodrigo/CardListItemSitio";
 import "../../assets/css/css-rodrigo/ContratoSitioCliente.css"
 
+
 function ContratoSitioCliente(){
   const navigate = useNavigate();
   return <>
