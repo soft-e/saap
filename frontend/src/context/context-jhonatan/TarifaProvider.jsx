@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import {
   getTarifasRequest,
   getTarifaRequest,
-  updateTarifaRequest
+  updateTarifaRequest,
+  createTarifaRequest // Importa la función para crear tarifas
 } from "../../api/tarifa.api";
 
 import { TarifaContext } from "./TarifaContext";
@@ -43,13 +44,23 @@ export const TarifaContextProvider = ({ children }) => {
     }
   };
 
+  const createTarifa = async (newTarifa) => {
+    try {
+      const response = await createTarifaRequest(newTarifa);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <TarifaContext.Provider
       value={{
         tarifas,
         loadTarifas,
         getTarifa,
-        updateTarifa
+        updateTarifa,
+        createTarifa
       }}
     >
       {children}

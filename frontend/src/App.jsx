@@ -13,10 +13,13 @@ import AtencionPage from "./pages/pages-rodrigo/AtencionPage";
 import './App.css'
 import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
 import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
+import Parqueos from "./pages/pages-eriel/Parqueos";
+import EditarParqueo from "./pages/pages-eriel/EditarParqueo";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider";
 import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
+import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
 import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
 
 function App() {
@@ -39,7 +42,11 @@ function App() {
         <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>
         <Route path="/tarifa/edit/:id" element={<TarifaForm/>}/>
+        <Route path="/tarifa/create" element={<TarifaFormCreate/>}/>
         <Route path="/contratos" element={<ContratosPage/>}/>     
+        <Route path="/parqueos" element={<Parqueos/>}/> 
+        <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
+        <Route path="/tarifa" element={<TarifaPage/>}/>      
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
