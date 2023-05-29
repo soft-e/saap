@@ -7,7 +7,7 @@ import { useNavigate,useParams } from "react-router-dom";
 import "../../assets/css/css-rodrigo/atencionForm.css"
 
 function AtencionForm(){
-  const{getAtencion,updateAtencion}=useAtenciones();
+  const{getAtencion,updateAtencion,createAtencion}=useAtenciones();
   const [atencion,setAtencion]=useState({
     tipo_atencion:"",
     hora_apertura:"",
@@ -30,6 +30,8 @@ useEffect(()=>{
   loadAtenciones();
 },[]);
 
+
+
   return<>
   <Navbar accion="cerrar sesion"/>
   <div className="espacioPagina">
@@ -45,6 +47,8 @@ useEffect(()=>{
           console.log(values);
           if (params.id) {
             await updateAtencion(params.id,values);
+          }else{
+            await createAtencion(values);
           }
           navigate("/atencion");
           actions.resetForm();
@@ -58,7 +62,7 @@ useEffect(()=>{
             >
               <h1
                 className="h1Atencion"
-              >Actualizar Hora de Atencion</h1>
+              >{params.id? "Editar Horario de Atencion": "Registrar Horario de Atencion"}</h1>
               <h2
                 className="h2TipoAtencion"
               >
@@ -70,13 +74,26 @@ useEffect(()=>{
                 <h2
                   className="h2Atencion"
                 >
+                  {params.id? "":"Dia(s) de Atencion"}
+                </h2>
+                {!params.id? <input 
+                  className="inputAtencion"
+                  type="text"
+                  name="tipo_atencion"
+                  placeholder="Nuevo dia de atencion"
+                  onChange={handleChange}
+                  value={values.tipo_atencion}
+                />:<></>}
+                <h2
+                  className="h2Atencion"
+                >
                   hora de apertura
                 </h2>
                 <input 
                   className="inputAtencion"
                   type="text"
                   name="hora_apertura"
-                  placeholder="introduce una nueva hora de apertura"
+                  placeholder="nueva hora de apertura"
                   onChange={handleChange}
                   value={values.hora_apertura}
                 />
@@ -89,7 +106,7 @@ useEffect(()=>{
                   className="inputAtencion"
                   type="text" 
                   name="hora_cierre"
-                  placeholder="introduce una nueva hora de cierre"
+                  placeholder="nueva hora de cierre"
                   onChange={handleChange}
                   value={values.hora_cierre}
                 />
@@ -102,7 +119,7 @@ useEffect(()=>{
                 type="submit"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Actualizando": "Actualizar"}
+                {isSubmitting ? "Guardando...": "Guardar"}
               </button>
                 
               <button
