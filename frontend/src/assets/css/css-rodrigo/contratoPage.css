@@ -1,0 +1,28 @@
+.espacioPagina{
+  width: 100%;
+  height: 84%;
+}
+.espacioDeTrabajo{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.tituloContrato{
+  display: flex;
+  padding-left: 1%;
+  flex-direction: column;
+}
+.espacioCards{
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-left: 1%;
+  padding-top: 4%;
+  padding-right: 1%;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 1%;
+}

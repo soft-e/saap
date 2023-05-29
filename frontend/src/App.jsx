@@ -23,6 +23,10 @@ import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
+import ContratoPage from "./pages/pages-rodrigo/ContratoPage"
+import ContratoCliente from "./pages/pages-rodrigo/ContratoClientePage";
+import ContratoVehiculo from "./pages/pages-rodrigo/ContratoVehiculoPage";
+import ContratoSitioCliente from "./pages/pages-rodrigo/ContratoSitioCliente";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -50,10 +54,13 @@ function App() {
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
-         <Route path="sitios" element={<Parqueo/>}/>
+        <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-        
         <Route path="/asignarSitio" element={<AsignarSitio/>}/>
+        <Route path="/contrato" element={<ContratoPage/>}/>
+        <Route path="/contrato/new/cliente" element={<ContratoCliente/>}/>
+        <Route path="/contrato/new/vehiculo" element={<ContratoVehiculo/>}/>
+        <Route path="/contrato/new/sitio" element={<ContratoSitioCliente/>}/>
       </Routes>
       </AtencionContextProvider>
       <Footer/>

@@ -1,0 +1,4 @@
+.sitioParqueo{
+  display: flex;
+  flex-direction: row;
+}

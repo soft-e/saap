@@ -1,0 +1,11 @@
+.espacioCardCliente{
+  height: 20px;
+  display: flex;
+}
+.nombreCliente{
+  display: flex;
+  flex-direction: row;
+}
+.botonRegistrarCliente{
+  display: flex;
+}
