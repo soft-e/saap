@@ -48,15 +48,15 @@ function App() {
         <Route path="/atencion/new" element={<AtencionForm/>}/>
         <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
         <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
-        <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
+        <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo/>}/> 
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/vermensajes" element={<VerMensajes/>}/>
-        <Route path="vercontenidodemensaje" element={<VerContenidoMensaje/>}/> 
+        <Route path="/vercontenidodemensaje" element={<VerContenidoMensaje/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-        <Route path="/asignarSitio" element={<AsignarSitio/>}/>
+        <Route path="/asignarSitio/:id/:id" element={<AsignarSitio/>}/>
       </Routes>
       </AtencionContextProvider>
       <Footer/>
