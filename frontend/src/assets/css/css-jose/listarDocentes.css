@@ -1,0 +1,25 @@
+.contenedorListarDocentes_j{
+    display: flex;
+    flex-direction: column;
+}
+
+.divBuscar_j{
+    width: auto;
+    padding: 10px;
+    display: flex;
+}
+
+.inputBuscar_j{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    font-size: 18px;
+    color: rgb(29, 23, 23);
+    outline: none;
+    border: 1px solid silver;
+    border-radius:30px;
+}
+
+.tableBody_j{
+    display: flex;
+}
