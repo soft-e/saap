@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../assets/css/css-jose/listarDocentes.css';
+import { useNavigate } from "react-router-dom";
 
 const endPoint = 'http://127.0.0.1:8000/api/docentes';
 
 const CardDocentes = () => {
+    const navigate = useNavigate();
+
     const [docentes, setDocentes] = useState( [] )
     const [tableDocentes, setTableDocentes] = useState( [] )
     const [busqueda, setBusqueda] = useState('')
@@ -70,7 +73,7 @@ const CardDocentes = () => {
                             <td>{ docente.persona.apellido_materno }</td>
                             <td>{ docente.persona.ci }</td>
                             <td>
-                                <Link to={`/${docente.id}`}>asignar sitio</Link>
+                                <Link to={`/registrovehiculo/${docente.id}`}>asignar sitio</Link>
                             </td> 
                         </tr>
                     ))}
