@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "../assets/css/css-rodrigo/cardAtencion.css"
-
+import { useAtenciones } from "../context/context-rodrigo/AtencionProvider";
 
 function CardAtencion({atencion}){
+  const{deleteAtencion}=useAtenciones();
   const navigate = useNavigate();
   return(
     <div
@@ -43,10 +44,16 @@ function CardAtencion({atencion}){
         className="seccion_boton"
       >
       <button
-        className="boton_editar"
+        className="botonEditarAtencion"
         onClick={()=>navigate("/atencion/edit/"+atencion.id)}
       >
         Editar
+      </button>
+      <button
+        className="botonBorrarAtencion"
+        onClick={()=>deleteAtencion(atencion.id)}
+      >
+        Borrar
       </button>
       </div>
       
