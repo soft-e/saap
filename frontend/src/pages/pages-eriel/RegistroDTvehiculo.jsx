@@ -27,7 +27,6 @@ function RegistroDTvehiculo() {
         modelo:modelo
         })
         const nuevoRegistroConID = response.data;
-        console.log(nuevoRegistroConID);
         setData([dato, nuevoRegistroConID]);
         navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`)
         
