@@ -20,6 +20,7 @@ class CreatePlazasTable extends Migration
            /**
             *$table->enum('estado',['ocupado','libre']);*/
            $table->string('estado'); 
+           $table->string('bloque');
             $table->timestamps();
         });
     }

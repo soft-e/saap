@@ -10,7 +10,7 @@ class Plaza extends Model
     use HasFactory;
     protected $table = 'plazas';
     
-    protected $fillable = ['nombre','estado'];
+    protected $fillable = ['nombre','estado','bloque'];
 
     public function sitioCliente()
     {

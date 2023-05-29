@@ -50,7 +50,7 @@ function App() {
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
-         <Route path="sitios" element={<Parqueo/>}/>
+         <Route path="/sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
         
         <Route path="/asignarSitio" element={<AsignarSitio/>}/>

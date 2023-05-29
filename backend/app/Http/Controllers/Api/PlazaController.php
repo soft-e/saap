@@ -31,6 +31,7 @@ class PlazaController extends Controller
         $plaza = new plaza();
         $plaza->nombre = $request->nombre;
         $plaza->estado = $request->estado;
+        $plaza->bloque=$request->bloque;
         
         $plaza->save();
         //

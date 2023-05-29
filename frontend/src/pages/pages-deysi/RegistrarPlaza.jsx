@@ -1,5 +1,5 @@
 import axios from "axios";
-import  { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../assets/css/css-deysi/registrarPlaza.css";
 import "../../assets/css/css-eriel/RegistroParqueo.css";
 import "../../assets/css/templatePage.css";
@@ -11,21 +11,42 @@ const endPoint = "http://localhost:8000/api";
 function RegistrarPlaza() {
   const [nombre, setNombre] = useState("");
   const [estado, setEstado] = useState("");
-  
+  const [bloque, setBloque] = useState("");
+  const [bloques, setBloques] = useState([]);
+
   const [successMessage, setSuccessMessage] = useState("");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const store = async (e) => {
+  useEffect(() => {
+    obtenerBloques();
+  }, []);
+
+  const obtenerBloques = async () => {
+    try {
+      const response = await axios.get(`${endPoint}/parqueos`);
+      const data = response.data;
+      const bloquesUnicos = [
+        ...new Set(data.map((item) => item.nombre_bloque)),
+      ];
+      setBloques(bloquesUnicos);
+    } catch (error) {
+      console.log("Ocurrió un error al obtener los bloques:", error);
+    }
+  };
+
+  const guardarPlaza = async (e) => {
     e.preventDefault();
     try {
       await axios.post(`${endPoint}/plazas`, {
         nombre: nombre,
         estado: estado,
+        bloque: bloque,
       });
-      setSuccessMessage("Registrado con éxito.");
+      setSuccessMessage("Registrado exitosamente.");
       setShowSuccessMessage(true);
       setNombre("");
       setEstado("");
+      setBloque("");
 
       setTimeout(() => {
         setShowSuccessMessage(false);
@@ -35,10 +56,11 @@ function RegistrarPlaza() {
     }
   };
 
-  function handleCancel(event) {
+  function cancelarRegistro(event) {
     event.preventDefault();
     setNombre("");
     setEstado("");
+    setBloque("");
   }
 
   return (
@@ -50,14 +72,14 @@ function RegistrarPlaza() {
           <div className="padreParqueo">
             <form className="formularioParqueo">
               <div className="contenedorParqueo">
-                <h1 id="tituloParqueo">Registro de sitio</h1>
+                <h1 id="tituloParqueo">Registro de plaza</h1>
                 {showSuccessMessage && (
-        <div className="success-message">
-          <p>{successMessage}</p>
-        </div>
-      )}
-                <div id="entradaP" className="entradaP1" >
-                  <label>Nombre de sitio</label>
+                  <div className="success-message">
+                    <p>{successMessage}</p>
+                  </div>
+                )}
+                <div id="entradaP" className="entradaP1">
+                  <label>Nombre del lugar</label>
                   <input
                     type="text"
                     value={nombre}
@@ -67,33 +89,48 @@ function RegistrarPlaza() {
                     required
                   />
                 </div>
-                <div id="entradaP"  className="entradaP1">
-                <label htmlFor="inputEstado">Seleccione estado:</label>
+                <div id="entradaP" className="entradaP1">
+                  <label htmlFor="inputEstado">Selecciona estado:</label>
                   <select
                     id="inputEstado"
                     value={estado}
                     onChange={(e) => setEstado(e.target.value)}
                     className="inputText"
                   >
-                    <option value="" >Seleciones estado</option>
+                    <option value="">Selecciona estado</option>
                     <option value="libre">Libre</option>
                     <option value="ocupado">Ocupado</option>
-
+                  </select>
+                </div>
+                <div id="entradaP" className="entradaP1">
+                  <label htmlFor="inputBloque">Selecciona bloque:</label>
+                  <select
+                    id="inputBloque"
+                    value={bloque}
+                    onChange={(e) => setBloque(e.target.value)}
+                    className="inputText"
+                  >
+                    <option value="">Selecciona bloque</option>
+                    {bloques.map((bloque) => (
+                      <option key={bloque} value={bloque}>
+                        {bloque}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="contenedorBotonP">
                   <button
                     className="botonInicioSesion"
                     type="submit"
-                    onClick={store}
+                    onClick={guardarPlaza}
                   >
                     Registrar
                   </button>
                   <button
-                   id="cancelar"
+                    id="cancelar"
                     className="botonInicioSesion botonCancelar"
                     type="submit"
-                    onClick={handleCancel}
+                    onClick={cancelarRegistro}
                   >
                     Cancelar
                   </button>
