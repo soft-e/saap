@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTarifaTable extends Migration
+class CreateCostoTarifsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTarifaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tarifa', function (Blueprint $table) {
+        Schema::create('_costo__tarifs', function (Blueprint $table) {
             $table->id();
-            $table->Integer('costo_tarifa');
+            $table->string('costo_tarifa');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateTarifaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tarifa');
+        Schema::dropIfExists('_costo__tarifs');
     }
 }
