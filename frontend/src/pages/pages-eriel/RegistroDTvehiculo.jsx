@@ -29,16 +29,14 @@ function RegistroDTvehiculo() {
         const nuevoRegistroConID = response.data;
         console.log(nuevoRegistroConID);
         setData([dato, nuevoRegistroConID]);
-        navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`)
-        
+        navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`)   
     }
     function handleCancel(event) {
         event.preventDefault();
         setvehiculoDato('');
         setcolor('');
         setmarca('');
-        setmodelo('');
-        
+        setmodelo('');  
     }
 
 
@@ -115,71 +113,5 @@ function RegistroDTvehiculo() {
             </div>
         </div>
     </> 
-
-    /*return (
-        <div className='padre' onSubmit={store}>
-            <form action="" className='formulario'>
-                <div className='contenedor'>
-                    <h1 id='titulo'>Datos del Vehiculo</h1>
-                    <div id='input' className='input1'>
-                        <label>placa</label>
-                        <input 
-                            type="text" 
-                            value={placa}
-                            onChange={(e)=>setvehiculoDato(e.target.value)}
-                            id='inputText'
-                            placeholder='Ingrese la placa del viculo'
-                            required
-                        />
-                    </div>
-                    <div id='input' className='input2'>
-                        <label>Color</label>
-                        <input
-                            value={color}
-                            onChange={(e)=>setcolor(e.target.value)}
-                            type="text" 
-                            id='inputText'
-                            placeholder='Ingrese el color '
-                            required
-                        />
-                    </div>
-                    <div id='input' className='input3'>
-                        <label>Marca</label>
-                        <input 
-                            type="text" 
-                            value={marca}
-                            onChange={(e)=>setmarca(e.target.value)}
-                            id='inputText'
-                            placeholder='Ingrese la marca'
-                            required
-                        />
-                    </div>
-                    <div id='input' className='input4'>
-                        <label>Modelo</label>
-                        <input 
-                            type="text" 
-                            value={modelo}
-                            onChange={(e)=>setmodelo(e.target.value)}
-                            id='inputText'
-                            placeholder='Ingrese el modelo'
-                            required
-                        />
-                    </div>
-                    <div className='espacioBoton'>
-                        <button className='botonInicioSesion' type='submit'>
-                            Registrar
-                        </button>
-                        <button 
-                            className='botonInicioSesion' 
-                            type='submit'
-                            onClick={handleCancel}
-                        >
-                            Cancelar
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    )*/
 }
 export default RegistroDTvehiculo;
