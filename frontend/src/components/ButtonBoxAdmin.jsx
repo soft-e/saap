@@ -48,6 +48,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/tarifa")}
       >
       <FontAwesomeIcon icon={faDollarSign} />
       Tarifa

@@ -1,25 +1,48 @@
+import "../../assets/css/css-jhonatan/tarifapage.css"
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-import Navbar from "../../components/Navbar.jsx";
-import React, { useEffect, useState } from 'react';
-import CardTarifa from "../../components/CardTarifa.jsx";
-import '../../assets/css/css-jhonatan/cardTarifa.css';
+import { useTarifas } from "../../context/context-jhonatan/TarifaProvider";
+import CardTarifa from "../../components/CardTarifa";
 
+function TarifaPage() {
+  const { tarifas, loadTarifas } = useTarifas();
+  const navigate = useNavigate();
 
-function TarifaPage(){
+  useEffect(() => {
+    loadTarifas();
+  }, []);
 
-    return<>
-    <Navbar accion="cerrar sesion"/>
-    <div className="espacioPagina">
-      <ButtonBoxAdmin />
-      <div className="contenedor_personal">
-      <h1 className="title">Tarifa</h1>
-        <button className="button">Registrar Tarifa</button>
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <CardTarifa/>
-        </div>
-      </div>
-    </div>
-    </> 
+  function renderMain() {
+    if (tarifas.length === 0) return <h1>No se tiene tarifas registradas</h1>;
+    return tarifas.map((tarifa) => (
+      <CardTarifa tarifa={tarifa} key={tarifa.id} />
+    ));
   }
 
+  function handleRegistrarTarifaClick() {
+    navigate("/tarifa/create");
+  }
+
+  return (
+    <>
+      <Navbar accion="iniciar sesion" />
+      <div className="espacioPagina">
+        <ButtonBoxAdmin />
+        <div className="espacioDeTrabajo">
+          <h1 className="title">Tarifa</h1>
+          <div className="registrarTarifaButtonContainer">
+            <button className="button" onClick={handleRegistrarTarifaClick}>
+              Registrar Tarifa
+            </button>
+          </div>
+          <div className="cardsTarifa">{renderMain()}</div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default TarifaPage;
+
