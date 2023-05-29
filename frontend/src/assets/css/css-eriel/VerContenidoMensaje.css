@@ -1,0 +1,32 @@
+.VerContenidoMensajePadre{
+    width: 100%;
+    height: 100%;
+}
+.ModalContenidoMensaje{
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.5);
+    align-items:center;
+    justify-content:center;
+    display: flex;
+}
+.contenedorMensajeModal{
+    display: flex;
+    flex-direction: column;
+    border:1px solid rgba(251, 181, 0, 0.69);
+    border-radius: 5px;
+    width: 25%;
+    padding: 1%;
+    background: rgba(203, 198, 198, 0.625);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.tituloMensajeModal{
+    color: black;
+    border-bottom:1px solid rgba(8, 8, 7, 0.69);
+}

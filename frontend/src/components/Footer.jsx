@@ -8,7 +8,6 @@ function Footer(){
     <>
       <nav id="footer">
         <div className="contenedorFooder">
-            <h3>contactos :</h3>
             <a className='facebook' href="https://www.facebook.com/" id="a"><h1><FaFacebook/></h1></a>
             <a className='whatsapp' href="" id="a"><h1><BsWhatsapp/></h1></a>
             <a className='gmail' href="" id="a"><h1><SiGmail/></h1></a>

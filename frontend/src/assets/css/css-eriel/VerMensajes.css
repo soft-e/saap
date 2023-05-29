@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+.padreVerMensajes{
+    width: 100%;
+    height: 100%;
+}
+.menuVerMensajes{
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    align-items: center;
+    padding:2%;
+    background:rgba(0,0,0,.5);
+    border-bottom:1px solid rgba(251, 181, 0, 0.69);
+}
+.tituloMenuDeMensajes{
+    display: flex;
+}
+.botonMenuDeMensajes{
+    margin-left: 30%;
+    padding: 0.6%;
+    background: #debc40;
+    border-radius: 5px;
+}
+.botonMenuDeMensajes:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.contenedorDeMensajes{
+    height:89.9%;
+    padding: 1%;
+}
+.barraDeAbajo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1%;
+    width: 100%;
+    position: relative;
+    border-bottom:1px solid rgba(251, 181, 0, 0.69);
+    background:rgba(0,0,0,.3);
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffff;
+}
+.barraDeAbajo:hover{
+    border-bottom:2px solid rgba(251, 180, 0, 0.971);
+    transition: 0.5s ease width;
+    cursor: pointer;
+}
