@@ -4,9 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\vehiculo;
+use App\Models\Mensaje;
 
-class VehiculoController extends Controller
+class MensajeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $mensajes = Mensaje::all();
+        return response()->json($mensajes);
     }
 
     /**
@@ -26,13 +27,12 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        $vehiculo = new vehiculo();
-        $vehiculo->placa = $request->placa;
-        $vehiculo->color = $request->color;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        $vehiculo->save();
-        return response()->json($vehiculo);
+        $mensaje = new Mensaje;
+        $mensaje->contenido = $request->contenido;
+        $mensaje->asunto = $request->asunto;
+        $mensaje->destinatario = $request->destinatario;
+        $mensaje->save();
+        return response()->json([$mensaje], 201);
     }
 
     /**
@@ -43,7 +43,12 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        //
+        $mensaje = Mensaje::find($id);
+        if (!$mensaje) {
+            return response()->json(['message' => 'parqueo no encontrado'], 404);
+        }
+
+        return response()->json($mensaje);
     }
 
     /**
