@@ -31,7 +31,9 @@ function RegistroDTvehiculo() {
         setcolor('');
         setmarca('');
         setmodelo('');
+        
     }
+
 
     return<>
         <Navbar accion="iniciar sesion"/>
