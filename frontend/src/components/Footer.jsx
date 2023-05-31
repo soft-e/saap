@@ -8,9 +8,9 @@ function Footer(){
     <>
       <nav id="footer">
         <div className="contenedorFooder">
-            <a className='facebook' href="https://www.facebook.com/" id="a"><h1><FaFacebook/></h1></a>
-            <a className='whatsapp' href="" id="a"><h1><BsWhatsapp/></h1></a>
-            <a className='gmail' href="" id="a"><h1><SiGmail/></h1></a>
+            <a className='facebook' href="https://www.facebook.com/fcytumssOficial" id="a"><h1><FaFacebook/></h1></a>
+            <a className='whatsapp' href="https://web.whatsapp.com/send?phone=591 69475511" id="a"><h1><BsWhatsapp/></h1></a>
+            <a className='gmail' href="mailto:softwareentrepreneurs299@gmail.com" id="a"><h1><SiGmail/></h1></a>
         </div>
       </nav>      
     </>

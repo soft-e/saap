@@ -84,7 +84,7 @@ function Parqueos() {
                     <div className='contenedorParqueos'>
                         {parqueos.map((parqueos)=>(
                         <div className='datosParqueo' key={parqueos.id} >
-                            <div onClick={()=>{navigate("/VerMensajes")}}>
+                            <div onClick={()=>{navigate("/vermensajes")}}>
                                 <div className='nombreParqueo'>
                                     <h2>{parqueos.nombre_bloque}</h2>
                                 </div>

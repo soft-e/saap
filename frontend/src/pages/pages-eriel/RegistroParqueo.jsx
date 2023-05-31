@@ -13,7 +13,7 @@ function RegistroParqueo() {
 
     const [nombre_bloque,setnombre_bloque]=useState('');
     const [cantidad_sitios,setcantidad_sitios]=useState(0); 
-    const empleado_id=1;
+    const empleado_id=7;
     const navigate=useNavigate();
 
     const store=async(e)=>{
