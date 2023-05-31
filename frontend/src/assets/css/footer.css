@@ -16,11 +16,16 @@
 }
 .contenedorFooder{
   padding-top: 18px;
-  justify-content: center;
   display: flex;
+  padding-left: 1%;
 }
 .contenedorFooder h3{
-  color: rgba(195, 207, 34, 0.888);
+  color:#debc40;
+}
+.contenedorDeIconosFooder{
+  margin-left: 16%;
+  display: flex;
+  flex-direction:row;
 }
 #a{
   margin-left: 10px;

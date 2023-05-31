@@ -20,13 +20,16 @@
     border-radius: 5px;
     width: 25%;
     padding: 1%;
-    background: rgba(203, 198, 198, 0.625);
+    /*background: rgba(203, 198, 198, 0.625);*/
+    background: rgba(0, 0, 0, 0.808);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
 .tituloMensajeModal{
-    color: black;
-    border-bottom:1px solid rgba(8, 8, 7, 0.69);
+    color:#debc40;
+}
+.contenidoMensajeModal{
+    border-bottom:1px solid #debc40;
 }

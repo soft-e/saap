@@ -31,14 +31,14 @@ function RegistroDTvehiculo() {
         navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`)
         
     }
-    function handleCancel(event) {
+    /*function handleCancel(event) {
         event.preventDefault();
         setvehiculoDato('');
         setcolor('');
         setmarca('');
         setmodelo('');
         
-    }
+    }*/
 
 
     return<>

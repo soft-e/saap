@@ -4,14 +4,13 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from "axios";
 import { useState,useEffect } from "react";
-import { Link,Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const endPoint='http://127.0.0.1:8000/api';
 
 function VerMensajes() {
     const [mensajes,setMensajes]=useState([]);
-    const navigate=Navigate();
-    
+    const navigate=useNavigate();
     useEffect(()=>{
         fetchMensajesData();
     },[])
@@ -40,11 +39,11 @@ function VerMensajes() {
                     <div className="contenedorDeMensajes">
                         <h2>Mensajes Redactados</h2>
                         {mensajes.map((mensaje,index)=>(
-                          <Link className="barraDeAbajo" key={mensaje.id} onClick={()=>navigate(`vercontenidodemensaje/${mensaje.id}`)}>
+                          <div className="barraDeAbajo" key={mensaje.id} onClick={()=>navigate(`/vercontenidodemensaje/${mensaje.id}`)}>
                                 <h3>{index+1}</h3>
                                 <h3>asunto: {mensaje.asunto}</h3>
                                 <h3>Destinatario: {mensaje.destinatario}</h3>
-                          </Link>
+                          </div>
                         ))}
                     </div>
                 </div>
