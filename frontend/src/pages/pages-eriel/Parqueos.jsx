@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from 'axios';
 import { useEffect,useState } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const endPoint='http://localhost:8000/api';
 
@@ -84,19 +84,19 @@ function Parqueos() {
                     <div className='contenedorParqueos'>
                         {parqueos.map((parqueos)=>(
                         <div className='datosParqueo' key={parqueos.id} >
-                            <div onClick={()=>{navigate("/VerMensajes")}}>
+                            <div>
                                 <div className='nombreParqueo'>
                                     <h2>{parqueos.nombre_bloque}</h2>
                                 </div>
                                 <h3>Cantidad de sitios: {parqueos.cantidad_sitios}</h3>
                             </div>
                             <div className='contendorBotonesParqueos' >
-                                <Link 
+                                <button
                                     className='botonEditarParqueos'
-                                    to={`/editarparqueos/${parqueos.id}`}
+                                    onClick={() =>navigate(`/editarparqueos/${parqueos.id}`)}
                                 >
-                                    <h5>Editar</h5>
-                                </Link>
+                                    <h4>Editar</h4>
+                                </button>
                             
                                 <button className='botonEliminarParqueos'
                                         onClick={()=>eliminarParqueo(parqueos.id)}

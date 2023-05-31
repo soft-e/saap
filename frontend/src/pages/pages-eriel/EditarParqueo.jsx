@@ -65,6 +65,12 @@ function EditarParqueo() {
                     >
                         actualizar
                     </button>
+                    <button 
+                       className='botonCancelarEditarParqueo'
+                       onClick={() => navigate("/parqueos")}
+                    >
+                        cancelar
+                    </button>
                 </div>
             </form>
         </div>

@@ -8,10 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Tarifa extends Model
 {
     use HasFactory;
-
-    protected $table = 'tarifa';
-
-    protected $fillable = [
-        'costo_tarifa',
-    ];
+    protected $table = '_costo__tarifs';
 }

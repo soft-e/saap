@@ -8,12 +8,12 @@ use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\Api\VehiculoController;
-use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\TarifaController;
 use App\Http\Controllers\Api\HorarioAtencionController;
+use App\Http\Controllers\Api\DocenteController;
+use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
-use App\Http\Controllers\Api\DocenteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +44,8 @@ Route::resource('docentes', DocenteController::class);
 //RUTAS DE ERIEL
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
+Route::resource('ctarifa', TarifaController::class);
+Route::resource('hatencion', HorarioAtencionController::class);
 Route::resource('mensajes', MensajeController::class);
 //RUTAS DE ERIEL
 

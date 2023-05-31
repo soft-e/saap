@@ -27,17 +27,17 @@ function RegistroDTvehiculo() {
         modelo:modelo
         })
         const nuevoRegistroConID = response.data;
-        console.log(nuevoRegistroConID);
         setData([dato, nuevoRegistroConID]);
         navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`)   
     }
-    function handleCancel(event) {
+    /*function handleCancel(event) {
         event.preventDefault();
         setvehiculoDato('');
         setcolor('');
         setmarca('');
-        setmodelo('');  
-    }
+        setmodelo('');
+        
+    }*/
 
 
     return<>

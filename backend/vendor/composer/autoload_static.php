@@ -482,6 +482,7 @@ class ComposerStaticInitd40ad9750a00dccd903fcc70d739457b
         'App\\Http\\Controllers\\Api\\HorarioAtencionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/HorarioAtencionController.php',
         'App\\Http\\Controllers\\Api\\ParqueoController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ParqueoController.php',
         'App\\Http\\Controllers\\Api\\PersonaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/PersonaController.php',
+        'App\\Http\\Controllers\\Api\\TarifaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/TarifaController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
