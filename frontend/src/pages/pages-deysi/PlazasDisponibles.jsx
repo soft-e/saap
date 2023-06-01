@@ -34,7 +34,7 @@ class PlazasDisponibles extends React.Component {
               className="plaza-disponible"
               onClick={() => handleClick(plaza.id)}
             >
-              <h3>{plaza.id}</h3>
+              <h3>{plaza.numero}</h3>
             </div>
           ))}
         </div>

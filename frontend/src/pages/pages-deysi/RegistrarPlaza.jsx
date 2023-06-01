@@ -44,6 +44,7 @@ function RegistrarPlaza() {
   };
 
 
+
   const inicializarPlazas = (bloques) => {
     const plazasInicializadas = {};
     bloques.forEach((bloque) => {
@@ -88,6 +89,7 @@ function RegistrarPlaza() {
      setNumero(result.length+1);
 
   };
+  
 
   
 

@@ -16,10 +16,7 @@ class Parqueo extends Model
     public function empleado(){
         return $this->belongsTo(Empleado::class);
     }
-    public function sitioCliente()
-    {
-        return $this->hasOne(SitioCliente::class);
-    }   
+    
 
 
 

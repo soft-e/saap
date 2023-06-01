@@ -17,27 +17,21 @@ class ParqueoSeeder extends Seeder
     {
         DB::table('parqueos')->insert([
             [
-                'nombre_bloque'=>'a',
+                'nombre_bloque'=>'empedrado',
                 'cantidad_sitios'=>40,
                 'empleado_id'=>1,
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
-                'nombre_bloque'=>'b',
+                'nombre_bloque'=>'asfaltado',
                 'cantidad_sitios'=>50,
                 'empleado_id'=>1,
                 'create_at'=>Carbon::now(),
                 'update_at'=>Carbon::now()
             ],
 
-            [
-                'nombre_bloque'=>'asfaltado',
-                'cantidad_sitios'=>350,
-                'empleado_id'=>1,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now()
-            ]
+           
             
         ]);
     }
