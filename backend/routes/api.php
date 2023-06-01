@@ -39,6 +39,7 @@ Route::resource('personas', PersonaController::class);
 Route::resource('empleados', EmpleadoController::class);
 Route::post('registrarempleados', [EmpleadoController::class, 'store']);
 Route::resource('docentes', DocenteController::class);
+Route::post('registrarmensaje', [MensajeController::class, 'store']);
 
 //Route::resource('cargos',CargoController::class);
 
