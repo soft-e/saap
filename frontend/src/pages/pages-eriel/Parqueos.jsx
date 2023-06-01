@@ -54,6 +54,13 @@ function Parqueos() {
                         >
                             <h4>Registrar Parqueo</h4>
                         </button>
+                        <button 
+                        className='botonInicioSesion'
+                        id='nuevoBoton'
+                        onClick={()=>navigate('/sitios')}
+                        >
+                            <h4>Ver sitios</h4>
+                        </button>
                     </nav>
                     <div className='textoCentrado'>
                         <h1>No hay ningún parqueo registrado</h1>
@@ -79,6 +86,13 @@ function Parqueos() {
                             onClick={()=>navigate('/registroparqueo')}
                         >
                             <h4>Registrar Parqueo</h4>
+                        </button>
+                        <button 
+                        className='botonInicioSesion'
+                        id='nuevoBoton'
+                        onClick={()=>navigate('/sitios')}
+                        >
+                            <h4>Ver sitios</h4>
                         </button>
                     </nav>
                     <div className='contenedorParqueos'>
