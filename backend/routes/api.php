@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\api\VehiculoController;
 use App\Http\Controllers\api\TarifaController;
 use App\Http\Controllers\api\HorarioAtencionController;
-use App\Http\Controllers\api\DocenteController;
+use App\Http\Controllers\Api\DocenteController;
 use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
@@ -36,7 +36,7 @@ Route::resource('personas', PersonaController::class);
 Route::resource('empleados', EmpleadoController::class);
 Route::post('registrarempleados', [EmpleadoController::class, 'store']);
 Route::resource('docentes', DocenteController::class);
-
+Route::post('guardarmensajes', [MensajeController:: class, 'store']);
 //Route::resource('cargos',CargoController::class);
 
 //Route::resource('contrataciones',ContratacionController::class);

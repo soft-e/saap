@@ -6,14 +6,22 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { useNavigate}  from 'react-router-dom';
+
 const endPoint='http://127.0.0.1:8000/api';
 
 function VerMensajes() {
     const [mensajes,setMensajes]=useState([]);
     
+    const navigate = useNavigate();
+
     useEffect(()=>{
         fetchMensajesData();
     },[])
+
+    function handleClick () {
+        navigate('/registrarmensaje');
+    }
 
     const fetchMensajesData = async () => {
         try {
@@ -32,7 +40,7 @@ function VerMensajes() {
                 <div className="padreVerMensajes">
                     <nav className="menuVerMensajes">
                         <h2 className="tituloMenuDeMensajes">mensajes</h2>
-                        <button className="botonMenuDeMensajes">
+                        <button className="botonMenuDeMensajes" onClick={ handleClick }>
                             Redactar Mensaje
                         </button>                
                     </nav>
