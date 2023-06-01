@@ -66,7 +66,7 @@ export function FormularioRegistroMensaje() {
                         onChange={ (e) => setDestinatario(e.target.value) }
                         />
                 </div>
-                <div className="btn_j">
+                <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
                         <button  className='stylesButton_j' type="submit">
                             Guardar
