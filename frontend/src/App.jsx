@@ -8,7 +8,6 @@ import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal"
 import ListarDocentes from "./pages/pages-jose/ListarDocentes"
-import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje"
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -30,28 +29,15 @@ import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
-import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
-import FormularioResponderQueja from "./pages/pages-deysi/FormularioResponderQueja";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
-import { PersonaContextProvider } from "./context/context-rodrigo/PersonaProvider";
-import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
-import { useContext } from "react";
-import { SessionContext } from "./context/context-rodrigo/SessionContext";
-
-const storedSession = localStorage.getItem('session');
-const initialSession = storedSession ? JSON.parse(storedSession):{isLoggedIn:false, user:null};
 function App() {
-  
   //const [count, setCount] = useState(0)
   //logout="Cerrar Sesion";
   return (
     <div id="mainheader">
-      <SessionContextProvider>
-      <EmpleadoContextProvider>
-      <PersonaContextProvider>
       <AtencionContextProvider>
       <TarifaContextProvider>
       <Routes>
@@ -61,7 +47,6 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
         <Route path="/listardocentes" element={<ListarDocentes/>}/>
-        <Route path="/registrarmensaje" element={<RegistrarMensaje/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
@@ -77,18 +62,15 @@ function App() {
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/vermensajes" element={<VerMensajes/>}/>
-        <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
+        <Route path="/vercontenidodemensaje" element={<VerContenidoMensaje/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
+     
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
-        <Route path="/responderquejas" element={<FormularioResponderQueja/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
-      </PersonaContextProvider>
-      </EmpleadoContextProvider>
-      </SessionContextProvider>
       <Footer/>
     </div>
   );
