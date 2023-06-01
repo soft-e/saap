@@ -3,35 +3,44 @@ import "../../assets/css/templatePage.css";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
+
 import axios from 'axios';
 
 const endPoint='http://localhost:8000/api';
 
 function RegistroDTvehiculo() {
-    const [placa,setplaca]=useState('');
+    const {id}=useParams();
+    const [placa,setvehiculoDato]=useState('');
     const [color,setcolor]=useState(''); 
     const [marca,setmarca]=useState(''); 
-    const [modelo,setmodelo]=useState(''); 
+    const [modelo,setmodelo]=useState('');
+    const [dato, setData] = useState([]);
     const navigate=useNavigate();
 
     const store=async(e)=>{
         e.preventDefault();
-        await axios.post(`${endPoint}/vehiculos`,{
+        const response=await axios.post(`${endPoint}/vehiculos`,{
         placa:placa,
         color:color,
         marca:marca,
         modelo:modelo
         })
-        navigate('/admin');
+        const nuevoRegistroConID = response.data;
+        console.log(nuevoRegistroConID);
+        setData([dato, nuevoRegistroConID]);
+        navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`)
+        
     }
     function handleCancel(event) {
         event.preventDefault();
-        setplaca('');
+        setvehiculoDato('');
         setcolor('');
         setmarca('');
         setmodelo('');
+        
     }
+
 
     return<>
         <Navbar accion="iniciar sesion"/>
@@ -47,7 +56,7 @@ function RegistroDTvehiculo() {
                                 <input 
                                     type="text" 
                                     value={placa}
-                                    onChange={(e)=>setplaca(e.target.value)}
+                                    onChange={(e)=>setvehiculoDato(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese la placa del viculo'
                                     required
@@ -90,11 +99,12 @@ function RegistroDTvehiculo() {
                                 <button className='botonInicioSesion' type='submit'>
                                     Registrar
                                 </button>
+
                                 <button 
                                     id="botonCancelarVH"
                                     className='botonInicioSesion' 
                                     type='submit'
-                                    onClick={handleCancel}
+                                    /*onClick={handleCancel}*/
                                 >
                                     Cancelar
                                 </button>
@@ -116,7 +126,7 @@ function RegistroDTvehiculo() {
                         <input 
                             type="text" 
                             value={placa}
-                            onChange={(e)=>setplaca(e.target.value)}
+                            onChange={(e)=>setvehiculoDato(e.target.value)}
                             id='inputText'
                             placeholder='Ingrese la placa del viculo'
                             required

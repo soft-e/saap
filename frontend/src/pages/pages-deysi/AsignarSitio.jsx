@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import "../../assets/css/css-deysi/asignarSitio.css";
-
+//j
 function AsignarSitio() {
   const [bloques, setBloques] = useState([]);
   const [sitiosLibres, setSitiosLibres] = useState([]);

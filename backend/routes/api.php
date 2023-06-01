@@ -7,12 +7,13 @@ use App\Http\Controllers\Api\AdministradorController;
 use App\Http\Controllers\Api\CargoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
-use App\Http\Controllers\Api\VehiculoController;
-use App\Http\Controllers\Api\TarifaController;
-use App\Http\Controllers\Api\HorarioAtencionController;
+use App\Http\Controllers\api\VehiculoController;
+use App\Http\Controllers\api\TarifaController;
+use App\Http\Controllers\api\HorarioAtencionController;
+use App\Http\Controllers\api\DocenteController;
+use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
-use App\Http\Controllers\Api\DocenteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +40,19 @@ Route::resource('docentes', DocenteController::class);
 //Route::resource('cargos',CargoController::class);
 
 //Route::resource('contrataciones',ContratacionController::class);
+
+//RUTAS DE ERIEL
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
+Route::resource('ctarifa', TarifaController::class);
+Route::resource('hatencion',HorarioAtencionController::class);
+Route::resource('mensajes', MensajeController::class);
+//RUTAS DE ERIEL
+
+
 //Route::resource('tarifa', TarifaController::class);
 
-Route::resource('plazas',PlazaController::class);
+Route::resource('plazas', PlazaController::class);
 
-Route::resource('sitio_clientes',SitioClienteController::class);
-Route::resource('atencion',HorarioAtencionController::class);
+Route::resource('sitio_clientes', SitioClienteController::class);
+Route::resource('atencion', HorarioAtencionController::class);

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Tarifa;
+use App\Models\Mensaje;
 
-class TarifaController extends Controller
+class MensajeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TarifaController extends Controller
      */
     public function index()
     {
-        $Ctarifas = Tarifa::all();
-        return response()->json($Ctarifas);
+        $mensajes = Mensaje::all();
+        return response()->json($mensajes);
     }
 
     /**
@@ -27,10 +27,12 @@ class TarifaController extends Controller
      */
     public function store(Request $request)
     {
-        $Ctarifa = new Tarifa;
-        $Ctarifa->costo_tarifa = $request->costo_tarifa;
-        $Ctarifa->save();
-        return response()->json($Ctarifa);
+        $mensaje = new Mensaje;
+        $mensaje->contenido = $request->contenido;
+        $mensaje->asunto = $request->asunto;
+        $mensaje->destinatario = $request->destinatario;
+        $mensaje->save();
+        return response()->json([$mensaje], 201);
     }
 
     /**
@@ -41,8 +43,12 @@ class TarifaController extends Controller
      */
     public function show($id)
     {
-        $Ctarifa = Tarifa::findOrFail($id);
-        return response()->json($Ctarifa);
+        $mensaje = Mensaje::find($id);
+        if (!$mensaje) {
+            return response()->json(['message' => 'parqueo no encontrado'], 404);
+        }
+
+        return response()->json($mensaje);
     }
 
     /**
@@ -54,10 +60,7 @@ class TarifaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Ctarifa = Tarifa::findOrFail($id);
-        $Ctarifa->costo_tarifa = $request->costo_tarifa;
-        $Ctarifa->save();
-        return response()->json($Ctarifa);
+        //
     }
 
     /**
@@ -68,8 +71,6 @@ class TarifaController extends Controller
      */
     public function destroy($id)
     {
-        $Ctarifa = Tarifa::findOrFail($id);
-        $Ctarifa->delete();
-        return response()->json(['message' => 'Tarifa eliminada']);
+        //
     }
 }
