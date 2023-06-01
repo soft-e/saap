@@ -8,18 +8,19 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 
 const endPoint = "http://localhost:8000/api";
 
+
 function RegistrarPlaza() {
-  const [nombre, setNombre] = useState("");
-  const [estado, setEstado] = useState("");
   const [bloque, setBloque] = useState("");
   const [bloques, setBloques] = useState([]);
-
-  const [successMessage, setSuccessMessage] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [plazas, setPlazas] = useState({});
+  const [numero, setNumero] = useState(1);
+  const [sitios,setSitios] = useState(); 
 
   useEffect(() => {
     obtenerBloques();
+
   }, []);
+ 
 
   const obtenerBloques = async () => {
     try {
@@ -28,40 +29,73 @@ function RegistrarPlaza() {
       const bloquesUnicos = [
         ...new Set(data.map((item) => item.nombre_bloque)),
       ];
+     
+     
       setBloques(bloquesUnicos);
+      inicializarPlazas(bloquesUnicos);
+      const plaza = await axios.get(`${endPoint}/plazas`);
+      const dataPlazas = plaza.data;
+      console.log(dataPlazas.length+1);
+      setSitios(dataPlazas);
+      //setNumero(dataPlazas.length+1);
     } catch (error) {
       console.log("Ocurrió un error al obtener los bloques:", error);
     }
   };
 
+
+  const inicializarPlazas = (bloques) => {
+    const plazasInicializadas = {};
+    bloques.forEach((bloque) => {
+      plazasInicializadas[bloque] = 1;
+    });
+    setPlazas(plazasInicializadas);
+  };
+
   const guardarPlaza = async (e) => {
     e.preventDefault();
     try {
+      console.log(numero);
       await axios.post(`${endPoint}/plazas`, {
-        nombre: nombre,
-        estado: estado,
+        numero: numero,
+        estado: "libre",
         bloque: bloque,
       });
-      setSuccessMessage("Registrado exitosamente.");
-      setShowSuccessMessage(true);
-      setNombre("");
-      setEstado("");
-      setBloque("");
 
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 3000);
+      setPlazas((prevPlazas) => {
+
+        return {
+          ...prevPlazas,
+          [bloque]: prevPlazas[bloque] + 1,
+        };
+      });
+      setBloque("");
+      obtenerBloques();
+      alert("se registro con exito");
     } catch (error) {
       console.log("Ocurrió un error al registrar:", error);
     }
   };
 
-  function cancelarRegistro(event) {
-    event.preventDefault();
-    setNombre("");
-    setEstado("");
+  const seleccionarBloque = (e) => {
+    setBloque(e.target.value);
+    setNumero(plazas[e.target.value]);
+    
+     console.log(e.target.value);
+     console.log(sitios);
+     let result = sitios.filter((sitio) =>sitio.bloque == e.target.value);
+     console.log(result);
+     setNumero(result.length+1);
+
+  };
+
+  
+
+  const cancelarRegistro = () => {
     setBloque("");
-  }
+  };
+
+   
 
   return (
     <>
@@ -73,41 +107,13 @@ function RegistrarPlaza() {
             <form className="formularioParqueo">
               <div className="contenedorParqueo">
                 <h1 id="tituloParqueo">Registro de plaza</h1>
-                {showSuccessMessage && (
-                  <div className="success-message">
-                    <p>{successMessage}</p>
-                  </div>
-                )}
-                <div id="entradaP" className="entradaP1">
-                  <label>Nombre del lugar</label>
-                  <input
-                    type="text"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    id="inputText"
-                    placeholder="Escribe el nombre"
-                    required
-                  />
-                </div>
-                <div id="entradaP" className="entradaP1">
-                  <label htmlFor="inputEstado">Selecciona estado:</label>
-                  <select
-                    id="inputEstado"
-                    value={estado}
-                    onChange={(e) => setEstado(e.target.value)}
-                    className="inputText"
-                  >
-                    <option value="">Selecciona estado</option>
-                    <option value="libre">Libre</option>
-                    <option value="ocupado">Ocupado</option>
-                  </select>
-                </div>
                 <div id="entradaP" className="entradaP1">
                   <label htmlFor="inputBloque">Selecciona bloque:</label>
                   <select
                     id="inputBloque"
-                    value={bloque}
-                    onChange={(e) => setBloque(e.target.value)}
+                    value={bloque} 
+                    onChange={seleccionarBloque}
+                    
                     className="inputText"
                   >
                     <option value="">Selecciona bloque</option>
@@ -117,6 +123,20 @@ function RegistrarPlaza() {
                       </option>
                     ))}
                   </select>
+                </div>
+
+                <div id="entradaP" className="entradaP1">
+                <label htmlFor="inputText">Numero de sitio:</label>
+                  <input
+                 
+                    type="number"
+                    value={numero}
+                    disabled
+                    //onChange={(e) => setNumero(e.target.value)}
+                    id="inputText"
+                    placeholder="inputText"
+                    required
+                  />
                 </div>
                 <div className="contenedorBotonP">
                   <button
