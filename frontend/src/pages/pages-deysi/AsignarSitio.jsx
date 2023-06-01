@@ -5,26 +5,35 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import "../../assets/css/css-deysi/asignarSitio.css";
-//j
+import { useParams } from "react-router-dom";
 function AsignarSitio() {
-  const [bloques, setBloques] = useState([]);
-  const [sitiosLibres, setSitiosLibres] = useState([]);
+const [bloques, setBloques] = useState([]);
+
+
   const [selectedBloque, setSelectedBloque] = useState("");
   const [selectedSitio, setSelectedSitio] = useState("");
+
   const navigate = useNavigate();
-  const [sitiosLibresBloque, setSitiosLibresBloque] = useState([]);
+
+  const params = useParams();
+  //obtenemos  bloques de la tabla plazas
+ 
+  
 
   useEffect(() => {
     obtenerBloques();
-    getSitiosLibres();
+   
+    console.log(params.idc);
+    console.log(params.idv);
+   
+    
   }, []);
 
   const obtenerBloques = () => {
     axios
-      .get("http://localhost:8000/api/parqueos")
+      .get("http://localhost:8000/api/plazas/obtener-bloques")
       .then((response) => {
         const bloques = response.data;
-        console.log("Bloques:", bloques); // Verificar los datos recibidos
         setBloques(bloques);
       })
       .catch((error) => {
@@ -32,39 +41,48 @@ function AsignarSitio() {
       });
   };
 
-  const getSitiosLibres = async () => {
-    try {
-      const response = await axios.get(
-        "/api/plazas?estado=libre&_expand=parqueo"
-      );
-      const sitiosLibres = response.data;
-
-      setSitiosLibres(sitiosLibres);
-    } catch (error) {
-      console.error("Error al obtener los sitios libres:", error);
-    }
-  };
-
-  const obtenerSitiosLibresBloque = () => {
-    if (selectedBloque) {
-      const sitiosBloque = sitiosLibres.filter(
-        (sitio) => sitio.parqueo.bloque === selectedBloque
-      );
-      setSitiosLibresBloque(sitiosBloque);
-      if (sitiosBloque.length > 0) {
-        setSelectedSitio(sitiosBloque[0].id);
-      } else {
-        setSelectedSitio("");
-      }
+  const handleBloqueChange = (event) => {
+    const bloque = event.target.value;
+    setSelectedBloque(bloque);
+    if (bloque) {
+      console.log("Bloque seleccionado:", bloque);
+      obtenerPrimerSitioLibre(bloque);
     } else {
       setSelectedSitio("");
-      setSitiosLibresBloque([]);
     }
   };
 
-  useEffect(() => {
-    obtenerSitiosLibresBloque();
-  }, [selectedBloque]);
+  /* const obtenerPrimerSitioLibre = (bloque) => {
+    axios
+  .get(`http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}`)
+ // http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}
+  .then((response) => {
+    const primerSitioLibre = response.data.sitio.numero;
+    setSelectedSitio(primerSitioLibre);
+  })
+  .catch((error) => {
+    console.error('Error al obtener el primer sitio libre:', error);
+  });
+
+  };*/
+
+  const obtenerPrimerSitioLibre = (bloque) => {
+    axios
+      .get(`http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}`)
+      .then((response) => {
+        const primerSitioLibre = response.data;
+        console.log(primerSitioLibre);
+        if (primerSitioLibre && primerSitioLibre.numero) {
+          setSelectedSitio(primerSitioLibre.numero);
+          console.log("Sitio libre obtenido:", primerSitioLibre.numero);
+        } else {
+          console.log("No hay sitios libres en el bloque seleccionado");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener el primer sitio libre:", error);
+      });
+  };
 
   const handleFinalizar = (event) => {
     event.preventDefault();
@@ -75,41 +93,34 @@ function AsignarSitio() {
     }
 
     if (!selectedSitio) {
-      console.log("Debes seleccionar un sitio");
+      console.log("No hay sitios libres en el bloque seleccionado");
       return;
     }
+
+    //finaliza la asignacion y actualiza el estado del sitio
+
     axios
-      
-    .post("http://localhost:8000/api/sitio_clientes", {
-      bloque_id: bloques,
-      sitio_id: selectedSitio,
-    })
-    .then((response) => {
-      console.log("Asignación registrada con éxito:", response.data);
-      axios
-      .put(`http://localhost:8000/api/plazas/${selectedSitio}`, {
-        estado: "ocupado",
+      .post("http://localhost:8000/api/contrato", {
+        // bloque_id: selectedBloque,//mm datos no utilizado
+        sitio_id: selectedSitio,
+        bloque: selectedBloque,
+        docente_id: params.idc,
+        vehiculo_id: params.idv,
+
       })
+
       .then((response) => {
-        console.log("Estado del sitio actualizado:", response.data);
+        console.log("Asignación registrada con éxito:", response.data);
 
         setSelectedBloque("");
         setSelectedSitio("");
 
-        getSitiosLibres();
-        navigate("/sitios");
+        navigate("/listardocentes");
+          
       })
       .catch((error) => {
-        console.error("Error al actualizar el estado del sitio:", error);
+        console.error("Error al registrar la asignación:", error);
       });
-  })
-  .catch((error) => {
-    console.error("Error al registrar la asignación:", error);
-  });
-    // Resto del código para enviar la solicitud de asignación y actualizar el estado del sitio
-
-    // ...
-
   };
 
   const handleCancel = (event) => {
@@ -127,19 +138,18 @@ function AsignarSitio() {
           <div className="padreParqueo">
             <form className="formularioParqueo">
               <div className="contenedorParqueo">
-              <h1 id="tituloParqueo">Datos del parqueo</h1>
+                <h1 id="tituloParqueo">Datos del parqueo</h1>
                 <div id="entradaP" className="entradaP1">
                   <label>Bloque:</label>
                   <select
                     value={selectedBloque}
-                    onChange={(event) =>
-                      setSelectedBloque(event.target.value)
-                    }
+                    onChange={handleBloqueChange}
+                    // onChange={(event) => setSelectedBloque(event.target.value)}
                   >
                     <option value="">Selecciona un bloque</option>
                     {bloques.map((bloque) => (
-                      <option key={bloque.id} value={bloque.id}>
-                        {bloque.nombre_bloque}
+                      <option key={bloque} value={bloque}>
+                        {bloque}
                       </option>
                     ))}
                   </select>
@@ -149,9 +159,9 @@ function AsignarSitio() {
                   <label>Sitio:</label>
                   {selectedBloque ? (
                     <label>
-                      {sitiosLibresBloque.length > 0
-                        ? sitiosLibresBloque[0].numero
-                        : "No hay sitios disponibles"}
+                      {selectedSitio
+                        ? selectedSitio
+                        : "No hay sitios disponibles en el bloque seleccionado"}
                     </label>
                   ) : (
                     <label>
