@@ -3,9 +3,23 @@ import "../assets/css/loginPage.css";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { SessionContext } from "../context/context-rodrigo/SessionContext";
+import { useContext,useEffect } from "react";
+import { PersonaContext } from "../context/context-rodrigo/PersonaContext";
+
 
 
 function LoginPage(){
+  const {isLoggedIn,user,login,logout}=useContext(SessionContext);
+  const {personas,loadPersonas}=useContext(PersonaContext);
+  
+  useEffect(()=>{
+    loadPersonas();
+    
+  },[]);
+
+  
+  console.log(personas);
   const navigate = useNavigate();
   return <>
     <Navbar accion="dashboard" />

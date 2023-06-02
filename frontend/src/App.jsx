@@ -29,15 +29,22 @@ import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
+import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
+import { PersonaContextProvider } from "./context/context-rodrigo/PersonaProvider";
+
+const storedSession = localStorage.getItem('session');
+const initialSession = storedSession ? JSON.parse(storedSession):{isLoggedIn:false, user:null};
 function App() {
   //const [count, setCount] = useState(0)
   //logout="Cerrar Sesion";
   return (
     <div id="mainheader">
+      <SessionContextProvider>
+      <PersonaContextProvider>
       <AtencionContextProvider>
       <TarifaContextProvider>
       <Routes>
@@ -70,6 +77,8 @@ function App() {
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
+      </PersonaContextProvider>
+      </SessionContextProvider>
       <Footer/>
     </div>
   );

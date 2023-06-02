@@ -12,7 +12,7 @@ import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import "hover.css"
+
 
 function ButtonBoxAdmin(){
   const navigate = useNavigate();
@@ -25,72 +25,109 @@ function ButtonBoxAdmin(){
     className="botones"
   >
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
     >
-      <FontAwesomeIcon icon={faHouse} />
+      <FontAwesomeIcon icon={faHouse}/>
       Inicio
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+        <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
+      
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
     >
       <FontAwesomeIcon icon={faFileContract} />
       Contratos
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+        <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
       onClick={()=>navigate("/atencion")}
     >
       <FontAwesomeIcon icon={faCalendarDays} />
       Atencion
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+        <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
       onClick={()=>navigate("/tarifa")}
       >
       <FontAwesomeIcon icon={faDollarSign} />
       Tarifa
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
     >
       <FontAwesomeIcon icon={faChartPie} />
       Reportes
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
     >
       <FontAwesomeIcon icon={faEnvelope} />
       Mensajes
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+        <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
     >
       <FontAwesomeIcon icon={faFaceTired} />
       Quejas
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+        <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
       onClick={()=>navigate("/parqueos")}
     >
       <FontAwesomeIcon icon={faCar} />
       Parqueo
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     
     <button
-      className="hvr-shrink"
+      className="hvr-fade hvr-icon-forward"
       onClick={()=>navigate("/personal")}
     >
       <FontAwesomeIcon icon={faUsers} /> 
       Personal
-      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-270"/>
+      <div
+        className="hvr-icon"
+      >
+      <FontAwesomeIcon icon={faChevronUp} className="fa-rotate-90"/>
+      </div>
     </button>
     
   </div>

@@ -44,13 +44,13 @@ function CardAtencion({atencion}){
         className="seccion_boton"
       >
       <button
-        className="botonEditarAtencion"
+        className="botonEditarAtencion hvr-fade"
         onClick={()=>navigate("/atencion/edit/"+atencion.id)}
       >
         Editar
       </button>
       <button
-        className="botonBorrarAtencion"
+        className="botonBorrarAtencion hvr-fade"
         onClick={()=>deleteAtencion(atencion.id)}
       >
         Borrar
