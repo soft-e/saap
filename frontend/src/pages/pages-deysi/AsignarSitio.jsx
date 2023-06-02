@@ -76,6 +76,7 @@ handleFinalizar = (event) => {
       parqueo_id: selectedParqueo,
       sitio_id: selectedSitio,
     })
+    
     .then((response) => {
       console.log("Asignación registrada con éxito:", response.data);
 

@@ -4,10 +4,8 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from 'axios';
 import { useEffect,useState } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
-
-const endPoint='http://localhost:8000/api';
-
+import { useNavigate } from 'react-router-dom';
+import {URL_API} from '../../services/EndPoint'
 
 function Parqueos() {
     const [parqueos,setParqueos]=useState([]);
@@ -19,7 +17,7 @@ function Parqueos() {
 
     const fetchEmployeesData = async () => {
         try {
-          const response = await axios.get(`${endPoint}/parqueos`); 
+          const response = await axios.get(`${URL_API}/parqueos`); 
           setParqueos(response.data);
           console.log(response.data);
         } catch (error) {
@@ -29,7 +27,7 @@ function Parqueos() {
 
     const eliminarParqueo = async (parqueoId) => {
         try {
-          await axios.delete(`${endPoint}/parqueos/${parqueoId}`);
+          await axios.delete(`${URL_API}/parqueos/${parqueoId}`);
           fetchEmployeesData() 
         } catch (error) {
           console.error('Error al eliminar el empleado:', error);
@@ -84,19 +82,19 @@ function Parqueos() {
                     <div className='contenedorParqueos'>
                         {parqueos.map((parqueos)=>(
                         <div className='datosParqueo' key={parqueos.id} >
-                            <div onClick={()=>{navigate("/VerMensajes")}}>
+                            <div>
                                 <div className='nombreParqueo'>
                                     <h2>{parqueos.nombre_bloque}</h2>
                                 </div>
                                 <h3>Cantidad de sitios: {parqueos.cantidad_sitios}</h3>
                             </div>
                             <div className='contendorBotonesParqueos' >
-                                <Link 
+                                <button
                                     className='botonEditarParqueos'
-                                    to={`/editarparqueos/${parqueos.id}`}
+                                    onClick={() =>navigate(`/editarparqueos/${parqueos.id}`)}
                                 >
-                                    <h5>Editar</h5>
-                                </Link>
+                                    <h4>Editar</h4>
+                                </button>
                             
                                 <button className='botonEliminarParqueos'
                                         onClick={()=>eliminarParqueo(parqueos.id)}

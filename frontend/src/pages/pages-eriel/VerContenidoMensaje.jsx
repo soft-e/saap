@@ -3,8 +3,7 @@ import VerMensajes from './VerMensajes';
 import { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import axios from 'axios';
-
-const endPoint='http://localhost:8000/api';
+import {URL_API} from '../../services/EndPoint';
 
 function VerContenidoMensaje() {
     const [mensaje,setMensaje]=useState([]);
@@ -17,7 +16,7 @@ function VerContenidoMensaje() {
 
     const fetchMensajesData = async () => {
         try {
-          const response = await axios.get(`${endPoint}/mensajes/${id}`); 
+          const response = await axios.get(`${URL_API}/mensajes/${id}`); 
           setMensaje(response.data);
           console.log(response);
         } catch (error) { 
@@ -31,11 +30,11 @@ function VerContenidoMensaje() {
            <div className='ModalContenidoMensaje' onClick={()=>{navigate('/vermensajes')}}>
                <div className='contenedorMensajeModal'>
                    <h3 className='tituloMensajeModal'>Destinatario:</h3>
-                   <h3>{mensaje.destinatario}</h3>
+                   <h3 className='contenidoMensajeModal'>{mensaje.destinatario}</h3>
                    <h3 className='tituloMensajeModal'>asunto:</h3>
-                   <h3>{mensaje.asunto}</h3>
+                   <h3 className='contenidoMensajeModal'>{mensaje.asunto}</h3>
                    <h3 className='tituloMensajeModal'>contenido:</h3>
-                   <h4>{mensaje.contenido}</h4>
+                   <h4 >{mensaje.contenido}</h4>
                </div>
            </div>
        </div>
