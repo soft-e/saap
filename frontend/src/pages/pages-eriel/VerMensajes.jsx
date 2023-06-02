@@ -5,8 +5,7 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from "axios";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-const endPoint='http://127.0.0.1:8000/api';
+import {URL_API} from '../../services/EndPoint';
 
 function VerMensajes() {
     const [mensajes,setMensajes]=useState([]);
@@ -17,7 +16,7 @@ function VerMensajes() {
 
     const fetchMensajesData = async () => {
         try {
-          const response = await axios.get(`${endPoint}/mensajes`); 
+          const response = await axios.get(`${URL_API}/mensajes`); 
           setMensajes(response.data);
           console.log(response);
         } catch (error) { 

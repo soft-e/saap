@@ -4,10 +4,8 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import { useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-
+import {URL_API} from '../../services/EndPoint';
 import axios from 'axios';
-
-const endPoint='http://localhost:8000/api';
 
 function RegistroDTvehiculo() {
     const {id}=useParams();
@@ -20,7 +18,7 @@ function RegistroDTvehiculo() {
 
     const store=async(e)=>{
         e.preventDefault();
-        const response=await axios.post(`${endPoint}/vehiculos`,{
+        const response=await axios.post(`${URL_API}/vehiculos`,{
         placa:placa,
         color:color,
         marca:marca,

@@ -3,8 +3,7 @@ import VerMensajes from './VerMensajes';
 import { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import axios from 'axios';
-
-const endPoint='http://localhost:8000/api';
+import {URL_API} from '../../services/EndPoint';
 
 function VerContenidoMensaje() {
     const [mensaje,setMensaje]=useState([]);
@@ -17,7 +16,7 @@ function VerContenidoMensaje() {
 
     const fetchMensajesData = async () => {
         try {
-          const response = await axios.get(`${endPoint}/mensajes/${id}`); 
+          const response = await axios.get(`${URL_API}/mensajes/${id}`); 
           setMensaje(response.data);
           console.log(response);
         } catch (error) { 
