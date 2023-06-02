@@ -1,200 +1,207 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from "react";
+import { Component } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import "../../assets/css/css-deysi/asignarSitio.css";
-import { useParams } from "react-router-dom";
-function AsignarSitio() {
-const [bloques, setBloques] = useState([]);
+class AsignarSitio extends Component {
+  state = {
+    nombreBloque: "",
+    primerSitioLibre: "",
+    parqueos: [],
+    sitiosLibres: [],
+    selectedParqueo: "",
+    selectedSitio: ""
+  };
+
+  componentDidMount() {
+    this.obtenerParqueos();
+    this.obtenerSitiosLibres();
+  }
+
+  obtenerParqueos = () => {
+    axios.get("http://localhost:8000/api/parqueos")
+      .then((response) => {
+        const parqueos = response.data;
+        this.setState({ parqueos });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los parqueos:", error);
+      });
+  };
 
 
-  const [selectedBloque, setSelectedBloque] = useState("");
-  const [selectedSitio, setSelectedSitio] = useState("");
+      
+  /*obtenerSitiosLibres = () => {
+    axios.get("http://localhost:8000/api/plazas?estado=libre")
+      .then((response) => {
+        const sitiosLibres = response.data;
+        this.setState({ sitiosLibres });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los sitios libres:", error);
+      });
+  };*/
+  obtenerSitiosLibres = () => {
+    axios.get("http://localhost:8000/api/plazas?estado=libre")
+      .then((response) => {
+        const sitiosLibres = response.data;
+        this.setState({ sitiosLibres });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los sitios libres:", error);
+      });
+  };
 
-  const navigate = useNavigate();
+  handleParqueoChange = (event) => {
+    this.setState({ selectedParqueo: event.target.value });
+  };
 
-  const params = useParams();
-  //obtenemos  bloques de la tabla plazas
+  handleSitioChange = (event) => {
+    this.setState({ selectedSitio: event.target.value });
+  };
+
+// ...
+
+handleFinalizar = (event) => {
+  event.preventDefault();
+  const { selectedParqueo, selectedSitio } = this.state;
+
+  if (!selectedParqueo || !selectedSitio) {
+    console.log("Debes seleccionar un parqueo y un sitio");
+    return;
+  }
+
+  axios
+    .post("http://localhost:8000/api/sitio_clientes", {
+      parqueo_id: selectedParqueo,
+      sitio_id: selectedSitio,
+    })
+    .then((response) => {
+      console.log("Asignación registrada con éxito:", response.data);
+
+      // Actualizar el estado del sitio a "ocupado" en la tabla "plazas"
+      axios
+        .put(`http://localhost:8000/api/plazas/${selectedSitio}`, {
+          estado: "ocupado",
+        })
+        .then((response) => {
+          console.log("Estado del sitio actualizado:", response.data);
+
+          // Restablecer los valores seleccionados
+          this.setState({
+            selectedParqueo: "",
+            selectedSitio: "",
+          });
+
+          // Actualizar la lista de sitios libres
+          this.obtenerSitiosLibres();
+        })
+        .catch((error) => {
+          console.error("Error al actualizar el estado del sitio:", error);
+        });
+    })
+    .catch((error) => {
+      console.error("Error al registrar la asignación:", error);
+    });
+};
+
+
+// ...
+
+
+
+
  
+
+
+
+
+
+
   
 
-  useEffect(() => {
-    obtenerBloques();
-   
-    console.log(params.idc);
-    console.log(params.idv);
-   
-    
-  }, []);
-
-  const obtenerBloques = () => {
-    axios
-      .get("http://localhost:8000/api/plazas/obtener-bloques")
-      .then((response) => {
-        const bloques = response.data;
-        setBloques(bloques);
-      })
-      .catch((error) => {
-        console.error("Error al obtener los bloques:", error);
-      });
-  };
-
-  const handleBloqueChange = (event) => {
-    const bloque = event.target.value;
-    setSelectedBloque(bloque);
-    if (bloque) {
-      console.log("Bloque seleccionado:", bloque);
-      obtenerPrimerSitioLibre(bloque);
-    } else {
-      setSelectedSitio("");
-    }
-  };
-
-  /* const obtenerPrimerSitioLibre = (bloque) => {
-    axios
-  .get(`http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}`)
- // http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}
-  .then((response) => {
-    const primerSitioLibre = response.data.sitio.numero;
-    setSelectedSitio(primerSitioLibre);
-  })
-  .catch((error) => {
-    console.error('Error al obtener el primer sitio libre:', error);
-  });
-
-  };*/
-
-  const obtenerPrimerSitioLibre = (bloque) => {
-    axios
-      .get(`http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}`)
-      .then((response) => {
-        const primerSitioLibre = response.data;
-        console.log(primerSitioLibre);
-        if (primerSitioLibre && primerSitioLibre.numero) {
-          setSelectedSitio(primerSitioLibre.numero);
-          console.log("Sitio libre obtenido:", primerSitioLibre.numero);
-        } else {
-          console.log("No hay sitios libres en el bloque seleccionado");
-        }
-      })
-      .catch((error) => {
-        console.error("Error al obtener el primer sitio libre:", error);
-      });
-  };
-
-  const handleFinalizar = (event) => {
+  handleCancel = (event) => {
     event.preventDefault();
 
-    if (!selectedBloque) {
-      console.log("Debes seleccionar un bloque");
-      return;
-    }
-
-    if (!selectedSitio) {
-      console.log("No hay sitios libres en el bloque seleccionado");
-      return;
-    }
-
-    //finaliza la asignacion y actualiza el estado del sitio
-
-    axios
-      .post("http://localhost:8000/api/contrato", {
-        // bloque_id: selectedBloque,//mm datos no utilizado
-        sitio_id: selectedSitio,
-        bloque: selectedBloque,
-        docente_id: params.idc,
-        vehiculo_id: params.idv,
-
-      })
-
-      .then((response) => {
-        console.log("Asignación registrada con éxito:", response.data);
-
-        setSelectedBloque("");
-        setSelectedSitio("");
-
-        navigate("/listardocentes");
-          
-      })
-      .catch((error) => {
-        console.error("Error al registrar la asignación:", error);
-      });
+    // Restablecer los valores seleccionados
+    this.setState({
+      selectedParqueo: "",
+      selectedSitio: ""
+    });
   };
 
-  const handleCancel = (event) => {
-    event.preventDefault();
-    setSelectedBloque("");
-    setSelectedSitio("");
-  };
+  render() {
+    const { parqueos, sitiosLibres, selectedParqueo, selectedSitio } = this.state;
+    const plazasLibres = sitiosLibres.filter((sitio) => sitio.estado === "libre");
+    return (
+      <>
+        <Navbar accion="iniciar sesión" />
+        <div className="espacioPagina">
+          <ButtonBoxAdmin />
+          <div className="espacioDeTrabajo">
+            <div className="padreParqueo">
+              <form className="formularioParqueo">
+                <div className="contenedorParqueo">
+                  <h1 id="tituloParqueo">Datos del parqueo</h1>
 
-  return (
-    <>
-      <Navbar accion="iniciar sesión" />
-      <div className="espacioPagina">
-        <ButtonBoxAdmin />
-        <div className="espacioDeTrabajo">
-          <div className="padreParqueo">
-            <form className="formularioParqueo">
-              <div className="contenedorParqueo">
-                <h1 id="tituloParqueo">Datos del parqueo</h1>
-                <div id="entradaP" className="entradaP1">
-                  <label>Bloque:</label>
-                  <select
-                    value={selectedBloque}
-                    onChange={handleBloqueChange}
-                    // onChange={(event) => setSelectedBloque(event.target.value)}
-                  >
-                    <option value="">Selecciona un bloque</option>
-                    {bloques.map((bloque) => (
-                      <option key={bloque} value={bloque}>
-                        {bloque}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  <div id="entradaP" className="entradaP1">
+                    <label>Parqueos:</label>
+                    <select
+                      value={selectedParqueo}
+                      onChange={this.handleParqueoChange}
+                    >
+                      <option value="">Selecciona un parqueo</option>
+                      {parqueos.map((parqueo) => (
+                        <option key={parqueo.id} value={parqueo.id}>
+                          {parqueo.nombre_bloque}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div id="entradaP" className="entradaP1">
+                    <label>Sitios Libres:</label>
 
-                <div id="entradaP" className="entradaP1">
-                  <label>Sitio:</label>
-                  {selectedBloque ? (
-                    <label>
-                      {selectedSitio
-                        ? selectedSitio
-                        : "No hay sitios disponibles en el bloque seleccionado"}
-                    </label>
-                  ) : (
-                    <label>
-                      Selecciona un bloque para ver los sitios disponibles
-                    </label>
-                  )}
-                </div>
+                    
+                    <select
+                      value={selectedSitio}
+                      onChange={this.handleSitioChange}
+                    >
+                      <option value="">Selecciona un sitio libre</option>
 
-                <div className="contenedorBotonP">
-                  <button
-                    id="finalizar"
-                    className="botonInicioSesion"
-                    type="submit"
-                    onClick={handleFinalizar}
-                  >
-                    Finalizar
-                  </button>
-                  <button
-                    id="botonCancelarP"
-                    className="botonInicioSesion botonCancelar"
-                    type="submit"
-                    onClick={handleCancel}
-                  >
-                    Cancelar
-                  </button>
+                      {plazasLibres.map((sitio) => (
+                        
+                        <option key={sitio.id} value={sitio.id}>
+                          {sitio.nombre} {sitio.id}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="contenedorBotonP">
+                    <button
+                      id="finalizar"
+                      className="botonInicioSesion"
+                      type="submit"
+                      onClick={this.handleFinalizar}
+                    >
+                      Finalizar
+                    </button>
+                    <button
+                      id="botonCancelarP"
+                      className="botonInicioSesion botonCancelar"
+                      type="submit"
+                      onClick={this.handleCancel}
+                    >
+                      Cancelar
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
 
 export default AsignarSitio;

@@ -16,19 +16,11 @@ class CreatePlazasTable extends Migration
         Schema::create('plazas', function (Blueprint $table) {
 
             $table->id();
-           $table->integer('numero'); 
+           $table->string('nombre'); 
            /**
             *$table->enum('estado',['ocupado','libre']);*/
            $table->string('estado'); 
-           $table->string('bloque');
-         //  $table->unsignedBigInteger('parqueo_id');
-          // $table->foreign('parqueo_id')->references('id')->on('parqueos');
-          
-         /* $table->unsignedBigInteger('parqueo_id');
-          $table->foreign('parqueo_id')->references('id')->on('parqueos');
-            $table->timestamps();*/
-
-
+            $table->timestamps();
         });
     }
 
