@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Parqueo extends Model
 {
     use HasFactory;
-    
-    protected $table = 'parqueos';
     protected $fillable=['nombre_bloque','numero_sitios'];
 
     
@@ -17,7 +15,4 @@ class Parqueo extends Model
         return $this->belongsTo(Empleado::class);
     }
     
-
-
-
 }

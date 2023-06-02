@@ -86,14 +86,3 @@
     transform: scale(1.1);
     cursor: pointer;
 }
-
-#nuevoBoton{
-
-    margin-right: 3%;
-    border-radius: 5px;
-}
-#nuevoBoton:hover{
-    scale: 1.1;
-    cursor: pointer;
-
-}
