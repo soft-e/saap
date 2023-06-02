@@ -1,10 +1,11 @@
 .plazas-disponibles {
-    width: 50%;
-    margin-right: 20px;
+    width: 48%;
+    
     display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-  }
+  margin-right: 2%;
+ }
   
   .plaza-disponible {
     width: 80px;
@@ -21,5 +22,16 @@
   .plaza-disponible:hover{
 
     background-color: #2c91cc;
+  }
+  .tituloDisponible {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .tituloTexto {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
   }
   

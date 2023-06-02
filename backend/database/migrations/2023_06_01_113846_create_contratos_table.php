@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSitioClientesTable extends Migration
+class CreateContratosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,17 @@ class CreateSitioClientesTable extends Migration
      * @return void
      */
     public function up()
-
-
     {
-
-        Schema::create('sitio_clientes', function (Blueprint $table) {
+        Schema::create('contratos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parqueo_id');
             $table->unsignedBigInteger('sitio_id');
-            
-            //Otros campos del sitio_clientes
+            $table->String('bloque');
+            $table->unsignedBigInteger('docente_id');
+            $table->unsignedBigInteger('vehiculo_id');
             $table->timestamps();
-              
-            $table->foreign('parqueo_id')->references('id')->on('parqueos');
-            $table->foreign('sitio_id')->references('id')->on('plazas');
+
+           
         });
-        
     }
 
     /**
@@ -37,6 +32,6 @@ class CreateSitioClientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sitio_clientes');
+        Schema::dropIfExists('contratos');
     }
 }

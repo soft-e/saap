@@ -1,12 +1,12 @@
 
   
-  
   .plazas-ocupadas {
     width: 50%;
     margin-right: 20px;
     display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  margin-left: 2%;
   }
   .plaza-ocupada {
     width: 80px;
@@ -17,7 +17,8 @@
     font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
-  background-color: #c41c34;
+    background-image: url('../../images/images-deysi/carrito.jpg');
+    background-position: center center;
     margin-bottom: 10px;
     cursor: pointer;
   }
