@@ -32,6 +32,7 @@ class VehiculoController extends Controller
         $vehiculo->marca = $request->marca;
         $vehiculo->modelo = $request->modelo;
         $vehiculo->save();
+        return response()->json($vehiculo);
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTarifaTable extends Migration
+class CreateMensajesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTarifaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tarifa', function (Blueprint $table) {
+        Schema::create('mensajes', function (Blueprint $table) {
             $table->id();
-            $table->Integer('costo_tarifa');
+            $table->string('contenido');
+            $table->string('asunto');
+            $table->string('destinatario');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateTarifaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tarifa');
+        Schema::dropIfExists('mensajes');
     }
 }

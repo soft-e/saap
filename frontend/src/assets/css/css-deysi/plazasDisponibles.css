@@ -1,0 +1,25 @@
+.plazas-disponibles {
+    width: 50%;
+    margin-right: 20px;
+    display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  }
+  
+  .plaza-disponible {
+    width: 80px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #50a4d4;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .plaza-disponible:hover{
+
+    background-color: #2c91cc;
+  }
+  

@@ -4,14 +4,17 @@ import Navbar from "../../components/Navbar";
 import { useAtenciones } from "../../context/context-rodrigo/AtencionProvider";
 import { useEffect} from "react";
 import CardAtencion from "../../components/CardAtencion";
+import { Link, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 
 function AtencionPage(){
-  const{atenciones,loadAtenciones}=useAtenciones();
+  const{atenciones,loadAtenciones,createAtencion}=useAtenciones();
   useEffect(()=>{
     loadAtenciones();
   },[]);
 
+  const navigate = useNavigate();
   function renderMain(){
     if(atenciones.length ===0)return<h1>no se tiene horarios de atencion registrado</h1>
     return atenciones.map((atencion)=><CardAtencion atencion={atencion} key={atencion.id}/>);
@@ -31,6 +34,7 @@ function AtencionPage(){
           >
             <h1>Horario de Atencion</h1>
             <button
+              onClick={()=>navigate("/atencion/new")}
               className="botonAtencion"
             >Registrar Horario de Atencion</button>
           </div>
@@ -41,7 +45,6 @@ function AtencionPage(){
         </div>
       </div>
     </div>
-
   </>
 }
 export default AtencionPage;

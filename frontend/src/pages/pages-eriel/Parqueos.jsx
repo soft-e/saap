@@ -21,6 +21,7 @@ function Parqueos() {
         try {
           const response = await axios.get(`${endPoint}/parqueos`); 
           setParqueos(response.data);
+          console.log(response.data);
         } catch (error) {
           console.error('Error al obtener los datos de los empleados:', error);
         }
@@ -82,12 +83,14 @@ function Parqueos() {
                     </nav>
                     <div className='contenedorParqueos'>
                         {parqueos.map((parqueos)=>(
-                        <div className='datosParqueo' key={parqueos.id}>
-                            <div className='nombreParqueo'>
-                                <h2>{parqueos.nombre_bloque}</h2>
+                        <div className='datosParqueo' key={parqueos.id} >
+                            <div onClick={()=>{navigate("/VerMensajes")}}>
+                                <div className='nombreParqueo'>
+                                    <h2>{parqueos.nombre_bloque}</h2>
+                                </div>
+                                <h3>Cantidad de sitios: {parqueos.cantidad_sitios}</h3>
                             </div>
-                            <h3>Cantidad de sitios: {parqueos.cantidad_sitios}</h3>
-                            <div className='contendorBotonesParqueos'>
+                            <div className='contendorBotonesParqueos' >
                                 <Link 
                                     className='botonEditarParqueos'
                                     to={`/editarparqueos/${parqueos.id}`}

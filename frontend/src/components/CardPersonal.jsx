@@ -1,8 +1,12 @@
 import React from 'react';
 
-function CardPersonal({ empleado }) {
+function CardPersonal({ empleado, eliminarEmpleado }) {
   const { id, persona } = empleado;
   const { nombre, apellido_paterno, apellido_materno, ci, telefono, email } = persona;
+
+  const handleEliminarEmpleado = () => {
+    eliminarEmpleado(id);
+  };
 
   return (
     <div className="col">
@@ -19,6 +23,9 @@ function CardPersonal({ empleado }) {
             <br />
             Correo: {email}
           </p>
+          <button className="button" onClick={handleEliminarEmpleado}>
+            Eliminar
+          </button>
           <button className="button">Editar</button>
         </div>
       </div>

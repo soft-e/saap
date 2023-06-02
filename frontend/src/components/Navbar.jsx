@@ -1,6 +1,7 @@
 import {Link}from "react-router-dom";
 import "../assets/css/navbar.css"
-
+//import Logo from '../../assets/images/images-deysi/lu.png';
+import Logo from '../assets/images/images-deysi/lu.png';
 function Navbar(props){
   function Login(){
     return <Link to="/login">{props.accion}</Link>
@@ -27,7 +28,8 @@ function Navbar(props){
     <>
       <nav id="navbar">
         <div className="container">
-          <div className="logo">
+          <div className="logo-container">
+             <img src={Logo} alt="Logo" className="logo-image"/> 
             <h1 className="textologo">
               saap
             </h1>
