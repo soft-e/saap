@@ -4,20 +4,19 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from "axios";
 import { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
-
-const endPoint='http://127.0.0.1:8000/api';
+import { useNavigate } from "react-router-dom";
+import {URL_API} from '../../services/EndPoint';
 
 function VerMensajes() {
     const [mensajes,setMensajes]=useState([]);
-    
+    const navigate=useNavigate();
     useEffect(()=>{
         fetchMensajesData();
     },[])
 
     const fetchMensajesData = async () => {
         try {
-          const response = await axios.get(`${endPoint}/mensajes`); 
+          const response = await axios.get(`${URL_API}/mensajes`); 
           setMensajes(response.data);
           console.log(response);
         } catch (error) { 
@@ -39,11 +38,11 @@ function VerMensajes() {
                     <div className="contenedorDeMensajes">
                         <h2>Mensajes Redactados</h2>
                         {mensajes.map((mensaje,index)=>(
-                          <Link className="barraDeAbajo" key={mensaje.id} to={`/vercontenidomensaje/${mensaje.id}`}>
+                          <div className="barraDeAbajo" key={mensaje.id} onClick={()=>navigate(`/vercontenidodemensaje/${mensaje.id}`)}>
                                 <h3>{index+1}</h3>
                                 <h3>asunto: {mensaje.asunto}</h3>
                                 <h3>Destinatario: {mensaje.destinatario}</h3>
-                          </Link>
+                          </div>
                         ))}
                     </div>
                 </div>

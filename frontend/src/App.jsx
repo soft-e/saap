@@ -69,7 +69,7 @@ function App() {
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/vermensajes" element={<VerMensajes/>}/>
-        <Route path="/vercontenidodemensaje" element={<VerContenidoMensaje/>}/> 
+        <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
