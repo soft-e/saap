@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Plaza;
+use App\Models\SitioCliente;
 
-class PlazaController extends Controller
+use App\Models\Plaza;
+class SitioClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,7 @@ class PlazaController extends Controller
      */
     public function index()
     {
-        //
-        $plazas=Plaza::all(); 
-        return response()->json($plazas);
+        
     }
 
     /**
@@ -28,13 +27,25 @@ class PlazaController extends Controller
      */
     public function store(Request $request)
     {
-        $plaza = new plaza();
-        $plaza->nombre = $request->nombre;
-        $plaza->estado = $request->estado;
-        
+        // Validar los datos de entrada
+        $request->validate([
+            'parqueo_id' => 'required',
+            'sitio_id' => 'required',
+        ]);
+
+        // Crear un nuevo SitioCliente
+        $sitioCliente = SitioCliente::create($request->all());
+
+        // Actualizar el estado del sitio a "ocupado" en la tabla "plazas"
+        $plaza = Plaza::find($request->sitio_id);
+        $plaza->estado = 'ocupado';
         $plaza->save();
-        //
+
+        // Otras operaciones necesarias
+
+        return response()->json($sitioCliente, 201);
     }
+
 
     /**
      * Display the specified resource.
@@ -69,24 +80,4 @@ class PlazaController extends Controller
     {
         //
     }
-    public function updateEstado(Request $request, $id)
-    {
-        $plaza = Plaza::findOrFail($id);
-        $plaza->estado = 'ocupado'; // Actualiza el estado del sitio a 'ocupado'
-        $plaza->save();
-           
-        return response()->json($plaza);
-    }
-     /* public function update(Request $request, $id)
-    {
-        $plaza = Plaza::findOrFail($id);
-        $plaza->nombre = $request->nombre;
-        $plaza->estado = $request->estado;
-        
-        $plaza->save();
-        return response()->json($plaza);
-    }
-    */
-
 }
-

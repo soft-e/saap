@@ -5,20 +5,18 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-
-const endPoint='http://localhost:8000/api';
+import {URL_API} from '../../services/EndPoint';
 
 function RegistroParqueo() {
 
     const [nombre_bloque,setnombre_bloque]=useState('');
     const [cantidad_sitios,setcantidad_sitios]=useState(0); 
-    const empleado_id=1;
+    const empleado_id=7;
     const navigate=useNavigate();
 
     const store=async(e)=>{
         e.preventDefault();
-        await axios.post(`${endPoint}/parqueos`,{
+        await axios.post(`${URL_API}/parqueos`,{
         nombre_bloque:nombre_bloque,
         cantidad_sitios:cantidad_sitios,
         empleado_id:empleado_id})

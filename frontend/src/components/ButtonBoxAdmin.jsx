@@ -63,6 +63,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={() =>navigate('/vermensajes')}
     >
       <FontAwesomeIcon icon={faEnvelope} />
       Mensajes

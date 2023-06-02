@@ -5,13 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PersonaController;
 use App\Http\Controllers\Api\AdministradorController;
 use App\Http\Controllers\Api\CargoController;
-use App\Http\Controllers\Api\ContratoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
-use App\Http\Controllers\api\VehiculoController;
-use App\Http\Controllers\api\TarifaController;
-use App\Http\Controllers\api\HorarioAtencionController;
-use App\Http\Controllers\api\DocenteController;
+use App\Http\Controllers\Api\VehiculoController;
+use App\Http\Controllers\Api\TarifaController;
+use App\Http\Controllers\Api\HorarioAtencionController;
+use App\Http\Controllers\Api\DocenteController;
 use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
@@ -46,32 +45,14 @@ Route::resource('docentes', DocenteController::class);
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
 Route::resource('ctarifa', TarifaController::class);
-Route::resource('hatencion',HorarioAtencionController::class);
+Route::resource('hatencion', HorarioAtencionController::class);
 Route::resource('mensajes', MensajeController::class);
 //RUTAS DE ERIEL
 
 
 //Route::resource('tarifa', TarifaController::class);
 
-
+Route::resource('plazas', PlazaController::class);
 
 Route::resource('sitio_clientes', SitioClienteController::class);
 Route::resource('atencion', HorarioAtencionController::class);
-
-
-
-Route::resource('contrato', ContratoController::class);
-
-/*
-Route::resource('plazas', PlazaController::class);
-Route::get('plazas/primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
-
-Route::get('/plazas/obtener-bloques', [PlazaController::class, 'obtenerBloques']);
-//Route::get('/api/plazas/obtener-bloques', [PlazaController::class, 'obtenerBloques']);
-*/
-Route::prefix('plazas')->group(function () {
-    Route::resource('/', PlazaController::class);
-    Route::get('primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
-    Route::get('obtener-bloques', [PlazaController::class, 'obtenerBloques']);
-});
-//Route::get('plazas/primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
