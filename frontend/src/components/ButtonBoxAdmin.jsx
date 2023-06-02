@@ -12,7 +12,7 @@ import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import "hover.css"
+
 
 function ButtonBoxAdmin(){
   const navigate = useNavigate();
