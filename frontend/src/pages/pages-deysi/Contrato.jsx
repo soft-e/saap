@@ -3,7 +3,7 @@
 const Contrato = () => {
     return (
         <div>
-            aqui viene contrato
+            aqiene contrato
         </div>
     );
 };
