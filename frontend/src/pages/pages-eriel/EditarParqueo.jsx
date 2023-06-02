@@ -3,19 +3,18 @@ import Parqueos from './Parqueos'
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
-
-const endPoint='http://localhost:8000/api';
+import {URL_API} from '../../services/EndPoint'
 
 function EditarParqueo() {
     const [nombre_bloque,setnombre]=useState('');
     const [cantidad_sitios,setSitios]=useState(0); 
-    const empleado_id=1;
+    const empleado_id=7;
     const navigate=useNavigate();
     const {id}=useParams();
 
     const update=async(e)=>{
         e.preventDefault();
-        await axios.put(`${endPoint}/parqueos/${id}`,{
+        await axios.put(`${URL_API}/parqueos/${id}`,{
             nombre_bloque:nombre_bloque,
             cantidad_sitios:cantidad_sitios,
             empleado_id:empleado_id
@@ -24,7 +23,7 @@ function EditarParqueo() {
     }
     useEffect(()=>{
         const getParqueoById=async()=>{
-            const response=await axios.get(`${endPoint}/parqueos/${id}`)
+            const response=await axios.get(`${URL_API}/parqueos/${id}`)
             setnombre(response.data.nombre_bloque)
             setSitios(response.data.cantidad_sitios)
         }

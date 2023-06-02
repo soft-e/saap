@@ -5,9 +5,7 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const endPoint='http://localhost:8000/api';
-
+import {URL_API} from '../../services/EndPoint'
 
 function Parqueos() {
     const [parqueos,setParqueos]=useState([]);
@@ -19,7 +17,7 @@ function Parqueos() {
 
     const fetchEmployeesData = async () => {
         try {
-          const response = await axios.get(`${endPoint}/parqueos`); 
+          const response = await axios.get(`${URL_API}/parqueos`); 
           setParqueos(response.data);
           console.log(response.data);
         } catch (error) {
@@ -29,7 +27,7 @@ function Parqueos() {
 
     const eliminarParqueo = async (parqueoId) => {
         try {
-          await axios.delete(`${endPoint}/parqueos/${parqueoId}`);
+          await axios.delete(`${URL_API}/parqueos/${parqueoId}`);
           fetchEmployeesData() 
         } catch (error) {
           console.error('Error al eliminar el empleado:', error);
