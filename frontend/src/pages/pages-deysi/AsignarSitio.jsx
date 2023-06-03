@@ -22,7 +22,7 @@ const [bloques, setBloques] = useState([]);
 
   useEffect(() => {
     obtenerBloques();
-   
+     
     console.log(params.idc);
     console.log(params.idv);
    
@@ -34,7 +34,9 @@ const [bloques, setBloques] = useState([]);
       .get("http://localhost:8000/api/plazas/obtener-bloques")
       .then((response) => {
         const bloques = response.data;
+       
         setBloques(bloques);
+        
       })
       .catch((error) => {
         console.error("Error al obtener los bloques:", error);

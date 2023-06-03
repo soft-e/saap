@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Plaza;
-use App\Models\Parqueo;
+
 
 class PlazaController extends Controller
 {
@@ -117,13 +117,20 @@ class PlazaController extends Controller
     
 
    
-    public function obtenerBloques()
+ /*   public function obtenerBloques()
 {
     $bloques = Plaza::distinct('bloque')->pluck('bloque');
 
     return response()->json($bloques);
-}
+}*/
     
-         
+public function obtenerBloques()
+{
+    $bloques = Plaza::distinct('bloque')->pluck('bloque');
+    dd($bloques);
+
+    return response()->json($bloques);
+}
+  
 }
 
