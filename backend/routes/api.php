@@ -65,8 +65,9 @@ Route::resource('plazas', PlazaController::class);
 Route::get('plazas/primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
 
 Route::get('/plazas/obtener-bloques', [PlazaController::class, 'obtenerBloques']);
-//Route::get('/api/plazas/obtener-bloques', [PlazaController::class, 'obtenerBloques']);
+
 */
+Route::get('/api/plazas/obtener-bloques', [PlazaController::class, 'obtenerBloques']);
 Route::prefix('plazas')->group(function () {
     Route::resource('/', PlazaController::class);
     Route::get('primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
