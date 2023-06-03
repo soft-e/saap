@@ -64,9 +64,13 @@ function App() {
         <Route path="/vermensajes" element={<VerMensajes/>}/>
         <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
+      
+    
+       
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-        <Route path="/asignarSitio/:id/:id" element={<AsignarSitio/>}/>
+     
+        <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\SitioCliente;
-
+use App\Models\Contrato;
 use App\Models\Plaza;
-class SitioClienteController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class ContratoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class SitioClienteController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -27,25 +28,35 @@ class SitioClienteController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos de entrada
         $request->validate([
-            'parqueo_id' => 'required',
             'sitio_id' => 'required',
+            'docente_id' => 'required',
+            'vehiculo_id' => 'required',
+            'bloque' => 'required',
         ]);
 
-        // Crear un nuevo SitioCliente
-        $sitioCliente = SitioCliente::create($request->all());
-
-        // Actualizar el estado del sitio a "ocupado" en la tabla "plazas"
-        $plaza = Plaza::find($request->sitio_id);
+        // Crear un nuevo contrato en la base de datos
+        $contrato = Contrato::create([
+            'sitio_id' => $request->input('sitio_id'),
+            'docente_id' => $request->input('docente_id'),
+            'vehiculo_id' => $request->input('vehiculo_id'),
+            'bloque' => $request->input('bloque'),
+        ]);
+       // $plaza = DB::table('plazas')->where('numero', $request->input('sitio_id'))->first();
+       
+        $plaza = Plaza::where('numero', $request->input('sitio_id'))->where('bloque', $request->input('bloque'))->first();
+ 
+        //  dd($plaza);
         $plaza->estado = 'ocupado';
         $plaza->save();
 
-        // Otras operaciones necesarias
-
-        return response()->json($sitioCliente, 201);
+        // Devolver una respuesta JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Contrato creado correctamente',
+            'data' => $plaza,
+        ]);
     }
-
 
     /**
      * Display the specified resource.

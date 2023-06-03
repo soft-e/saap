@@ -1,107 +1,138 @@
-import { Component } from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
 
 import "../../assets/css/templatePage.css";
-
 import "../../assets/css/css-deysi/parqueo.css";
 import Navbar from "../../components/Navbar";
-
-
 import PlazasOcupadas from "./PlazasOcupadas";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-
 import PlazasDisponibles from "./PlazasDisponibles";
-import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+
 const endPoint = "http://localhost:8000/api";
-class Parqueo extends Component {
-  /*state = {
-     
-       plazas: [
-        { id: 1, nombre: 'Plaza ', estado: 'libre' },
-        { id: 2, nombre: 'Plaza ', estado: 'libre' },
-        { id: 3, nombre: 'Plaza ', estado: 'ocupado' },
-        { id: 4, nombre: 'Plaza ', estado: 'libre' },
-        { id: 5, nombre: 'Plaza ', estado: 'ocupado' },
-        { id: 6, nombre: 'Plaza ', estado: 'ocupado' },
-        { id: 7, nombre: 'Plaza ', estado: 'ocupado' },
-        { id: 8, nombre: 'Plaza ', estado: 'ocupado' },
-        
-        { id: 9, nombre: 'Plaza ', estado: 'libre' },
-        { id: 10, nombre: 'Plaza ', estado: 'libre' },
-        { id: 11, nombre: 'Plaza ', estado: 'libre' },
-        { id: 12, nombre: 'Plaza ', estado: 'libre' },
 
-        
-      ],
-    };*/
+const Parqueo = () => {
+  const [plazas, setPlazas] = useState([]);
+  const [bloqueSeleccionado, setBloqueSeleccionado] = useState("");
+  const navigate = useNavigate();
 
-  state = {
-    plazas: [],
+
+  useEffect(() => {
+    fetchPlazas();
+  }, []);
+
+  const fetchPlazas = () => {
+    axios.get(`${endPoint}/plazas`).then((response) => {
+      setPlazas(response.data);
+    });
   };
 
-  componentDidMount() {
-    axios.get(`${endPoint}/plazas`).then((response) => {
-      this.setState({ plazas: response.data });
-    });
-  }
-
-  handleClick = (id) => {
-    const plazas = this.state.plazas.map((plaza) => {
+  const handleClick = (id) => {
+    const updatedPlazas = plazas.map((plaza) => {
       if (plaza.id === id) {
         plaza.estado = plaza.estado === "libre" ? "ocupado" : "libre";
       }
       return plaza;
     });
-    this.setState({ plazas });
+    setPlazas(updatedPlazas);
   };
 
-  render() {
-    const plazasDisponibles = this.state.plazas.filter(
-      (plaza) => plaza.estado === "libre"
-    );
-    const plazasOcupadas = this.state.plazas.filter(
-      (plaza) => plaza.estado === "ocupado"
-    );
+  const handleBloqueSelect = (bloque) => {
+    setBloqueSeleccionado(bloque);
+  };
 
-    return (
-      <>
-        <Navbar accion="iniciar sesion"/>
-        <div className="espacioPagina">
-          <ButtonBoxAdmin />
-<div className="espacioDetrabajo">
+  const bloques = [
+    ...new Set(
+      plazas
+        .filter((plaza) => plaza.estado === "libre")
+        .map((plaza) => plaza.bloque)
+    ),
+  ];
 
+  const plazasDisponibles = plazas.filter(
+    (plaza) =>
+      plaza.estado === "libre" &&
+      (bloqueSeleccionado === "" || plaza.bloque === bloqueSeleccionado)
+  );
 
-          <div className=".con">
-            <h1 className="p"></h1>
+  const plazasOcupadas = plazas.filter(
+    (plaza) =>
+      plaza.estado === "ocupado" &&
+      (bloqueSeleccionado === "" || plaza.bloque === bloqueSeleccionado)
+  );
+
+  return (
+    <>
+      <Navbar accion="iniciar sesion" />
+      <div className="espacioPagina">
+        <ButtonBoxAdmin />
+        <div className="espacioDeTrabajo">
+        <div className='padre'> 
+         
+        <nav className='cabezeraParqueo'>
+                        <h2 id='tituloParqueos'>
+                            sitios
+                        </h2>
+                        <button 
+                            className='botonInicioSesion' 
+                            id='botonRegistrarParqueo'
+                            onClick={()=>navigate('/registrarSitio')}
+                        >
+                            <h4>Registrar sitio</h4>
+                        </button>
+                        <select
+              value={bloqueSeleccionado}
+              onChange={(e) => handleBloqueSelect(e.target.value)}
+              className="select-bloque"
+            >
+              <option value="">selecione Bloques</option>
+              {bloques.map((bloque) => (
+                <option key={bloque} value={bloque}>
+                  Bloque {bloque}
+                </option>
+              ))}
+            </select>
+
+            </nav>
+            <div className="parqueo">
+        {bloqueSeleccionado !==""&& (
+          <div className="plazas-disponibles">
+            {plazasDisponibles.length > 0 ? (
+              <PlazasDisponibles
+                plazas={plazasDisponibles}
+                handleClick={handleClick}
+                bloqueSeleccionado={bloqueSeleccionado}
+              />
+            ) : (
+              <p>No hay plazas disponibles en este bloque.</p>
+            )}
           </div>
-          <div
-            className=".containers"
-            id="b"
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <Link to="/registrarSitio" style={{ textDecoration: "none" }}>
-              <button className="button">registro de sitios</button>
-            </Link>
-          </div>
-          <div className=".con">
-            <h1 className="p"></h1>
-          </div>
-
-          <div className="parqueo">
-            <PlazasDisponibles 
-              plazas={plazasDisponibles}
-              handleClick={this.handleClick}
-            />
-            <PlazasOcupadas
+        )}
+        {bloqueSeleccionado !==""&&(
+            <div className="plaza-ocupadas">
+            
+           <PlazasOcupadas
               plazas={plazasOcupadas}
-              handleClick={this.handleClick}
+              handleClick={handleClick}
+              bloqueSeleccionado={bloqueSeleccionado}
             />
-          </div>
+            </div>
+        )
+        
+        }
+         
+            
           </div>
         </div>
-      </>
-    );
-  }
-}
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Parqueo;
+
