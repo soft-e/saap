@@ -16,39 +16,47 @@
 }
 .contenedorFooder{
   padding-top: 18px;
-  justify-content: center;
   display: flex;
+  padding-left: 1%;
 }
 .contenedorFooder h3{
-  color: rgba(195, 207, 34, 0.888);
+  color:#debc40;
+}
+.contenedorDeIconosFooder{
+  margin-left: 16%;
+  display: flex;
+  flex-direction:row;
 }
 #a{
   margin-left: 10px;
 }
 .facebook{
-  color:  #385898;
+  /*color:  #385898;*/
+  color:#debc40;
 }
 .whatsapp{
-  color: #075e54;
+  /*color: #075e54;*/
+  color:#debc40;
 }
 .gmail{
-  color: rgb(207, 34, 34);
+  /*color: rgb(207, 34, 34);*/
+  color:#debc40;
 }
 .facebook:hover{
   font-size: 20px;
-  color:  #385898;
+  color:  #debc40;
   /*transform: translateY(-3px);*/
   text-decoration:solid;
 }
 .whatsapp:hover{
   font-size: 20px;
-  color: #075e54;
+  color: #debc40;
   /*transform: translateY(-3px);*/
   text-decoration:solid;
 }
 .gmail:hover{
   font-size: 20px;
-  color: rgb(207, 34, 34);
+  color: #debc40;
   /*transform: translateY(-3px);*/
   text-decoration:solid;
 }
