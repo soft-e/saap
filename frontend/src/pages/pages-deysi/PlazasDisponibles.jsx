@@ -3,13 +3,15 @@ import '../../assets/css/css-deysi/plazasDisponibles.css';
 
 class PlazasDisponibles extends React.Component {
   render() {
+    // eslint-disable-next-line react/prop-types
     const { plazas, handleClick, bloqueSeleccionado } = this.props;
 
-    // Filtrar las plazas por bloque seleccionado
+    // Filtrar las plazas por bloque seleccionado y estado (ocupado o libre)
     const plazasFiltradas =
       bloqueSeleccionado === ''
         ? plazas
-        : plazas.filter((plaza) => plaza.bloque === bloqueSeleccionado);
+        // eslint-disable-next-line react/prop-types
+        : plazas.filter((plaza) => plaza.bloque === bloqueSeleccionado && plaza.estado === 'libre');
 
     // Obtener el texto del encabezado h2 con el número de bloque
     const encabezadoH2 =
@@ -20,11 +22,8 @@ class PlazasDisponibles extends React.Component {
     return (
       <div>
         <h2 className='tituloDisponible'>
-            <span className='tituloTexto'> {encabezadoH2}</span>
-        
+          <span className='tituloTexto'>{encabezadoH2}</span>
         </h2>
-
-      
 
         <div className="plazas-disponibles">
           {plazasFiltradas.map((plaza) => (

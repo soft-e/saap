@@ -10,10 +10,11 @@ import Navbar from "../../components/Navbar";
 import PlazasOcupadas from "./PlazasOcupadas";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import PlazasDisponibles from "./PlazasDisponibles";
+import {URL_API} from '../../services/EndPoint'
 
 import { useNavigate } from "react-router-dom";
 
-const endPoint = "http://localhost:8000/api";
+//const endPoint = "http://localhost:8000/api";
 
 const Parqueo = () => {
   const [plazas, setPlazas] = useState([]);
@@ -26,7 +27,7 @@ const Parqueo = () => {
   }, []);
 
   const fetchPlazas = () => {
-    axios.get(`${endPoint}/plazas`).then((response) => {
+    axios.get(`${URL_API}/plazas`).then((response) => {
       setPlazas(response.data);
     });
   };
@@ -48,11 +49,10 @@ const Parqueo = () => {
   const bloques = [
     ...new Set(
       plazas
-        .filter((plaza) => plaza.estado === "libre")
+        .filter((plaza) => plaza.estado === "libre" || plaza.estado === "ocupado")
         .map((plaza) => plaza.bloque)
     ),
   ];
-
   const plazasDisponibles = plazas.filter(
     (plaza) =>
       plaza.estado === "libre" &&
@@ -99,7 +99,7 @@ const Parqueo = () => {
 
             </nav>
             <div className="parqueo">
-        {bloqueSeleccionado !==""&& (
+        {bloqueSeleccionado !==""&&  (
           <div className="plazas-disponibles">
             {plazasDisponibles.length > 0 ? (
               <PlazasDisponibles
@@ -133,6 +133,7 @@ const Parqueo = () => {
     </>
   );
 };
+
 
 export default Parqueo;
 

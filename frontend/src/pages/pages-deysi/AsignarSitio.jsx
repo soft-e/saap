@@ -6,6 +6,8 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import "../../assets/css/css-deysi/asignarSitio.css";
 import { useParams } from "react-router-dom";
+
+import {URL_API} from '../../services/EndPoint'
 function AsignarSitio() {
 const [bloques, setBloques] = useState([]);
 
@@ -31,7 +33,7 @@ const [bloques, setBloques] = useState([]);
 
   const obtenerBloques = () => {
     axios
-      .get("http://localhost:8000/api/plazas/obtener-bloques")
+      .get(`${URL_API}/plazas/obtener-bloques`)
       .then((response) => {
         const bloques = response.data;
         setBloques(bloques);
@@ -68,7 +70,7 @@ const [bloques, setBloques] = useState([]);
 
   const obtenerPrimerSitioLibre = (bloque) => {
     axios
-      .get(`http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}`)
+      .get(`${URL_API}/plazas/primer-sitio-libre/${bloque}`)
       .then((response) => {
         const primerSitioLibre = response.data;
         console.log(primerSitioLibre);
@@ -100,7 +102,7 @@ const [bloques, setBloques] = useState([]);
     //finaliza la asignacion y actualiza el estado del sitio
 
     axios
-      .post("http://localhost:8000/api/contrato", {
+      .post(`${URL_API}/contrato`, {
         // bloque_id: selectedBloque,//mm datos no utilizado
         sitio_id: selectedSitio,
         bloque: selectedBloque,
@@ -127,6 +129,7 @@ const [bloques, setBloques] = useState([]);
     event.preventDefault();
     setSelectedBloque("");
     setSelectedSitio("");
+    navigate("/listardocentes");
   };
 
   return (
