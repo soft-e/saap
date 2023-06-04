@@ -1,36 +1,41 @@
 /* eslint-disable react/prop-types */
 
+import React from 'react';
 import '../../assets/css/css-deysi/plazasOcupadas.css';
-// eslint-disable-next-line react/prop-types
-const PlazasOcupadas = ({ plazas, handleClick }) => {
 
+class PlazasOcupadas extends React.Component {
+  render() {
+    const { plazas, handleClick, bloqueSeleccionado } = this.props;
 
-  return (
+    // Filtrar las plazas ocupadas por bloque seleccionado
+    const plazasOcupadasFiltradas =
+      bloqueSeleccionado === ''
+        ? plazas
+        : plazas.filter((plaza) => plaza.bloque === bloqueSeleccionado);
 
-    <div>
+    // Obtener el texto del encabezado h2 con el número de bloque
+    const encabezadoH2 =
+      bloqueSeleccionado === ''
+        ? 'Plazas Ocupadas'
+        : `Plazas Ocupadas (Bloque ${bloqueSeleccionado})`;
 
-
-    <h2>Plazas Ocupadas</h2>
-    
-    <div className="plazas-ocupadas" >
-    
- {plazas.map((plaza) => (
-   <div
-     key={plaza.id}
-     className={`plaza-ocupada ${plaza.estado ? 'ocupado' : ''}`}
-     onClick={() => handleClick(plaza.id)}
-
-   >
-    <h3 >  {plaza.id} </h3>
-    
-   
-   </div>
-     
- ))}
-</div>
-
-</div>
-  );
-};
+    return (
+      <div>
+        <h2>{encabezadoH2}</h2>
+        <div className="plazas-ocupadas">
+          {plazasOcupadasFiltradas.map((plaza) => (
+            <div
+              key={plaza.id}
+              className="plaza-ocupada"
+              onClick={() => handleClick(plaza.id)}
+            >
+              <h3>{plaza.numero}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default PlazasOcupadas;
