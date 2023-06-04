@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PersonaController;
 use App\Http\Controllers\Api\AdministradorController;
 use App\Http\Controllers\Api\CargoController;
+
+use App\Http\Controllers\Api\ContratoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\Api\VehiculoController;
@@ -13,7 +15,8 @@ use App\Http\Controllers\Api\HorarioAtencionController;
 use App\Http\Controllers\Api\DocenteController;
 use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
-use App\Http\Controllers\Api\SitioClienteController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +55,17 @@ Route::resource('mensajes', MensajeController::class);
 
 //Route::resource('tarifa', TarifaController::class);
 
-Route::resource('plazas', PlazaController::class);
+//Route::resource('plazas', PlazaController::class);
 
-Route::resource('sitio_clientes', SitioClienteController::class);
+
+Route::resource('contrato',ContratoController::class);
+
+
+
 Route::resource('atencion', HorarioAtencionController::class);
+Route::prefix('plazas')->group(function(){
+Route::resource('/', PlazaController::class );
+Route::get('primer-sitio-libre/{bloque}',[PlazaController::class, 'obtenerPrimerSitioLibre']);
+Route::get('obtener-bloques',[PlazaController::class, 'obtenerBloques']);
+});
+
