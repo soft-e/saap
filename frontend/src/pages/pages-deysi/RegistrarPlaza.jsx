@@ -3,13 +3,10 @@ import { useState, useEffect } from "react";
 import "../../assets/css/css-deysi/registrarPlaza.css";
 import "../../assets/css/css-eriel/RegistroParqueo.css";
 import "../../assets/css/templatePage.css";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 
-import {URL_API} from '../../services/EndPoint'
-
-//const endPoint = "http://localhost:8000/api";
+const endPoint = "http://localhost:8000/api";
 
 
 function RegistrarPlaza() {
@@ -18,7 +15,7 @@ function RegistrarPlaza() {
   const [plazas, setPlazas] = useState({});
   const [numero, setNumero] = useState(1);
   const [sitios,setSitios] = useState(); 
-  const navigate = useNavigate();
+
   useEffect(() => {
     obtenerBloques();
 
@@ -27,7 +24,7 @@ function RegistrarPlaza() {
 
   const obtenerBloques = async () => {
     try {
-      const response = await axios.get(`${URL_API}/parqueos`);
+      const response = await axios.get(`${endPoint}/parqueos`);
       const data = response.data;
       const bloquesUnicos = [
         ...new Set(data.map((item) => item.nombre_bloque)),
@@ -36,7 +33,7 @@ function RegistrarPlaza() {
      
       setBloques(bloquesUnicos);
       inicializarPlazas(bloquesUnicos);
-      const plaza = await axios.get(`${URL_API}/plazas`);
+      const plaza = await axios.get(`${endPoint}/plazas`);
       const dataPlazas = plaza.data;
       console.log(dataPlazas.length+1);
       setSitios(dataPlazas);
@@ -45,7 +42,6 @@ function RegistrarPlaza() {
       console.log("Ocurrió un error al obtener los bloques:", error);
     }
   };
-
 
 
   const inicializarPlazas = (bloques) => {
@@ -60,7 +56,7 @@ function RegistrarPlaza() {
     e.preventDefault();
     try {
       console.log(numero);
-      await axios.post(`${URL_API}/plazas`, {
+      await axios.post(`${endPoint}/plazas`, {
         numero: numero,
         estado: "libre",
         bloque: bloque,
@@ -92,13 +88,11 @@ function RegistrarPlaza() {
      setNumero(result.length+1);
 
   };
-  
 
   
 
   const cancelarRegistro = () => {
     setBloque("");
-    navigate("/sitios");
   };
 
    

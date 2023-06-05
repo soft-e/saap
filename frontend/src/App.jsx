@@ -8,7 +8,6 @@ import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal"
 import ListarDocentes from "./pages/pages-jose/ListarDocentes"
-import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje"
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -26,31 +25,37 @@ import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider
 import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
 import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
 import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
+import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
+import {PersonaContextProvider} from "./context/context-rodrigo/PersonaProvider"
 import VerQuejas from "./pages/pages-jhonatan/VerQuejas";
 import VerContenidoQueja from "./pages/pages-jhonatan/VerContenidoQueja";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
-import FormularioResponderQueja from "./pages/pages-deysi/FormularioResponderQueja";
+import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
+import { SessionContext } from "./context/context-rodrigo/SessionContext";
+import { Component, useContext } from "react";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
 function App() {
-  //const [count, setCount] = useState(0)
-  //logout="Cerrar Sesion";
-  return (
-    <div id="mainheader">
+  
+return (
+      <div id="mainheader">
+      <SessionContextProvider>
+      <EmpleadoContextProvider>
+      <PersonaContextProvider>
       <AtencionContextProvider>
       <TarifaContextProvider>
       <Routes>
         <Route path="/" element={<PrincipalPage/>}/>
         <Route path="/login" element={<LoginPage/>} />
-        <Route path="/admin" element={<AdminPage/>}/>
+        <privateRoute path="/admin" component={<AdminPage/>}/>
+        
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
         <Route path="/listardocentes" element={<ListarDocentes/>}/>
-        <Route path="/registrarmensaje" element={<RegistrarMensaje/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
@@ -75,15 +80,32 @@ function App() {
        
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-     
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
-        <Route path="/responderquejas" element={<FormularioResponderQueja/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
+      </PersonaContextProvider>
+      </EmpleadoContextProvider>
+      </SessionContextProvider>
+      
       <Footer/>
     </div>
   );
+}
+const privateRoute = ({component:Component,...rest})=>{
+  const {isLoggedIn}= useContext(SessionContext);
+  return(
+    <Route
+      {...rest}
+      render={(props)=>
+        isLoggedIn?(
+          <Component{...props}/>
+          ):(
+            <Redirect to="/"/>
+            )
+      }
+    ></Route>
+  )
 }
 
 export default App;
