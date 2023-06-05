@@ -47,6 +47,9 @@ const CardDocentes = () => {
     }
 
     return <div className="contenedorListarDocentes_j">
+        <div>
+            <h2>Lista de los Docentes</h2>
+        </div>
         <div className="divBuscar_j" >
             <input
                 className="inputBuscar_j"
