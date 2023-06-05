@@ -17,7 +17,8 @@ class ContratoController extends Controller
      */
     public function index()
     {
-        //
+        $contrato = Contrato::get();
+        return response()->json($contrato);
     }
 
     /**
@@ -66,7 +67,12 @@ class ContratoController extends Controller
      */
     public function show($id)
     {
-        //
+        $contrato = Contrato::find($id);
+        if (!$contrato) {
+            return response()->json(['message' => 'contrato no encontrado'], 404);
+        }
+
+        return response()->json($contrato);
     }
 
     /**

@@ -3,13 +3,14 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../assets/css/css-jose/listarDocentes.css';
 import { useNavigate } from "react-router-dom";
-import { URL_API } from '../../services/EndPoint'
+import { URL_API } from "../../services/EndPoint"
 
-const endPoint = URL_API+'/docentes';
+const endPointDocentes = URL_API+'/docentes';
+const endPointContrato = URL_API+'/contrato';
 
-const CardDocentes = () => {
+const CardContratos = () => {
     const navigate = useNavigate();
-
+    const [contratos, setContratos] = useState ( [] )
     const [docentes, setDocentes] = useState( [] )
     const [tableDocentes, setTableDocentes] = useState( [] )
     const [busqueda, setBusqueda] = useState('')
@@ -17,12 +18,19 @@ const CardDocentes = () => {
 
     useEffect ( () => {
         getAllDocentes();
+        getAllContratos();
     }, []);
 
     const getAllDocentes = async () => {
-        const response = await axios.get(endPoint);
+        const response = await axios.get(endPointDocentes);
         setDocentes(response.data);
         setTableDocentes(response.data)
+    }
+
+    const getAllContratos = async () => {
+        const response = await axios.get(endPointContrato);
+        setContratos(response.data);
+        console.log(contratos);
     }
 
     const handleChange = (e) => {
@@ -48,14 +56,11 @@ const CardDocentes = () => {
     }
 
     return <div className="contenedorListarDocentes_j">
-        <div>
-            <h2>Lista de los Docentes</h2>
-        </div>
         <div className="divBuscar_j" >
             <input
                 className="inputBuscar_j"
                 value={ busqueda }
-                placeholder="ingresea nombre o numero de carnet"
+                placeholder="buscar contratos por nombre"
                 onChange={ handleChange } 
             />
         </div>
@@ -64,24 +69,23 @@ const CardDocentes = () => {
                 <thead className="thead_j">
                     <tr>
                         <th className="th_j">Nombre</th>
-                        <th className="th_j">Apellido Materno</th>
-                        <th className="th_j">Apellido Materno</th>
-                        <th className="th_j">Numero de Carnet</th>
+                        <th className="th_j">Apellidos</th>
+                        <th className="th_j">Sitio</th>
+                        <th className="th_j">Bloque</th>
                         <th className="th_j"> </th>
                     </tr>
                 </thead>
                 <tbody className="tbody_j">
-                    { docentes.map((docente) => (
-                        <tr className="tr_j" key={docente.id}>
-                            <td className="td_j">{ docente.persona.nombre }</td>
-                            <td className="td_j">{ docente.persona.apellido_paterno }</td>
-                            <td className="td_j">{ docente.persona.apellido_materno }</td>
-                            <td className="td_j">{ docente.persona.ci }</td>
+                    { contratos.map((contrato) => (
+                        <tr className="tr_j" key={contrato.id}>
+                            <td className="td_j">{ contrato.docente_id }</td>
+                            <td className="td_j">poner apellido aqui</td>
+                            <td className="td_j">{ contrato.sitio_id }</td>
+                            <td className="td_j">{ contrato.bloque }</td>
                             <td>
                                 <Link 
                                     className="stylesButton_j"
-                                    to={`/registrovehiculo/${docente.id}`}
-                                >asignar sitio</Link>
+                                >ver</Link>
                             </td> 
                         </tr>
                     ))}
@@ -91,4 +95,4 @@ const CardDocentes = () => {
     </div>
 }
 
-export default CardDocentes;
+export default CardContratos;
