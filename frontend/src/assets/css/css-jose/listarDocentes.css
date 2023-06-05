@@ -20,6 +20,74 @@
     border-radius:30px;
 }
 
-.tableBody_j{
+.contenedorTabla_j{
+    background: rgba(255, 255, 255, 0.637);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(251, 181, 0, 0.69);
+    color: black;
+    overflow: hidden;
+    overflow: auto;
+}
+
+.table_j{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.thead_j{
+    width: 100%;
+    background: rgb(236, 185, 53);
+    position: sticky;
+    top: 0;
+}
+
+.tbody_j{
+    overflow-y: auto;
+}
+
+.th_j{
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+.td_j{
+    padding: 15px;
+}
+
+.tr_j{
+    cursor: pointer;;
+}
+
+.tr_j:hover{
+    background: rgba(255, 255, 255, 0.637);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(251, 181, 0, 0.69);
+    color: black;
+}
+
+.stylesButton_j{
     display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    background-color:#debc40;
+    border-width: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 16px;
+}
+
+.stylesButton_j:hover{
+    width: 90%;
+    background-color:#c49e18;
 }

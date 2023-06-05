@@ -33,6 +33,11 @@ export function FormularioRegistroPersonas() {
         });
         navigate('/personal');
     }
+
+
+    function handleClick (){
+        navigate('/personal')
+    }
     
     return(
         <div className='cardRegistroPersonal_j'>
@@ -132,11 +137,18 @@ export function FormularioRegistroPersonas() {
                         onChange={ (e) => setPassword(e.target.value) }
                         />
                     </div>
+                    <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
                         <button  className='stylesButton_j' type="submit">
                             Guardar
                         </button>
                     </div>
+                    <div className="espacioBoton_j">
+                        <button className='stylesButton_j' onClick={ handleClick }>
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
                 </form>
         </div>
     );

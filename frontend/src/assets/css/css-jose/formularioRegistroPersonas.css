@@ -33,27 +33,31 @@
     font-size:medium;
 }
 
-
-.espacioBoton_j{
-    width: auto;
-    padding: 10px 0px;
-}
-
-.btn_j{
+.espacioBotones_j{
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.stylesButton_j{
-    width: 80%;
+
+.espacioBoton_j{
+    width: 100%;
+    right: auto;
     display: flex;
     justify-content: center;
+    padding: 10px;
+}
+
+
+.stylesButton_j{
+    width: 100%;
+    display: flex;
     padding: 5px 32px;
     font-family: 'Poppins', sans-serif;
     background-color:#debc40;
     border-width: 1px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .stylesButton_j:hover{
