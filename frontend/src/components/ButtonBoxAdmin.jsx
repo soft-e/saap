@@ -33,6 +33,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/contratos")}
     >
       <FontAwesomeIcon icon={faFileContract} />
       Contratos

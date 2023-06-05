@@ -34,7 +34,7 @@ function VerQuejas() {
                                      
                     </nav>
                     <div className="contenedorDeMensajes">
-                        <h2>Quejas Redactados</h2>
+                        <h2>Quejas Redactadas</h2>
                         {quejas.map((queja,index)=>(
                           <div className="barraDeAbajo" key={queja.id} onClick={()=>navigate(`/vercontenidodequeja/${queja.id}`)}>
                                 <h3>{index+1}</h3>

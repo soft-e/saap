@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Plaza;
+use App\Models\Parqueo;
 
 class PlazaController extends Controller
 {
@@ -29,11 +30,13 @@ class PlazaController extends Controller
     public function store(Request $request)
     {
         $plaza = new plaza();
-        $plaza->nombre = $request->nombre;
+        $plaza->numero = $request->numero;
         $plaza->estado = $request->estado;
+        $plaza->bloque=$request->bloque;
         
         $plaza->save();
-        //
+        return response()->json(['message' => 'se registro correctamente'], 201);
+        
     }
 
     /**
@@ -87,6 +90,40 @@ class PlazaController extends Controller
         return response()->json($plaza);
     }
     */
+   
+   
+   /* public function obtenerPrimerSitioLibre(Request $request)
+    {
+        $bloque = $request->input('bloque');
+        
+        $primerSitioLibre = Plaza::where('bloque', $bloque)
+            ->where('estado', 'libre')
+            ->first();
+            
+        return response()->json($primerSitioLibre);
+    }*/
+    public function obtenerPrimerSitioLibre($bloque)
+{
+    // Obtener el primer sitio libre en el bloque
+    $primerSitioLibre = Plaza::where('bloque', $bloque)
+        ->where('estado', 'libre')
+        ->first();
+        
+    return response()->json($primerSitioLibre);
+}
 
+
+   
+    
+
+   
+    public function obtenerBloques()
+{
+    $bloques = Plaza::distinct('bloque')->pluck('bloque');
+
+    return response()->json($bloques);
+}
+    
+         
 }
 
