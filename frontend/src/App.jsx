@@ -25,26 +25,32 @@ import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider
 import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
 import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
 import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
-
+import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
+import {PersonaContextProvider} from "./context/context-rodrigo/PersonaProvider"
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
+import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
+import { SessionContext } from "./context/context-rodrigo/SessionContext";
+import { Component, useContext } from "react";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
 function App() {
-
+  
 return (
       <div id="mainheader">
       <SessionContextProvider>
+      <EmpleadoContextProvider>
       <PersonaContextProvider>
       <AtencionContextProvider>
       <TarifaContextProvider>
       <Routes>
         <Route path="/" element={<PrincipalPage/>}/>
         <Route path="/login" element={<LoginPage/>} />
-        <Route path="/admin" element={<AdminPage/>}/>
+        <privateRoute path="/admin" component={<AdminPage/>}/>
+        
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
         <Route path="/listardocentes" element={<ListarDocentes/>}/>
@@ -67,14 +73,32 @@ return (
         <Route path="/tarifa" element={<TarifaPage/>}/>   
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-     
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
+      </PersonaContextProvider>
+      </EmpleadoContextProvider>
+      </SessionContextProvider>
+      
       <Footer/>
     </div>
   );
+}
+const privateRoute = ({component:Component,...rest})=>{
+  const {isLoggedIn}= useContext(SessionContext);
+  return(
+    <Route
+      {...rest}
+      render={(props)=>
+        isLoggedIn?(
+          <Component{...props}/>
+          ):(
+            <Redirect to="/"/>
+            )
+      }
+    ></Route>
+  )
 }
 
 export default App;

@@ -18,14 +18,14 @@ function LoginPage() {
 
   useEffect(() => {
     loadPersonas();
-    setUsers(personas);
+    //setUsers(personas);
     loadEmpleados();
     console.log(personas);
   }, []);
 
 
   const searchUserbyEmailAndPassword = (correo, password) => {
-    const findedPerson = users.find((persona) => {
+    const findedPerson = personas.find((persona) => {
       return (persona.email === correo && persona.password === password);
     })
     console.log(findedPerson);
@@ -84,10 +84,6 @@ function LoginPage() {
     console.log(rol);
     return rol.nombre_cargo;
   }
-
-
-
-
   //console.log(personas);
   const navigate = useNavigate();
   return <>
