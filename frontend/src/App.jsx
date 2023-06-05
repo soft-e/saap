@@ -27,6 +27,8 @@ import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
 import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
 import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
 import {PersonaContextProvider} from "./context/context-rodrigo/PersonaProvider"
+import VerQuejas from "./pages/pages-jhonatan/VerQuejas";
+import VerContenidoQueja from "./pages/pages-jhonatan/VerContenidoQueja";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
@@ -69,8 +71,13 @@ return (
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/vermensajes" element={<VerMensajes/>}/>
-        <Route path="/vercontenidodemensaje" element={<VerContenidoMensaje/>}/> 
-        <Route path="/tarifa" element={<TarifaPage/>}/>   
+        <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
+        <Route path="/tarifa" element={<TarifaPage/>}/>
+        <Route path="/verquejas" element={<VerQuejas/>}/>
+        <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja/>}/>      
+      
+    
+       
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
