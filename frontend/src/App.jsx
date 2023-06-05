@@ -70,7 +70,6 @@ function App() {
                   <Route path="/tarifa" element={<TarifaPage />} />
                   <Route path="/tarifa/edit/:id" element={<TarifaForm />} />
                   <Route path="/tarifa/create" element={<TarifaFormCreate />} />
-                  <Route path="/contratos" element={<ContratosPage />} />
                   <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo />} />
                   <Route path="/parqueos" element={<Parqueos />} />
                   <Route path="/editarparqueos/:id" element={<EditarParqueo />} />
