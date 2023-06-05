@@ -20,7 +20,7 @@ function LoginPage() {
     loadPersonas();
     setUsers(personas);
     loadEmpleados();
-    //console.log(personas);
+    console.log(personas);
   }, []);
 
 
@@ -28,7 +28,7 @@ function LoginPage() {
     const findedPerson = users.find((persona) => {
       return (persona.email === correo && persona.password === password);
     })
-    //console.log(findedPerson);
+    console.log(findedPerson);
     //console.log(findedPerson);
     //if (findedPerson!==undefined) {
       
@@ -63,9 +63,12 @@ function LoginPage() {
       //console.log(usuario.id)
       const rol = searchUserRolByPersonId(usuario.id);
       console.log (rol);
-      if(rol==="administrador"){
-        navigate("/admin");
+      if(isLoggedIn){
+        if(rol==="administrador"){
+          navigate("/admin");
+        }
       }
+      
       
       
     }
