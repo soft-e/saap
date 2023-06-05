@@ -3,10 +3,13 @@ import { useState, useEffect } from "react";
 import "../../assets/css/css-deysi/registrarPlaza.css";
 import "../../assets/css/css-eriel/RegistroParqueo.css";
 import "../../assets/css/templatePage.css";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 
-const endPoint = "http://localhost:8000/api";
+import {URL_API} from '../../services/EndPoint'
+
+//const endPoint = "http://localhost:8000/api";
 
 
 function RegistrarPlaza() {
@@ -15,7 +18,7 @@ function RegistrarPlaza() {
   const [plazas, setPlazas] = useState({});
   const [numero, setNumero] = useState(1);
   const [sitios,setSitios] = useState(); 
-
+  const navigate = useNavigate();
   useEffect(() => {
     obtenerBloques();
 
@@ -24,7 +27,7 @@ function RegistrarPlaza() {
 
   const obtenerBloques = async () => {
     try {
-      const response = await axios.get(`${endPoint}/parqueos`);
+      const response = await axios.get(`${URL_API}/parqueos`);
       const data = response.data;
       const bloquesUnicos = [
         ...new Set(data.map((item) => item.nombre_bloque)),
@@ -33,7 +36,7 @@ function RegistrarPlaza() {
      
       setBloques(bloquesUnicos);
       inicializarPlazas(bloquesUnicos);
-      const plaza = await axios.get(`${endPoint}/plazas`);
+      const plaza = await axios.get(`${URL_API}/plazas`);
       const dataPlazas = plaza.data;
       console.log(dataPlazas.length+1);
       setSitios(dataPlazas);
@@ -57,7 +60,7 @@ function RegistrarPlaza() {
     e.preventDefault();
     try {
       console.log(numero);
-      await axios.post(`${endPoint}/plazas`, {
+      await axios.post(`${URL_API}/plazas`, {
         numero: numero,
         estado: "libre",
         bloque: bloque,
@@ -95,6 +98,7 @@ function RegistrarPlaza() {
 
   const cancelarRegistro = () => {
     setBloque("");
+    navigate("/sitios");
   };
 
    
