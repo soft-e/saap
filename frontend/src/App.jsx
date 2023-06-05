@@ -44,7 +44,7 @@ import { SessionContext } from "./context/context-rodrigo/SessionContext";
 const storedSession = localStorage.getItem('session');
 const initialSession = storedSession ? JSON.parse(storedSession):{isLoggedIn:false, user:null};
 function App() {
-  const{isLoggedIn} = useContext(SessionContext);
+  
   //const [count, setCount] = useState(0)
   //logout="Cerrar Sesion";
   return (
