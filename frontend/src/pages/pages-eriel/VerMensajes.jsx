@@ -23,6 +23,11 @@ function VerMensajes() {
           console.error('Error al obtener los datos de los empleados:', error);
         }
     }
+
+    function handleClick () {
+        navigate('/registrarmensaje');
+    }
+
     return<>
         <Navbar/>
         <div className="espacioPagina">
@@ -31,7 +36,10 @@ function VerMensajes() {
                 <div className="padreVerMensajes">
                     <nav className="menuVerMensajes">
                         <h2 className="tituloMenuDeMensajes">mensajes</h2>
-                        <button className="botonMenuDeMensajes">
+                        <button 
+                            className="botonMenuDeMensajes"
+                            onClick={ handleClick }
+                        >
                             Redactar Mensaje
                         </button>                
                     </nav>
