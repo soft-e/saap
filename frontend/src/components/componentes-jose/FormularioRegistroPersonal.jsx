@@ -4,8 +4,9 @@ import { Formik } from "formik";
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate}  from 'react-router-dom';
+import { URL_API } from "../../services/EndPoint"
 
-const endPoint='http://127.0.0.1:8000/api/registrarempleados';
+const endPoint= URL_API+'/registrarempleados';
 
 export function FormularioRegistroPersonas() {
 

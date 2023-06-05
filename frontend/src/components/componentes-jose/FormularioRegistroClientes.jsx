@@ -3,8 +3,9 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate}  from 'react-router-dom';
+import {URL_API} from '../../services/EndPoint'
 
-const endPoint='http://127.0.0.1:8000/api/';
+const endPoint= URL_API;
 
 export function FormularioRegistroClientes() {
 
