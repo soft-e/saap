@@ -71,6 +71,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={() =>navigate('/verquejas')}
     >
       <FontAwesomeIcon icon={faFaceTired} />
       Quejas

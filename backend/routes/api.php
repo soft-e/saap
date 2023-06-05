@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\DocenteController;
 use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
+use App\Http\Controllers\Api\QuejaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,4 @@ Route::resource('plazas', PlazaController::class);
 
 Route::resource('sitio_clientes', SitioClienteController::class);
 Route::resource('atencion', HorarioAtencionController::class);
+Route::resource('quejas', QuejaController::class);
