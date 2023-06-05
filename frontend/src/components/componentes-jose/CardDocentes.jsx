@@ -47,6 +47,9 @@ const CardDocentes = () => {
     }
 
     return <div className="contenedorListarDocentes_j">
+        <div>
+            <h2>Lista de los Docentes</h2>
+        </div>
         <div className="divBuscar_j" >
             <input
                 className="inputBuscar_j"
@@ -55,25 +58,29 @@ const CardDocentes = () => {
                 onChange={ handleChange } 
             />
         </div>
-        <div>
-            <table>
-                <thead>
+        <div className="contenedorTabla_j">
+            <table className="table_j" >
+                <thead className="thead_j">
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido Materno</th>
-                        <th>Apellido Materno</th>
-                        <th>Numero de Carnet</th>
+                        <th className="th_j">Nombre</th>
+                        <th className="th_j">Apellido Materno</th>
+                        <th className="th_j">Apellido Materno</th>
+                        <th className="th_j">Numero de Carnet</th>
+                        <th className="th_j"> </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="tbody_j">
                     { docentes.map((docente) => (
-                        <tr key={docente.id}>
-                            <td>{ docente.persona.nombre }</td>
-                            <td>{ docente.persona.apellido_paterno }</td>
-                            <td>{ docente.persona.apellido_materno }</td>
-                            <td>{ docente.persona.ci }</td>
+                        <tr className="tr_j" key={docente.id}>
+                            <td className="td_j">{ docente.persona.nombre }</td>
+                            <td className="td_j">{ docente.persona.apellido_paterno }</td>
+                            <td className="td_j">{ docente.persona.apellido_materno }</td>
+                            <td className="td_j">{ docente.persona.ci }</td>
                             <td>
-                                <Link to={`/registrovehiculo/${docente.id}`}>asignar sitio</Link>
+                                <Link 
+                                    className="stylesButton_j"
+                                    to={`/registrovehiculo/${docente.id}`}
+                                >asignar sitio</Link>
                             </td> 
                         </tr>
                     ))}
