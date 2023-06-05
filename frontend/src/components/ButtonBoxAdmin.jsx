@@ -37,7 +37,7 @@ function ButtonBoxAdmin(){
       
     </button>
     <button
-      className="hvr-shrink hvr-icon-forward"
+      className="hvr-fade hvr-icon-forward"
       onClick={()=>navigate("/contratos")}
     >
       <FontAwesomeIcon icon={faFileContract} />
@@ -84,7 +84,7 @@ function ButtonBoxAdmin(){
       </div>
     </button>
     <button
-      className="hvr-shrink hvr-icon-forward"
+      className="hvr-fade hvr-icon-forward"
       onClick={() =>navigate('/vermensajes')}
     >
       <FontAwesomeIcon icon={faEnvelope} />
@@ -96,7 +96,7 @@ function ButtonBoxAdmin(){
       </div>
     </button>
     <button
-      className="hvr-shrink hvr-icon-forward"
+      className="hvr-fade hvr-icon-forward"
       onClick={() =>navigate('/verquejas')}
     >
       <FontAwesomeIcon icon={faFaceTired} />

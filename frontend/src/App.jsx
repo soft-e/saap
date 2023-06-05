@@ -1,4 +1,4 @@
-import {Route,Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import PrincipalPage from './pages/PrincipalPage';
 //import Navbar from './components/Navbar';
 import LoginPage from "./pages/LoginPage";
@@ -26,7 +26,7 @@ import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
 import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
 import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
 import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
-import {PersonaContextProvider} from "./context/context-rodrigo/PersonaProvider"
+import { PersonaContextProvider } from "./context/context-rodrigo/PersonaProvider"
 import VerQuejas from "./pages/pages-jhonatan/VerQuejas";
 import VerContenidoQueja from "./pages/pages-jhonatan/VerContenidoQueja";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
@@ -34,78 +34,61 @@ import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
 import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
 import { SessionContext } from "./context/context-rodrigo/SessionContext";
-import { Component, useContext } from "react";
+import { Component, useContext, useEffect } from "react";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
 function App() {
   
-return (
-      <div id="mainheader">
+  
+  return (
+    <div id="mainheader">
       <SessionContextProvider>
-      <EmpleadoContextProvider>
-      <PersonaContextProvider>
-      <AtencionContextProvider>
-      <TarifaContextProvider>
-      <Routes>
-        <Route path="/" element={<PrincipalPage/>}/>
-        <Route path="/login" element={<LoginPage/>} />
-        <privateRoute path="/admin" component={<AdminPage/>}/>
-        
-        <Route path="/personal" element={<PersonalPage/>}/>
-        <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
-        <Route path="/listardocentes" element={<ListarDocentes/>}/>
-        <Route path="*" element={<NotFound/>}/>
-        <Route path="/template" element={<TemplatePage/>}/>
-        <Route path="/atencion" element={<AtencionPage/>}/>
-        <Route path="/atencion/new" element={<AtencionForm/>}/>
-        <Route path="/atencion/edit/:id" element={<AtencionForm/>}/>
-        <Route path="/registroparqueo" element={<RegistroParqueo/>}/>
-        <Route path="/registrovehiculo" element={<RegistroDTvehiculo/>}/> 
-        <Route path="/tarifa" element={<TarifaPage/>}/>
-        <Route path="/tarifa/edit/:id" element={<TarifaForm/>}/>
-        <Route path="/tarifa/create" element={<TarifaFormCreate/>}/>
-        <Route path="/contratos" element={<ContratosPage/>}/>     
-        <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo/>}/> 
-        <Route path="/parqueos" element={<Parqueos/>}/> 
-        <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
-        <Route path="/vermensajes" element={<VerMensajes/>}/>
-        <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
-        <Route path="/tarifa" element={<TarifaPage/>}/>
-        <Route path="/verquejas" element={<VerQuejas/>}/>
-        <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja/>}/>      
-      
-    
-       
-        <Route path="sitios" element={<Parqueo/>}/>
-        <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-        <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
-      </Routes>
-      </TarifaContextProvider>
-      </AtencionContextProvider>
-      </PersonaContextProvider>
-      </EmpleadoContextProvider>
+        <EmpleadoContextProvider>
+          <PersonaContextProvider>
+            <AtencionContextProvider>
+              <TarifaContextProvider>
+                <Routes>
+                  <Route path="/" element={<PrincipalPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/personal" element={<PersonalPage />} />
+                  <Route path="/personal/registrar" element={<RegistrarPersonal />} />
+                  <Route path="/listardocentes" element={<ListarDocentes />} />
+                  <Route path="*" element={<NotFound />} />
+                  <Route path="/template" element={<TemplatePage />} />
+                  <Route path="/atencion" element={<AtencionPage />} />
+                  <Route path="/atencion/new" element={<AtencionForm />} />
+                  <Route path="/atencion/edit/:id" element={<AtencionForm />} />
+                  <Route path="/registroparqueo" element={<RegistroParqueo />} />
+                  <Route path="/registrovehiculo" element={<RegistroDTvehiculo />} />
+                  <Route path="/tarifa" element={<TarifaPage />} />
+                  <Route path="/tarifa/edit/:id" element={<TarifaForm />} />
+                  <Route path="/tarifa/create" element={<TarifaFormCreate />} />
+                  <Route path="/contratos" element={<ContratosPage />} />
+                  <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo />} />
+                  <Route path="/parqueos" element={<Parqueos />} />
+                  <Route path="/editarparqueos/:id" element={<EditarParqueo />} />
+                  <Route path="/vermensajes" element={<VerMensajes />} />
+                  <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
+                  <Route path="/tarifa" element={<TarifaPage />} />
+                  <Route path="/verquejas" element={<VerQuejas />} />
+                  <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
+                  <Route path="sitios" element={<Parqueo />} />
+                  <Route path="/registrarSitio" element={<RegistrarPlaza />} />
+                  <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
+                </Routes>
+              </TarifaContextProvider>
+            </AtencionContextProvider>
+          </PersonaContextProvider>
+        </EmpleadoContextProvider>
       </SessionContextProvider>
-      
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }
-const privateRoute = ({component:Component,...rest})=>{
-  const {isLoggedIn}= useContext(SessionContext);
-  return(
-    <Route
-      {...rest}
-      render={(props)=>
-        isLoggedIn?(
-          <Component{...props}/>
-          ):(
-            <Redirect to="/"/>
-            )
-      }
-    ></Route>
-  )
-}
+
 
 export default App;

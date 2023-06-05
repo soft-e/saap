@@ -111,7 +111,7 @@ function LoginPage() {
           </label>
           <input
             value={correo}
-            type="text"
+            type="email"        
             id="inputText"
             placeholder="Escribe un correo"
             onChange={(e) => setCorreo(e.target.value)}
@@ -125,7 +125,7 @@ function LoginPage() {
           </label>
           <input
             value={password}
-            type="text"
+            type="password"
             id="inputText"
             placeholder="Escribe una contraseña"
             onChange={(e) => setPassword(e.target.value)}

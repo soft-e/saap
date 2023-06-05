@@ -5,6 +5,7 @@ import { useAtenciones } from "../../context/context-rodrigo/AtencionProvider";
 import { useEffect,useState } from "react";
 import { useNavigate,useParams } from "react-router-dom";
 import "../../assets/css/css-rodrigo/atencionForm.css"
+import "../../assets/css/css-rodrigo/hover.css"
 
 function AtencionForm(){
   const{getAtencion,updateAtencion,createAtencion}=useAtenciones();
@@ -57,7 +58,7 @@ useEffect(()=>{
         {
           ({handleChange,handleSubmit,values,isSubmitting})=>(
             <form
-              className="espacioFormAtencion"
+              className="espacioFormAtencion fondo"
               onSubmit={handleSubmit}
             >
               <h1
@@ -116,6 +117,7 @@ useEffect(()=>{
                 className="espacioBotonesAtencion"
               >
                 <button
+                className="hvr-fade"
                 type="submit"
                 disabled={isSubmitting}
               >
@@ -123,6 +125,7 @@ useEffect(()=>{
               </button>
                 
               <button
+                className="hvr-fade"
                 onClick={()=>navigate("/atencion")}
               >
                 Cancelar

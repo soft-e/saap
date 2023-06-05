@@ -35,7 +35,8 @@ function AtencionPage(){
             <h1>Horario de Atencion</h1>
             <button
               onClick={()=>navigate("/atencion/new")}
-              className="botonAtencion"
+              className="botonAtencion hvr-fade"
+
             >Registrar Horario de Atencion</button>
           </div>
           <div
