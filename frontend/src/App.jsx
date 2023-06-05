@@ -34,10 +34,11 @@ import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
 function App() {
-  //const [count, setCount] = useState(0)
-  //logout="Cerrar Sesion";
-  return (
-    <div id="mainheader">
+
+return (
+      <div id="mainheader">
+      <SessionContextProvider>
+      <PersonaContextProvider>
       <AtencionContextProvider>
       <TarifaContextProvider>
       <Routes>
