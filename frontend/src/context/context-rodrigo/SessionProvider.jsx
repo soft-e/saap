@@ -26,6 +26,7 @@ export const SessionContextProvider = ({children})=>{
   const login = (userData)=>{
     setLoggedIn(true);
     setUser(userData);
+    //console.log(user);
     localStorage.setItem('session',JSON.stringify({isLoggedIn:true,user:userData}));
   };
 

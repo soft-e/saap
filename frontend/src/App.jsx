@@ -35,6 +35,7 @@ import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
 import { PersonaContextProvider } from "./context/context-rodrigo/PersonaProvider";
+import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
 
 const storedSession = localStorage.getItem('session');
 const initialSession = storedSession ? JSON.parse(storedSession):{isLoggedIn:false, user:null};
@@ -44,6 +45,7 @@ function App() {
   return (
     <div id="mainheader">
       <SessionContextProvider>
+      <EmpleadoContextProvider>
       <PersonaContextProvider>
       <AtencionContextProvider>
       <TarifaContextProvider>
@@ -71,17 +73,14 @@ function App() {
         <Route path="/vermensajes" element={<VerMensajes/>}/>
         <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
         <Route path="/tarifa" element={<TarifaPage/>}/>   
-      
-    
-       
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
-     
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
       </PersonaContextProvider>
+      </EmpleadoContextProvider>
       </SessionContextProvider>
       <Footer/>
     </div>
