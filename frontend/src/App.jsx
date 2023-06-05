@@ -30,6 +30,7 @@ import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
 import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
+import FormularioResponderQueja from "./pages/pages-deysi/FormularioResponderQueja";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -76,6 +77,7 @@ function App() {
         <Route path="sitios" element={<Parqueo/>}/>
         <Route path="/registrarSitio" element={<RegistrarPlaza/>}/>
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
+        <Route path="/responderquejas" element={<FormularioResponderQueja/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>
