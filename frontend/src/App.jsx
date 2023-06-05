@@ -26,7 +26,8 @@ import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider
 import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
 import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
 import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
-
+import VerQuejas from "./pages/pages-jhonatan/VerQuejas";
+import VerContenidoQueja from "./pages/pages-jhonatan/VerContenidoQueja";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
@@ -66,7 +67,9 @@ function App() {
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
         <Route path="/vermensajes" element={<VerMensajes/>}/>
         <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje/>}/> 
-        <Route path="/tarifa" element={<TarifaPage/>}/>   
+        <Route path="/tarifa" element={<TarifaPage/>}/>
+        <Route path="/verquejas" element={<VerQuejas/>}/>
+        <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja/>}/>      
       
     
        

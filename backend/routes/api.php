@@ -15,6 +15,8 @@ use App\Http\Controllers\Api\HorarioAtencionController;
 use App\Http\Controllers\Api\DocenteController;
 use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
+use App\Http\Controllers\Api\SitioClienteController;
+use App\Http\Controllers\Api\QuejaController;
 
 
 
@@ -64,6 +66,7 @@ Route::resource('contrato',ContratoController::class);
 
 
 Route::resource('atencion', HorarioAtencionController::class);
+Route::resource('quejas', QuejaController::class);
 Route::prefix('plazas')->group(function(){
 Route::resource('/', PlazaController::class );
 Route::get('primer-sitio-libre/{bloque}',[PlazaController::class, 'obtenerPrimerSitioLibre']);

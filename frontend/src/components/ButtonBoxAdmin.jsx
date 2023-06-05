@@ -33,6 +33,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={()=>navigate("/contratos")}
     >
       <FontAwesomeIcon icon={faFileContract} />
       Contratos
@@ -71,6 +72,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-shrink"
+      onClick={() =>navigate('/verquejas')}
     >
       <FontAwesomeIcon icon={faFaceTired} />
       Quejas

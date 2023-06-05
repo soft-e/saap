@@ -13,6 +13,7 @@ return array(
     'App\\Http\\Controllers\\Api\\HorarioAtencionController' => $baseDir . '/app/Http/Controllers/Api/HorarioAtencionController.php',
     'App\\Http\\Controllers\\Api\\ParqueoController' => $baseDir . '/app/Http/Controllers/Api/ParqueoController.php',
     'App\\Http\\Controllers\\Api\\PersonaController' => $baseDir . '/app/Http/Controllers/Api/PersonaController.php',
+    'App\\Http\\Controllers\\Api\\PlazaController' => $baseDir . '/app/Http/Controllers/Api/PlazaController.php',
     'App\\Http\\Controllers\\Api\\SitioClienteController' => $baseDir . '/app/Http/Controllers/Api/SitioClienteController.php',
     'App\\Http\\Controllers\\Api\\TarifaController' => $baseDir . '/app/Http/Controllers/Api/TarifaController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
