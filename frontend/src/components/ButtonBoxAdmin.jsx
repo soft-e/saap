@@ -26,6 +26,7 @@ function ButtonBoxAdmin(){
   >
     <button
       className="hvr-fade hvr-icon-forward"
+      onClick={()=>navigate("/inicio")}
     >
       <FontAwesomeIcon icon={faHouse}/>
       Inicio

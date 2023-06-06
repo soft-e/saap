@@ -68,9 +68,6 @@ function LoginPage() {
           navigate("/admin");
         }
       }
-      
-      
-      
     }
     //console.log(findedPerson);
     //console.log(aux);
@@ -89,7 +86,6 @@ function LoginPage() {
   return <>
     <Navbar accion="dashboard" />
     <div className="divFormulario">
-
     </div>
     <div id="titulo">
       <h1>
@@ -138,7 +134,6 @@ function LoginPage() {
             onClick={
               () => {
                 onPressedLoginButton(event,correo, password)
-                
               }
             }
           >

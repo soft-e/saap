@@ -35,13 +35,14 @@ import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
 import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
 import { SessionContext } from "./context/context-rodrigo/SessionContext";
 import { Component, useContext, useEffect } from "react";
+import InicioPage from "./pages/pages-rodrigo/InicioPage";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
 
 function App() {
-  
-  
+
+
   return (
     <div id="mainheader">
       <SessionContextProvider>
@@ -78,6 +79,7 @@ function App() {
                   <Route path="sitios" element={<Parqueo />} />
                   <Route path="/registrarSitio" element={<RegistrarPlaza />} />
                   <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
+                  <Route path="/inicio" element={<InicioPage/>}/>
                 </Routes>
               </TarifaContextProvider>
             </AtencionContextProvider>
