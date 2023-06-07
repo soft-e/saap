@@ -1,0 +1,83 @@
+.tituloPagina{
+  border-bottom: 2px solid rgba(251, 181, 0, 0.69);
+}
+.espacioReportes{
+  width: 100%;
+  height: 100%;
+}
+
+.espacioSelects{
+  padding-top: 0%;
+  padding-bottom: 0%;
+  display: flex;
+  align-items: center;
+  border-bottom:2px solid rgba(251, 181, 0, 0.69);
+}
+.espacioReportes h2{
+  padding-right: 5%;
+  
+}
+
+.espacioReportes select{
+  margin-right: 3%;
+  height: fit-content;
+  display: flex;
+  
+}
+
+.espacioCardsReportes{
+  height: 89%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.espacioCardsReportes h3{
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+}
+
+.cardRecaudaciones{
+  height: 30%;
+  width: 30%;
+  background: rgba(0, 0, 0, 0.808);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(251, 181, 0, 0.69);
+}
+
+.cardRecaudaciones:hover{
+	border: 2px solid #ffe449;
+  box-shadow: 0 4px 30px rgb(222, 188, 64,0.412);
+  background: rgba(0, 0, 0, 0.651);
+}
+
+.cardClientesEnMora{
+  height: 30%;
+  width: 30%;
+  background: rgba(0, 0, 0, 0.808);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(251, 181, 0, 0.69);
+}
+.cardClientesEnMora:hover{
+	border: 2px solid #ffe449;
+  box-shadow: 0 4px 30px rgb(222, 188, 64,0.412);
+  background: rgba(0, 0, 0, 0.651);
+}
+.cardEspaciosDisponibles{
+  height: 30%;
+  width: 30%;
+  background: rgba(0, 0, 0, 0.808);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(251, 181, 0, 0.69);
+}
+.cardEspaciosDisponibles:hover{
+	border: 2px solid #ffe449;
+  box-shadow: 0 4px 30px rgb(222, 188, 64,0.412);
+  background: rgba(0, 0, 0, 0.651);
+}
