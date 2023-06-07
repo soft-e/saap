@@ -38,6 +38,7 @@ import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvi
 import { SessionContext } from "./context/context-rodrigo/SessionContext";
 import { Component, useContext, useEffect } from "react";
 import InicioPage from "./pages/pages-rodrigo/InicioPage";
+import ReportesPage from "./pages/pages-rodrigo/ReportesPage";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -83,6 +84,7 @@ function App() {
                   <Route path="/registrarSitio" element={<RegistrarPlaza />} />
                   <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
                   <Route path="/inicio" element={<InicioPage/>}/>
+                  <Route path="/reportes" element={<ReportesPage/>}/>
                 </Routes>
               </TarifaContextProvider>
             </AtencionContextProvider>

@@ -75,6 +75,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-fade hvr-icon-forward"
+      onClick={()=>navigate("/reportes")}
     >
       <FontAwesomeIcon icon={faChartPie} />
       Reportes
