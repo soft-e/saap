@@ -1,10 +1,10 @@
-import "../../assets/css/css-eriel/RegistroDTvehiculo.css"
-import "../../assets/css/templatePage.css";
-import Navbar from "../../components/Navbar";
-import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
+import "../../../assets/css/css-eriel/RegistroDTvehiculo.css"
+import "../../../assets/css/templatePage.css";
+import Navbar from "../../../components/Navbar";
+import ButtonBoxAdmin from "../../../components/ButtonBoxAdmin";
 import { useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {URL_API} from '../../services/EndPoint';
+import {URL_API} from '../../../services/EndPoint';
 import axios from 'axios';
 
 function RegistroDTvehiculo() {

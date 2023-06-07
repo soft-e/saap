@@ -1,9 +1,9 @@
-import '../../assets/css/css-eriel/EditarParqueo.css'
+import '../../../assets/css/css-eriel/EditarParqueo.css';
 import Parqueos from './Parqueos'
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
-import {URL_API} from '../../services/EndPoint'
+import {URL_API} from '../../../services/EndPoint'
 
 function EditarParqueo() {
     const [nombre_bloque,setnombre]=useState('');

@@ -15,12 +15,12 @@ import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
 import AtencionPage from "./pages/pages-rodrigo/AtencionPage";
 import './App.css'
-import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
-import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
-import Parqueos from "./pages/pages-eriel/Parqueos";
-import EditarParqueo from "./pages/pages-eriel/EditarParqueo";
-import VerMensajes from "./pages/pages-eriel/VerMensajes";
-import VerContenidoMensaje from "./pages/pages-eriel/VerContenidoMensaje";
+import RegistroParqueo from "./pages/pages-eriel/parqueos/RegistroParqueo";
+import RegistroDTvehiculo from "./pages/pages-eriel/vehiculo/RegistroDTvehiculo";
+import Parqueos from "./pages/pages-eriel/parqueos/Parqueos";
+import EditarParqueo from "./pages/pages-eriel/parqueos/EditarParqueo";
+import VerMensajes from "./pages/pages-eriel/mensajes/VerMensajes";
+import VerContenidoMensaje from "./pages/pages-eriel/mensajes/VerContenidoMensaje";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider";
