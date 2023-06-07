@@ -30,6 +30,7 @@ function RegistrarPlaza() {
         ...new Set(data.map((item) => item.nombre_bloque)),
       ];
      
+
      
       setBloques(bloquesUnicos);
       inicializarPlazas(bloquesUnicos);
@@ -52,7 +53,7 @@ function RegistrarPlaza() {
     setPlazas(plazasInicializadas);
   };
 
-  const guardarPlaza = async (e) => {
+ const guardarPlaza = async (e) => {
     e.preventDefault();
     try {
       console.log(numero);
@@ -76,6 +77,46 @@ function RegistrarPlaza() {
       console.log("Ocurrió un error al registrar:", error);
     }
   };
+
+
+  // ...
+
+  /*const guardarPlaza = async (e) => {
+    e.preventDefault();
+    try {
+      const parqueo = await axios.get(`${endPoint}/parqueos/${bloque}`);
+      const cantidadSitios = parqueo.data.cantidad_sitios;
+  
+      const nuevosSitios = [];
+      for (let i = 0; i < cantidadSitios; i++) {
+        nuevosSitios.push({
+          numero: numero + i,
+          estado: "libre",
+          bloque: bloque,
+        });
+      }
+  
+      await axios.post(`${endPoint}/plazas/batch`, nuevosSitios);
+  
+      setPlazas((prevPlazas) => {
+        return {
+          ...prevPlazas,
+          [bloque]: prevPlazas[bloque] + cantidadSitios,
+        };
+      });
+  
+      setBloque("");
+      obtenerBloques();
+      alert("¡Se registraron los sitios con éxito!");
+    } catch (error) {
+      console.log("Ocurrió un error al registrar los sitios:", error);
+    }
+  };
+  */
+   
+
+// ...
+
 
   const seleccionarBloque = (e) => {
     setBloque(e.target.value);
