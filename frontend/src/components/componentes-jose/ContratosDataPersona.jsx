@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../assets/css/css-jose/listarDocentes.css';
@@ -10,21 +10,12 @@ const ContratosDataPersona = (props) => {
     const [docente, setDocente] = useState( [] );
     const id = props.id_docente;
     console.log(props);
-    useEffect ( () => {
-        console.log(id);
-        getDocentes();
-    }, []);
 
     const getDocentes = async () => {
         const response = await axios.get(endPoint+"/"+id);
         setDocente(response.data);
     }
 
-    const getNombre = async () => {
-        const response = await axios.get(endPoint+"/"+id);
-        setDocente(response.data);
-        
-    }
 
     return <div className="contenedorListarDocentes_j">
         
