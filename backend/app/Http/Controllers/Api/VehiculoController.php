@@ -15,7 +15,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculo = Vehiculo::get();
+        return response()->json($vehiculo);
     }
 
     /**
@@ -43,7 +44,12 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehiculo = Vehiculo::find($id);
+        if (!$vehiculo) {
+            return response()->json(['message' => 'vehiculo no encontrado'], 404);
+        }
+
+        return response()->json($contrato);
     }
 
     /**
