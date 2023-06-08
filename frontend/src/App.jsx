@@ -7,6 +7,7 @@ import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal";
+import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje"
 import ListarDocentes from "./pages/pages-jose/ListarDocentes";
 import Contrato from "./pages/pages-jose/Contratos";
 import ContratosVerIndependiente from "./pages/pages-jose/ContratosVerIndependiente";
@@ -52,6 +53,7 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
         <Route path="/listardocentes" element={<ListarDocentes/>}/>
+        <Route path="/registrarmensaje" element={<RegistrarMensaje />} />
         <Route path="/contratos" element={<Contrato/>}/>
         <Route path="/contratos/show/:id" element={<ContratosVerIndependiente />} />
         <Route path="*" element={<NotFound/>}/>
