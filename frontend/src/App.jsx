@@ -9,6 +9,7 @@ import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
 import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal";
 import ListarDocentes from "./pages/pages-jose/ListarDocentes";
 import Contrato from "./pages/pages-jose/Contratos";
+import ContratosVerIndependiente from "./pages/pages-jose/ContratosVerIndependiente";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -52,6 +53,7 @@ function App() {
         <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
         <Route path="/listardocentes" element={<ListarDocentes/>}/>
         <Route path="/contratos" element={<Contrato/>}/>
+        <Route path="/contratos/show/:id" element={<ContratosVerIndependiente />} />
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
