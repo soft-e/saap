@@ -6,8 +6,9 @@ import Footer from "./components/Footer";
 import AdminPage from "./pages/AdminPage";
 import PersonalPage from "./pages/pages-jhonatan/PersonalPage";
 import TarifaPage from "./pages/pages-jhonatan/TarifaPage";
-import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal"
-import ListarDocentes from "./pages/pages-jose/ListarDocentes"
+import RegistrarPersonal from "./pages/pages-jose/RegistrarPersonal";
+import ListarDocentes from "./pages/pages-jose/ListarDocentes";
+import Contrato from "./pages/pages-jose/Contratos";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -50,6 +51,7 @@ function App() {
         <Route path="/personal" element={<PersonalPage/>}/>
         <Route path="/personal/registrar" element={<RegistrarPersonal/>}/>
         <Route path="/listardocentes" element={<ListarDocentes/>}/>
+        <Route path="/contratos" element={<Contrato/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/template" element={<TemplatePage/>}/>
         <Route path="/atencion" element={<AtencionPage/>}/>
@@ -60,7 +62,8 @@ function App() {
         <Route path="/tarifa" element={<TarifaPage/>}/>
         <Route path="/tarifa/edit/:id" element={<TarifaForm/>}/>
         <Route path="/tarifa/create" element={<TarifaFormCreate/>}/>
-        <Route path="/contratos" element={<ContratosPage/>}/>     
+        {//<Route path="/contratos" element={<ContratosPage/>}/>
+        }  
         <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo/>}/> 
         <Route path="/parqueos" element={<Parqueos/>}/> 
         <Route path="/editarparqueos/:id" element={<EditarParqueo/>}/> 
