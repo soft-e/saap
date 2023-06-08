@@ -72,7 +72,7 @@ const CardContratos = () => {
 
     function getNombreDocente (id){
         let nombreDocente = "nombre no obtenido"; 
-        for(let i = 0; docentes.length; i++){
+        for(let i = 0; i < docentes.length; i++){
             if(docentes[i].id === id){
                 nombreDocente = docentes[i].persona.nombre;
                 break;
@@ -83,7 +83,7 @@ const CardContratos = () => {
 
     function getApellidosDocente (id){
         let apellidosDocente = "nombre no obtenido"; 
-        for(let i = 0; docentes.length; i++){
+        for(let i = 0; i < docentes.length; i++){
             if(docentes[i].id === id){
                 apellidosDocente = docentes[i].persona.apellido_paterno + " "+
                 docentes[i].persona.apellido_materno;

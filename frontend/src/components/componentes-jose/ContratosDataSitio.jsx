@@ -1,50 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
 import '../../assets/css/css-jose/listarDocentes.css';
-import { URL_API } from "../../services/EndPoint"
+//import { URL_API } from "../../services/EndPoint"
 
-const endPointDocentes = URL_API+'/docentes';
+//const endPoint = URL_API+'/contrato';
 
-const ContratosDataSitio = () => {
-    const [docentes, setDocentes] = useState( [] )
+const ContratosDataSitio = (props) => {
 
-    useEffect ( () => {
-        getAllDocentes();
-    }, []);
-
-    const getAllDocentes = async () => {
-        const response = await axios.get(endPointDocentes);
-        setDocentes(response.data);
-    }
-    
-    function getNombreDocente (id){
-        let nombreDocente = "nombre no obtenido"; 
-        for(let i = 0; docentes.length; i++){
-            if(docentes[i].id === id){
-                nombreDocente = docentes[i].persona.nombre;
-                break;
-            }
-        }
-        return nombreDocente;
-    }
-
-    function getApellidosDocente (id){
-        let apellidosDocente = "nombre no obtenido"; 
-        for(let i = 0; docentes.length; i++){
-            if(docentes[i].id === id){
-                apellidosDocente = docentes[i].persona.apellido_paterno + " "+
-                docentes[i].persona.apellido_materno;
-                break;
-            }
-        }
-        return apellidosDocente;
-    }
+    const numParqueo = props.sitio_id;
+    const bloque = props.bloque;
 
     return <div className="contenedorListarDocentes_j">
         
         <div className="contenedorTabla_j">
-            
+            <h2>  Datos del Sitio</h2>
+            <div>
+                <div className="contenedor_label_j">
+                    <label className="label_j">Numero del Sitio:</label>
+                    <label className="label_j">{ numParqueo }</label>
+                </div>
+                <div className="contenedor_label_j">
+                    <label className="label_j">bloque:</label>
+                    <label className="label_j">{ bloque }</label>
+                </div>
+            </div>
         </div>
     </div>
 }
