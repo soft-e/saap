@@ -6,27 +6,18 @@ import { useNavigate } from "react-router-dom";
 import { URL_API } from '../../services/EndPoint'
 
 const endPoint = URL_API+'/docentes';
-const endPointContrato = URL_API+'/contrato';
 
 const CardDocentes = () => {
-
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [docentes, setDocentes] = useState( [] )
     const [tableDocentes, setTableDocentes] = useState( [] )
     const [busqueda, setBusqueda] = useState('')
-    const [contratos, setContratos] = useState( [] )
     //const {id, persona} = docentes;
 
     useEffect ( () => {
         getAllDocentes();
-        getAllContratos();
     }, []);
-
-    const getAllContratos = async () => {
-        const response = await axios.get(endPointContrato);
-        setContratos(response.data);
-    }
 
     const getAllDocentes = async () => {
         const response = await axios.get(endPoint);
@@ -56,37 +47,6 @@ const CardDocentes = () => {
         getAllDocentes();
     }
 
-    function estaRegistrado(buscar){
-        let res = false;
-        for(let i = 0; i < contratos.length; i++){
-            if(contratos[i].docente_id === buscar){
-                res = true;
-            }
-        }
-        return res;
-    }
-
-    const imprimirDocentes = () => {
-        let datos = []; 
-        for(let i = 0; i < docentes.length; i++){
-            if(!estaRegistrado(docentes[i].id)){
-                datos.push(<tr className="tr_j" key={docentes[i].id}>
-                    <td className="td_j">{ docentes[i].persona.nombre }</td>
-                    <td className="td_j">{ docentes[i].persona.apellido_paterno }</td>
-                    <td className="td_j">{ docentes[i].persona.apellido_materno }</td>
-                    <td className="td_j">{ docentes[i].persona.ci }</td>
-                    <td>
-                        <Link 
-                            className="stylesButton_j"
-                            to={`/registrovehiculo/${docentes[i].id}`}
-                        >asignar sitio</Link>
-                    </td> 
-                </tr>)
-            }
-        }
-        return datos;
-    }
-
     return <div className="contenedorListarDocentes_j">
         <div>
             <h2>Lista de los Docentes</h2>
@@ -111,8 +71,7 @@ const CardDocentes = () => {
                     </tr>
                 </thead>
                 <tbody className="tbody_j">
-                    {imprimirDocentes()}
-                    {/**{ docentes.map((docente) => (
+                    { docentes.map((docente) => (
                         <tr className="tr_j" key={docente.id}>
                             <td className="td_j">{ docente.persona.nombre }</td>
                             <td className="td_j">{ docente.persona.apellido_paterno }</td>
@@ -126,7 +85,6 @@ const CardDocentes = () => {
                             </td> 
                         </tr>
                     ))}
-                    */}
                 </tbody>
             </table>
         </div>
