@@ -39,15 +39,9 @@ function VerQuejas() {
                           <div className="barraDeAbajo" key={queja.id} onClick={()=>navigate(`/vercontenidodequeja/${queja.id}`)}>
                                 <h3>{index+1}</h3>
                                 <h3>Asunto: {queja.asunto}</h3>
-                                <button
-                    className="botonMenuDeMensajes"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      navigate(`/responderquejas/${queja.id}`);
-                    }}
-                  >
-                    Responder Quejas
-                  </button>   
+                                <button className="botonMenuDeMensajes">
+                                Responder Queja
+                                </button>   
                           </div>
                         ))}
                     </div>
