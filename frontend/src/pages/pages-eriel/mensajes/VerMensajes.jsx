@@ -9,6 +9,7 @@ import {URL_API} from '../../../services/EndPoint';
 
 function VerMensajes() {
     const [mensajes,setMensajes]=useState([]);
+
     const navigate=useNavigate();
     useEffect(()=>{
         fetchMensajesData();
