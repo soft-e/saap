@@ -13,6 +13,8 @@ function listarMensajes() {
     document.getElementById('lista-ingresos').innerHTML=mensajesHTML;
 }
 function cargarContenido(mensajes,index) {
+
+    
     let ingresoHTML=`
         <h2>Mensajes Redactados</h2>
         <div className="barraDeAbajo" key=${index}>
