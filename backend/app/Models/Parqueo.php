@@ -15,4 +15,5 @@ class Parqueo extends Model
         return $this->belongsTo(Empleado::class);
     }
     
+    
 }
