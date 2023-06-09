@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\Api\QuejaController;
-use Att\Http\Controllers\Api\Tarifa2Controller;
+use App\Http\Controllers\Api\Tarifa2Controller;
 
 
 

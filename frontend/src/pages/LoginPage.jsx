@@ -20,7 +20,7 @@ function LoginPage() {
     loadPersonas();
     //setUsers(personas);
     loadEmpleados();
-    console.log(personas);
+    //console.log(personas);
   }, []);
 
 
@@ -108,7 +108,7 @@ function LoginPage() {
           <input
             value={correo}
             type="email"        
-            id="inputText"
+            id="correo"
             placeholder="Escribe un correo"
             onChange={(e) => setCorreo(e.target.value)}
           />
@@ -122,7 +122,7 @@ function LoginPage() {
           <input
             value={password}
             type="password"
-            id="inputText"
+            id="password"
             placeholder="Escribe una contraseña"
             onChange={(e) => setPassword(e.target.value)}
           />

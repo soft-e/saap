@@ -15,7 +15,7 @@ class Tarifa2Controller extends Controller
      */
     public function index()
     {
-        $tarifa2s = Tarifa::all();
+        $tarifa2s = Tarifa2::all();
         return response()->json($tarifa2s);
     }
 
