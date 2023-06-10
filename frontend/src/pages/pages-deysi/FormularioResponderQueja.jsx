@@ -1,108 +1,69 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
-import "../../assets/css/css-deysi/formularioResponderQueja.css";
-import "../../assets/css/templatePage.css";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-import { URL_API } from '../../services/EndPoint';
-import { useParams, useNavigate } from "react-router-dom";
-import axios from 'axios';
-
 function FormularioResponderQueja() {
-  const [subject, setSubject] = useState('');
-  const [response, setResponse] = useState('');
-  const params = useParams();
-  const navigate = useNavigate();
+  
+  const correoAdministrador = "admin@example.com";
+  const [asunto, setAsunto] = useState("");
+  const [respuesta, setRespuesta] = useState("");
 
-  useEffect(() => {
-    console.log(params.id);
-  }, []);
+  const handleInputChange = (e) => {
+    setRespuesta(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const respuestaQueja = {
-      asunto: subject,
-      contenido: response,
-      queja_id: params.id,
-    };
-
-    axios.post(`${URL_API}/responderquejas`, respuestaQueja)
-      .then((response) => {
-        console.log('Respuesta enviada:', response.data);
-        navigate("/verquejas");
-      })
-      .catch((error) => {
-        console.error('Error al enviar la respuesta:', error);
-      });
-  };
-
-  const handleCancel = () => {
-    navigate("/verquejas");
-    setSubject('');
-    setResponse('');
+    
+    console.log("Respuesta enviada:");
+    console.log("Correo del administrador:", correoAdministrador);
+    console.log("Asunto:", asunto);
+    console.log("Respuesta:", respuesta);
+    // Restablecer los campos después de enviar la respuesta
+    setAsunto("");
+    setRespuesta("");
   };
 
   return (
+
     <>
-      <Navbar accion="iniciar sesion" />
-      <div className="espacioPagina">
-        <ButtonBoxAdmin />
-        <div className="espacioDeTrabajo">
-          <div className="padreParqueo">
-            <form className="formularioParqueo" onSubmit={handleSubmit}>
-              <div className="contenedorParqueo">
-                <h1 id="tituloParqueo">Responder Queja</h1>
+    <Navbar accion="iniciar sesion" />
+    <div className="espacioPagina">
+      <ButtonBoxAdmin />
+      <div className="espacioDeTrabajo">
+      <div className='padre'> 
+      <div className="parqueo">
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="correo">Correo del administrador:</label>
+      <input
+        id="correo"
+        type="email"
+        value={correoAdministrador}
+        disabled
+      />
 
-                <label htmlFor="subject" className='textoAsunto'>Asunto:</label>
-                <div className="entradaP" >
-                  <input
-                    type="text"
-                    id="subject"
-                    value={subject}
-                    placeholder='Asunto'
-                    
-                    onChange={(e) => setSubject(e.target.value)}
-                    style={{ width: '100%' }} 
-                  />
-                </div>
+      <label htmlFor="asunto">Asunto:</label>
+      <input
+        id="asunto"
+        type="text"
+        value={asunto}
+        onChange={(e) => setAsunto(e.target.value)}
+      />
 
-                <label htmlFor="response" className='textoResponder'>Responder queja:</label>
-                <div className="entradaP" >
-                <textarea
-  id="response"
-  rows={10}
-  cols={50}
-  placeholder="Escribe la respuesta de la queja"
-  value={response}
-  onChange={(e) => setResponse(e.target.value)}
-  style={{ width: '100%' }} // Aplica el ancho completo del contenedor
-/>
+      <label htmlFor="respuesta">Respuesta:</label>
+      <textarea
+        id="respuesta"
+        value={respuesta}
+        onChange={handleInputChange}
+        required
+      ></textarea>
 
-                </div>
+      <button type="submit">Enviar respuesta</button>
+    </form>
 
-                <div className="contenedorBotonP">
-                  <button
-                    className="botonInicioSesion"
-                    type="submit"
-                  >
-                    Registrar
-                  </button>
-
-                  <button
-                    id="cancelar"
-                    className="botonInicioSesion botonCancelar"
-                    type="button"
-                    onClick={handleCancel}
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </>
   );
 }

@@ -9,11 +9,4 @@ class Queja extends Model
 {
     use HasFactory;
     protected $fillable = ['contenido', 'asunto'];
-
-
-    public function responderQueja()
-    {
-        return $this->hasOne(ResponderQueja::class);
-    }
-   
 }
