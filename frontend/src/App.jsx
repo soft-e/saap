@@ -35,6 +35,9 @@ import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
 import FormularioResponderQueja from "./pages/pages-deysi/FormularioResponderQueja";
 import VerQuejas from "./pages/pages-jhonatan/VerQuejas";
 import VerContenidoQueja from "./pages/pages-jhonatan/VerContenidoQueja";
+import Prueba from "./pages/pages-deysi/prueba";
+import Prueba1 from "./pages/pages-deysi/Prueba1";
+import Prueba2 from "./pages/pages-deysi/Prueba2";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -83,6 +86,10 @@ function App() {
      
         <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio/>}/>
         <Route path="/responderquejas/:id" element={<FormularioResponderQueja/>}/>
+        
+        <Route path="/prueba" element={<Prueba/>}/>
+        <Route path="/prueba1" element={<Prueba1/>}/>
+        <Route path="/prueba2" element={<Prueba2/>}/>
       </Routes>
       </TarifaContextProvider>
       </AtencionContextProvider>

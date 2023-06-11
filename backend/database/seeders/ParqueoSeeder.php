@@ -19,14 +19,14 @@ class ParqueoSeeder extends Seeder
             [
                 'nombre_bloque'=>'a',
                 'cantidad_sitios'=>40,
-                'empleado_id'=>1,
+                'empleado_id'=>16,
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ],
             [
                 'nombre_bloque'=>'b',
                 'cantidad_sitios'=>50,
-                'empleado_id'=>1,
+                'empleado_id'=>16,
                 'create_at'=>Carbon::now(),
                 'update_at'=>Carbon::now()
             ]
