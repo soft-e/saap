@@ -91,3 +91,11 @@
   justify-content: center;
   padding: 1%;
 }
+
+.espacioCardClientesEnMora{
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:xx-large;
+}
