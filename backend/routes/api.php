@@ -19,8 +19,7 @@ use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\Api\QuejaController;
 use App\Http\Controllers\Api\Tarifa2Controller;
 use App\Http\Controllers\Api\PagoController;
-
-
+use App\Http\Controllers\Api\ResponderQuejaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +67,6 @@ Route::resource('mensajes', MensajeController::class);
 Route::resource('contrato',ContratoController::class);
 
 
-
 Route::resource('atencion', HorarioAtencionController::class);
 Route::resource('quejas', QuejaController::class);
 Route::prefix('plazas')->group(function(){
@@ -77,3 +75,4 @@ Route::get('primer-sitio-libre/{bloque}',[PlazaController::class, 'obtenerPrimer
 Route::get('obtener-bloques',[PlazaController::class, 'obtenerBloques']);
 });
 
+Route::resource('/responderquejas', ResponderQuejaController::class);
