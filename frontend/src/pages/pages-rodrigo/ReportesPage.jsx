@@ -66,6 +66,21 @@ function ReportesPage() {
     }
     return total;
   }
+  const expectedCollection=()=>{
+    let expected=0;
+    let idTarifas=[];
+    for (let i = 0; i < pagos.length; i++) {
+      for (let j = 0; j < tarifa2s.length; j++) {
+        if (pagos[i].tarifa2_id === tarifa2s[j].id) {
+          
+        }
+        
+      }
+    }
+
+    
+    return expected;
+  }
 
 
   return (
@@ -117,6 +132,8 @@ function ReportesPage() {
                 <h3>Recaudaciones</h3>
                 <p>recaudacion total</p>
                 <p>{totalCollection()}</p>
+                <p>recaudacion esperada</p>
+                <p>{expectedCollection()}</p>
               </div>
               <div
                 className="cardClientesEnMora"
