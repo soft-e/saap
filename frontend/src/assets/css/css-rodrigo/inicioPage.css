@@ -1,0 +1,40 @@
+
+.cardUserInicio{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardInfoPersonal{
+  
+  background: black;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.808);
+  
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(251, 181, 0, 0.69);
+
+padding: 3%;
+text-transform: uppercase;
+}
+
+.cardInfoPersonal:hover{
+	border: 2px solid #ffe449;
+  box-shadow: 0 4px 30px rgb(222, 188, 64,0.412);
+  background: rgba(0, 0, 0, 0.651);
+}
+
+.cardInfoPersonal button{
+  border: none;
+  background-color: #debc40;
+  font-size:medium;
+  border-radius: 6px;
+  font-family: inherit;
+  width: 46%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}

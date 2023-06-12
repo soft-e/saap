@@ -26,6 +26,7 @@ function ButtonBoxAdmin(){
   >
     <button
       className="hvr-fade hvr-icon-forward"
+      onClick={()=>navigate("/inicio")}
     >
       <FontAwesomeIcon icon={faHouse}/>
       Inicio
@@ -74,6 +75,7 @@ function ButtonBoxAdmin(){
     </button>
     <button
       className="hvr-fade hvr-icon-forward"
+      onClick={()=>navigate("/reportes")}
     >
       <FontAwesomeIcon icon={faChartPie} />
       Reportes
