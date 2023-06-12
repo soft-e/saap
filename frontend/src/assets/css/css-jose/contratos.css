@@ -1,0 +1,15 @@
+.contenedor_label_j{
+    width: 100%;
+    right: auto;
+    padding: 10px;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.label_j{
+    width: 50%;
+    right: auto;
+    padding: 5px;
+    display: flex;
+}

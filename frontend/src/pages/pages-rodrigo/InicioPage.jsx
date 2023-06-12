@@ -5,7 +5,7 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import { useSession } from "../../context/context-rodrigo/SessionProvider";
 import { Formik } from "formik";
 import { usePersonas } from "../../context/context-rodrigo/PersonaProvider";
-import "../../assets/css/css-rodrigo/InicioPage.css"
+import "../../assets/css/css-rodrigo/inicioPage.css"
 
 function InicioPage() {
   const { user } = useSession();
