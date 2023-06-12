@@ -38,7 +38,7 @@
 }
 
 .cardRecaudaciones{
-  height: 30%;
+  
   width: 30%;
   background: rgba(0, 0, 0, 0.808);
   border-radius: 16px;
@@ -68,7 +68,7 @@
   background: rgba(0, 0, 0, 0.651);
 }
 .cardEspaciosDisponibles{
-  height: 30%;
+  
   width: 30%;
   background: rgba(0, 0, 0, 0.808);
   border-radius: 16px;
@@ -80,4 +80,14 @@
 	border: 2px solid #ffe449;
   box-shadow: 0 4px 30px rgb(222, 188, 64,0.412);
   background: rgba(0, 0, 0, 0.651);
+}
+.cardEspaciosDisponibles p{
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+}
+.cardRecaudaciones p{
+  display: flex;
+  justify-content: center;
+  padding: 1%;
 }

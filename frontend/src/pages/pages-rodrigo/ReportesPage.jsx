@@ -6,23 +6,26 @@ import { useEffect, useState } from "react";
 import { useTarifa2 } from "../../context/context-rodrigo/Tarifa2Provider";
 import { useParqueos } from "../../context/context-rodrigo/ParqueoProvider";
 import { usePlazas } from "../../context/context-rodrigo/PlazaProvider";
+import { useContratos } from "../../context/context-rodrigo/ContratoProvider";
 function ReportesPage() {
   const {pagos,loadPagos}=usePagos();
   const {tarifa2s,loadTarifa2s}=useTarifa2();
   const {parqueos,loadParqueos}=useParqueos();
   const {plazas,loadPlazas}=usePlazas();
+  const {contratos,loadContratos}=useContratos();
 
   useEffect(()=>{
     loadPagos();
     loadTarifa2s();
     loadParqueos();
     loadPlazas();
+    loadContratos();
   },[]);
   console.log(pagos);
   console.log(tarifa2s);
   console.log(parqueos);
   console.log(plazas);
-
+  console.log(contratos);
   
   const getFreeSpaces=()=>{
     let freeSpaces=0;
@@ -83,7 +86,62 @@ function ReportesPage() {
     return arrears;
   }
 
+  const getCustomersInArrears=()=>{
+    let customersInArrears=0;
+    let morosos =[];
+    for (let i = 0; i < contratos.length; i++) {
+      let contratoID = contratos[i].id;
+      let cantPagosRealizados = acumularPagos(contratos[i].id);
+      console.log(cantPagosRealizados);
+      let cantPagosEsperados = acumularTarifas(contratos[i].id,contratos[i].created_at);
+      //console.log(cantPagosEsperados)
+      //console.log(cantPagosEsperados);
+      //if(cantPagosRealizados<cantPagosEsperados){
+        //morosos.push(contratos[i].id);
+        //console.log(morosos)
+      //}
 
+    }
+    return morosos;
+    
+  }
+
+  const acumularPagos=(contratoID)=>{
+    //console.log(contratoID);
+    let acumulador = 0;
+    for (let j = 0; j < pagos.length; j++) {
+      if (pagos[j].contrato_id === contratoID){
+        acumulador += pagos[j].monto_pagado;
+      }
+    }
+    return acumulador;
+  }
+
+  const acumularTarifas=(contratoID,fecha)=>{
+    //console.log("la fecha del contrato es: "+fecha);
+    let fechaContrato = new Date(fecha);
+    //console.log("la fecha del contrato es: "+fechaContrato);
+    let mesContrato = fechaContrato.getMonth()+1;
+    //console.log("el mes es: "+mesContrato);
+    let fechaActual = new Date();
+    let mesActual = fechaActual.getMonth()+1;
+    return mesActual;
+
+  }
+
+  const selectMonth=()=>{
+    return(
+      <select name="selectMonth" id="selectMonth"
+                className="selectMonth"
+              >
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+              </select>
+    )
+  }
   return (
     <>
       <Navbar accion="cerrar sesion" />
@@ -106,15 +164,7 @@ function ReportesPage() {
               className="espacioSelects"
             >
               <h2>seleccionar un mes y una semana</h2>
-              <select name="selectMonth" id="selectMonth"
-                className="selectMonth"
-              >
-                <option value="1">Enero</option>
-                <option value="2">Febrero</option>
-                <option value="3">Marzo</option>
-                <option value="4">Abril</option>
-                <option value="5">Mayo</option>
-              </select>
+              {selectMonth()}
               <select name="selectWeek" id="selectWeek"
                 className="selectWeek"
               >
@@ -132,16 +182,17 @@ function ReportesPage() {
               >
                 <h3>Recaudaciones</h3>
                 <p>recaudacion total:</p>
-                <p>{totalCollection()}</p>
+                <p>{totalCollection()} Bs.</p>
                 <p>recaudacion esperada:</p>
-                <p>{expectedCollection()}</p>
+                <p>{expectedCollection()} Bs.</p>
                 <p>mora total:</p>
-                <p>{getArrears()}</p>
+                <p>{getArrears()} Bs.</p>
               </div>
               <div
                 className="cardClientesEnMora"
               >
                 <h3>Clientes en mora</h3>
+                <p>{getCustomersInArrears()}</p>
               </div>
               <div
                 className="cardEspaciosDisponibles"
