@@ -55,7 +55,6 @@ function ReportesPage() {
   const getUnAssignedSpaces=()=>{
     let unAssignedSpaces=0;
     unAssignedSpaces = getFreeSpaces()-getAssignedSpaces();
-    //console.log(unAssignedSpaces);
     return unAssignedSpaces;
   }
 
@@ -68,7 +67,6 @@ function ReportesPage() {
   }
   const expectedCollection=()=>{
     let expected=0;
-    let idTarifas=[];
     for (let i = 0; i < pagos.length; i++) {
       for (let j = 0; j < tarifa2s.length; j++) {
         if (pagos[i].tarifa2_id === tarifa2s[j].id) {
@@ -157,7 +155,6 @@ function ReportesPage() {
                 <p>{getUnAssignedSpaces()}</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
