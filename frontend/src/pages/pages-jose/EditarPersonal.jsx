@@ -39,18 +39,16 @@ function EditarPersonal(){
 
     const update = async (e) => {
         e.preventDefault();
-        console.log(endPointActualizar+"/"+id+" ruta del backend");
-        console.log(nombre_cargo+" mensaje de prueba");
         await axios.put(endPointActualizar+"/"+id, {
-            ci: "asd",
-            nombre: "asd",
-            apellido_paterno: "asd",
-            apellido_materno: "asd",
-            telefono: "asd",
-            nombre_cargo: "Administrador",
-            email: "asd",
-            password: "asd",
+            ci: ci,
+            nombre: nombre,
+            apellido_paterno: apellido_paterno,
+            apellido_materno: apellido_materno,
+            telefono: telefono,
+            email: email,
+            password: password,
         });
+        console.log("guardado")
         navigate('/personal');
     }
 

@@ -1,6 +1,6 @@
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import Navbar from "../../components/Navbar";
-import "../../assets/css/css-rodrigo/ReportesPage.css"
+import "../../assets/css/css-rodrigo/reportesPage.css"
 import { usePagos } from "../../context/context-rodrigo/PagoProvider";
 import { useEffect, useState } from "react";
 import { useTarifa2 } from "../../context/context-rodrigo/Tarifa2Provider";

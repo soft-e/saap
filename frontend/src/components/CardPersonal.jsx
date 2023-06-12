@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CardPersonal({ empleado, eliminarEmpleado }) {
   const { id, persona } = empleado;
   const { nombre, apellido_paterno, apellido_materno, ci, telefono, email } = persona;
+  const navigate = useNavigate();
 
   const handleEliminarEmpleado = () => {
     eliminarEmpleado(id);
@@ -26,7 +28,7 @@ function CardPersonal({ empleado, eliminarEmpleado }) {
           <button className="button" onClick={handleEliminarEmpleado}>
             Eliminar
           </button>
-          <button className="button">Editar</button>
+          <button className="button" onClick={ () => {navigate('edit/'+(persona.id)) }}>Editar</button>
         </div>
       </div>
     </div>
