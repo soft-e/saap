@@ -28,7 +28,7 @@ import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider";
 import TarifaForm from "./pages/pages-jhonatan/TarifaForm";
 import TarifaFormCreate from "./pages/pages-jhonatan/TarifaFormCreate";
-import ContratosPage from "./pages/pages-jhonatan/ContratosPage";
+
 import { SessionContextProvider } from "./context/context-rodrigo/SessionProvider";
 import { PersonaContextProvider } from "./context/context-rodrigo/PersonaProvider"
 import VerQuejas from "./pages/pages-jhonatan/VerQuejas";
@@ -37,14 +37,14 @@ import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import Parqueo from "./pages/pages-deysi/Parqueo";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";
 import { EmpleadoContextProvider } from "./context/context-rodrigo/EmpleadoProvider";
-import { SessionContext } from "./context/context-rodrigo/SessionContext";
-import { Component, useContext, useEffect } from "react";
+
 import InicioPage from "./pages/pages-rodrigo/InicioPage";
 import ReportesPage from "./pages/pages-rodrigo/ReportesPage";
 import { PagoContextProvider } from "./context/context-rodrigo/PagoProvider";
 import { Tarifa2ContextProvider } from "./context/context-rodrigo/Tarifa2Provider";
 import { PlazaContextProvider } from "./context/context-rodrigo/PlazaProvider";
 import { ParqueocontextProvider } from "./context/context-rodrigo/ParqueoProvider";
+import FormularioResponderQueja from "./pages/pages-deysi/FormularioResponderQueja";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -97,6 +97,8 @@ function App() {
                           <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
                           <Route path="/inicio" element={<InicioPage />} />
                           <Route path="/reportes" element={<ReportesPage />} />
+                          <Route path="/responderquejas/:id" element={<FormularioResponderQueja/>}/>
+                          
                         </Routes>
                       </ParqueocontextProvider>
                     </PlazaContextProvider>
