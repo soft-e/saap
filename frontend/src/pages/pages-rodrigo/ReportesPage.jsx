@@ -1,6 +1,6 @@
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import Navbar from "../../components/Navbar";
-import "../../assets/css/css-rodrigo/ReportesPage.css"
+import "../../assets/css/css-rodrigo/reportesPage.css"
 import { usePagos } from "../../context/context-rodrigo/PagoProvider";
 import { useEffect, useState } from "react";
 import { useTarifa2 } from "../../context/context-rodrigo/Tarifa2Provider";
@@ -23,6 +23,7 @@ function ReportesPage() {
   console.log(parqueos);
   console.log(plazas);
 
+  
   const getFreeSpaces=()=>{
     let freeSpaces=0;
     for (let i = 0; i < parqueos.length; i++) {
@@ -58,7 +59,15 @@ function ReportesPage() {
     return unAssignedSpaces;
   }
 
-  
+  const totalCollection=()=>{
+    let total=0;
+    for (let i = 0; i < pagos.length; i++) {
+      total += pagos[i].monto_pagado;
+    }
+    return total;
+  }
+
+
   return (
     <>
       <Navbar accion="cerrar sesion" />
@@ -106,6 +115,8 @@ function ReportesPage() {
                 className="cardRecaudaciones"
               >
                 <h3>Recaudaciones</h3>
+                <p>recaudacion total</p>
+                <p>{totalCollection()}</p>
               </div>
               <div
                 className="cardClientesEnMora"
