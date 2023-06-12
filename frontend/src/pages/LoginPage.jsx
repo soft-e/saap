@@ -20,7 +20,7 @@ function LoginPage() {
     loadPersonas();
     //setUsers(personas);
     loadEmpleados();
-    console.log(personas);
+    //console.log(personas);
   }, []);
 
 
@@ -68,9 +68,6 @@ function LoginPage() {
           navigate("/admin");
         }
       }
-      
-      
-      
     }
     //console.log(findedPerson);
     //console.log(aux);
@@ -89,7 +86,6 @@ function LoginPage() {
   return <>
     <Navbar accion="dashboard" />
     <div className="divFormulario">
-
     </div>
     <div id="titulo">
       <h1>
@@ -112,7 +108,7 @@ function LoginPage() {
           <input
             value={correo}
             type="email"        
-            id="inputText"
+            id="correo"
             placeholder="Escribe un correo"
             onChange={(e) => setCorreo(e.target.value)}
           />
@@ -126,7 +122,7 @@ function LoginPage() {
           <input
             value={password}
             type="password"
-            id="inputText"
+            id="password"
             placeholder="Escribe una contraseña"
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -138,7 +134,6 @@ function LoginPage() {
             onClick={
               () => {
                 onPressedLoginButton(event,correo, password)
-                
               }
             }
           >

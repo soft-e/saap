@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\MensajeController;
 use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\Api\QuejaController;
+use App\Http\Controllers\Api\Tarifa2Controller;
+use App\Http\Controllers\Api\PagoController;
 use App\Http\Controllers\Api\ResponderQuejaController;
 
 /*
@@ -35,10 +37,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('personas', PersonaController::class);
+Route::resource('tarifa2s',Tarifa2Controller::class);
+Route::resource('pagos',PagoController::class);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
 Route::post('registrarempleados', [EmpleadoController::class, 'store']);
+Route::put('registrarempleado/{id}', [EmpleadoController::class, 'update']);
+Route::put('actualizarpersona/{id}', [PersonaController::class, 'update']);
 Route::resource('docentes', DocenteController::class);
 Route::post('registrarmensaje', [MensajeController::class, 'store']);
 
@@ -63,15 +69,12 @@ Route::resource('mensajes', MensajeController::class);
 Route::resource('contrato',ContratoController::class);
 
 
-
 Route::resource('atencion', HorarioAtencionController::class);
 Route::resource('quejas', QuejaController::class);
-Route::resource('/responderquejas', ResponderQuejaController::class);
-
-
 Route::prefix('plazas')->group(function(){
 Route::resource('/', PlazaController::class );
 Route::get('primer-sitio-libre/{bloque}',[PlazaController::class, 'obtenerPrimerSitioLibre']);
 Route::get('obtener-bloques',[PlazaController::class, 'obtenerBloques']);
 });
 
+Route::resource('/responderquejas', ResponderQuejaController::class);

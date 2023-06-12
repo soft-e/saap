@@ -1,16 +1,16 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "../../assets/css/css-deysi/formularioResponderQueja.css";
 import "../../assets/css/templatePage.css";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-import { URL_API } from '../../services/EndPoint';
+import { URL_API } from "../../services/EndPoint";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 function FormularioResponderQueja() {
-  const [subject, setSubject] = useState('');
-  const [response, setResponse] = useState('');
+  const [subject, setSubject] = useState("");
+  const [response, setResponse] = useState("");
   const params = useParams();
   const navigate = useNavigate();
 
@@ -27,20 +27,22 @@ function FormularioResponderQueja() {
       queja_id: params.id,
     };
 
-    axios.post(`${URL_API}/responderquejas`, respuestaQueja)
+    axios
+      .post(`${URL_API}/responderquejas`, respuestaQueja)
+      
       .then((response) => {
-        console.log('Respuesta enviada:', response.data);
+        console.log("Respuesta enviada:", response.data);
         navigate("/verquejas");
       })
       .catch((error) => {
-        console.error('Error al enviar la respuesta:', error);
+        console.error("Error al enviar la respuesta:", error);
       });
   };
 
   const handleCancel = () => {
     navigate("/verquejas");
-    setSubject('');
-    setResponse('');
+    setSubject("");
+    setResponse("");
   };
 
   return (
@@ -54,38 +56,38 @@ function FormularioResponderQueja() {
               <div className="contenedorParqueo">
                 <h1 id="tituloParqueo">Responder Queja</h1>
 
-                <label htmlFor="subject" className='textoAsunto'>Asunto:</label>
-                <div className="entradaP" >
+                <label htmlFor="subject" className="textoAsunto">
+                  Asunto:
+                </label>
+                <div className="entradaP">
                   <input
                     type="text"
                     id="subject"
                     value={subject}
-                    placeholder='Asunto'
-                    
+                    placeholder="Asunto"
                     onChange={(e) => setSubject(e.target.value)}
-                    style={{ width: '100%' }} 
+                    style={{ width: "100%" }}
                   />
                 </div>
 
-                <label htmlFor="response" className='textoResponder'>Responder queja:</label>
-                <div className="entradaP" >
-                <textarea
-  id="response"
-  rows={10}
-  cols={50}
-  placeholder="Escribe la respuesta de la queja"
-  value={response}
-  onChange={(e) => setResponse(e.target.value)}
-  style={{ width: '100%' }} // Aplica el ancho completo del contenedor
-/>
-
+                <label htmlFor="response" className="textoResponder">
+                  Responder queja:
+                </label>
+                <div className="entradaP">
+                  <textarea
+                    id="response"
+                    rows={10}
+                    cols={50}
+                    placeholder="Escribe la respuesta de la queja"
+                    value={response}
+                    onChange={(e) => setResponse(e.target.value)}
+                    style={{ width: "100%" }} // Aplica el ancho completo del contenedor
+                  />
                 </div>
 
+
                 <div className="contenedorBotonP">
-                  <button
-                    className="botonInicioSesion"
-                    type="submit"
-                  >
+                  <button className="botonInicioSesion" type="submit">
                     Registrar
                   </button>
 
