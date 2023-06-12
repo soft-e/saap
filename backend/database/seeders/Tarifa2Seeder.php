@@ -35,6 +35,7 @@ class Tarifa2Seeder extends Seeder
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now(),
                 ],
+                
             ]
         );
     }
