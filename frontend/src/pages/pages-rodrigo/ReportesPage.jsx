@@ -72,14 +72,17 @@ function ReportesPage() {
     for (let i = 0; i < pagos.length; i++) {
       for (let j = 0; j < tarifa2s.length; j++) {
         if (pagos[i].tarifa2_id === tarifa2s[j].id) {
-          
+          expected+=tarifa2s[j].costo_tarifa;
         }
         
       }
     }
-
-    
     return expected;
+  }
+
+  const getArrears=()=>{
+    let arrears=expectedCollection()-totalCollection();
+    return arrears;
   }
 
 
@@ -130,10 +133,12 @@ function ReportesPage() {
                 className="cardRecaudaciones"
               >
                 <h3>Recaudaciones</h3>
-                <p>recaudacion total</p>
+                <p>recaudacion total:</p>
                 <p>{totalCollection()}</p>
-                <p>recaudacion esperada</p>
+                <p>recaudacion esperada:</p>
                 <p>{expectedCollection()}</p>
+                <p>mora total:</p>
+                <p>{getArrears()}</p>
               </div>
               <div
                 className="cardClientesEnMora"
@@ -148,7 +153,7 @@ function ReportesPage() {
                 <p>{getFreeSpaces()}</p>
                 <p>espacios asignados:</p>
                 <p>{getAssignedSpaces()}</p>
-                <p>espacios sin asignar</p>
+                <p>espacios sin asignar:</p>
                 <p>{getUnAssignedSpaces()}</p>
               </div>
             </div>
