@@ -23,7 +23,70 @@ class PlazaSeeder extends Seeder
                     'bloque'=>'asfaltado',
                     'created_at'=>Carbon::now(),
                     'updated_at'=>Carbon::now()
-                ]
+                ],
+                [
+                    'numero'=>2,
+                    'estado'=>'ocupado',
+                    'bloque'=>'asfaltado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>3,
+                    'estado'=>'ocupado',
+                    'bloque'=>'asfaltado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>4,
+                    'estado'=>'ocupado',
+                    'bloque'=>'asfaltado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>5,
+                    'estado'=>'ocupado',
+                    'bloque'=>'asfaltado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>1,
+                    'estado'=>'ocupado',
+                    'bloque'=>'empedrado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>2,
+                    'estado'=>'ocupado',
+                    'bloque'=>'empedrado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>3,
+                    'estado'=>'ocupado',
+                    'bloque'=>'empedrado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>4,
+                    'estado'=>'ocupado',
+                    'bloque'=>'empedrado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
+                [
+                    'numero'=>5,
+                    'estado'=>'ocupado',
+                    'bloque'=>'empedrado',
+                    'created_at'=>Carbon::now(),
+                    'updated_at'=>Carbon::now()
+                ],
             ]
         );
     }

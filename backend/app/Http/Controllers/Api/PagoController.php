@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pago;
+
 
 class PagoController extends Controller
 {
@@ -14,7 +16,8 @@ class PagoController extends Controller
      */
     public function index()
     {
-        //
+        $pagos = Pago::all();
+        return response()->json($pagos);
     }
 
     /**

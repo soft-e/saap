@@ -1,7 +1,64 @@
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import Navbar from "../../components/Navbar";
 import "../../assets/css/css-rodrigo/ReportesPage.css"
+import { usePagos } from "../../context/context-rodrigo/PagoProvider";
+import { useEffect, useState } from "react";
+import { useTarifa2 } from "../../context/context-rodrigo/Tarifa2Provider";
+import { useParqueos } from "../../context/context-rodrigo/ParqueoProvider";
+import { usePlazas } from "../../context/context-rodrigo/PlazaProvider";
 function ReportesPage() {
+  const {pagos,loadPagos}=usePagos();
+  const {tarifa2s,loadTarifa2s}=useTarifa2();
+  const {parqueos,loadParqueos}=useParqueos();
+  const {plazas,loadPlazas}=usePlazas();
+
+  useEffect(()=>{
+    loadPagos();
+    loadTarifa2s();
+    loadParqueos();
+    loadPlazas();
+  },[]);
+  console.log(pagos);
+  console.log(tarifa2s);
+  console.log(parqueos);
+  console.log(plazas);
+
+  const getFreeSpaces=()=>{
+    let freeSpaces=0;
+    for (let i = 0; i < parqueos.length; i++) {
+      freeSpaces += parqueos[i].cantidad_sitios;
+    }
+    //console.log(freeSpaces);
+    return freeSpaces;
+  }
+
+  const getAssignedSpaces=()=>{
+    let assignedSpaces=0;
+    let nameParks = [];
+    for (let i = 0; i < parqueos.length; i++) {
+      nameParks[i]=parqueos[i].nombre_bloque;
+    }
+    //console.log(nameParks);
+    for (let i = 0; i < nameParks.length; i++) {
+      let namePark = nameParks[i];
+      for (let j = 0; j < plazas.length; j++){
+        if(namePark===plazas[j].bloque){
+          assignedSpaces++;
+        }
+      }
+    }
+    //console.log(assignedSpaces);
+    return assignedSpaces;
+  }
+
+  const getUnAssignedSpaces=()=>{
+    let unAssignedSpaces=0;
+    unAssignedSpaces = getFreeSpaces()-getAssignedSpaces();
+    //console.log(unAssignedSpaces);
+    return unAssignedSpaces;
+  }
+
+  
   return (
     <>
       <Navbar accion="cerrar sesion" />
@@ -59,6 +116,12 @@ function ReportesPage() {
                 className="cardEspaciosDisponibles"
               >
                 <h3>Espacios disponibles</h3>
+                <p>total espacios:</p>
+                <p>{getFreeSpaces()}</p>
+                <p>espacios asignados:</p>
+                <p>{getAssignedSpaces()}</p>
+                <p>espacios sin asignar</p>
+                <p>{getUnAssignedSpaces()}</p>
               </div>
             </div>
 

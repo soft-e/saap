@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\PlazaController;
 use App\Http\Controllers\Api\SitioClienteController;
 use App\Http\Controllers\Api\QuejaController;
 use App\Http\Controllers\Api\Tarifa2Controller;
+use App\Http\Controllers\Api\PagoController;
 
 
 
@@ -38,6 +39,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('personas', PersonaController::class);
 Route::resource('tarifa2s',Tarifa2Controller::class);
+Route::resource('pagos',PagoController::class);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
