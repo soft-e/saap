@@ -5,12 +5,11 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL_API } from '../../services/EndPoint';
+import { URL_API } from "../../services/EndPoint";
 
 function VerQuejas() {
   const [quejas, setQuejas] = useState([]);
   const navigate = useNavigate();
-
   useEffect(() => {
     fetchQuejasData();
   }, []);
@@ -21,15 +20,9 @@ function VerQuejas() {
       setQuejas(response.data);
       console.log(response);
     } catch (error) {
-      console.error('Error al obtener los datos de las quejas:', error);
+      console.error("Error al obtener los datos de las quejas:", error);
     }
   };
-
-  const handleResponderQueja = (event, quejaId) => {
-    event.stopPropagation();
-    // Agrega la lógica para responder la queja aquí
-  };
-
   return (
     <>
       <Navbar />
@@ -52,9 +45,12 @@ function VerQuejas() {
                   <h3>Asunto: {queja.asunto}</h3>
                   <button
                     className="botonMenuDeMensajes"
-                    onClick={(event) => handleResponderQueja(event, queja.id)}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      navigate(`/responderquejas/${queja.id}`);
+                    }}
                   >
-                    Responder Queja
+                    Responder Quejas
                   </button>
                 </div>
               ))}

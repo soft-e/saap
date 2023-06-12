@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\vehiculo;
+use App\Models\Pago;
 
-class VehiculoController extends Controller
+
+class PagoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculo = Vehiculo::get();
-        return response()->json($vehiculo);
+        $pagos = Pago::all();
+        return response()->json($pagos);
     }
 
     /**
@@ -27,13 +28,7 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        $vehiculo = new vehiculo();
-        $vehiculo->placa = $request->placa;
-        $vehiculo->color = $request->color;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        $vehiculo->save();
-        return response()->json($vehiculo);
+        //
     }
 
     /**
@@ -44,12 +39,7 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        $vehiculo = Vehiculo::find($id);
-        if (!$vehiculo) {
-            return response()->json(['message' => 'vehiculo no encontrado'], 404);
-        }
-
-        return response()->json($contrato);
+        //
     }
 
     /**

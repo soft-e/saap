@@ -112,7 +112,6 @@ useEffect(()=>{
                   value={values.hora_cierre}
                 />
               </div>
-
               <div
                 className="espacioBotonesAtencion"
               >
@@ -137,7 +136,6 @@ useEffect(()=>{
         }
       </Formik>
       </div>
-      
     </div>
   </div>
   </> 

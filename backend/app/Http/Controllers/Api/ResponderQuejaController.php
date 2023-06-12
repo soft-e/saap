@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\vehiculo;
 
-class VehiculoController extends Controller
+use App\Models\Queja;
+use App\Models\ResponderQueja;
+
+
+class ResponderQuejaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,28 +18,29 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculo = Vehiculo::get();
-        return response()->json($vehiculo);
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request   
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $vehiculo = new vehiculo();
-        $vehiculo->placa = $request->placa;
-        $vehiculo->color = $request->color;
-        $vehiculo->marca = $request->marca;
-        $vehiculo->modelo = $request->modelo;
-        $vehiculo->save();
-        return response()->json($vehiculo);
+        $Rqueja = new ResponderQueja;
+        $Rqueja->contenido = $request->input('contenido');
+        $Rqueja->asunto = $request->input('asunto');
+        $Rqueja->queja_id = $request->queja_id;
+        $Rqueja->save();
+        return response()->json($Rqueja, 201);
     }
 
-    /**
+
+
+     
+   /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -44,13 +48,15 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        $vehiculo = Vehiculo::find($id);
-        if (!$vehiculo) {
-            return response()->json(['message' => 'vehiculo no encontrado'], 404);
+        $mensaje = ResponderQueja::find($id);
+
+        if (!$mensaje) {
+            return response()->json(['message' => 'La respuesta de queja no fue encontrada'], 404);
         }
 
-        return response()->json($contrato);
+        return response()->json($mensaje);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -74,4 +80,18 @@ class VehiculoController extends Controller
     {
         //
     }
+
+
+    
+
+public function obtenerAsuntoQueja($id) {
+    $queja = Queja::find($id); // Busca la queja por su ID
+    
+    if ($queja) {
+        return $queja->asunto; // Retorna el valor del asunto
+    } else {
+        return null; // Maneja el caso de que no se encuentre la queja
+    }
+}
+
 }

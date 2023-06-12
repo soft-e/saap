@@ -15,7 +15,7 @@ export function FormularioRegistroPersonas() {
     const [apellido_paterno, setApellido_paterno] = useState('')
     const [apellido_materno, setApellido_materno] = useState('')
     const [telefono, setTelefono] = useState('')
-    const [nombre_cargo, setNombre_cargo] = useState('')
+    const [nombre_cargo, setNombre_cargo] = useState('Guardia')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()

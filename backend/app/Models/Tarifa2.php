@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contrato extends Model
-{   use HasFactory;
-    protected $table = 'contratos';
-    protected $fillable = ['sitio_id', 'docente_id', 'vehiculo_id','bloque'];
-
+class Tarifa2 extends Model
+{
+    use HasFactory;
+    protected $fillable =[
+        'costo_tarifa'
+    ];
     public function pagos(){
         return $this->hasMany(Pago::class);
     }
+    
 }
