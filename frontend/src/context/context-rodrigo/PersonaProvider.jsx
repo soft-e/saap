@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
-import{
+import {
   getPersonasRequest,
   getPersonaRequest,
   createPersonaRequest,
   updatePersonaRequest,
   deletePersonaRequest,
-}from "../../api/persona.api";
+} from "../../api/persona.api";
 
 import { PersonaContext } from "./PersonaContext";
 
-export const usePersonas = ()=>{
+export const usePersonas = () => {
   const context = useContext(PersonaContext);
   if (!context) {
     throw new Error(
@@ -19,15 +19,15 @@ export const usePersonas = ()=>{
   return context;
 };
 
-export const PersonaContextProvider= ({children})=>{
-  const[personas,setPersonas]=useState([]);
+export const PersonaContextProvider = ({ children }) => {
+  const [personas, setPersonas] = useState([]);
 
-  async function loadPersonas(){
+  async function loadPersonas() {
     const response = await getPersonasRequest();
     setPersonas(response.data);
   }
 
-  async function loadPersona(id){
+  async function loadPersona(id) {
     try {
       const response = await getPersonaRequest(id);
       return response.data;
@@ -36,26 +36,26 @@ export const PersonaContextProvider= ({children})=>{
     }
   };
 
-  async function updatePersona(id,newFields){
+  async function updatePersona(id, newFields) {
     try {
-      const response = await updatePersonaRequest(id,newFields);
+      const response = await updatePersonaRequest(id, newFields);
       console.log(response);
-    }catch(error){
+    } catch (error) {
       console.error(error);
     }
   }
-  async function createPersona(persona){
+  async function createPersona(persona) {
     try {
       const response = await createPersonaRequest(persona);
     } catch (error) {
       console.log(error);
     }
   }
-  async function deletePersona(id){
+  async function deletePersona(id) {
     try {
       const response = await deletePersonaRequest(id);
     } catch (error) {
-      
+
     }
   }
   return (
@@ -66,8 +66,8 @@ export const PersonaContextProvider= ({children})=>{
       updatePersona,
       createPersona,
       deletePersona
-      }}>
-        {children}
-      </PersonaContext.Provider>
-      )
+    }}>
+      {children}
+    </PersonaContext.Provider>
+  )
 }
