@@ -8,7 +8,7 @@ function CardUser(){
   >
     <FontAwesomeIcon icon={faCircleUser} className="icono"/>
     <label className="nombreUsuario">
-      Administrador
+      Secretari@
     </label>
   </div>
 }

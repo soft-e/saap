@@ -46,6 +46,10 @@ import { PlazaContextProvider } from "./context/context-rodrigo/PlazaProvider";
 import { ParqueocontextProvider } from "./context/context-rodrigo/ParqueoProvider";
 import FormularioResponderQueja from "./pages/pages-deysi/FormularioResponderQueja";
 import { ContratoContextProvider } from "./context/context-rodrigo/ContratoProvider";
+import SecretaryPage from "./pages/SecretaryPage";
+import SecretaryHomePage from "./pages/SecretaryHomePage";
+import SecretaryRegisterPaymentPage from "./pages/SecretaryRegisterPaymentPage";
+import SecretaryContractPage from "./pages/SecretaryContractPage";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -100,6 +104,10 @@ function App() {
                             <Route path="/inicio" element={<InicioPage />} />
                             <Route path="/reportes" element={<ReportesPage />} />
                             <Route path="/responderquejas/:id" element={<FormularioResponderQueja />} />
+                            <Route path="/secretary" element={<SecretaryPage/>}/>
+                            <Route path="/secretary/home" element={<SecretaryHomePage/>}/>
+                            <Route path="/secretary/regpayment" element={<SecretaryRegisterPaymentPage/>}/>
+                            <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
                           </Routes>
                         </ParqueocontextProvider>
                       </PlazaContextProvider>
