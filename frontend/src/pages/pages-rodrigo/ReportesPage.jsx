@@ -21,11 +21,11 @@ function ReportesPage() {
     loadPlazas();
     loadContratos();
   }, []);
-  console.log(pagos);
-  console.log(tarifa2s);
-  console.log(parqueos);
-  console.log(plazas);
-  console.log(contratos);
+  //console.log(pagos);
+  //console.log(tarifa2s);
+  //console.log(parqueos);
+  //console.log(plazas);
+  //console.log(contratos);
 
   const getFreeSpaces = () => {
     let freeSpaces = 0;
@@ -105,7 +105,7 @@ function ReportesPage() {
         morosos.push(contratos[i]);
       }
     }
-    console.log(morosos);
+    //console.log(morosos);
     return morosos.length;
 
   }
