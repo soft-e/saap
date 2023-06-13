@@ -8,6 +8,37 @@ use App\Models\Tarifa2;
 
 class Tarifa2Controller extends Controller
 {
+
+//
+
+
+public function obtenerUltimoTarifa()
+{
+    //$ultimaTarifa = Tarifa2::latest('updated_at')->first();
+    //ordenamos de mayor a menor y tomamos el primer
+   
+  
+       
+      
+
+
+    //$ultimaTarifa = Tarifa2::orderBy('updated_at', 'desc')->value('costo_tarifa');
+    
+    
+    $ultimaTarifa = Tarifa2::orderByDesc('updated_at')->first();
+
+    if (!$ultimaTarifa) {
+        return response()->json(['message' => 'No se encontró ninguna tarifa registrada.'], 404);
+    }
+
+    return response()->json($ultimaTarifa);
+}
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
