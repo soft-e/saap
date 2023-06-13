@@ -7,7 +7,9 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
+
 function ButtonBoxSecretary() {
+  
   const navigate = useNavigate();
 
   return <div
