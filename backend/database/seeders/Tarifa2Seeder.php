@@ -23,8 +23,8 @@ class Tarifa2Seeder extends Seeder
                     //:s'),
                     //'updated_at'=>Carbon::now()->format('Y-m-d H:i
                     //:s')
-                    'created_at'=>Carbon::now(),
-                    'updated_at'=>Carbon::now(),
+                    'created_at'=>'2023-03-05 02:44:01.000',
+                    'updated_at'=>'2023-03-05 02:44:01.000',
                 ],
                 [
                     'costo_tarifa'=>200,
@@ -32,8 +32,8 @@ class Tarifa2Seeder extends Seeder
                     //:s'),
                     //'updated_at'=>Carbon::now()->format('Y-m-d H:i
                     //:s')
-                    'created_at'=>Carbon::now(),
-                    'updated_at'=>Carbon::now(),
+                    'created_at'=>'2023-04-05 02:44:01.000',
+                    'updated_at'=>'2023-04-05 02:44:01.000',
                 ],
                 
             ]
