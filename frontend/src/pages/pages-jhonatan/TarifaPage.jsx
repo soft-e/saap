@@ -1,5 +1,5 @@
-import "../../assets/css/css-jhonatan/tarifapage.css"
-import React, { useEffect } from "react";
+import "../../assets/css/css-jhonatan/tarifapage.css";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
@@ -9,6 +9,7 @@ import CardTarifa from "../../components/CardTarifa";
 function TarifaPage() {
   const { tarifas, loadTarifas } = useTarifas();
   const navigate = useNavigate();
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
 
   useEffect(() => {
     loadTarifas();
@@ -22,7 +23,15 @@ function TarifaPage() {
   }
 
   function handleRegistrarTarifaClick() {
-    navigate("/tarifa/create");
+    const alreadyCreated = tarifas.some(
+      (tarifa) => new Date(tarifa.created_at).getMonth() + 1 === currentMonth
+    );
+
+    if (alreadyCreated) {
+      alert("Ya se ha creado una tarifa este mes.");
+    } else {
+      navigate("/tarifa/create", { state: { currentMonth } });
+    }
   }
 
   return (
@@ -45,4 +54,3 @@ function TarifaPage() {
 }
 
 export default TarifaPage;
-
