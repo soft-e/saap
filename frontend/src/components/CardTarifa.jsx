@@ -41,15 +41,13 @@ function CardTarifa({ tarifa }) {
   return (
     <div className="cardTarifa">
       <header>
-        <h2 className="titulo">{isCurrentMonth() ? "Tarifa Actual" : "Tarifa"}</h2>
+        <h2 className="titulo">
+          {isCurrentMonth() ? "Tarifa Actual" : `Tarifa ${getMonthName()}`}
+        </h2>
       </header>
       <div className="costo">
         <label>Costo Mensual:</label>
         <label className="costomensual">{tarifa.costo_tarifa} Bs.</label>
-      </div>
-      <div className="mes">
-        <label>Mes aplicado:</label>
-        <label className="mesaplicado">{getMonthName()}</label>
       </div>
       <div className="seccion_boton">
         <button className="boton_editar" onClick={handleEditTarifa}>

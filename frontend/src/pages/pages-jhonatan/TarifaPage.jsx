@@ -40,11 +40,13 @@ function TarifaPage() {
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">
-          <h1 className="title">Tarifa</h1>
+        <div className="tituloTarifa"> 
+          <h1>Tarifa</h1>
           <div className="registrarTarifaButtonContainer">
-            <button className="button" onClick={handleRegistrarTarifaClick}>
+            <button className="botonTarifa hvr-fade" onClick={handleRegistrarTarifaClick}>
               Registrar Tarifa
             </button>
+            </div> 
           </div>
           <div className="cardsTarifa">{renderMain()}</div>
         </div>

@@ -5,9 +5,10 @@ import { SessionContext } from "../context/context-rodrigo/SessionContext";
 import { useContext, useEffect, useState } from "react";
 import { PersonaContext } from "../context/context-rodrigo/PersonaContext";
 import { EmpleadoContext } from "../context/context-rodrigo/EmpleadoContext";
-
+import { useDocentes } from "../context/context-rodrigo/DocenteProvider";
 
 function LoginPage() {
+  const {docentes,loadDocentes}=useDocentes();
   const [correo, setCorreo] = useState();
   const [password, setPassword] = useState();
   const { isLoggedIn, user, login, logout } = useContext(SessionContext);
@@ -15,12 +16,13 @@ function LoginPage() {
   const {empleados,loadEmpleados}=useContext(EmpleadoContext);
   const [users, setUsers] = useState([]);
 
-
   useEffect(() => {
     loadPersonas();
     //setUsers(personas);
     loadEmpleados();
     //console.log(personas);
+    loadDocentes();
+    //console.log(docentes);
   }, []);
 
 
@@ -45,6 +47,7 @@ function LoginPage() {
 
   }
   const onPressedLoginButton = (event,correo, password) => {
+    
     event.preventDefault();
     console.log(correo);
     console.log(password);
@@ -61,17 +64,37 @@ function LoginPage() {
       login(usuario);
       //console.log(empleados);
       //console.log(usuario.id)
+      
       const rol = searchUserRolByPersonId(usuario.id);
+      
+
       console.log (rol);
       if(isLoggedIn){
         if(rol==="administrador"){
           navigate("/admin");
         }
+        if(rol==="secretaria"){
+          navigate("/secretary");
+        }
+        if (rol==="docente") {
+          navigate("/client")
+        }
+        
       }
     }
     //console.log(findedPerson);
     //console.log(aux);
   }
+
+  const esDocente = (id)=>{
+    console.log(docentes);
+    const encontre = docentes.find((docente)=>{
+      return docente.persona_id === id;
+    })
+    console.log(encontre)
+    return encontre?true:false;
+  }
+
   const searchUserRolByPersonId=(id)=>{
     console.log(id);
     console.log(empleados);
@@ -79,7 +102,10 @@ function LoginPage() {
       return (empleado.persona_id===id);
     });
     console.log(rol);
-    return rol.nombre_cargo;
+    
+    //const nombreRol = rol.nombre_cargo;
+    //return nombreRol;
+    return !rol?"docente":rol.nombre_cargo;
   }
   //console.log(personas);
   const navigate = useNavigate();
