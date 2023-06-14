@@ -53,7 +53,7 @@ import SecretaryContractPage from "./pages/SecretaryContractPage";
 //IMPORTACIONES CLIENTE
 import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
-import ClientComplaintPage from "./pages/ClientComplaintPage";
+import ClientComplaintPage from "./pages/pages-jose/ClientComplaintPage";
 import ClientMessagePage from "./pages/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
 import ClientContractPage from "./pages/pages-jose/ClientContractPage";

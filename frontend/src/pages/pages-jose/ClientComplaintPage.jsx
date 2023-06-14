@@ -2,9 +2,6 @@ import ButtonBoxClient from "../../components/ButtonBoxClient";
 import Navbar from "../../components/Navbar";
 import '../../assets/css/css-jose/registrarPersonal.css'
 
-import ContratosDataSitio from "../../components/componentes-jose/ContratosDataSitio";
-import ContratosDataVehiculo from "../../components/componentes-jose/ContratosDataVehiculo";
-
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
@@ -13,16 +10,16 @@ import { URL_API } from "../../services/EndPoint";
 
 const endPoint = URL_API+"/contrato"
 
-function ClientContractPage(){
+function ClientComplaintPage(){
     const { id } = useParams();
     const [contratos, setContratos] = useState ( [] );
     let contrato;
 
     useEffect ( () => {
-        getContrato();
+        getContratos();
     }, []);
 
-    const getContrato = async () => {
+    const getContratos = async () => {
         const response = await axios.get(endPoint);
         setContratos(response.data);
     }
@@ -35,20 +32,13 @@ function ClientContractPage(){
         let dato = [];
         if(tieneContrato(docente_id)){
             dato = (<> 
-                <div>
-                    <ContratosDataSitio 
-                    sitio_id={ contrato.sitio_id}
-                    bloque = { contrato.bloque } />                 
-                </div>
-                <br></br>
-                <div>
-                    <ContratosDataVehiculo vehiculo_id={ contrato.vehiculo_id }/>                    
-                </div>
+                
             </>);
         }else{
             dato = (<>
                 <label> Actualmente no cuentas con un contrato, 
-                    si deseas un contrato dale click al boton de abajo para solicitar un contrato</label>
+                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un contrato
+                    con el boton que se muestra: Solicitar un Contrato </label>
                 <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
                         <button className='stylesButton_j' onClick={ handleClick }>
@@ -72,8 +62,8 @@ function ClientContractPage(){
         }
         return res;
     }
-
-    return <>
+    return(
+        <>
         <Navbar accion="cerrar sesion"/>
         <div className="espacioPagina">
             <ButtonBoxClient docente_id={ id }/>
@@ -82,5 +72,6 @@ function ClientContractPage(){
             </div>
         </div>
     </>
+  )
 };
-export default ClientContractPage;
+export default ClientComplaintPage;
