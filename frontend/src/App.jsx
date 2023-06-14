@@ -51,6 +51,12 @@ import SecretaryHomePage from "./pages/SecretaryHomePage";
 import SecretaryRegisterPaymentPage from "./pages/SecretaryRegisterPaymentPage";
 import SecretaryContractPage from "./pages/SecretaryContractPage";
 
+import ClientPage from "./pages/ClientPage";
+import ClientComplaintPage from "./pages/ClientComplaintPage";
+import ClientMessagePage from "./pages/ClientMessagePage";
+import ClientHomePage from "./pages/ClientHomePage";
+import ClientContractPage from "./pages/ClientContractPage";
+import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -70,6 +76,7 @@ function App() {
                     <Tarifa2ContextProvider>
                       <PlazaContextProvider>
                         <ParqueocontextProvider>
+                          <DocenteContextProvider>
                           <Routes>
                             <Route path="/" element={<PrincipalPage />} />
                             <Route path="/login" element={<LoginPage />} />
@@ -110,8 +117,14 @@ function App() {
                            
                            <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage/>}/>
                             <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
-                        
+                            
+                            <Route path="/client" element={<ClientPage/>}/>
+                            <Route path="/client/home" element={<ClientHomePage/>}/>
+                            <Route path="/client/complaints" element={<ClientComplaintPage/>}/>
+                            <Route path="/client/messages" element={<ClientMessagePage/>}/>
+                            <Route path="/client/contract" element={<ClientContractPage/>}/>
                           </Routes>
+                          </DocenteContextProvider>
                         </ParqueocontextProvider>
                       </PlazaContextProvider>
                     </Tarifa2ContextProvider>
