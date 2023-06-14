@@ -1,16 +1,19 @@
 import '../../../assets/css/css-eriel/EditarParqueo.css';
 import Parqueos from './Parqueos'
 import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import {URL_API} from '../../../services/EndPoint'
+/*import { SessionContext } from '../../../context/context-rodrigo/SessionProvider';
+*/
 
 function EditarParqueo() {
-    const [nombre_bloque,setnombre]=useState('');
-    const [cantidad_sitios,setSitios]=useState(0); 
+    /*const { user } = useContext(SessionContext);*/
+    const {id,nombre,cantidad}=useParams();
+    const [nombre_bloque,setnombre]=useState(nombre);
+    const [cantidad_sitios,setSitios]=useState(cantidad); 
     const empleado_id=1;
     const navigate=useNavigate();
-    const {id}=useParams();
 
     const update=async(e)=>{
         e.preventDefault();
@@ -24,6 +27,7 @@ function EditarParqueo() {
     useEffect(()=>{
         const getParqueoById=async()=>{
             const response=await axios.get(`${URL_API}/parqueos/${id}`)
+            console.log(response.data)
             setnombre(response.data.nombre_bloque)
             setSitios(response.data.cantidad_sitios)
         }
@@ -45,7 +49,6 @@ function EditarParqueo() {
                         value={nombre_bloque}
                         onChange={(e)=>setnombre(e.target.value)}
                         type="text"
-                        placeholder='ingre el nuevo nombre'
                         required
                     />
                     <label htmlFor="">Nueva Cantidad de Sitios</label>
@@ -53,7 +56,6 @@ function EditarParqueo() {
                         type="number" 
                         onChange={(e)=>setSitios(e.target.value)}
                         value={cantidad_sitios}
-                        placeholder='ingre la nueva cantidad'
                         required
                     />
                 </div>

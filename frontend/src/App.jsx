@@ -93,7 +93,7 @@ function App() {
                             <Route path="/tarifa/create" element={<TarifaFormCreate />} />
                             <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo />} />
                             <Route path="/parqueos" element={<Parqueos />} />
-                            <Route path="/editarparqueos/:id" element={<EditarParqueo />} />
+                            <Route path="/editarparqueos/:id/:nombre/:cantidad" element={<EditarParqueo />} />
                             <Route path="/vermensajes" element={<VerMensajes />} />
                             <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
                             <Route path="/tarifa" element={<TarifaPage />} />
