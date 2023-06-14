@@ -3,18 +3,20 @@ import "../../../assets/css/templatePage.css";
 import Navbar from "../../../components/Navbar";
 import ButtonBoxAdmin from "../../../components/ButtonBoxAdmin";
 import axios from 'axios';
-import { useEffect,useState } from 'react';
+import { useEffect,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {URL_API} from '../../../services/EndPoint'
+import { useSession } from '../../../context/context-rodrigo/SessionProvider';
 
 function Parqueos() {
+    const { user } = useSession();
     const [parqueos,setParqueos]=useState([]);
     const navigate = useNavigate();
     
     useEffect(()=>{
         fetchEmployeesData();
     },[]);
-
+    console.log(user);
     const fetchEmployeesData = async () => {
         try {
           const response = await axios.get(`${URL_API}/parqueos`); 

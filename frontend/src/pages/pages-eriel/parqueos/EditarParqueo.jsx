@@ -1,18 +1,17 @@
 import '../../../assets/css/css-eriel/EditarParqueo.css';
 import Parqueos from './Parqueos'
 import axios from 'axios';
-import { useState,useEffect,useContext } from 'react';
+import { useState,useEffect} from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import {URL_API} from '../../../services/EndPoint'
-/*import { SessionContext } from '../../../context/context-rodrigo/SessionProvider';
-*/
+import { useSession } from '../../../context/context-rodrigo/SessionProvider';
 
 function EditarParqueo() {
-    /*const { user } = useContext(SessionContext);*/
+    const { user } = useSession();
     const {id,nombre,cantidad}=useParams();
-    const [nombre_bloque,setnombre]=useState(nombre);
-    const [cantidad_sitios,setSitios]=useState(cantidad); 
-    const empleado_id=1;
+    const [nombre_bloque,setnombre]=useState();
+    const [cantidad_sitios,setSitios]=useState(); 
+    const empleado_id=user.id;
     const navigate=useNavigate();
 
     const update=async(e)=>{
@@ -28,12 +27,12 @@ function EditarParqueo() {
         const getParqueoById=async()=>{
             const response=await axios.get(`${URL_API}/parqueos/${id}`)
             console.log(response.data)
-            setnombre(response.data.nombre_bloque)
-            setSitios(response.data.cantidad_sitios)
+            setnombre(nombre)
+            setSitios(cantidad)
         }
         getParqueoById();
     },[]);
-    
+
     return(
     <div className='editarParqueoPadre'>
         <Parqueos/>
