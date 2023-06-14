@@ -12,8 +12,9 @@ class ResponderQueja extends Model
     protected $fillable = ['contenido', 'asunto', 'queja_id'];
 
 
+    
     public function queja()
-    {
-        return $this->belongsTo(Queja::class);
-    }
+{
+    return $this->belongsTo(Queja::class, 'queja_id');
+}
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Queja;
+use App\Models\ResponderQueja;
 
 class QuejaController extends Controller
 {
@@ -31,7 +32,7 @@ class QuejaController extends Controller
         $queja->contenido = $request->contenido;
         $queja->asunto = $request->asunto;
         $queja->save();
-        return response()->json([$queja], 201);
+        return response()->json($queja, 201);
     }
 
     /**
@@ -44,7 +45,7 @@ class QuejaController extends Controller
     {
         $queja = Queja::find($id);
         if (!$queja) {
-            return response()->json(['message' => 'queja no encontrada'], 404);
+            return response()->json(['message' => 'Queja no encontrada'], 404);
         }
 
         return response()->json($queja);
@@ -59,7 +60,16 @@ class QuejaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $queja = Queja::find($id);
+        if (!$queja) {
+            return response()->json(['message' => 'Queja no encontrada'], 404);
+        }
+
+        $queja->contenido = $request->input('contenido');
+        $queja->asunto = $request->input('asunto');
+        $queja->save();
+
+        return response()->json($queja);
     }
 
     /**
@@ -70,6 +80,35 @@ class QuejaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $queja = Queja::find($id);
+        if (!$queja) {
+            return response()->json(['message' => 'Queja no encontrada'], 404);
+        }
+
+        $queja->delete();
+
+        return response()->json(['message' => 'Queja eliminada']);
+    }
+
+    public function obtenerAsuntoQueja($id)
+    {
+        $queja = Queja::find($id);
+
+        if ($queja) {
+            return $queja->asunto;
+        } else {
+            return null;
+        }
+    }
+
+    public function obtenerRespuestaQueja($id)
+    {
+        $respuesta = ResponderQueja::where('queja_id', $id)->first();
+
+        if ($respuesta) {
+            return $respuesta;
+        } else {
+            return null;
+        }
     }
 }
