@@ -108,7 +108,7 @@ function Parqueos() {
                             <div className='contendorBotonesParqueos' >
                                 <button
                                     className='botonEditarParqueos'
-                                    onClick={() =>navigate(`/editarparqueos/${parqueos.id}`)}
+                                    onClick={() =>navigate(`/editarparqueos/${parqueos.id}/${parqueos.nombre_bloque}/${parqueos.cantidad_sitios}`)}
                                 >
                                     <h4>Editar</h4>
                                 </button>

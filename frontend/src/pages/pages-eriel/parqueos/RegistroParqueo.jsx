@@ -2,16 +2,17 @@ import '../../../assets/css/css-eriel/RegistroParqueo.css'
 import "../../../assets/css/templatePage.css";
 import Navbar from "../../../components/Navbar";
 import ButtonBoxAdmin from "../../../components/ButtonBoxAdmin";
-import { useState } from 'react';
+import { useState ,useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {URL_API} from '../../../services/EndPoint';
 
 function RegistroParqueo() {
-
+    /*const { user } = useContext(SessionContext);*/
     const [nombre_bloque,setnombre_bloque]=useState('');
     const [cantidad_sitios,setcantidad_sitios]=useState(0); 
     const empleado_id=1;
+    console.log(empleado_id);
     const navigate=useNavigate();
 
     const store=async(e)=>{
