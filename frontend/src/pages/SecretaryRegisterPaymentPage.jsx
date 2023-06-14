@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//actualizado
+//actualizado...
 function SecretaryRegisterPaymentPage() {
   const [tarifaTotal, setTarifaTotal] = useState({});
   const [montoPago, setMontoPago] = useState("");
