@@ -8,7 +8,7 @@ import {URL_API} from '../../../services/EndPoint'
 function EditarParqueo() {
     const [nombre_bloque,setnombre]=useState('');
     const [cantidad_sitios,setSitios]=useState(0); 
-    const empleado_id=7;
+    const empleado_id=1;
     const navigate=useNavigate();
     const {id}=useParams();
 

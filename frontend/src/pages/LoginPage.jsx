@@ -67,6 +67,9 @@ function LoginPage() {
         if(rol==="administrador"){
           navigate("/admin");
         }
+        if(rol==="secretaria"){
+          navigate("/secretary");
+        }
       }
     }
     //console.log(findedPerson);
