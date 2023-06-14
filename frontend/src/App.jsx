@@ -56,6 +56,7 @@ import ClientMessagePage from "./pages/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
 import ClientContractPage from "./pages/ClientContractPage";
 import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";
+import { MensajeContextProvider } from "./context/context-rodrigo/MensajeProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -65,73 +66,75 @@ function App() {
 
   return (
     <div id="mainheader">
-      <SessionContextProvider>
-        <EmpleadoContextProvider>
-          <PersonaContextProvider>
-            <AtencionContextProvider>
-              <ContratoContextProvider>
-                <TarifaContextProvider>
-                  <PagoContextProvider>
-                    <Tarifa2ContextProvider>
-                      <PlazaContextProvider>
-                        <ParqueocontextProvider>
-                          <DocenteContextProvider>
-                          <Routes>
-                            <Route path="/" element={<PrincipalPage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/admin" element={<AdminPage />} />
-                            <Route path="/personal" element={<PersonalPage />} />
-                            <Route path="/personal/registrar" element={<RegistrarPersonal />} />
-                            <Route path="/personal/edit/:id" element={<EditarPersonal />} />
-                            <Route path="/listardocentes" element={<ListarDocentes />} />
-                            <Route path="/registrarmensaje" element={<RegistrarMensaje />} />
-                            <Route path="/contratos" element={<Contratos />} />
-                            <Route path="/contratos/show/:id" element={<ContratosVerIndependiente />} />
-                            <Route path="*" element={<NotFound />} />
-                            <Route path="/template" element={<TemplatePage />} />
-                            <Route path="/atencion" element={<AtencionPage />} />
-                            <Route path="/atencion/new" element={<AtencionForm />} />
-                            <Route path="/atencion/edit/:id" element={<AtencionForm />} />
-                            <Route path="/registroparqueo" element={<RegistroParqueo />} />
-                            <Route path="/registrovehiculo" element={<RegistroDTvehiculo />} />
-                            <Route path="/tarifa" element={<TarifaPage />} />
-                            <Route path="/tarifa/edit/:id" element={<TarifaForm />} />
-                            <Route path="/tarifa/create" element={<TarifaFormCreate />} />
-                            <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo />} />
-                            <Route path="/parqueos" element={<Parqueos />} />
-                            <Route path="/editarparqueos/:id" element={<EditarParqueo />} />
-                            <Route path="/vermensajes" element={<VerMensajes />} />
-                            <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
-                            <Route path="/tarifa" element={<TarifaPage />} />
-                            <Route path="/verquejas" element={<VerQuejas />} />
-                            <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
-                            <Route path="sitios" element={<Parqueo />} />
-                            <Route path="/registrarSitio" element={<RegistrarPlaza />} />
-                            <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
-                            <Route path="/inicio" element={<InicioPage />} />
-                            <Route path="/reportes" element={<ReportesPage />} />
-                            <Route path="/responderquejas/:id" element={<FormularioResponderQueja />} />
-                            <Route path="/secretary" element={<SecretaryPage/>}/>
-                            <Route path="/secretary/home" element={<SecretaryHomePage/>}/>
-                            <Route path="/secretary/regpayment" element={<SecretaryRegisterPaymentPage/>}/>
-                            <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
-                            <Route path="/client" element={<ClientPage/>}/>
-                            <Route path="/client/home" element={<ClientHomePage/>}/>
-                            <Route path="/client/complaints" element={<ClientComplaintPage/>}/>
-                            <Route path="/client/messages" element={<ClientMessagePage/>}/>
-                            <Route path="/client/contract" element={<ClientContractPage/>}/>
-                          </Routes>
-                          </DocenteContextProvider>
-                        </ParqueocontextProvider>
-                      </PlazaContextProvider>
-                    </Tarifa2ContextProvider>
-                  </PagoContextProvider>
-                </TarifaContextProvider>
-              </ContratoContextProvider>
-            </AtencionContextProvider>
-          </PersonaContextProvider>
-        </EmpleadoContextProvider>
-      </SessionContextProvider>
+
+      <EmpleadoContextProvider>
+        <PersonaContextProvider>
+          <AtencionContextProvider>
+            <ContratoContextProvider>
+              <TarifaContextProvider>
+                <PagoContextProvider>
+                  <Tarifa2ContextProvider>
+                    <PlazaContextProvider>
+                      <ParqueocontextProvider>
+                        <DocenteContextProvider>
+                          <MensajeContextProvider>
+                            <Routes>
+                              <Route path="/" element={<PrincipalPage />} />
+                              <Route path="/login" element={<LoginPage />} />
+                              <Route path="/admin" element={<AdminPage />} />
+                              <Route path="/personal" element={<PersonalPage />} />
+                              <Route path="/personal/registrar" element={<RegistrarPersonal />} />
+                              <Route path="/personal/edit/:id" element={<EditarPersonal />} />
+                              <Route path="/listardocentes" element={<ListarDocentes />} />
+                              <Route path="/registrarmensaje" element={<RegistrarMensaje />} />
+                              <Route path="/contratos" element={<Contratos />} />
+                              <Route path="/contratos/show/:id" element={<ContratosVerIndependiente />} />
+                              <Route path="*" element={<NotFound />} />
+                              <Route path="/template" element={<TemplatePage />} />
+                              <Route path="/atencion" element={<AtencionPage />} />
+                              <Route path="/atencion/new" element={<AtencionForm />} />
+                              <Route path="/atencion/edit/:id" element={<AtencionForm />} />
+                              <Route path="/registroparqueo" element={<RegistroParqueo />} />
+                              <Route path="/registrovehiculo" element={<RegistroDTvehiculo />} />
+                              <Route path="/tarifa" element={<TarifaPage />} />
+                              <Route path="/tarifa/edit/:id" element={<TarifaForm />} />
+                              <Route path="/tarifa/create" element={<TarifaFormCreate />} />
+                              <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo />} />
+                              <Route path="/parqueos" element={<Parqueos />} />
+                              <Route path="/editarparqueos/:id" element={<EditarParqueo />} />
+                              <Route path="/vermensajes" element={<VerMensajes />} />
+                              <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
+                              <Route path="/tarifa" element={<TarifaPage />} />
+                              <Route path="/verquejas" element={<VerQuejas />} />
+                              <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
+                              <Route path="sitios" element={<Parqueo />} />
+                              <Route path="/registrarSitio" element={<RegistrarPlaza />} />
+                              <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
+                              <Route path="/inicio" element={<InicioPage />} />
+                              <Route path="/reportes" element={<ReportesPage />} />
+                              <Route path="/responderquejas/:id" element={<FormularioResponderQueja />} />
+                              <Route path="/secretary" element={<SecretaryPage />} />
+                              <Route path="/secretary/home" element={<SecretaryHomePage />} />
+                              <Route path="/secretary/regpayment" element={<SecretaryRegisterPaymentPage />} />
+                              <Route path="/secretary/contract" element={<SecretaryContractPage />} />
+                              <Route path="/client" element={<ClientPage />} />
+                              <Route path="/client/home" element={<ClientHomePage />} />
+                              <Route path="/client/complaints" element={<ClientComplaintPage />} />
+                              <Route path="/client/messages" element={<ClientMessagePage />} />
+                              <Route path="/client/contract" element={<ClientContractPage />} />
+                            </Routes>
+                          </MensajeContextProvider>
+                        </DocenteContextProvider>
+                      </ParqueocontextProvider>
+                    </PlazaContextProvider>
+                  </Tarifa2ContextProvider>
+                </PagoContextProvider>
+              </TarifaContextProvider>
+            </ContratoContextProvider>
+          </AtencionContextProvider>
+        </PersonaContextProvider>
+      </EmpleadoContextProvider>
+
       <Footer />
     </div>
   );

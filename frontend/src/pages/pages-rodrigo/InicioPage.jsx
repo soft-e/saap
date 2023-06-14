@@ -20,7 +20,7 @@ function InicioPage() {
       setPassword(user.password);
     }
     
-  },[user])
+  },[])
   const onPressedUpdatePassword = (event, password) => {
     event.preventDefault();
     updatePersona(currentUser.id, {

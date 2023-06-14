@@ -8,6 +8,7 @@ import { EmpleadoContext } from "../context/context-rodrigo/EmpleadoContext";
 import { useDocentes } from "../context/context-rodrigo/DocenteProvider";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const {docentes,loadDocentes}=useDocentes();
   const [correo, setCorreo] = useState();
   const [password, setPassword] = useState();
@@ -39,15 +40,12 @@ function LoginPage() {
     //setUsers(findedPerson);
     //console.log(findedPerson);
     //setCurrentUser(findedPerson);
-
     return findedPerson;
-
 
     //return !findedPerson?null:findedPerson;
 
   }
   const onPressedLoginButton = (event,correo, password) => {
-    
     event.preventDefault();
     console.log(correo);
     console.log(password);
@@ -64,10 +62,7 @@ function LoginPage() {
       login(usuario);
       //console.log(empleados);
       //console.log(usuario.id)
-      
       const rol = searchUserRolByPersonId(usuario.id);
-      
-
       console.log (rol);
       if(isLoggedIn){
         if(rol==="administrador"){
@@ -108,7 +103,7 @@ function LoginPage() {
     return !rol?"docente":rol.nombre_cargo;
   }
   //console.log(personas);
-  const navigate = useNavigate();
+  
   return <>
     <Navbar accion="dashboard" />
     <div className="divFormulario">

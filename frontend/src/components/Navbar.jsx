@@ -1,46 +1,53 @@
-import {Link}from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../assets/css/navbar.css"
 //import Logo from '../../assets/images/images-deysi/lu.png';
 import Logo from '../assets/images/images-deysi/lu.png';
-function Navbar(props){
-  function Login(){
+import { useSession } from "../context/context-rodrigo/SessionProvider";
+
+
+function Navbar(props) {
+const {logout}= useSession();
+
+  function Login() {
     return <Link to="/login">{props.accion}</Link>
   }
-  function Dashboard(){
+  function Dashboard() {
     return <Link to="/">{props.accion}</Link>
   }
-  function Logout(){
+  function Logout() {
+
     return <Link to="/">{props.accion}</Link>
+    
   }
-  function Accion(){
-    if(props.accion=="iniciar sesion"){
+  function Accion() {
+    if (props.accion == "iniciar sesion") {
       return Login();
     }
-    if(props.accion=="dashboard"){
+    if (props.accion == "dashboard") {
       return Dashboard();
     }
-    if (props.accion=="cerrar sesion") {
-      return Logout(); 
+    if (props.accion == "cerrar sesion") {
+      return Logout();
     }
   }
-  
-  return(
+
+  return (
     <>
       <nav id="navbar">
         <div className="container">
           <div className="logo-container">
-             <img src={Logo} alt="Logo" className="logo-image"/> 
+            <img src={Logo} alt="Logo" className="logo-image" />
             <h1 className="textologo">
               saap
             </h1>
           </div>
           <ul className="nav">
             <li>
-              <Accion/>
+              <Accion />
             </li>
           </ul>
         </div>
-      </nav>      
+      </nav>
     </>
   );
 };
