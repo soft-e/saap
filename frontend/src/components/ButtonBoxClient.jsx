@@ -8,8 +8,10 @@ import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import CardUser from "./CardUser";
 import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 
-function ButtonBoxClient(){
+function ButtonBoxClient(props){
   const navigate = useNavigate();
+  const id = props.docente_id
+  
   return <div
     className="cajaBotones"
   >
@@ -17,9 +19,10 @@ function ButtonBoxClient(){
     <div
       className="botones"
     >
+      { console.log("imprmir desde la caja de botones el id: "+id) }
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/home")}
+        onClick={()=>navigate("/client/"+id)}
       >
         <FontAwesomeIcon icon={faHouse}/>
         Inicio

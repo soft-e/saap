@@ -23,7 +23,7 @@ const ContratosDataPersona = (props) => {
     function getNombreDocente (docente_id){
         let dato = "nombre no obtenido"; 
         for(let i = 0; i < docentes.length; i++){
-            if(docentes[i].id === docente_id){
+            if(docentes[i].id == docente_id){
                 dato = docentes[i].persona.nombre;
                 break;
             }
@@ -34,7 +34,7 @@ const ContratosDataPersona = (props) => {
     function getApellidoPDocente (docente_id){
         let dato = "apellido no obtenido"; 
         for(let i = 0; i < docentes.length; i++){
-            if(docentes[i].id === docente_id){
+            if(docentes[i].id == docente_id){
                 dato = docentes[i].persona.apellido_paterno;
                 break;
             }
@@ -45,7 +45,7 @@ const ContratosDataPersona = (props) => {
     function getApellidoMDocente (docente_id){
         let dato = "apellido no obtenido"; 
         for(let i = 0; i < docentes.length; i++){
-            if(docentes[i].id === docente_id){
+            if(docentes[i].id == docente_id){
                 dato = docentes[i].persona.apellido_materno;
                 break;
             }
@@ -56,7 +56,7 @@ const ContratosDataPersona = (props) => {
     function getCiDocente (docente_id){
         let dato = "ci no obtenido"; 
         for(let i = 0; i < docentes.length; i++){
-            if(docentes[i].id === docente_id){
+            if(docentes[i].id == docente_id){
                 dato = docentes[i].persona.ci;
                 break;
             }
@@ -65,9 +65,9 @@ const ContratosDataPersona = (props) => {
     }
 
     function getTelefonoDocente (docente_id){
-        let dato = "apellido no obtenido"; 
+        let dato = "telefono no obtenido"; 
         for(let i = 0; i < docentes.length; i++){
-            if(docentes[i].id === docente_id){
+            if(docentes[i].id == docente_id){
                 dato = docentes[i].persona.telefono;
                 break;
             }
@@ -76,9 +76,9 @@ const ContratosDataPersona = (props) => {
     }
 
     function getEmailDocente (docente_id){
-        let dato = "apellido no obtenido"; 
+        let dato = "Email no obtenido"; 
         for(let i = 0; i < docentes.length; i++){
-            if(docentes[i].id === docente_id){
+            if(docentes[i].id == docente_id){
                 dato = docentes[i].persona.email;
                 break;
             }
