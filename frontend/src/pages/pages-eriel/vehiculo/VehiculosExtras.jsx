@@ -3,41 +3,32 @@ import "../../../assets/css/templatePage.css";
 import Navbar from "../../../components/Navbar";
 import ButtonBoxAdmin from "../../../components/ButtonBoxAdmin";
 import { useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useParams,useNavigate} from 'react-router-dom';
 import {URL_API} from '../../../services/EndPoint';
 import axios from 'axios';
 
-function RegistroDTvehiculo() {
+function VehiculosExtras() {
     const {id}=useParams();
     const [placa,setvehiculoDato]=useState('');
     const [color,setcolor]=useState(''); 
     const [marca,setmarca]=useState(''); 
     const [modelo,setmodelo]=useState('');
-    const [dato, setData] = useState([]);
     const navigate=useNavigate();
 
-    const store=async(e)=>{  
-        e.preventDefault();
-        const response=await axios.post(`${URL_API}/vehiculos`,{
+
+    const store=async(e)=>{
+            e.preventDefault();
+            const response=await axios.post(`${URL_API}/vehiculosExtras`,{
+            contrato_id:id,
             placa:placa,
             color:color,
             marca:marca,
             modelo:modelo
-        })
-        const nuevoRegistroConID = response.data;
-        setData([dato, nuevoRegistroConID]);
-        navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`) 
-    }
-    /*function handleCancel(event) {
-        event.preventDefault();
-        setvehiculoDato('');
-        setcolor('');
-        setmarca('');
-        setmodelo('');
+            })
+            console.log(response)
+            navigate('/contratos/show/'+id)
         
-    }*/
-
-
+    }
     return<>
         <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">
@@ -100,7 +91,7 @@ function RegistroDTvehiculo() {
                                     id="botonCancelarVH"
                                     className='botonInicioSesion' 
                                     type='submit'
-                                    onClick={()=>navigate('/listarDocentes')}
+                                    
                                 >
                                     Cancelar
                                 </button>
@@ -112,4 +103,4 @@ function RegistroDTvehiculo() {
         </div>
     </> 
 }
-export default RegistroDTvehiculo;
+export default VehiculosExtras;

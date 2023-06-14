@@ -13,7 +13,7 @@ function Parqueos() {
     
     useEffect(()=>{
         fetchEmployeesData();
-    },[])
+    },[]);
 
     const fetchEmployeesData = async () => {
         try {
@@ -97,7 +97,7 @@ function Parqueos() {
                         </button>
                     </nav>
                     <div className='contenedorParqueos'>
-                        {parqueos.map((parqueos,index)=>(
+                        {parqueos?.map((parqueos,index)=>(
                         <div className='datosParqueo' key={index}>
                             <div>
                                 <div className='nombreParqueo'>
