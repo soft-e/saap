@@ -1,7 +1,8 @@
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-import Navbar from "../../components/Navbar.jsx";
+import "../../assets/css/templatePage.css";
+import Navbar from "../../components/Navbar";
 import React, { useEffect, useState } from 'react';
-import CardPersonal from "../../components/CardPersonal.jsx";
+import CardPersonal from "../../components/CardPersonal";
 import '../../assets/css/css-jhonatan/cardPersonal.css';
 import { getUsersRequest, deleteUserRequest } from '../../api/user.api';
 import { useNavigate } from "react-router-dom";
@@ -26,28 +27,30 @@ function PersonalPage() {
       console.log(error);
     }
   };
-
   return (
-    <div className="caja">
-      <Navbar accion="cerrar sesion" />
-      <ButtonBoxAdmin />
-      <div className="contenedor_personal">
-        <h1 className="title">Personal</h1>
-        <button 
-          className="button"
+    <>
+      <Navbar accion="iniciar sesion" />
+      <div className="espacioPagina">
+        <ButtonBoxAdmin />
+        <div className="contenedorPersonal_b">
+        <div className="contenedorPersonalArriba_b">
+          <h1>Personal</h1>
+          <button className="button"
           onClick={ () => navigate("/personal/registrar") }
           >Registrar Personal</button>
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {empleados.map((empleado) => (
-            <CardPersonal
-              key={empleado.id}
-              empleado={empleado}
-              eliminarEmpleado={eliminarEmpleado}
-            />
-          ))}
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {empleados.map((empleado) => (
+              <CardPersonal
+                key={empleado.id}
+                empleado={empleado}
+                eliminarEmpleado={eliminarEmpleado}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 
