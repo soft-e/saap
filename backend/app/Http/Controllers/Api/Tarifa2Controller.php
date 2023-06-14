@@ -62,5 +62,15 @@ class Tarifa2Controller extends Controller
     public function destroy($id)
     {
         //
+
     }
+
+   // app/Http/Controllers/Api/Tarifa2Controller.php
+
+public function ultimaTarifa()
+{
+    $ultimaTarifa = Tarifa2::orderBy('updated_at', 'desc')->first();
+    return response()->json($ultimaTarifa);
+}
+
 }

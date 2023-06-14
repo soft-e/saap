@@ -9,6 +9,7 @@ class Pago extends Model
 {
     use HasFactory;
     protected $fillable=[
+         'saldo',
         'monto_pagado',
         'tarifa2_id',
         'contrato_id'

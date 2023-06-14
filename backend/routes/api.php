@@ -38,7 +38,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('personas', PersonaController::class);
 Route::resource('tarifa2s',Tarifa2Controller::class);
+
+Route::get('/tarifa2/ultima', [Tarifa2Controller::class, 'ultimaTarifa']);
 Route::resource('pagos',PagoController::class);
+Route::post('pagos',[PagoController::class, 'store']);
+Route::get('/pagos/saldo/{id}', [PagoController::class, 'getSaldoByContratoId']);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
