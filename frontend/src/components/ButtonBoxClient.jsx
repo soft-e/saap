@@ -34,7 +34,7 @@ function ButtonBoxClient(props){
       </button>
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/messages")}
+        onClick={()=>navigate("/client/messages/"+id)}
       >
         <FontAwesomeIcon icon = {faEnvelope}/>
         Mensajes
@@ -46,7 +46,7 @@ function ButtonBoxClient(props){
       </button>
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/complaints")}
+        onClick={()=>navigate("/client/complaints/"+id)}
       >
         <FontAwesomeIcon icon = {faFaceTired}/>
         Quejas
@@ -54,7 +54,7 @@ function ButtonBoxClient(props){
       </button>
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/contract")}
+        onClick={()=>navigate("/client/contract/"+id)}
       >
         <FontAwesomeIcon icon={faFileContract}/>
         Contrato

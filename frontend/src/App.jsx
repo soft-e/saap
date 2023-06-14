@@ -56,7 +56,7 @@ import ClientPage from "./pages/ClientPage";
 import ClientComplaintPage from "./pages/ClientComplaintPage";
 import ClientMessagePage from "./pages/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
-import ClientContractPage from "./pages/ClientContractPage";
+import ClientContractPage from "./pages/pages-jose/ClientContractPage";
 import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
@@ -121,9 +121,9 @@ function App() {
                             <Route path="/loginCliente" element={<LoginCliente/>}/>
                             <Route path="/client/:id" element={<ClientPage/>}/>
                             <Route path="/client/home" element={<ClientHomePage/>}/>
-                            <Route path="/client/complaints" element={<ClientComplaintPage/>}/>
-                            <Route path="/client/messages" element={<ClientMessagePage/>}/>
-                            <Route path="/client/contract" element={<ClientContractPage/>}/>
+                            <Route path="/client/complaints/:id" element={<ClientComplaintPage/>}/>
+                            <Route path="/client/messages/:id" element={<ClientMessagePage/>}/>
+                            <Route path="/client/contract/:id" element={<ClientContractPage/>}/>
                           </Routes>
                           </DocenteContextProvider>
                         </ParqueocontextProvider>
