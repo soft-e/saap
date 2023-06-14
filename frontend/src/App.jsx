@@ -54,7 +54,7 @@ import SecretaryContractPage from "./pages/SecretaryContractPage";
 import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
 import ClientComplaintPage from "./pages/pages-jose/ClientComplaintPage";
-import ClientMessagePage from "./pages/ClientMessagePage";
+import ClientMessagePage from "./pages/pages-jose/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
 import ClientContractPage from "./pages/pages-jose/ClientContractPage";
 import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";

@@ -10,7 +10,7 @@ import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 
 function ButtonBoxClient(props){
   const navigate = useNavigate();
-  const id = props.docente_id
+  const id = props.docente_id;
   
   return <div
     className="cajaBotones"
@@ -19,7 +19,6 @@ function ButtonBoxClient(props){
     <div
       className="botones"
     >
-      { console.log("imprmir desde la caja de botones el id: "+id) }
       <button
         className="hvr-fade hvr-icon-forward"
         onClick={()=>navigate("/client/"+id)}
