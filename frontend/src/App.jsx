@@ -50,6 +50,7 @@ import SecretaryPage from "./pages/SecretaryPage";
 import SecretaryHomePage from "./pages/SecretaryHomePage";
 import SecretaryRegisterPaymentPage from "./pages/SecretaryRegisterPaymentPage";
 import SecretaryContractPage from "./pages/SecretaryContractPage";
+
 import ClientPage from "./pages/ClientPage";
 import ClientComplaintPage from "./pages/ClientComplaintPage";
 import ClientMessagePage from "./pages/ClientMessagePage";
@@ -113,8 +114,10 @@ function App() {
                             <Route path="/responderquejas/:id" element={<FormularioResponderQueja />} />
                             <Route path="/secretary" element={<SecretaryPage/>}/>
                             <Route path="/secretary/home" element={<SecretaryHomePage/>}/>
-                            <Route path="/secretary/regpayment" element={<SecretaryRegisterPaymentPage/>}/>
+                           
+                           <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage/>}/>
                             <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
+                            
                             <Route path="/client" element={<ClientPage/>}/>
                             <Route path="/client/home" element={<ClientHomePage/>}/>
                             <Route path="/client/complaints" element={<ClientComplaintPage/>}/>

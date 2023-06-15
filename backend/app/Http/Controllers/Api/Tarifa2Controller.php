@@ -59,7 +59,7 @@ class Tarifa2Controller extends Controller
         $tarifa2->save();
         return response()->json($tarifa2);
     }
-
+//cambis de jhonathan
     /**
      * Remove the specified resource from storage.
      *
@@ -72,4 +72,12 @@ class Tarifa2Controller extends Controller
         $tarifa2->delete();
         return response()->json(['message' => 'Tarifa eliminada']);
     }
+//cambios de deysi
+
+    public function ultimaTarifa()
+{
+    $ultimaTarifa = Tarifa2::orderBy('updated_at', 'desc')->first();
+    return response()->json($ultimaTarifa);
+}
+
 }

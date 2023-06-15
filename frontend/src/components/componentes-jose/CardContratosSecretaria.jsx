@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,7 +9,7 @@ import { URL_API } from "../../services/EndPoint";
 const endPointDocentes = URL_API + "/docentes";
 const endPointContrato = URL_API + "/contrato";
 
-const CardContratos = () => {
+const CardContratosSecretaria = () => {
   const navigate = useNavigate();
   const [contratos, setContratos] = useState([]);
   const [tableContratos, setTableContratos] = useState([]);
@@ -119,7 +120,14 @@ const CardContratos = () => {
             </Link>
           </td>
 
-          
+          <td>
+            <Link
+              className="stylesButton_j"
+              to={`/secretary/regpayment/${contratos[i].id}`}
+            >
+              pago
+            </Link>
+          </td>
         </tr>
       );
     }
@@ -171,4 +179,4 @@ const CardContratos = () => {
   );
 };
 
-export default CardContratos;
+export default CardContratosSecretaria;

@@ -1,22 +1,24 @@
-import ButtonBoxSecretary from "../components/ButtonBoxSecretary";
-import Navbar from "../components/Navbar";
-import { URL_API } from "../services/EndPoint";
-import "../assets/css/css-deysi/formularioResponderQueja.css"
-import { useParams, useNavigate } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
+import "../../assets/css/css-deysi/formularioResponderQueja.css";
+import "../../assets/css/templatePage.css";
+import Navbar from "../../components/Navbar";
+import ButtonBoxSecretary from "../../components/ButtonBoxSecretary";
+
+import { URL_API } from "../../services/EndPoint";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-//actualizado...
-function SecretaryRegisterPaymentPage() {
+
+function Pagos() {
   const [tarifaTotal, setTarifaTotal] = useState({});
   const [montoPago, setMontoPago] = useState("");
-  const [saldoAnterior, setSaldoAnterior] = useState(null); // Inicializado como null
+  const [saldo, setSaldo] = useState("");
   const params = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`${URL_API}/tarifa2/ultima`)
+      .get(`${URL_API}/tarifa2s/ultimo`)
       .then((response) => {
         const ultimoCostoTarifa = response.data;
         setTarifaTotal(ultimoCostoTarifa);
@@ -24,49 +26,23 @@ function SecretaryRegisterPaymentPage() {
       .catch((error) => {
         console.error("Error al obtener el último costo de tarifa:", error);
       });
-
-    axios
-      .get(`${URL_API}/pagos/saldo/${params.id}`)
-      .then((response) => {
-        const saldoPago = response.data.saldo;
-        setSaldoAnterior(saldoPago || 0); // Asignar 0 si no hay saldo anterior
-      })
-      .catch((error) => {
-        console.error("Error al obtener el saldo del contrato:", error);
-      });
-  }, [params.id]);
-
-  const recalculateSaldo = () => {
-    const tarifa = parseFloat(tarifaTotal.costo_tarifa);
-    const monto = parseFloat(montoPago);
-
-    if (isNaN(tarifa) || isNaN(monto)) {
-      return "";
-    }
-
-    // Verificar si hay saldo anterior y calcular el saldo actualizado
-    const saldoActualizado = saldoAnterior !== null ? (saldoAnterior + tarifa - monto).toFixed(0) : "";
-
-    return saldoActualizado;
-  };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const saldo = recalculateSaldo();
-
     const pagos = {
-      tarifa2_id: tarifaTotal.id,
-      monto_pagado: montoPago,
-      contrato_id: params.id,
+      tarifa2_id: tarifaTotal.id, // Utilizar el ID del último costo de tarifa
+      monto_pagado: montoPago, // Utilizar el valor introducido por el usuario
+      contrato_id: params.id, // Utilizar el contrato_id de useParams()
       saldo: saldo,
     };
-    
+
     axios
-      .post(`${URL_API}/pagos`, pagos)
+      .post(`${URL_API}/registrarpago`, pagos)
       .then((response) => {
         console.log("Pago registrado:", response.data);
-        navigate("/secretary/contract");
+        navigate("/pagos");
       })
       .catch((error) => {
         console.error("Error al registrar el pago:", error);
@@ -74,43 +50,32 @@ function SecretaryRegisterPaymentPage() {
   };
 
   const handleCancel = () => {
-    navigate("/secretary/contract");
+    navigate("/pagos");
     setTarifaTotal({});
     setMontoPago("");
-    setSaldoAnterior(null);
+    setSaldo("");
   };
 
   return (
     <>
-      <Navbar accion="cerrar sesion" />
+      <Navbar accion="iniciar sesion" />
       <div className="espacioPagina">
-        <ButtonBoxSecretary />
+      <ButtonBoxSecretary/>
         <div className="espacioDeTrabajo">
           <div className="padreParqueo">
             <form className="formularioParqueo" onSubmit={handleSubmit}>
               <div className="contenedorParqueo">
                 <h1 id="tituloParqueo">Pagos</h1>
 
-                <div style={{ color: "red" }}>
-                  Deuda Anterior:{" "}
-                  {saldoAnterior !== null ? parseFloat(saldoAnterior).toFixed(0) : ""}
-                </div>
-                <div style={{ color: "blue" }}>
-                  Total Pago:{" "}
-                  {saldoAnterior !== null ? parseFloat(saldoAnterior + tarifaTotal.costo_tarifa).toFixed(0) : ""}
-                </div>
-
                 <label htmlFor="tarifaTotal" className="textoAsunto">
-                  Tarifa:
+                  Tarifa total:
                 </label>
                 <div className="entradaP">
                   <input
-                    type="number"
+                    type="text"
                     id="tarifaTotal"
-                    value={tarifaTotal.costo_tarifa}
-                    disabled
+                    value={tarifaTotal.tarifaTotal}
                     readOnly
-                    style={{ textAlign: "center" }}
                   />
                 </div>
 
@@ -119,14 +84,10 @@ function SecretaryRegisterPaymentPage() {
                 </label>
                 <div className="entradaP">
                   <input
-                    type="number"
+                    type="text"
                     id="montoPago"
                     value={montoPago}
-                    onChange={(e) => {
-                      setMontoPago(e.target.value);
-                      
-                    }}
-                    style={{ textAlign: "center" }}
+                    onChange={(e) => setMontoPago(e.target.value)}
                   />
                 </div>
 
@@ -135,16 +96,13 @@ function SecretaryRegisterPaymentPage() {
                 </label>
                 <div className="entradaP">
                   <input
-                  
-                    type="number"
+                    type="
+                    text"
                     id="saldo"
-                    value={recalculateSaldo()}
+                    value={saldo}
                     readOnly
-                    disabled
-                    style={{ textAlign: "center" }}
                   />
                 </div>
-
                 <div className="contenedorBotonP">
                   <button className="botonInicioSesion" type="submit">
                     Registrar
@@ -168,4 +126,4 @@ function SecretaryRegisterPaymentPage() {
   );
 }
 
-export default SecretaryRegisterPaymentPage;
+export default Pagos;

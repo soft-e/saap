@@ -1,12 +1,12 @@
 import ButtonBoxClient from "../components/ButtonBoxClient";
 import Navbar from "../components/Navbar";
 
-function ClientComplaintPage(){
+function ClientComplaintPage(){ //
   return(
     <>
       <Navbar accion="cerrar sesion"/>
       <div
-        className="espacioPagina"
+        className="espacioPagina" //
       >
         <ButtonBoxClient/>
         <div
