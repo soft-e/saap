@@ -27,7 +27,10 @@ class Tarifa2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarifa2 = new Tarifa2;
+        $tarifa2->costo_tarifa = $request->costo_tarifa;
+        $tarifa2->save();
+        return response()->json($tarifa2);
     }
 
     /**
@@ -38,7 +41,8 @@ class Tarifa2Controller extends Controller
      */
     public function show($id)
     {
-        //
+        $tarifa2 = Tarifa2::findOrFail($id);
+        return response()->json($tarifa2);
     }
 
     /**
@@ -50,9 +54,12 @@ class Tarifa2Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tarifa2 = Tarifa2::findOrFail($id);
+        $tarifa2->costo_tarifa = $request->costo_tarifa;
+        $tarifa2->save();
+        return response()->json($tarifa2);
     }
-
+//cambis de jhonathan
     /**
      * Remove the specified resource from storage.
      *
@@ -61,13 +68,13 @@ class Tarifa2Controller extends Controller
      */
     public function destroy($id)
     {
-        //
-
+        $tarifa2 = Tarifa2::findOrFail($id);
+        $tarifa2->delete();
+        return response()->json(['message' => 'Tarifa eliminada']);
     }
+//cambios de deysi
 
-   // app/Http/Controllers/Api/Tarifa2Controller.php
-
-public function ultimaTarifa()
+    public function ultimaTarifa()
 {
     $ultimaTarifa = Tarifa2::orderBy('updated_at', 'desc')->first();
     return response()->json($ultimaTarifa);

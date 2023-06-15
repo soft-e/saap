@@ -36,18 +36,23 @@ function TarifaFormCreate() {
                       className="inputTarifa"
                       type="text"
                       name="costo_tarifa"
-                      placeholder="Introduce el costo de la tarifa"
+                      placeholder="costo de la tarifa"
                       onChange={handleChange}
                       value={values.costo_tarifa}
                     />
                   </div>
 
                   <div className="espacioBotonesTarifa">
-                    <button type="submit" disabled={isSubmitting}>
+                    <button 
+                    className="hvr-fade"
+                    type="submit" 
+                    disabled={isSubmitting}>
                       {isSubmitting ? "Creando" : "Crear"}
                     </button>
 
-                    <button onClick={() => navigate("/tarifa")}>
+                    <button 
+                    className="hvr-fade"
+                    onClick={() => navigate("/tarifa")}>
                       Cancelar
                     </button>
                   </div>
