@@ -11,15 +11,17 @@ export function FormularioRegistroMensaje() {
 
     const [contenido, setContenido] = useState('');
     const [asunto, setAsunto] = useState('');
-    const [destinatario, setDestinatario] = useState('');
+    const [destino, setDestino] = useState('');
     const navigate = useNavigate();
 
     const store = async (e) => {
         e.preventDefault()
         await axios.post(endPoint, {
-            contenido: contenido,
+            origen: "Administrador",
+            destino: destino,
             asunto: asunto,
-            destinatario: destinatario
+            contenido: contenido,
+            estado: false,
         })
         navigate('/vermensajes')
     }
@@ -63,8 +65,8 @@ export function FormularioRegistroMensaje() {
                         id='destinatario'    
                         name='destinatario'
                         placeholder='escribe el destinatario del mensaje'
-                        value={destinatario}
-                        onChange={ (e) => setDestinatario(e.target.value) }
+                        value={destino}
+                        onChange={ (e) => setDestino(e.target.value) }
                         />
                 </div>
                 <div className="espacioBotones_j">

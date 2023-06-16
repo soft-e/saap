@@ -3,12 +3,17 @@ import ButtonBoxClient from "../components/ButtonBoxClient";
 import '../assets/css/css-jose/registrarPersonal.css'
 
 import { useParams } from "react-router-dom";
+import { useSession } from "../context/context-rodrigo/SessionProvider";
 
 import ContratosDataPersona from "../components/componentes-jose/ContratosDataPersona";
+import { useEffect } from "react";
 
 function ClientPage() {
 
     const { id } = useParams();
+    const { user } = useSession();
+
+    console.log(user.nombre);
 
     return (
         <>
@@ -17,7 +22,6 @@ function ClientPage() {
                 <ButtonBoxClient docente_id={ id }/>
                 <div >
                     <div className="contenedorContrato_j">
-                        {console.log(id +"  esto es el id")}
                         <ContratosDataPersona id_docente={ id }/> 
                     </div>
                 </div>
