@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
-import { getMensajesRequest } from "../../api/mensaje.api";
-import { MensajeContext} from "./MensajeContext";
+import{
+  getMensajesRequest
+}from"../../api/mensaje.api";
+import { MensajeContext } from "./MensajeContext";
 
-export const useMensajes=()=>{
+export const useMensajes = () => {
   const context = useContext(MensajeContext);
   if (!context) {
     throw new Error(
@@ -12,19 +14,21 @@ export const useMensajes=()=>{
   return context;
 };
 
-export const MensajeContextProvider = ({children})=>{
-  const [mensajes, setMensajes]=useState([]);
+export const MensajeContextProvider = ({ children }) => {
+  const [mensajes, setMensajes] = useState([]);
 
-  async function loadMensajes(){
+  async function loadMensajes() {
     const response = await getMensajesRequest();
     setMensajes(response.data);
   }
-  return(
+  return (
     <MensajeContext.Provider
-    value={{mensajes,
-      loadMensajes
-    }}
-    >{children}
+      value={{
+        mensajes,
+        loadMensajes
+      }}
+    >
+      {children}
     </MensajeContext.Provider>
   );
 };

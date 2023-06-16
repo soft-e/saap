@@ -10,8 +10,8 @@ import { useDocentes } from "../context/context-rodrigo/DocenteProvider";
 function LoginPage() {
   const navigate = useNavigate();
   const {docentes,loadDocentes}=useDocentes();
-  const [correo, setCorreo] = useState();
-  const [password, setPassword] = useState();
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
   const { isLoggedIn, user, login, logout } = useContext(SessionContext);
   const { personas, loadPersonas } = useContext(PersonaContext);
   const {empleados,loadEmpleados}=useContext(EmpleadoContext);

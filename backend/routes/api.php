@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\ContratoController;
 use App\Http\Controllers\Api\EmpleadoController;
 use App\Http\Controllers\Api\ParqueoController;
 use App\Http\Controllers\Api\VehiculoController;
-use App\Http\Controllers\Api\TarifaController;
+
 use App\Http\Controllers\Api\HorarioAtencionController;
 use App\Http\Controllers\Api\DocenteController;
 use App\Http\Controllers\Api\MensajeController;
@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\QuejaController;
 use App\Http\Controllers\Api\Tarifa2Controller;
 use App\Http\Controllers\Api\PagoController;
 use App\Http\Controllers\Api\ResponderQuejaController;
+use App\Http\Controllers\Api\Mensaje2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('personas', PersonaController::class);
 Route::resource('tarifa2s',Tarifa2Controller::class);
 Route::resource('pagos',PagoController::class);
+Route::resource('mensajes2',Mensaje2Controller::class);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
@@ -55,7 +57,7 @@ Route::post('registrarmensaje', [MensajeController::class, 'store']);
 //RUTAS DE ERIEL
 Route::resource('parqueos', ParqueoController::class);
 Route::resource('vehiculos', VehiculoController::class);
-Route::resource('ctarifa', TarifaController::class);
+
 Route::resource('hatencion', HorarioAtencionController::class);
 Route::resource('mensajes', MensajeController::class);
 //RUTAS DE ERIEL
