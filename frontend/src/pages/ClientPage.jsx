@@ -13,7 +13,7 @@ function ClientPage() {
     const { id } = useParams();
     const { user } = useSession();
 
-    console.log(user.nombre);
+    //console.log(user.nombre);
 
     return (
         <>
