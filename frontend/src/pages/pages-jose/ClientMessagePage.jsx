@@ -1,6 +1,7 @@
 import ButtonBoxClient from "../../components/ButtonBoxClient";
 import Navbar from "../../components/Navbar";
 import '../../assets/css/css-jose/registrarPersonal.css'
+//import { CardMensajeCliente } from "../../components/componentes-jose/CardMensjesCliente"
 
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -8,8 +9,7 @@ import React, {useState, useEffect} from "react";
 
 import { URL_API } from "../../services/EndPoint";
 
-const endPoint = URL_API+"/contrato"
-
+const endPoint = URL_API+"/mensajes"
 
 function ClientMessagePage(){
     const { id } = useParams();

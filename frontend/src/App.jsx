@@ -50,6 +50,7 @@ import SecretaryPage from "./pages/SecretaryPage";
 import SecretaryHomePage from "./pages/SecretaryHomePage";
 import SecretaryRegisterPaymentPage from "./pages/SecretaryRegisterPaymentPage";
 import SecretaryContractPage from "./pages/SecretaryContractPage";
+import ContratosVerIndependienteS from "./pages/pages-jose/ContratosVerIndependienteS";
 //IMPORTACIONES CLIENTE
 import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
@@ -118,6 +119,7 @@ function App() {
                            
                            <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage/>}/>
                             <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
+                            <Route path="/secretary/contract/show/:id" element={<ContratosVerIndependienteS/>}/>
                             {/** RUTAS CLIENTE */}
                             <Route path="/loginCliente" element={<LoginCliente/>}/>
                             <Route path="/client/:id" element={<ClientPage/>}/>

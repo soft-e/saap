@@ -2,6 +2,8 @@ import ButtonBoxClient from "../../components/ButtonBoxClient";
 import Navbar from "../../components/Navbar";
 import '../../assets/css/css-jose/registrarPersonal.css'
 
+import { FormularioQuejasClt } from "../../components/componentes-jose/FormularioQuejasClt"
+
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
@@ -32,7 +34,7 @@ function ClientComplaintPage(){
         let dato = [];
         if(tieneContrato(docente_id)){
             dato = (<> 
-                
+                <FormularioQuejasClt/>
             </>);
         }else{
             dato = (<>
