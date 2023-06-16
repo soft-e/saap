@@ -18,6 +18,7 @@ class PagoSeeder extends Seeder
         DB::table('pagos')->insert(
             [
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>150,
                     'tarifa2_id'=>1,
                     'Contrato_id'=>1,
@@ -25,6 +26,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-04-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>1,
@@ -32,6 +34,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>2,
@@ -39,6 +42,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>3,
@@ -46,6 +50,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>4,
@@ -53,6 +58,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>5,
@@ -60,6 +66,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>6,
@@ -67,6 +74,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>7,
@@ -74,6 +82,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>8,
@@ -81,6 +90,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>9,
@@ -88,6 +98,7 @@ class PagoSeeder extends Seeder
                     'updated_at'=>'2023-05-05 02:44:01.000'
                 ],
                 [
+                    'saldo'=>0,
                     'monto_pagado'=>200,
                     'tarifa2_id'=>2,
                     'Contrato_id'=>10,
