@@ -2,7 +2,7 @@ import "../../assets/css/templatePage.css";
 import "../../assets/css/css-jose/registrarPersonal.css"
 import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
-import { FormularioRegistroMensaje } from '../../components/componentes-jose/Formulario RegistroMensaje'
+import { FormularioRegistroMensaje } from '../../components/componentes-jose/FormularioRegistroMensaje'
 
 function RegistrarMensaje(){
     return <>

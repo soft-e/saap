@@ -5,29 +5,29 @@ import { useState } from 'react';
 import { useNavigate}  from 'react-router-dom';
 import { URL_API } from '../../services/EndPoint'
 
-const endPoint= URL_API+'/registrarqueja';
+const endPoint= URL_API+'/registrarqueja'
 
 export function FormularioQuejasClt() {
 
     const [contenido, setContenido] = useState('');
     const [asunto, setAsunto] = useState('');
-    const [destino, setDestino] = useState('');
     const navigate = useNavigate();
 
     const store = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         await axios.post(endPoint, {
-            id_docente: "1",
+            id_docente: '2',
             asunto: asunto,
             contenido: contenido,
+            respuesta: "S/R",
             estado_adm: false,
             estado_clt: false,
         })
-        navigate('/vermensajes')
+        navigate('/client/complaints/');
     }
     
     function handleClick (){
-        navigate('/vermensajes')
+        navigate('/client/complaints/')
     }
 
     return(
@@ -56,18 +56,6 @@ export function FormularioQuejasClt() {
                         value={contenido}
                         onChange={ (e) => setContenido(e.target.value) }
                     />
-                </div>
-                <div>
-                    <label htmlFor='destinatario'>Destinatario</label>
-                    <input
-                        className='input_j' 
-                        type='text'
-                        id='destinatario'    
-                        name='destinatario'
-                        placeholder='escribe el destinatario del mensaje'
-                        value={destino}
-                        onChange={ (e) => setDestino(e.target.value) }
-                        />
                 </div>
                 <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
