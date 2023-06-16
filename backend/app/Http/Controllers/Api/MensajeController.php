@@ -28,9 +28,11 @@ class MensajeController extends Controller
     public function store(Request $request)
     {
         $mensaje = new Mensaje;
-        $mensaje->contenido = $request->contenido;
+        $mensaje->origen = $request->origen;
+        $mensaje->destino = $request->destino;
         $mensaje->asunto = $request->asunto;
-        $mensaje->destinatario = $request->destinatario;
+        $mensaje->contenido = $request->contenido;
+        $mensaje->estado = $request->estado;
         $mensaje->save();
         return response()->json([$mensaje], 201);
     }

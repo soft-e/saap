@@ -48,7 +48,7 @@ function VerContenidoQueja() {
             <h3 className="tituloMensajeModal">Contenido:</h3>
             <h4>{queja.contenido}</h4>
             <h3 className="tituloMensajeModal">Respuesta:</h3>
-            <h4>{respuesta.contenido}</h4>
+            <h4>{queja.respuesta}</h4>
           </div>
         </div>
       </div>

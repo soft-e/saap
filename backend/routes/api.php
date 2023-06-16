@@ -51,6 +51,8 @@ Route::put('registrarempleado/{id}', [EmpleadoController::class, 'update']);
 Route::put('actualizarpersona/{id}', [PersonaController::class, 'update']);
 Route::resource('docentes', DocenteController::class);
 Route::post('registrarmensaje', [MensajeController::class, 'store']);
+Route::post('registrarqueja', [QuejaController::class, 'store']);
+Route::put('editarqueja/{id}', [QuejaController::class, 'update']);
 
 //Route::resource('cargos',CargoController::class);
 

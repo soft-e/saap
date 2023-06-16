@@ -50,12 +50,14 @@ import SecretaryPage from "./pages/SecretaryPage";
 import SecretaryHomePage from "./pages/SecretaryHomePage";
 import SecretaryRegisterPaymentPage from "./pages/SecretaryRegisterPaymentPage";
 import SecretaryContractPage from "./pages/SecretaryContractPage";
-
+import ContratosVerIndependienteS from "./pages/pages-jose/ContratosVerIndependienteS";
+//IMPORTACIONES CLIENTE
+import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
-import ClientComplaintPage from "./pages/ClientComplaintPage";
-import ClientMessagePage from "./pages/ClientMessagePage";
+import ClientComplaintPage from "./pages/pages-jose/ClientComplaintPage";
+import ClientMessagePage from "./pages/pages-jose/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
-import ClientContractPage from "./pages/ClientContractPage";
+import ClientContractPage from "./pages/pages-jose/ClientContractPage";
 import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
@@ -117,12 +119,14 @@ function App() {
                            
                            <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage/>}/>
                             <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
-                            
-                            <Route path="/client" element={<ClientPage/>}/>
+                            <Route path="/secretary/contract/show/:id" element={<ContratosVerIndependienteS/>}/>
+                            {/** RUTAS CLIENTE */}
+                            <Route path="/loginCliente" element={<LoginCliente/>}/>
+                            <Route path="/client/:id" element={<ClientPage/>}/>
                             <Route path="/client/home" element={<ClientHomePage/>}/>
-                            <Route path="/client/complaints" element={<ClientComplaintPage/>}/>
-                            <Route path="/client/messages" element={<ClientMessagePage/>}/>
-                            <Route path="/client/contract" element={<ClientContractPage/>}/>
+                            <Route path="/client/complaints/:id" element={<ClientComplaintPage/>}/>
+                            <Route path="/client/messages/:id" element={<ClientMessagePage/>}/>
+                            <Route path="/client/contract/:id" element={<ClientContractPage/>}/>
                           </Routes>
                           </DocenteContextProvider>
                         </ParqueocontextProvider>
