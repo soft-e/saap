@@ -60,7 +60,7 @@ export const TarifaContextProvider = ({ children }) => {
         loadTarifas,
         getTarifa,
         updateTarifa,
-        createTarifa
+        createTarifa // Actualiza el valor de createTarifa
       }}
     >
       {children}

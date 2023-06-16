@@ -115,7 +115,8 @@ function App() {
                             <Route path="/responderquejas/:id" element={<FormularioResponderQueja />} />
                             <Route path="/secretary" element={<SecretaryPage/>}/>
                             <Route path="/secretary/home" element={<SecretaryHomePage/>}/>
-                            <Route path="/secretary/regpayment" element={<SecretaryRegisterPaymentPage/>}/>
+                           
+                           <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage/>}/>
                             <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
                             {/** RUTAS CLIENTE */}
                             <Route path="/loginCliente" element={<LoginCliente/>}/>
