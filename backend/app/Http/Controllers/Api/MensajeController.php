@@ -62,7 +62,18 @@ class MensajeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mensaje = Mensaje::find($id);
+        if (!$queja) {
+            return response()->json(['message' => 'mensaje no encontrada'], 404);
+        }
+        $queja->origen = $request->origen;
+        $queja->destino = $request->destino;
+        $queja->contenido = $request->contenido;
+        $queja->asunto = $request->asunto;
+        $queja->estado = $request->estado;
+        $queja->save();
+
+        return response()->json($queja);
     }
 
     /**

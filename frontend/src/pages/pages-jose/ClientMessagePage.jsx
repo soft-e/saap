@@ -8,20 +8,20 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 
 import { URL_API } from "../../services/EndPoint";
+import CardMensajesClient from "../../components/componentes-jose/CardMensajesClient";
 
-const endPoint = URL_API+"/mensajes"
+const endPointContrato = URL_API+"/contrato"
 
 function ClientMessagePage(){
     const { id } = useParams();
     const [contratos, setContratos] = useState ( [] );
-    let contrato;
 
     useEffect ( () => {
         getContrato();
     }, []);
 
     const getContrato = async () => {
-        const response = await axios.get(endPoint);
+        const response = await axios.get(endPointContrato);
         setContratos(response.data);
     }
 
@@ -33,6 +33,7 @@ function ClientMessagePage(){
         let dato = [];
         if(tieneContrato(docente_id)){
             dato = (<> 
+                <CardMensajesClient id_docente={id}/>
             </>);
         }else{
             dato = (<>
@@ -55,13 +56,12 @@ function ClientMessagePage(){
         let res = false;
         for(let i = 0; i<contratos.length; i++){
             if(docente_id == contratos[i].docente_id){
-                console.log("imprimir desde quejas: "+docente_id+" num de contrato: "+ contratos.length);
-                contrato = contratos[i];
                 res = true;
             }
         }
         return res;
     }
+
     return <>
         <Navbar accion="cerrar sesion"/>
         <div className="espacioPagina">
