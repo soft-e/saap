@@ -144,8 +144,9 @@ function ReportesPage() {
   }
 
   const selectMonth = () => {
-    
+    console.log();
     return (
+      
       <select name="selectMonth" id="selectMonth"
         className="selectMonth"
       >

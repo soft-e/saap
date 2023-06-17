@@ -3,12 +3,9 @@ import "../assets/css/principalPage.css"
 import Navbar from "../components/Navbar";
 import { useMensajes } from "../context/context-rodrigo/MensajeProvider";
 
-
 function PrincipalPage() {
   const { mensajes, loadMensajes } = useMensajes();
   const [globalMessages, setGlobalMessages] = useState([]);
-
-
 
   useEffect(() => {
     loadMensajes();
@@ -17,10 +14,11 @@ function PrincipalPage() {
 
   //console.log(mensajes);
   const loadGlobalmessages = () => {
-    //const filteredMessages = mensajes.filter((mensaje)=>{
-    //return mensaje.destinatario ==="todos"
-    //})
-    //setGlobalMessages(filteredMessages);
+    const filteredMessages = mensajes.filter((mensaje)=>{
+    return mensaje.destinatario ==="todos"
+    })
+    setGlobalMessages(filteredMessages);
+    //return filteredMessages;
     //console.log(filteredMessages);
     //console.log(globalMessages)
   }
@@ -33,8 +31,19 @@ function PrincipalPage() {
     </div>)
   }
   function renderGlobalMessages () {
-    console.log(mensajes)
+    //console.log(mensajes)
     if (mensajes.length === 0) return <p>no hay mensajes globales</p>
+    return mensajes.map((mensaje,index)=>
+      <div
+        key={index}
+        className="mensajeGlobal"
+      >
+        <h3>asunto: </h3>
+        <p>{mensaje.asunto}</p>
+        <h3>Contenido: </h3>
+        <p>{mensaje.contenido}</p>
+      </div>
+    )
   }
 
   return <>
@@ -44,7 +53,7 @@ function PrincipalPage() {
     >
       <div
         className="cardFotoParqueo"
-      >
+      ><img src="" alt="" />
         aqui vendra foto del parqueo
       </div>
       <div

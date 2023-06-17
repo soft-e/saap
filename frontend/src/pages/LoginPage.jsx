@@ -72,7 +72,7 @@ function LoginPage() {
           navigate("/secretary");
         }
         if (rol==="docente") {
-          navigate("/client")
+          navigate("/clientr")
         }
         
       }

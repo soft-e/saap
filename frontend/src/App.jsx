@@ -116,8 +116,8 @@ function App() {
                               <Route path="/inicio" element={<InicioPage />} />
                               <Route path="/reportes" element={<ReportesPage />} />
                               <Route path="/responderquejas/:id" element={<FormularioResponderQueja />} />
-                              <Route path="/secretaryr" element={<SecretaryPage />} />
-                              <Route path="/secretaryr/home" element={<SecretaryHomePage />} />
+                              <Route path="/secretary" element={<SecretaryPage />} />
+                              <Route path="/secretary/home" element={<SecretaryHomePage />} />
                               <Route path="/secretaryr/regpayment" element={<SecretaryRegisterPaymentPage />} />
                               <Route path="/secretaryr/contract" element={<SecretaryContractPage />} />
                               <Route path="/clientr" element={<ClientPage />} />
