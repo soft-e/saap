@@ -8,27 +8,40 @@ import { URL_API } from "../../services/EndPoint";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 function FormularioResponderQueja() {
   const [subject, setSubject] = useState("");
   const [response, setResponse] = useState("");
   const params = useParams();
   const navigate = useNavigate();
+  const [queja, setQueja] = useState([]);
 
   useEffect(() => {
     console.log(params.id);
+    getQueja();
   }, []);
+
+  const getQueja = async () => {
+    console.log("entrnado a obtener queja: "+ `${URL_API}/quejas/${params.id}`);
+    const response = await axios.get(`${URL_API}/quejas/${params.id}`);
+    setQueja(response.data);
+    console.log("esto es: "+ queja.id);
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const respuestaQueja = {
-      asunto: subject,
-      contenido: response,
-      queja_id: params.id,
+      id_docente: queja.id_docente,
+      asunto: queja.asunto,
+      contenido: queja.contenido,
+      respuesta: response,
+      estado_adm: true,
+      estado_clt: false,
     };
-
+    console.log("respondiendo queja: "+`${URL_API}/editarqueja/${params.id}`+ respuestaQueja.respuesta)
     axios
-      .post(`${URL_API}/responderquejas`, respuestaQueja)
+      .put(`${URL_API}/editarqueja/${params.id}`, respuestaQueja)
       
       .then((response) => {
         console.log("Respuesta enviada:", response.data);
@@ -63,7 +76,7 @@ function FormularioResponderQueja() {
                   <input
                     type="text"
                     id="subject"
-                    value={subject}
+                    value={queja.asunto}
                     placeholder="Asunto"
                     onChange={(e) => setSubject(e.target.value)}
                     style={{ width: "100%" }}

@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useNavigate}  from 'react-router-dom';
 import { URL_API } from '../../services/EndPoint'
 
-const endPoint= URL_API+'/registrarmensaje';
+const endPoint= URL_API+'/registrarqueja';
 
-export function FormularioRegistroMensaje() {
+export function FormularioQuejasClt() {
 
     const [contenido, setContenido] = useState('');
     const [asunto, setAsunto] = useState('');
@@ -17,11 +17,11 @@ export function FormularioRegistroMensaje() {
     const store = async (e) => {
         e.preventDefault()
         await axios.post(endPoint, {
-            origen: "Administrador",
-            destino: destino,
+            id_docente: "1",
             asunto: asunto,
             contenido: contenido,
-            estado: false,
+            estado_adm: false,
+            estado_clt: false,
         })
         navigate('/vermensajes')
     }

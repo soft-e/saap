@@ -48,6 +48,7 @@ function ButtonBoxSecretary() {
       <button
         className="hvr-fade hvr-icon-forward"
         onClick={() => navigate("/secretary/contract")}
+        //onClick={() => navigate("/secretary/pagos")}
       >
         <FontAwesomeIcon icon={faFileContract} />
         Contratos

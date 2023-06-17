@@ -26,11 +26,20 @@ class PagoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+   
+    
     public function store(Request $request)
     {
-        //
+        $pagos = new Pago;
+        $pagos->tarifa2_id = $request->tarifa2_id;
+        $pagos->monto_pagado = $request->monto_pagado;
+        $pagos->contrato_id = $request->contrato_id;
+        $pagos->saldo= $request->saldo;
+        $pagos->save();
+        
+        return response()->json($pagos, 201);
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -63,5 +72,14 @@ class PagoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getSaldoByContratoId($contratoId)
+    {
+        $saldo = Pago::where('contrato_id', $contratoId)
+            ->orderBy('created_at', 'desc')
+            ->value('saldo');
+
+        return response()->json(['saldo' => $saldo]);
     }
 }
