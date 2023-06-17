@@ -59,10 +59,12 @@
 }
 
 .tr_j{
-    cursor: pointer;;
+    height: 50%;
+    cursor: pointer;
 }
 
 .tr_j:hover{
+    height: auto;
     background: rgba(255, 255, 255, 0.637);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
@@ -90,4 +92,9 @@
 .stylesButton_j:hover{
     width: 90%;
     background-color:#c49e18;
+}
+
+.botonDerecha_j{
+    width: 100%;
+    
 }

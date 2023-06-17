@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Mensaje extends Model
 {
     use HasFactory;
-    protected $fillable = ['contenido', 'asunto', 'destinatario'];
+    protected $fillable = ['origen','destino','contenido', 'asunto', 'estado'];
 }

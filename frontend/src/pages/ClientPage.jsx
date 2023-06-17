@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useSession } from "../context/context-rodrigo/SessionProvider";
 
 import ContratosDataPersona from "../components/componentes-jose/ContratosDataPersona";
-import { useEffect } from "react";
+import AlertaMensaje from "../components/componentes-jose/AlertaMensaje"
 
 function ClientPage() {
 
@@ -22,7 +22,12 @@ function ClientPage() {
                 <ButtonBoxClient docente_id={ id }/>
                 <div >
                     <div className="contenedorContrato_j">
-                        <ContratosDataPersona id_docente={ id }/> 
+                        <div>
+                            <AlertaMensaje id_docente={ id }/>
+                        </div> 
+                        <div>
+                            <ContratosDataPersona id_docente={ id }/>
+                        </div> 
                     </div>
                 </div>
             </div>

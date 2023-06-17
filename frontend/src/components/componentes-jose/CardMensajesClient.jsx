@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
 import "../../assets/css/css-jose/listarDocentes.css";
 import { useNavigate } from "react-router-dom";
 import { URL_API } from "../../services/EndPoint";
@@ -15,11 +14,10 @@ const CardMensajesClient = ( props ) => {
     const [mensajes, setMensajes] = useState([]);
     const id = props.id_docente;
 
-    let contenido;
-    let asunto;
-    let destino;
-
-    console.log(id)
+    const [mensaje, setMensaje] = useState([]);
+    const [contenido, setContenido] = useState();
+    const [asunto, setAsunto] = useState();
+    const [destino, setDestino] = useState();
 
     useEffect(() => {
         getDocente();
@@ -41,21 +39,62 @@ const CardMensajesClient = ( props ) => {
     }
 
     function marcarLeido(mensaje){
-        destino = (mensaje.destino);
-        asunto = (mensaje.asunto);
-        contenido = mensaje.contenido;
-        //update();
+        setDestino(mensaje.destino);
+        setAsunto(mensaje.asunto);
+        setContenido(mensaje.contenido);
+        update();
     }
 
     const update = async (e) => {
-        e.preventDefault();
-        await axios.put(endPointActualizar+'2', {
-            origen: 'Administrador',
-            destino: destino,
-            asunto: asunto,
-            contenido: contenido,
-            estado: true,
-        });
+      e.preventDefault();
+      console.log(endPointActualizar+mensaje.id+"\n"+ 
+      mensaje.origen+" "+mensaje.destino+" "+mensaje.asunto+" "+mensaje.estado+" ")
+      await axios.put(endPointActualizar+mensaje.id, {
+        origen: mensaje.origen,
+        destino: mensaje.destino,
+        contenido: mensaje.contenido,
+        asunto: mensaje.asunto,
+        estado: true,
+      });
+      console.log("marcado como leido")
+      window.location.reload();
+    }
+
+    /**function update(){
+      console.log("algo para imprimir"+ mensaje.origen)
+      console.log(endPointActualizar+mensaje.id+"\n"+ 
+      mensaje.origen+" "+mensaje.destino+" "+mensaje.asunto+" "+mensaje.estado+" ")
+      axios.put(endPointActualizar+mensaje.id, {
+        origen: mensaje.origen,
+        destino: mensaje.destino,
+        contenido: mensaje.contenido,
+        asunto: mensaje.asunto,
+        estado: true,
+      }).then(response => {
+        console.log('Datos actualizados con éxito');
+      })
+      .catch(error => {
+        console.error('Error al actualizar los datos:', error);
+      })
+      navigate('/client/messages/'+id);
+    }*/
+
+    function estaLeido(mensaje){
+      let dato;
+      if(mensaje.estado){
+        dato = "mensaje leido";
+      }else{
+        dato = <button
+          className="stylesButton_j"
+          onClick={()=>{  
+            setMensaje(mensaje);
+            //marcarLeido(mensaje)
+            update(event);
+            //update();
+          }}
+        >marcar Leido</button>
+      }
+      return dato;
     }
 
     function imprimirMensajes() {
@@ -63,15 +102,15 @@ const CardMensajesClient = ( props ) => {
         for (let i = mensajes.length-1; i >= 0; i--) {
             if(mensajes[i].destino.toString().toLowerCase()
             .includes(docente.persona.email.toLowerCase()) ||
-            mensajes[i].origen.toString().toLowerCase()
-            .includes("Todos".toLowerCase())){
+            mensajes[i].destino.toString().toLowerCase()
+            .includes('todos'.toLowerCase())){
                 datos.push(
                     <tr className="tr_j" 
-                    key={mensajes[i].id} 
-                    onClick={marcarLeido(mensajes[i])}>
+                    key={mensajes[i].id}>
                         <td className="td_j">{mostrarFecha(mensajes[i].created_at)}</td>
                         <td className="td_j">{mensajes[i].asunto}</td>
                         <td className="td_j">{mensajes[i].contenido}</td>
+                        <td className="td_j">{estaLeido(mensajes[i])}</td>
                     </tr>
                 );
                 }   
@@ -91,6 +130,7 @@ const CardMensajesClient = ( props ) => {
               <th className="th_j">fecha</th>
               <th className="th_j">ausnto</th>
               <th className="th_j">contenido</th>
+              <th className="th_j">Leido</th>
             </tr>
           </thead>
           <tbody className="tbody_j">
