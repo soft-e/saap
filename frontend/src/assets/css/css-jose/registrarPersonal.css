@@ -23,6 +23,11 @@
     padding: 2%;
     overflow: auto;
 }
+.contenedorBotonesVerContratos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .contenedorContraroArriba_j{
     width: auto;

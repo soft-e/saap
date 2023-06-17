@@ -46,6 +46,7 @@ return array(
     'App\\Models\\Tarifa' => $baseDir . '/app/Models/Tarifa.php',
     'App\\Models\\Tarifa2' => $baseDir . '/app/Models/Tarifa2.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\VehiculosExtras' => $baseDir . '/app/Models/VehiculosExtras.php',
     'App\\Models\\vehiculo' => $baseDir . '/app/Models/vehiculo.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

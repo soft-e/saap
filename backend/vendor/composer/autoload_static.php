@@ -516,6 +516,7 @@ class ComposerStaticInitd40ad9750a00dccd903fcc70d739457b
         'App\\Models\\Tarifa' => __DIR__ . '/../..' . '/app/Models/Tarifa.php',
         'App\\Models\\Tarifa2' => __DIR__ . '/../..' . '/app/Models/Tarifa2.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\VehiculosExtras' => __DIR__ . '/../..' . '/app/Models/VehiculosExtras.php',
         'App\\Models\\vehiculo' => __DIR__ . '/../..' . '/app/Models/vehiculo.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
