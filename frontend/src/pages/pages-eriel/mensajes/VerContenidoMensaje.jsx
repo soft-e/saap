@@ -1,9 +1,9 @@
-import '../../assets/css/css-eriel/VerContenidoMensaje.css';
+import '../../../assets/css/css-eriel/VerContenidoMensaje.css';
 import VerMensajes from './VerMensajes';
 import { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import axios from 'axios';
-import {URL_API} from '../../services/EndPoint';
+import {URL_API} from '../../../services/EndPoint';
 
 function VerContenidoMensaje() {
     const [mensaje,setMensaje]=useState([]);

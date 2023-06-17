@@ -1,20 +1,22 @@
-import '../../assets/css/css-eriel/Parqueos.css';
-import "../../assets/css/templatePage.css";
-import Navbar from "../../components/Navbar";
-import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
+import '../../../assets/css/css-eriel/Parqueos.css';
+import "../../../assets/css/templatePage.css";
+import Navbar from "../../../components/Navbar";
+import ButtonBoxAdmin from "../../../components/ButtonBoxAdmin";
 import axios from 'axios';
-import { useEffect,useState } from 'react';
+import { useEffect,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import {URL_API} from '../../services/EndPoint'
+import {URL_API} from '../../../services/EndPoint'
+import { useSession } from '../../../context/context-rodrigo/SessionProvider';
 
 function Parqueos() {
+    const { user } = useSession();
     const [parqueos,setParqueos]=useState([]);
     const navigate = useNavigate();
     
     useEffect(()=>{
         fetchEmployeesData();
-    },[])
-
+    },[]);
+    console.log(user);
     const fetchEmployeesData = async () => {
         try {
           const response = await axios.get(`${URL_API}/parqueos`); 
@@ -33,6 +35,9 @@ function Parqueos() {
           console.error('Error al eliminar el empleado:', error);
         }
     };
+    if (Array.isArray(parqueos)){
+        console.log("true");
+    }
 
     if (parqueos.length === 0) {
         return <>
@@ -94,8 +99,8 @@ function Parqueos() {
                         </button>
                     </nav>
                     <div className='contenedorParqueos'>
-                        {parqueos.map((parqueos)=>(
-                        <div className='datosParqueo' key={parqueos.id} >
+                        {parqueos?.map((parqueos,index)=>(
+                        <div className='datosParqueo' key={index}>
                             <div>
                                 <div className='nombreParqueo'>
                                     <h2>{parqueos.nombre_bloque}</h2>
@@ -105,7 +110,7 @@ function Parqueos() {
                             <div className='contendorBotonesParqueos' >
                                 <button
                                     className='botonEditarParqueos'
-                                    onClick={() =>navigate(`/editarparqueos/${parqueos.id}`)}
+                                    onClick={() =>navigate(`/editarparqueos/${parqueos.id}/${parqueos.nombre_bloque}/${parqueos.cantidad_sitios}`)}
                                 >
                                     <h4>Editar</h4>
                                 </button>

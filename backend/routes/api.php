@@ -20,6 +20,8 @@ use App\Http\Controllers\Api\QuejaController;
 use App\Http\Controllers\Api\Tarifa2Controller;
 use App\Http\Controllers\Api\PagoController;
 use App\Http\Controllers\Api\ResponderQuejaController;
+use App\Http\Controllers\api\VehiculosExtrasController;
+use App\Models\VehiculosExtras;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +39,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('personas', PersonaController::class);
-Route::resource('tarifa2s',Tarifa2Controller::class);
+Route::resource('tarifa2s', Tarifa2Controller::class);
 
 Route::get('/tarifa2/ultima', [Tarifa2Controller::class, 'ultimaTarifa']);
-Route::resource('pagos',PagoController::class);
-Route::post('pagos',[PagoController::class, 'store']);
+Route::resource('pagos', PagoController::class);
+Route::post('pagos', [PagoController::class, 'store']);
 Route::get('/pagos/saldo/{id}', [PagoController::class, 'getSaldoByContratoId']);
 
 //Route::resource('administradores',AdministradorController::class);
@@ -64,6 +66,8 @@ Route::resource('vehiculos', VehiculoController::class);
 Route::resource('ctarifa', TarifaController::class);
 Route::resource('hatencion', HorarioAtencionController::class);
 Route::resource('mensajes', MensajeController::class);
+Route::resource('vehiculosExtras', VehiculosExtrasController::class);
+Route::get('vehiculosExtras/getbyidContract/{id}', [VehiculosExtrasController::class, 'getbyidContract']);
 //RUTAS DE ERIEL
 
 
@@ -72,15 +76,15 @@ Route::resource('mensajes', MensajeController::class);
 //Route::resource('plazas', PlazaController::class);
 
 
-Route::resource('contrato',ContratoController::class);
+Route::resource('contrato', ContratoController::class);
 
 
 Route::resource('atencion', HorarioAtencionController::class);
 Route::resource('quejas', QuejaController::class);
-Route::prefix('plazas')->group(function(){
-Route::resource('/', PlazaController::class );
-Route::get('primer-sitio-libre/{bloque}',[PlazaController::class, 'obtenerPrimerSitioLibre']);
-Route::get('obtener-bloques',[PlazaController::class, 'obtenerBloques']);
+Route::prefix('plazas')->group(function () {
+    Route::resource('/', PlazaController::class);
+    Route::get('primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
+    Route::get('obtener-bloques', [PlazaController::class, 'obtenerBloques']);
 });
 
 Route::resource('/responderquejas', ResponderQuejaController::class);
