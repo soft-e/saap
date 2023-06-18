@@ -91,7 +91,7 @@ const CardQuejaClient = ( props ) => {
   return (
     <div className="contenedorListarDocentes_j">
       <div className="divBuscar_j">
-        <h2>Lista de quejas enviadas {id +" algo"}</h2>
+        <h2>Lista de quejas enviadas</h2>
       </div>
       <div className="contenedorTabla_j">
         <table className="table_j">
