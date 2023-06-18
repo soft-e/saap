@@ -23,6 +23,8 @@ use App\Http\Controllers\Api\ResponderQuejaController;
 use App\Http\Controllers\Api\Mensaje2Controller;
 use App\Http\Controllers\api\VehiculosExtrasController;
 use App\Models\VehiculosExtras;
+use App\Http\Controllers\Api\SaldoController;
+use App\Http\Controllers\Api\PlazaRodrigoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('personas', PersonaController::class);
 Route::resource('tarifa2s', Tarifa2Controller::class);
+Route::resource('saldos',SaldoController::class);
 
 Route::get('/tarifa2/ultima', [Tarifa2Controller::class, 'ultimaTarifa']);
 Route::resource('pagos',PagoController::class);
@@ -90,3 +93,5 @@ Route::prefix('plazas')->group(function () {
 });
 
 Route::resource('/responderquejas', ResponderQuejaController::class);
+
+Route::resource('/plazarodrigo',PlazaRodrigoController::class);

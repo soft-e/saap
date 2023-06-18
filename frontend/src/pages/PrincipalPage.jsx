@@ -53,7 +53,7 @@ function PrincipalPage() {
     >
       <div
         className="cardFotoParqueo"
-      ><img src="" alt="" />
+      ><img src="../" alt="" />
         aqui vendra foto del parqueo
       </div>
       <div
