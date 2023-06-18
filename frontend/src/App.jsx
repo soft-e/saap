@@ -12,6 +12,7 @@ import ListarDocentes from "./pages/pages-jose/ListarDocentes";
 import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje";
 import Contratos from "./pages/pages-jose/Contratos";
 import ContratosVerIndependiente from "./pages/pages-jose/ContratosVerIndependiente";
+import VehiculosExtras from "./pages/pages-eriel/vehiculo/VehiculosExtras"
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -55,6 +56,7 @@ import ContratosVerIndependienteS from "./pages/pages-jose/ContratosVerIndependi
 import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
 import ClientComplaintPage from "./pages/pages-jose/ClientComplaintPage";
+import ClientComplaintNew from "./pages/pages-jose/ClientComplaintNew";
 import ClientMessagePage from "./pages/pages-jose/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
 import ClientContractPage from "./pages/pages-jose/ClientContractPage";
@@ -105,6 +107,7 @@ function App() {
                             <Route path="/editarparqueos/:id/:nombre/:cantidad" element={<EditarParqueo />} />
                             <Route path="/vermensajes" element={<VerMensajes />} />
                             <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
+                            <Route path="/vehiculo/:id" element={<VehiculosExtras />} />
                             <Route path="/tarifa" element={<TarifaPage />} />
                             <Route path="/verquejas" element={<VerQuejas />} />
                             <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
@@ -122,9 +125,10 @@ function App() {
                             <Route path="/secretary/contract/show/:id" element={<ContratosVerIndependienteS/>}/>
                             {/** RUTAS CLIENTE */}
                             <Route path="/loginCliente" element={<LoginCliente/>}/>
-                            <Route path="/client/:id" element={<ClientPage/>}/>
-                            <Route path="/client/home" element={<ClientHomePage/>}/>
+                            <Route path="/client/" element={<ClientPage/>}/>
+                            <Route path="/client/home/:id" element={<ClientHomePage/>}/>
                             <Route path="/client/complaints/:id" element={<ClientComplaintPage/>}/>
+                            <Route path="/client/complaints/new/:id" element={<ClientComplaintNew/>}/>
                             <Route path="/client/messages/:id" element={<ClientMessagePage/>}/>
                             <Route path="/client/contract/:id" element={<ClientContractPage/>}/>
                           </Routes>

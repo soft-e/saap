@@ -1,28 +1,52 @@
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ButtonBoxClient from "../components/ButtonBoxClient";
 import '../assets/css/css-jose/registrarPersonal.css'
-
-import { useParams } from "react-router-dom";
 import { useSession } from "../context/context-rodrigo/SessionProvider";
-
+import axios from 'axios';
 import ContratosDataPersona from "../components/componentes-jose/ContratosDataPersona";
-import { useEffect } from "react";
+import AlertaMensaje from "../components/componentes-jose/AlertaMensaje"
+import { URL_API } from '../services/EndPoint'
+
+const endPoint = URL_API+'/docentes';
 
 function ClientPage() {
 
-    const { id } = useParams();
+    const [docentes, setDocente] = useState( [] )
     const { user } = useSession();
 
-    //console.log(user.nombre);
+    useEffect ( () => {
+        getAllDocentes();
+    }, []);
+
+    const getAllDocentes = async () => {
+        const response = await axios.get(endPoint);
+        setDocente(response.data);
+    }
+
+    function obtenerIdDocente(buscar){
+        let res;
+        console.log(docentes.length+" "+buscar)
+        for(let i = 0; i < docentes.length; i++){
+            {console.log("estamos comparando: "+buscar+" con: "+docentes[i].persona_id)}
+            if(docentes[i].persona_id == buscar){
+                res = docentes[i].id;
+            }
+        }
+        return res;
+    }
 
     return (
         <>
             <Navbar accion="cerrar sesion" />
             <div className="espacioPagina">
-                <ButtonBoxClient docente_id={ id }/>
+                {console.log("imprmiendo el id de la persona: "+user)}
+                <ButtonBoxClient docente_id={ obtenerIdDocente(user.id) }/>
                 <div >
                     <div className="contenedorContrato_j">
-                        <ContratosDataPersona id_docente={ id }/> 
+                        <div>
+                            <ContratosDataPersona id_docente={ obtenerIdDocente(user.id) }/>
+                        </div> 
                     </div>
                 </div>
             </div>

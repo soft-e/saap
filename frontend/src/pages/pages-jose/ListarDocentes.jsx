@@ -5,6 +5,7 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import CardDocentes from '../../components/componentes-jose/CardDocentes'
 
 function ListarDocentes(){
+
     return <>
         <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">

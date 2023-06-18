@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Queja extends Model
 {
     use HasFactory;
-    protected $fillable = ['contenido', 'asunto'];
+    protected $fillable = ['id_docente','asunto','contenido','respuesta','estado_adm','estado_clt'];
 
     public function respuestas()
     {
