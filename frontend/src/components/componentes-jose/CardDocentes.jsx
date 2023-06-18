@@ -2,26 +2,34 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../assets/css/css-jose/listarDocentes.css';
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { URL_API } from '../../services/EndPoint'
 
 const endPoint = URL_API+'/docentes';
 const endPointContrato = URL_API+'/contrato';
+const endPointSContratos = URL_API+"/solicitarcontrato"
 
 const CardDocentes = () => {
-
-    //const navigate = useNavigate();
 
     const [docentes, setDocentes] = useState( [] )
     const [tableDocentes, setTableDocentes] = useState( [] )
     const [busqueda, setBusqueda] = useState('')
     const [contratos, setContratos] = useState( [] )
-    //const {id, persona} = docentes;
+    const [sContratos, setSContratos] = useState ( [] );
+
+    const location = useLocation();
+    const estado = new URLSearchParams(location.search).get('estado');
 
     useEffect ( () => {
         getAllDocentes();
         getAllContratos();
+        getAllSContratos();
     }, []);
+
+    const getAllSContratos = async () => {
+        const response = await axios.get(endPointSContratos);
+        setSContratos(response.data);
+    }
 
     const getAllContratos = async () => {
         const response = await axios.get(endPointContrato);
@@ -59,7 +67,17 @@ const CardDocentes = () => {
     function estaRegistrado(buscar){
         let res = false;
         for(let i = 0; i < contratos.length; i++){
-            if(contratos[i].docente_id === buscar){
+            if(contratos[i].docente_id == buscar){
+                res = true;
+            }
+        }
+        return res;
+    }
+
+    function mandoSolicitud(buscar){
+        let res = false;
+        for(let i = 0; i < sContratos.length; i++){
+            if(sContratos[i].docente_id == buscar){
                 res = true;
             }
         }
@@ -67,6 +85,38 @@ const CardDocentes = () => {
     }
 
     const imprimirDocentes = () => {
+        let dato = [];
+        console.log(estado)
+        if(estado == 'false'){
+            dato = imprimirListaDocentes();
+        }else{
+            dato = imprimirListaSolicitudes();
+        }
+        return dato;
+    }
+
+    const imprimirListaSolicitudes = () => {
+        let datos = []; 
+        for(let i = 0; i < docentes.length; i++){
+            if(mandoSolicitud(docentes[i].id)){
+                datos.push(<tr className="tr_j" key={docentes[i].id}>
+                    <td className="td_j">{ docentes[i].persona.nombre }</td>
+                    <td className="td_j">{ docentes[i].persona.apellido_paterno }</td>
+                    <td className="td_j">{ docentes[i].persona.apellido_materno }</td>
+                    <td className="td_j">{ docentes[i].persona.ci }</td>
+                    <td>
+                        <Link 
+                            className="stylesButton_j"
+                            to={`/registrovehiculo/${docentes[i].id}`}
+                        >asignar sitio</Link>
+                    </td> 
+                </tr>)
+            }
+        }
+        return datos;
+    }
+
+    const imprimirListaDocentes = () => {
         let datos = []; 
         for(let i = 0; i < docentes.length; i++){
             if(!estaRegistrado(docentes[i].id)){
@@ -81,6 +131,14 @@ const CardDocentes = () => {
                             to={`/registrovehiculo/${docentes[i].id}`}
                         >asignar sitio</Link>
                     </td> 
+                </tr>)
+            }else{
+                datos.push(<tr className="tr_j" key={docentes[i].id}>
+                    <td className="td_j">{ docentes[i].persona.nombre }</td>
+                    <td className="td_j">{ docentes[i].persona.apellido_paterno }</td>
+                    <td className="td_j">{ docentes[i].persona.apellido_materno }</td>
+                    <td className="td_j">{ docentes[i].persona.ci }</td>
+                    <td className="td_j">docente ya registrado</td> 
                 </tr>)
             }
         }

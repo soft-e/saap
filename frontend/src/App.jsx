@@ -12,6 +12,7 @@ import ListarDocentes from "./pages/pages-jose/ListarDocentes";
 import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje";
 import Contratos from "./pages/pages-jose/Contratos";
 import ContratosVerIndependiente from "./pages/pages-jose/ContratosVerIndependiente";
+import VehiculosExtras from "./pages/pages-eriel/vehiculo/VehiculosExtras"
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -106,6 +107,7 @@ function App() {
                             <Route path="/editarparqueos/:id/:nombre/:cantidad" element={<EditarParqueo />} />
                             <Route path="/vermensajes" element={<VerMensajes />} />
                             <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
+                            <Route path="/vehiculo/:id" element={<VehiculosExtras />} />
                             <Route path="/tarifa" element={<TarifaPage />} />
                             <Route path="/verquejas" element={<VerQuejas />} />
                             <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
