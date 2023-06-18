@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\PagoController;
 use App\Http\Controllers\Api\ResponderQuejaController;
 use App\Http\Controllers\Api\Mensaje2Controller;
 use App\Http\Controllers\api\VehiculosExtrasController;
+use App\Http\Controllers\Api\SolicitarContratoController;
 use App\Models\VehiculosExtras;
 use App\Http\Controllers\Api\SaldoController;
 use App\Http\Controllers\Api\PlazaRodrigoController;
@@ -58,9 +59,12 @@ Route::put('registrarempleado/{id}', [EmpleadoController::class, 'update']);
 Route::put('actualizarpersona/{id}', [PersonaController::class, 'update']);
 Route::resource('docentes', DocenteController::class);
 Route::post('registrarmensaje', [MensajeController::class, 'store']);
+Route::put('actualizarmensajes/{id}', [MensajeController::class, 'update']);
 Route::post('registrarqueja', [QuejaController::class, 'store']);
 Route::put('editarqueja/{id}', [QuejaController::class, 'update']);
-
+Route::resource('solicitarcontrato', SolicitarContratoController::class);
+Route::post('savesolicitarcontrato', [SolicitarContratoController::class, 'store']);
+Route::put('editsolicitarcontrato', [SolicitarContratoController::class, 'update']);
 //Route::resource('cargos',CargoController::class);
 
 //Route::resource('contrataciones',ContratacionController::class);

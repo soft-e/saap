@@ -35,9 +35,8 @@ class QuejaController extends Controller
         $queja->respuesta = $request->respuesta;
         $queja->estado_adm = $request->estado_adm;
         $queja->estado_clt = $request->estado_clt;
-        $queja->asunto = $request->asunto;
         $queja->save();
-        return response()->json($queja, 201);
+        return response()->json(['message' => 'se registro correctamente'], 201);
     }
 
     /**

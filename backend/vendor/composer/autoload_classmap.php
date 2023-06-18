@@ -43,6 +43,7 @@ return array(
     'App\\Models\\ResponderQueja' => $baseDir . '/app/Models/ResponderQueja.php',
     'App\\Models\\Saldo' => $baseDir . '/app/Models/Saldo.php',
     'App\\Models\\Sitios' => $baseDir . '/app/Models/Sitios.php',
+    'App\\Models\\SolicitarContrato' => $baseDir . '/app/Models/SolicitarContrato.php',
     'App\\Models\\Tarifa' => $baseDir . '/app/Models/Tarifa.php',
     'App\\Models\\Tarifa2' => $baseDir . '/app/Models/Tarifa2.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

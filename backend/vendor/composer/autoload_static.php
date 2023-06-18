@@ -513,6 +513,7 @@ class ComposerStaticInitd40ad9750a00dccd903fcc70d739457b
         'App\\Models\\ResponderQueja' => __DIR__ . '/../..' . '/app/Models/ResponderQueja.php',
         'App\\Models\\Saldo' => __DIR__ . '/../..' . '/app/Models/Saldo.php',
         'App\\Models\\Sitios' => __DIR__ . '/../..' . '/app/Models/Sitios.php',
+        'App\\Models\\SolicitarContrato' => __DIR__ . '/../..' . '/app/Models/SolicitarContrato.php',
         'App\\Models\\Tarifa' => __DIR__ . '/../..' . '/app/Models/Tarifa.php',
         'App\\Models\\Tarifa2' => __DIR__ . '/../..' . '/app/Models/Tarifa2.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

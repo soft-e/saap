@@ -21,7 +21,7 @@ function ButtonBoxClient(props){
     >
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/"+id)}
+        onClick={()=>navigate("/client/home/"+id)}
       >
         <FontAwesomeIcon icon={faHouse}/>
         Inicio

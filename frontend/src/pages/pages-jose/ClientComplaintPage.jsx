@@ -2,40 +2,75 @@ import ButtonBoxClient from "../../components/ButtonBoxClient";
 import Navbar from "../../components/Navbar";
 import '../../assets/css/css-jose/registrarPersonal.css'
 
-import { FormularioQuejasClt } from "../../components/componentes-jose/FormularioQuejasClt"
+import CardQuejaClient from "../../components/componentes-jose/CardQuejaClient"
 
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 
 import { URL_API } from "../../services/EndPoint";
 
 const endPoint = URL_API+"/contrato"
+const endPointSContrato = URL_API+"/savesolicitarcontrato"
+const endPointSContratos = URL_API+"/solicitarcontrato"
 
 function ClientComplaintPage(){
     const { id } = useParams();
     const [contratos, setContratos] = useState ( [] );
+    const [sContratos, setSContratos] = useState ( [] );
+    const navigate = useNavigate();
     let contrato;
 
     useEffect ( () => {
         getContratos();
+        getAllSContratos();
     }, []);
+
+    const getAllSContratos = async () => {
+        const response = await axios.get(endPointSContratos);
+        setSContratos(response.data);
+    }
 
     const getContratos = async () => {
         const response = await axios.get(endPoint);
         setContratos(response.data);
     }
 
-    function handleClick (){
-
+    const update = async (e) => {
+        e.preventDefault();
+        await axios.post(endPointSContrato, {
+            empleado_id: '0',
+            docente_id: id,
+            estado: true,
+        });
+        window.location.reload();
     }
+    
 
     function mostrarComponentes(docente_id){
         let dato = [];
         if(tieneContrato(docente_id)){
             dato = (<> 
-                <FormularioQuejasClt/>
+                <div className="contenedorContraroArriba_j">
+                    <h1>Quejas</h1>
+                    <button
+                        className="styleButonVerDocentes_j"
+                        onClick={ () =>{
+                            navigate('/client/complaints/new/'+id);
+                        } }
+                    > añadir queja</button>
+                </div>
+                <CardQuejaClient docente_id = { docente_id }/>
             </>);
+        }else if(solicitoContrato(docente_id)){
+            dato = (<>
+                <label> Actualmente no cuentas con un contrato, 
+                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un contrato
+                    con el boton que se muestra: Solicitar un Contrato </label>
+                <br></br>
+                <label> usted ya tiene ina solicitud de contrato pendiente, 
+                    debe de esperar que los Administradores acepten la solicitud</label>
+            </>)
         }else{
             dato = (<>
                 <label> Actualmente no cuentas con un contrato, 
@@ -43,7 +78,7 @@ function ClientComplaintPage(){
                     con el boton que se muestra: Solicitar un Contrato </label>
                 <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
-                        <button className='stylesButton_j' onClick={ handleClick }>
+                        <button className='stylesButton_j' onClick={ update }>
                             Solicitar un Contrato
                         </button>
                     </div>
@@ -53,12 +88,20 @@ function ClientComplaintPage(){
         return dato;
     }
 
+    function solicitoContrato(docente_id){
+        let res = false;
+        for(let i = 0; i<sContratos.length; i++){
+            if(docente_id == sContratos[i].docente_id){
+                res = true;
+            }
+        }
+        return res;
+    }
+
     function tieneContrato(docente_id){
         let res = false;
         for(let i = 0; i<contratos.length; i++){
             if(docente_id == contratos[i].docente_id){
-                console.log("imprimir desde quejas: "+docente_id+" num de contrato: "+ contratos.length);
-                contrato = contratos[i];
                 res = true;
             }
         }
