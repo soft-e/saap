@@ -2,9 +2,9 @@ import ButtonBoxClient from "../../components/ButtonBoxClient";
 import Navbar from "../../components/Navbar";
 import '../../assets/css/css-jose/registrarPersonal.css'
 
-import CardQuejaClient from "../../components/componentes-jose/CardQuejaClient"
+import { FormularioQuejasClt } from "../../components/componentes-jose/FormularioQuejasClt"
 
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 
@@ -12,10 +12,9 @@ import { URL_API } from "../../services/EndPoint";
 
 const endPoint = URL_API+"/contrato"
 
-function ClientComplaintPage(){
+function ClientComplaintNew(){
     const { id } = useParams();
     const [contratos, setContratos] = useState ( [] );
-    const navigate = useNavigate();
     let contrato;
 
     useEffect ( () => {
@@ -35,7 +34,9 @@ function ClientComplaintPage(){
         let dato = [];
         if(tieneContrato(docente_id)){
             dato = (<> 
-                <CardQuejaClient docente_id = { docente_id }/>
+                <div className="registrarPersonal_j">
+                    <FormularioQuejasClt docente_id = { docente_id }/>
+                </div>
             </>);
         }else{
             dato = (<>
@@ -58,6 +59,8 @@ function ClientComplaintPage(){
         let res = false;
         for(let i = 0; i<contratos.length; i++){
             if(docente_id == contratos[i].docente_id){
+                console.log("imprimir desde quejas: "+docente_id+" num de contrato: "+ contratos.length);
+                contrato = contratos[i];
                 res = true;
             }
         }
@@ -69,19 +72,10 @@ function ClientComplaintPage(){
         <div className="espacioPagina">
             <ButtonBoxClient docente_id={ id }/>
             <div className="contenedorContrato_j">
-            <div className="contenedorContraroArriba_j">
-                    <h1>Quejas</h1>
-                    <button
-                        className="styleButonVerDocentes_j"
-                        onClick={ () =>{
-                            navigate('/client/complaints/new/'+id);
-                        } }
-                    > añadir queja</button>
-                </div>
                 { mostrarComponentes(id) }
             </div>
         </div>
     </>
   )
 };
-export default ClientComplaintPage;
+export default ClientComplaintNew;

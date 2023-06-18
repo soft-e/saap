@@ -55,6 +55,7 @@ import ContratosVerIndependienteS from "./pages/pages-jose/ContratosVerIndependi
 import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
 import ClientComplaintPage from "./pages/pages-jose/ClientComplaintPage";
+import ClientComplaintNew from "./pages/pages-jose/ClientComplaintNew";
 import ClientMessagePage from "./pages/pages-jose/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
 import ClientContractPage from "./pages/pages-jose/ClientContractPage";
@@ -125,6 +126,7 @@ function App() {
                             <Route path="/client/:id" element={<ClientPage/>}/>
                             <Route path="/client/home" element={<ClientHomePage/>}/>
                             <Route path="/client/complaints/:id" element={<ClientComplaintPage/>}/>
+                            <Route path="/client/complaints/new/:id" element={<ClientComplaintNew/>}/>
                             <Route path="/client/messages/:id" element={<ClientMessagePage/>}/>
                             <Route path="/client/contract/:id" element={<ClientContractPage/>}/>
                           </Routes>

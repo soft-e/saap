@@ -7,7 +7,7 @@ import { URL_API } from '../../services/EndPoint'
 
 const endPoint= URL_API+'/registrarqueja'
 
-export function FormularioQuejasClt() {
+export function FormularioQuejasClt( props ) {
 
     const [contenido, setContenido] = useState('');
     const [asunto, setAsunto] = useState('');
@@ -16,18 +16,18 @@ export function FormularioQuejasClt() {
     const store = async (e) => {
         e.preventDefault();
         await axios.post(endPoint, {
-            id_docente: '2',
+            id_docente: props.docente_id,
             asunto: asunto,
             contenido: contenido,
             respuesta: "S/R",
             estado_adm: false,
             estado_clt: false,
         })
-        navigate('/client/complaints/');
+        navigate('/client/complaints/'+props.docente_id);
     }
     
     function handleClick (){
-        navigate('/client/complaints/')
+        navigate('/client/complaints/'+props.docente_id)
     }
 
     return(
