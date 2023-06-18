@@ -98,7 +98,7 @@ const CardDocentes = () => {
     const imprimirListaSolicitudes = () => {
         let datos = []; 
         for(let i = 0; i < docentes.length; i++){
-            if(mandoSolicitud(docentes[i].id)){
+            if(mandoSolicitud(docentes[i].id) && !estaRegistrado(docentes[i].id)){
                 datos.push(<tr className="tr_j" key={docentes[i].id}>
                     <td className="td_j">{ docentes[i].persona.nombre }</td>
                     <td className="td_j">{ docentes[i].persona.apellido_paterno }</td>
