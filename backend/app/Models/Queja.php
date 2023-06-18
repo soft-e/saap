@@ -10,8 +10,8 @@ class Queja extends Model
     use HasFactory;
     protected $fillable = ['contenido', 'asunto'];
 
-    public function respuesta()
-{
-    return $this->hasOne(ResponderQueja::class, 'queja_id');
-}
+    public function respuestas()
+    {
+        return $this->hasMany(ResponderQueja::class, 'queja_id');
+    }
 }

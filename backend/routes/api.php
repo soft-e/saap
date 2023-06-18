@@ -81,4 +81,4 @@ Route::get('primer-sitio-libre/{bloque}',[PlazaController::class, 'obtenerPrimer
 Route::get('obtener-bloques',[PlazaController::class, 'obtenerBloques']);
 });
 
-Route::resource('/responderquejas', ResponderQuejaController::class);
+Route::resource('responderquejas', ResponderQuejaController::class);

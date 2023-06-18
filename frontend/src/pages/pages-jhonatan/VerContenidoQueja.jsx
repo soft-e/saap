@@ -1,10 +1,9 @@
-import '../../assets/css/css-eriel/VerContenidoMensaje.css';
-import VerQuejas from './VerQuejas';
-import { useState,useEffect } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import {URL_API} from '../../services/EndPoint';
-
+import VerQuejas from './VerQuejas';
+import { URL_API } from '../../services/EndPoint';
+import '../../assets/css/css-eriel/VerContenidoMensaje.css';
 
 function VerContenidoQueja() {
   const [queja, setQueja] = useState({});
@@ -40,7 +39,7 @@ function VerContenidoQueja() {
   return (
     <>
       <div className="VerContenidoMensajePadre">
-      <VerQuejas/>
+        <VerQuejas />
         <div className="ModalContenidoMensaje" onClick={() => navigate('/verquejas')}>
           <div className="contenedorMensajeModal">
             <h3 className="tituloMensajeModal">Asunto:</h3>
@@ -48,7 +47,11 @@ function VerContenidoQueja() {
             <h3 className="tituloMensajeModal">Contenido:</h3>
             <h4>{queja.contenido}</h4>
             <h3 className="tituloMensajeModal">Respuesta:</h3>
-            <h4>{respuesta.contenido}</h4>
+            {respuesta && respuesta.contenido ? (
+              <h4>{respuesta.contenido}</h4>
+            ) : (
+              <h4>No hay respuesta disponible</h4>
+            )}
           </div>
         </div>
       </div>
