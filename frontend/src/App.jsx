@@ -125,8 +125,8 @@ function App() {
                             <Route path="/secretary/contract/show/:id" element={<ContratosVerIndependienteS/>}/>
                             {/** RUTAS CLIENTE */}
                             <Route path="/loginCliente" element={<LoginCliente/>}/>
-                            <Route path="/client/:id" element={<ClientPage/>}/>
-                            <Route path="/client/home" element={<ClientHomePage/>}/>
+                            <Route path="/client/" element={<ClientPage/>}/>
+                            <Route path="/client/home/:id" element={<ClientHomePage/>}/>
                             <Route path="/client/complaints/:id" element={<ClientComplaintPage/>}/>
                             <Route path="/client/complaints/new/:id" element={<ClientComplaintNew/>}/>
                             <Route path="/client/messages/:id" element={<ClientMessagePage/>}/>
