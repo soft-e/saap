@@ -1,18 +1,19 @@
-import "../../assets/css/css-eriel/VerMensajes.css"
-import "../../assets/css/templatePage.css";
-import Navbar from "../../components/Navbar";
-import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
+import "../../../assets/css/css-eriel/VerMensajes.css"
+import "../../../assets/css/templatePage.css";
+import Navbar from "../../../components/Navbar";
+import ButtonBoxAdmin from "../../../components/ButtonBoxAdmin";
 import axios from "axios";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {URL_API} from '../../services/EndPoint';
+import {URL_API} from '../../../services/EndPoint';
 
 function VerMensajes() {
     const [mensajes,setMensajes]=useState([]);
     const navigate=useNavigate();
+
     useEffect(()=>{
         fetchMensajesData();
-    },[])
+    },[]);
 
     const fetchMensajesData = async () => {
         try {
@@ -45,6 +46,7 @@ function VerMensajes() {
                     </nav>
                     <div className="contenedorDeMensajes">
                         <h2>Mensajes Redactados</h2>
+                        <div className="listaDeMensaje">
                         {mensajes.map((mensaje,index)=>(
                           <div className="barraDeAbajo" key={mensaje.id} onClick={()=>navigate(`/vercontenidodemensaje/${mensaje.id}`)}>
                                 <h3>{index+1}</h3>
@@ -52,6 +54,7 @@ function VerMensajes() {
                                 <h3>Destinatario: {mensaje.destinatario}</h3>
                           </div>
                         ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,5 +62,4 @@ function VerMensajes() {
 
     </>
 }
-
 export default VerMensajes;

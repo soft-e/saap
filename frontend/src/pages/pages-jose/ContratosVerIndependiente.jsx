@@ -40,10 +40,19 @@ function ContratosVerIndependiente(){
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="contenedorContrato_j">
-                <button
-                    className="styleButonVerDocentes_j"
-                    onClick={ handleClik }
-                > Regresar a la lista</button>
+                <div className="contenedorBotonesVerContratos">
+                    <button
+                        className="styleButonVerDocentes_j"
+                        onClick={ handleClik }
+                    > Regresar a la lista
+                    </button>
+                    <button 
+                        className="styleButonVerDocentes_j"
+                        onClick={()=>navigate(`/vehiculo/${id}`)}
+                    >
+                        añadir vehiculo
+                    </button>
+                </div>
                 <br></br>
                 <div>
                     <ContratosDataPersona id_docente={ contrato.docente_id }/> 
@@ -56,7 +65,10 @@ function ContratosVerIndependiente(){
                 </div>
                 <br></br>
                 <div>
-                    <ContratosDataVehiculo vehiculo_id={ contrato.vehiculo_id }/>                    
+                    <ContratosDataVehiculo 
+                        vehiculo_id={ contrato.vehiculo_id }
+                        contrato_id={id}
+                    />                    
                 </div>
             </div>
         </div>
