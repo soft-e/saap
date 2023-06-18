@@ -8,8 +8,10 @@ import { faFaceTired } from "@fortawesome/free-solid-svg-icons";
 import CardUser from "./CardUser";
 import { faFileContract } from "@fortawesome/free-solid-svg-icons";
 
-function ButtonBoxClient(){
+function ButtonBoxClient(props){
   const navigate = useNavigate();
+  const id = props.docente_id;
+  
   return <div
     className="cajaBotones"
   >
@@ -19,7 +21,7 @@ function ButtonBoxClient(){
     >
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/home")}
+        onClick={()=>navigate("/client/"+id)}
       >
         <FontAwesomeIcon icon={faHouse}/>
         Inicio
@@ -31,7 +33,7 @@ function ButtonBoxClient(){
       </button>
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/messages")}
+        onClick={()=>navigate("/client/messages/"+id)}
       >
         <FontAwesomeIcon icon = {faEnvelope}/>
         Mensajes
@@ -43,7 +45,7 @@ function ButtonBoxClient(){
       </button>
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/complaints")}
+        onClick={()=>navigate("/client/complaints/"+id)}
       >
         <FontAwesomeIcon icon = {faFaceTired}/>
         Quejas
@@ -51,7 +53,7 @@ function ButtonBoxClient(){
       </button>
       <button
         className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/client/contract")}
+        onClick={()=>navigate("/client/contract/"+id)}
       >
         <FontAwesomeIcon icon={faFileContract}/>
         Contrato

@@ -154,6 +154,7 @@ const CardContratosSecretaria = () => {
               <th className="th_j">Sitio</th>
               <th className="th_j">Bloque</th>
               <th className="th_j"> </th>
+              <th className="th_j"> </th>
             </tr>
           </thead>
           <tbody className="tbody_j">

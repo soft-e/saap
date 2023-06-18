@@ -15,8 +15,12 @@ class CreateQuejasTable extends Migration
     {
         Schema::create('quejas', function (Blueprint $table) {
             $table->id();
-            $table->string('contenido');
+            $table->string('id_docente');;
             $table->string('asunto');
+            $table->string('contenido');
+            $table->string('respuesta');
+            $table->boolean('estado_adm');
+            $table->boolean('estado_clt');
             $table->timestamps();
         });
     }

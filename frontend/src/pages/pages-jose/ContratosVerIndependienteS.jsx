@@ -2,7 +2,7 @@ import "../../assets/css/templatePage.css";
 import Navbar from "../../components/Navbar";
 import '../../assets/css/css-jose/registrarPersonal.css'
 import '../../assets/css/css-jose/formularioRegistroPersonas.css'
-import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
+import ButtonBoxSecretary from "../../components/ButtonBoxSecretary";
 
 import ContratosDataPersona from "../../components/componentes-jose/ContratosDataPersona";
 import ContratosDataSitio from "../../components/componentes-jose/ContratosDataSitio";
@@ -16,7 +16,7 @@ import { URL_API } from "../../services/EndPoint";
 
 const endPoint = URL_API+"/contrato"
 
-function ContratosVerIndependiente(){
+function ContratosVerIndependienteS(){
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -38,21 +38,12 @@ function ContratosVerIndependiente(){
     return <>
         <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">
-            <ButtonBoxAdmin />
+            <ButtonBoxSecretary/>
             <div className="contenedorContrato_j">
-                <div className="contenedorBotonesVerContratos">
-                    <button
-                        className="styleButonVerDocentes_j"
-                        onClick={ handleClik }
-                    > Regresar a la lista
-                    </button>
-                    <button 
-                        className="styleButonVerDocentes_j"
-                        onClick={()=>navigate(`/vehiculo/${id}`)}
-                    >
-                        añadir vehiculo
-                    </button>
-                </div>
+                <button
+                    className="styleButonVerDocentes_j"
+                    onClick={ handleClik }
+                > Regresar a la lista</button>
                 <br></br>
                 <div>
                     <ContratosDataPersona id_docente={ contrato.docente_id }/> 
@@ -65,13 +56,10 @@ function ContratosVerIndependiente(){
                 </div>
                 <br></br>
                 <div>
-                    <ContratosDataVehiculo 
-                        vehiculo_id={ contrato.vehiculo_id }
-                        contrato_id={id}
-                    />                    
+                    <ContratosDataVehiculo vehiculo_id={ contrato.vehiculo_id }/>                    
                 </div>
             </div>
         </div>
     </>
 }   
-export default ContratosVerIndependiente;
+export default ContratosVerIndependienteS;
