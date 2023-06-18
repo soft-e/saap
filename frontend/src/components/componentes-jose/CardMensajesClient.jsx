@@ -56,7 +56,6 @@ const CardMensajesClient = ( props ) => {
         asunto: mensaje.asunto,
         estado: true,
       });
-      console.log("marcado como leido")
       window.location.reload();
     }
 
