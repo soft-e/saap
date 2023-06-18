@@ -8,32 +8,57 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 
 import { URL_API } from "../../services/EndPoint";
+import CardMensajesClient from "../../components/componentes-jose/CardMensajesClient";
 
-const endPoint = URL_API+"/mensajes"
+const endPointContrato = URL_API+"/contrato"
+const endPointSContrato = URL_API+"/savesolicitarcontrato"
+const endPointSContratos = URL_API+"/solicitarcontrato"
 
 function ClientMessagePage(){
     const { id } = useParams();
     const [contratos, setContratos] = useState ( [] );
-    let contrato;
+    const [sContratos, setSContratos] = useState ( [] );
 
     useEffect ( () => {
         getContrato();
+        getAllSContratos();
     }, []);
 
+    const getAllSContratos = async () => {
+        const response = await axios.get(endPointSContratos);
+        setSContratos(response.data);
+    }
+
     const getContrato = async () => {
-        const response = await axios.get(endPoint);
+        const response = await axios.get(endPointContrato);
         setContratos(response.data);
     }
 
-    function handleClick (){
-
+    const update = async (e) => {
+        e.preventDefault();
+        await axios.post(endPointSContrato, {
+            empleado_id: '0',
+            docente_id: id,
+            estado: true,
+        });
+        window.location.reload();
     }
 
     function mostrarComponentes(docente_id){
         let dato = [];
         if(tieneContrato(docente_id)){
             dato = (<> 
+                <CardMensajesClient id_docente={id}/>
             </>);
+        }else if(solicitoContrato(docente_id)){
+            dato = (<>
+                <label> Actualmente no cuentas con un contrato, 
+                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un contrato
+                    con el boton que se muestra: Solicitar un Contrato </label>
+                <br></br>
+                <label> usted ya tiene ina solicitud de contrato pendiente, 
+                    debe de esperar que los Administradores acepten la solicitud</label>
+            </>)
         }else{
             dato = (<>
                 <label> Actualmente no cuentas con un contrato,
@@ -41,7 +66,7 @@ function ClientMessagePage(){
                     caso contrario puede solucitar un contrato con el boton que se muestra: Solicitar un Contrato</label>
                 <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
-                        <button className='stylesButton_j' onClick={ handleClick }>
+                        <button className='stylesButton_j' onClick={ update }>
                             Solicitar un Contrato
                         </button>
                     </div>
@@ -51,17 +76,26 @@ function ClientMessagePage(){
         return dato;
     }
 
-    function tieneContrato(docente_id){
+    function solicitoContrato(docente_id){
         let res = false;
-        for(let i = 0; i<contratos.length; i++){
-            if(docente_id == contratos[i].docente_id){
-                console.log("imprimir desde quejas: "+docente_id+" num de contrato: "+ contratos.length);
-                contrato = contratos[i];
+        for(let i = 0; i<sContratos.length; i++){
+            if(docente_id == sContratos[i].docente_id){
                 res = true;
             }
         }
         return res;
     }
+
+    function tieneContrato(docente_id){
+        let res = false;
+        for(let i = 0; i<contratos.length; i++){
+            if(docente_id == contratos[i].docente_id){
+                res = true;
+            }
+        }
+        return res;
+    }
+
     return <>
         <Navbar accion="cerrar sesion"/>
         <div className="espacioPagina">
