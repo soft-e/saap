@@ -205,18 +205,7 @@ function ReportesPage() {
           <div
             className="espacioReportes"
           >
-            <div
-              className="espacioSelects"
-            >
-              <h2>seleccionar un mes y una semana</h2>
-              {loadMonths()}
-              <select name="selectWeek" id="selectWeek"
-                className="selectWeek"
-              >
-                <option value="1">Semana 3</option>
-                <option value="2">Semana 4</option>
-              </select>
-            </div>
+            
             <div
               className="espacioCardsReportes"
             >
