@@ -144,8 +144,8 @@ setSaldo(saldoTarifa.toString());
             console.error("Error al registrar el pago:", error);
           });
       } else {
-        // Mostrar mensaje al cliente: "Estás al día con tus pagos"
-        alert("Estás al día con tus pagos");
+        // Mostrar mensaje al cliente: "Estás al día con sus pagos"
+        alert("Esta al dia con sus pagos");
       }
     } else {
       // Caso: fechaPago es diferente a la fecha que quiero registrar y saldoAnterior > 0
