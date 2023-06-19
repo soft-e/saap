@@ -28,7 +28,7 @@ function SecretaryRegisterPaymentPage() {
   };*/
 
 
-  
+  //actualizaciones-----------------------------------
 
   useEffect(() => {
     console.log("fechas vemos ",fechaPagoRegistrada);
