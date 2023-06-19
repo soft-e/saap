@@ -1,16 +1,18 @@
-import '../../assets/css/css-eriel/EditarParqueo.css'
+import '../../../assets/css/css-eriel/EditarParqueo.css';
 import Parqueos from './Parqueos'
 import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { useState,useEffect} from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
-import {URL_API} from '../../services/EndPoint'
+import {URL_API} from '../../../services/EndPoint'
+import { useSession } from '../../../context/context-rodrigo/SessionProvider';
 
 function EditarParqueo() {
-    const [nombre_bloque,setnombre]=useState('');
-    const [cantidad_sitios,setSitios]=useState(0); 
-    const empleado_id=7;
+    const { user } = useSession();
+    const {id,nombre,cantidad}=useParams();
+    const [nombre_bloque,setnombre]=useState();
+    const [cantidad_sitios,setSitios]=useState(); 
+    const empleado_id=user.id;
     const navigate=useNavigate();
-    const {id}=useParams();
 
     const update=async(e)=>{
         e.preventDefault();
@@ -24,12 +26,13 @@ function EditarParqueo() {
     useEffect(()=>{
         const getParqueoById=async()=>{
             const response=await axios.get(`${URL_API}/parqueos/${id}`)
-            setnombre(response.data.nombre_bloque)
-            setSitios(response.data.cantidad_sitios)
+            console.log(response.data)
+            setnombre(nombre)
+            setSitios(cantidad)
         }
         getParqueoById();
     },[]);
-    
+
     return(
     <div className='editarParqueoPadre'>
         <Parqueos/>
@@ -45,7 +48,6 @@ function EditarParqueo() {
                         value={nombre_bloque}
                         onChange={(e)=>setnombre(e.target.value)}
                         type="text"
-                        placeholder='ingre el nuevo nombre'
                         required
                     />
                     <label htmlFor="">Nueva Cantidad de Sitios</label>
@@ -53,7 +55,6 @@ function EditarParqueo() {
                         type="number" 
                         onChange={(e)=>setSitios(e.target.value)}
                         value={cantidad_sitios}
-                        placeholder='ingre la nueva cantidad'
                         required
                     />
                 </div>

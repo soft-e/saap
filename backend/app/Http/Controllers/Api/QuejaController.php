@@ -29,10 +29,14 @@ class QuejaController extends Controller
     public function store(Request $request)
     {
         $queja = new Queja;
-        $queja->contenido = $request->contenido;
+        $queja->id_docente = $request->id_docente;
         $queja->asunto = $request->asunto;
+        $queja->contenido = $request->contenido;
+        $queja->respuesta = $request->respuesta;
+        $queja->estado_adm = $request->estado_adm;
+        $queja->estado_clt = $request->estado_clt;
         $queja->save();
-        return response()->json($queja, 201);
+        return response()->json(['message' => 'se registro correctamente'], 201);
     }
 
     /**
@@ -64,9 +68,13 @@ class QuejaController extends Controller
         if (!$queja) {
             return response()->json(['message' => 'Queja no encontrada'], 404);
         }
-
-        $queja->contenido = $request->input('contenido');
-        $queja->asunto = $request->input('asunto');
+        $queja->id_docente = $request->id_docente;
+        $queja->asunto = $request->asunto;
+        $queja->contenido = $request->contenido;
+        $queja->respuesta = $request->respuesta;
+        $queja->estado_adm = $request->estado_adm;
+        $queja->estado_clt = $request->estado_clt;
+        $queja->asunto = $request->asunto;
         $queja->save();
 
         return response()->json($queja);

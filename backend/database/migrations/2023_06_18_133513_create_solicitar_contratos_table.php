@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuejasTable extends Migration
+class CreateSolicitarContratosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateQuejasTable extends Migration
      */
     public function up()
     {
-        Schema::create('quejas', function (Blueprint $table) {
+        Schema::create('solicitar_contratos', function (Blueprint $table) {
             $table->id();
-            $table->string('id_docente');;
-            $table->string('asunto');
-            $table->string('contenido');
-            $table->string('respuesta');
-            $table->boolean('estado_adm');
-            $table->boolean('estado_clt');
+            $table->string('empleado_id'); 
+            $table->string('docente_id');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateQuejasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quejas');
+        Schema::dropIfExists('solicitar_contratos');
     }
 }

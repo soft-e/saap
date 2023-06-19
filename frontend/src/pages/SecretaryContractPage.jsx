@@ -26,13 +26,7 @@ function SecretaryContractPage(){
         className="espacioDeTrabajo"
       >
          <div className="contenedorContrato_j">
-                <div className="contenedorContraroArriba_j">
-                    <h1>Contratos</h1>
-                    <button
-                        className="styleButonVerDocentes_j"
-                        onClick={ handleClik }
-                    > Ver Docentes</button>
-                </div>
+                
                 <div>
                     <CardContratosSecretaria/>
                 </div>

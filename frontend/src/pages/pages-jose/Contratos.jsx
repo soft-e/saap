@@ -10,21 +10,23 @@ import { useNavigate } from "react-router-dom";
 function Contratos(){
     const navigate = useNavigate();
 
-    function handleClik(){
-        navigate('/listarDocentes');
-    }
-
     return <>
         <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="contenedorContrato_j">
-                <div className="contenedorContraroArriba_j">
-                    <h1>Contratos</h1>
+            <div className="contenedorBotonesVerContratos">
                     <button
                         className="styleButonVerDocentes_j"
-                        onClick={ handleClik }
-                    > Ver Docentes</button>
+                        onClick={()=>navigate('/listarDocentes?estado=false') }
+                    > Lista de Docentes
+                    </button>
+                    <button 
+                        className="styleButonVerDocentes_j"
+                        onClick={()=>navigate('/listarDocentes?estado=true')}
+                    >
+                        Solicitud de contratos
+                    </button>
                 </div>
                 <div>
                     <CardContratos/>

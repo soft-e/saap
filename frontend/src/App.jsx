@@ -12,17 +12,18 @@ import ListarDocentes from "./pages/pages-jose/ListarDocentes";
 import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje";
 import Contratos from "./pages/pages-jose/Contratos";
 import ContratosVerIndependiente from "./pages/pages-jose/ContratosVerIndependiente";
+import VehiculosExtras from "./pages/pages-eriel/vehiculo/VehiculosExtras"
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
 import AtencionPage from "./pages/pages-rodrigo/AtencionPage";
 import './App.css'
-import RegistroParqueo from "./pages/pages-eriel/RegistroParqueo";
-import RegistroDTvehiculo from "./pages/pages-eriel/RegistroDTvehiculo";
-import Parqueos from "./pages/pages-eriel/Parqueos";
-import EditarParqueo from "./pages/pages-eriel/EditarParqueo";
-import VerMensajes from "./pages/pages-eriel/VerMensajes";
-import VerContenidoMensaje from "./pages/pages-eriel/VerContenidoMensaje";
+import RegistroParqueo from "./pages/pages-eriel/parqueos/RegistroParqueo";
+import RegistroDTvehiculo from "./pages/pages-eriel/vehiculo/RegistroDTvehiculo";
+import Parqueos from "./pages/pages-eriel/parqueos/Parqueos";
+import EditarParqueo from "./pages/pages-eriel/parqueos/EditarParqueo";
+import VerMensajes from "./pages/pages-eriel/mensajes/VerMensajes";
+import VerContenidoMensaje from "./pages/pages-eriel/mensajes/VerContenidoMensaje";
 import { AtencionContextProvider } from "./context/context-rodrigo/AtencionProvider";
 import AtencionForm from "./pages/pages-rodrigo/AtencionForm";
 import { TarifaContextProvider } from "./context/context-jhonatan/TarifaProvider";
@@ -50,12 +51,15 @@ import SecretaryPage from "./pages/SecretaryPage";
 import SecretaryHomePage from "./pages/SecretaryHomePage";
 import SecretaryRegisterPaymentPage from "./pages/SecretaryRegisterPaymentPage";
 import SecretaryContractPage from "./pages/SecretaryContractPage";
-
+import ContratosVerIndependienteS from "./pages/pages-jose/ContratosVerIndependienteS";
+//IMPORTACIONES CLIENTE
+import LoginCliente from "./pages/pages-jose/LoginCliente";
 import ClientPage from "./pages/ClientPage";
-import ClientComplaintPage from "./pages/ClientComplaintPage";
-import ClientMessagePage from "./pages/ClientMessagePage";
+import ClientComplaintPage from "./pages/pages-jose/ClientComplaintPage";
+import ClientComplaintNew from "./pages/pages-jose/ClientComplaintNew";
+import ClientMessagePage from "./pages/pages-jose/ClientMessagePage";
 import ClientHomePage from "./pages/ClientHomePage";
-import ClientContractPage from "./pages/ClientContractPage";
+import ClientContractPage from "./pages/pages-jose/ClientContractPage";
 import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvider";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
@@ -100,9 +104,10 @@ function App() {
                             <Route path="/tarifa/create" element={<TarifaFormCreate />} />
                             <Route path="/registrovehiculo/:id" element={<RegistroDTvehiculo />} />
                             <Route path="/parqueos" element={<Parqueos />} />
-                            <Route path="/editarparqueos/:id" element={<EditarParqueo />} />
+                            <Route path="/editarparqueos/:id/:nombre/:cantidad" element={<EditarParqueo />} />
                             <Route path="/vermensajes" element={<VerMensajes />} />
                             <Route path="/vercontenidodemensaje/:id" element={<VerContenidoMensaje />} />
+                            <Route path="/vehiculo/:id" element={<VehiculosExtras />} />
                             <Route path="/tarifa" element={<TarifaPage />} />
                             <Route path="/verquejas" element={<VerQuejas />} />
                             <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
@@ -117,12 +122,15 @@ function App() {
                            
                            <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage/>}/>
                             <Route path="/secretary/contract" element={<SecretaryContractPage/>}/>
-                            
-                            <Route path="/client" element={<ClientPage/>}/>
-                            <Route path="/client/home" element={<ClientHomePage/>}/>
-                            <Route path="/client/complaints" element={<ClientComplaintPage/>}/>
-                            <Route path="/client/messages" element={<ClientMessagePage/>}/>
-                            <Route path="/client/contract" element={<ClientContractPage/>}/>
+                            <Route path="/secretary/contract/show/:id" element={<ContratosVerIndependienteS/>}/>
+                            {/** RUTAS CLIENTE */}
+                            <Route path="/loginCliente" element={<LoginCliente/>}/>
+                            <Route path="/client/" element={<ClientPage/>}/>
+                            <Route path="/client/home/:id" element={<ClientHomePage/>}/>
+                            <Route path="/client/complaints/:id" element={<ClientComplaintPage/>}/>
+                            <Route path="/client/complaints/new/:id" element={<ClientComplaintNew/>}/>
+                            <Route path="/client/messages/:id" element={<ClientMessagePage/>}/>
+                            <Route path="/client/contract/:id" element={<ClientContractPage/>}/>
                           </Routes>
                           </DocenteContextProvider>
                         </ParqueocontextProvider>
