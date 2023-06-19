@@ -31,7 +31,7 @@ function LoginPage() {
     const findedPerson = personas.find((persona) => {
       return (persona.email === correo && persona.password === password);
     })
-    console.log(findedPerson);
+    //console.log(findedPerson);
     //console.log(findedPerson);
     //if (findedPerson!==undefined) {
       
@@ -47,8 +47,8 @@ function LoginPage() {
   }
   const onPressedLoginButton = (event,correo, password) => {
     event.preventDefault();
-    console.log(correo);
-    console.log(password);
+    //console.log(correo);
+    //console.log(password);
     //console.log(personas);
     //console.log(personas);
     //console.log(searchUserbyEmailAndPassword(correo,password))
@@ -57,13 +57,13 @@ function LoginPage() {
     //searchUserbyEmailAndPassword(correo,password);
     //console.log(searchUserbyEmailAndPassword(correo,password));
     const usuario = (searchUserbyEmailAndPassword(correo, password))
-    console.log(usuario);
+    //console.log(usuario);
     if (usuario) {
       login(usuario);
       //console.log(empleados);
       //console.log(usuario.id)
       const rol = searchUserRolByPersonId(usuario.id);
-      console.log (rol);
+      //console.log (rol);
       if(isLoggedIn){
         if(rol==="administrador"){
           navigate("/admin");
@@ -76,6 +76,8 @@ function LoginPage() {
         }
         
       }
+    }else{
+      alert("Usuario o contraseña incorrectos"); 
     }
     //console.log(findedPerson);
     //console.log(aux);
