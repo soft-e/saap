@@ -43,6 +43,7 @@ Route::get('/tarifa2/ultima', [Tarifa2Controller::class, 'ultimaTarifa']);
 Route::resource('pagos',PagoController::class);
 Route::post('pagos',[PagoController::class, 'store']);
 Route::get('/pagos/saldo/{id}', [PagoController::class, 'getSaldoByContratoId']);
+Route::get('/pagos/fechapago/{id}',[PagoController::class, 'getUltimaFechaRegistroPorContratoId']);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
