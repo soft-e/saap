@@ -117,7 +117,7 @@ const [bloques, setBloques] = useState([]);
         setSelectedBloque("");
         setSelectedSitio("");
 
-        navigate("/listardocentes");
+        navigate("/contratos");
           
       })
       .catch((error) => {
