@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../assets/css/principalPage.css"
 import Navbar from "../components/Navbar";
 import { useMensajes } from "../context/context-rodrigo/MensajeProvider";
+import parqueo1 from "../assets/images/parqueo1.jpg"
 
 function PrincipalPage() {
   const { mensajes, loadMensajes } = useMensajes();
@@ -53,7 +54,7 @@ function PrincipalPage() {
     >
       <div
         className="cardFotoParqueo"
-      ><img src="../assets/images/parqueo1.jpg" alt="" />
+      ><img src={parqueo1} alt="" />
         aqui vendra foto del parqueo
       </div>
       <div

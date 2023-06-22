@@ -32,23 +32,25 @@ const {logout}= useSession();
   }
 
   return (
-    <>
+    
       <nav id="navbar">
         <div className="container">
           <div className="logo-container">
             <img src={Logo} alt="Logo" className="logo-image" />
-            <h1 className="textologo">
-              saap
-            </h1>
+            
           </div>
-          <ul className="nav">
-            <li>
+          <h1 className="textologo">
+            Sistema de apoyo a la administracion de parqueos
+            </h1>
+            <div
+              className="botonSesion"
+            >
               <Accion />
-            </li>
-          </ul>
+            </div>
+            
         </div>
       </nav>
-    </>
+    
   );
 };
 export default Navbar;
