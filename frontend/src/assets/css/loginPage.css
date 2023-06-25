@@ -1,58 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
-
-#titulo{
-  text-align: center;
-  padding-top: 2%;
-  
-}
-.formularioLogin{
-  padding-top: 4%;
-  display: flex;
-  justify-content: center;
-}
-
-.formularioLogin #input{
-  color: black;
+.divFormulario{
+  height: 84%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 7%;
+  align-items: center;
+  
 }
 
-.formularioLogin #login h1{
-  color: black;
+#titulo{
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  height: 25%;
+  justify-content: center;
+  
 }
 #login{
-  padding: 3% 7%;
+  
   /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.41);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.164);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(251, 181, 0, 0.69);
+background: rgba(0, 0, 0, 0.541);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.2px);
+-webkit-backdrop-filter: blur(8.2px);
+border: 1px solid rgb(133, 100, 11);
+width: 450px;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow: 0 4px 30px rgba(222, 188, 64, 0.267);
+
 }
 #login h1{
-  padding-bottom: 10%;
+  padding-top: 5%;
+  text-align: center;
+  padding-bottom: 5%;
+}
+#input{
+  padding-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+}
+#input input{
+  width: 300px;
+  display: flex;
+  padding-left: 1%;
+  
 }
 .espacioBoton{
-  padding-top: 15%;
+  padding-top: 5%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5%;
 }
-
 .botonInicioSesion{
-  display: flex;
-  justify-content: center;
-  padding: 5px 32px;
-  font-family: 'Poppins', sans-serif;
-  background-color:#debc40;
-  border-width: 1px;
-}
-.formularioLogin #inputText{
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 5px 0px;
-  text-indent: 5px;
+  
+  border: none;
+  background-color: #debc40;
   font-size:medium;
+  border-radius: 6px;
+  font-family: inherit;
+  width: 150px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.botonInicioSesion:hover{
+	
+  box-shadow: 0 4px 20px rgba(222, 188, 64, 0.849);
+  
 }

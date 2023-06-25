@@ -109,11 +109,13 @@ function LoginPage() {
   return <>
     <Navbar accion="dashboard" />
     <div className="divFormulario">
-    </div>
+  
+
+    
     <div id="titulo">
-      <h1>
-        Sistema de Apoyo a la Administracion de Parqueos <br />
-      </h1>
+      <p>
+      Este sistema esta restringido a personas que no posean permisos de ingreso al mismo, para ingresar debe llenar los campos que se le solicitan en la parte inferior, es decir el correo de usuario y el password o contraseña de acceso.
+      </p>
     </div>
     <div
       className="formularioLogin"
@@ -134,6 +136,7 @@ function LoginPage() {
             id="correo"
             placeholder="Escribe un correo"
             onChange={(e) => setCorreo(e.target.value)}
+            required
           />
         </div>
         <div
@@ -148,6 +151,7 @@ function LoginPage() {
             id="password"
             placeholder="Escribe una contraseña"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="espacioBoton">
@@ -166,7 +170,8 @@ function LoginPage() {
 
       </form>
     </div>
-
+    
+    </div>
   </>
 }
 export default LoginPage;
