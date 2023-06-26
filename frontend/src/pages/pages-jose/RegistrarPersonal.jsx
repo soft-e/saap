@@ -6,7 +6,7 @@ import { FormularioRegistroPersonas } from '../../components/componentes-jose/Fo
 
 function RegistrarPersonal(){
     return <>
-        <Navbar accion="iniciar sesion"/>
+        <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="registrarPersonal_j">

@@ -7,7 +7,7 @@ import CardDocentes from '../../components/componentes-jose/CardDocentes'
 function ListarDocentes(){
 
     return <>
-        <Navbar accion="iniciar sesion"/>
+        <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="registrarPersonal_j">

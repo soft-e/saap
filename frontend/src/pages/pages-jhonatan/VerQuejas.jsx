@@ -25,7 +25,7 @@ function VerQuejas() {
   };
   return (
     <>
-      <Navbar />
+      <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">

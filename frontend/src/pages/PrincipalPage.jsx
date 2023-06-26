@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "../assets/css/principalPage.css"
 import Navbar from "../components/Navbar";
 import { useMensajes } from "../context/context-rodrigo/MensajeProvider";
-import parqueo1 from "../assets/images/parqueo1.jpg"
+import parqueo1 from "../assets/images/parqueo1.jpg";
+import parqueo2 from "../assets/images/parqueo2.png";
 
 function PrincipalPage() {
   const { mensajes, loadMensajes } = useMensajes();
@@ -10,7 +11,8 @@ function PrincipalPage() {
 
   useEffect(() => {
     loadMensajes();
-    
+    const messages = mensajes;
+    setGlobalMessages(messages);
   }, [])
 
   //console.log(mensajes);
@@ -54,8 +56,11 @@ function PrincipalPage() {
     >
       <div
         className="cardFotoParqueo"
-      ><img src={parqueo1} alt="" />
-        aqui vendra foto del parqueo
+      >
+        <p>Disposicion de parqueos</p>
+        <img src={parqueo1} alt="imagen de parqueo 1" width="370px"/>
+        <img src={parqueo2} alt="imagen de parqueo 2" width="370px"/>
+        
       </div>
       <div
         className="cardMensajesGlobales"

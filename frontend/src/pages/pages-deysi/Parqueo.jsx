@@ -67,7 +67,7 @@ const Parqueo = () => {
 
   return (
     <>
-      <Navbar accion="iniciar sesion" />
+      <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">
@@ -78,7 +78,7 @@ const Parqueo = () => {
                             sitios
                         </h2>
                         <button 
-                            className='botonInicioSesion' 
+                            
                             id='botonRegistrarParqueo'
                             onClick={()=>navigate('/registrarSitio')}
                         >

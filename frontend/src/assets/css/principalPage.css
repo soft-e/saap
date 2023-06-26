@@ -12,12 +12,24 @@
   height: 90%;
   justify-content: center;
   /* From https://css.glass */
-background: rgba(255, 255, 255, 0.41);
+  background: rgba(0, 0, 0, 0.651);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(251, 181, 0, 0.69);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  .cardFotoParqueo img{
+    padding-bottom: 3%;
+  }
+  .cardFotoParqueo p{
+    padding-bottom: 1%;
+    color: aliceblue;
+    font-size: 1.5em;
+    font-weight:bold;
   }
 
 .cardMensajesGlobales{

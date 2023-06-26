@@ -29,7 +29,7 @@ function PersonalPage() {
   };
   return (
     <>
-      <Navbar accion="iniciar sesion" />
+      <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="contenedorPersonal_b">
