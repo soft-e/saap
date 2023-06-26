@@ -134,7 +134,7 @@ const [bloques, setBloques] = useState([]);
 
   return (
     <>
-      <Navbar accion="iniciar sesión" />
+      <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">

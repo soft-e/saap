@@ -22,7 +22,7 @@
   
 }
 
-#navbar .container {
+.container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -30,18 +30,14 @@
   
 }
 
-#navbar ul {
-	display: flex;
+.botonSesion{
+	padding-right: 20px;
 }
 
-#navbar ul li {
-	
-  list-style: none;
-  margin-right: 40px;
-	}
+
 
 #navbar .textologo {
-	margin-left: 40px;
+	
   text-transform: uppercase;
 }
 

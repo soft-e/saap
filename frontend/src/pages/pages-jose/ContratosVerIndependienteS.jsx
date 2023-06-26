@@ -36,7 +36,7 @@ function ContratosVerIndependienteS(){
     }
 
     return <>
-        <Navbar accion="iniciar sesion"/>
+        <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxSecretary/>
             <div className="contenedorContrato_j">

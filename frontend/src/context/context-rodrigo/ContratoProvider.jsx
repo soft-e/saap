@@ -1,5 +1,8 @@
 import { useContext, useState } from "react"
-import {getContratosRequest}from "../../api/contrato.api"
+import {
+  getContratosRequest,
+  getContratoRequest
+}from "../../api/contrato.api"
 import { ContratoContext } from "./ContratoContext"
 
 export const useContratos = ()=>{
@@ -18,6 +21,15 @@ export const ContratoContextProvider = ({children})=>{
   async function loadContratos(){
     const response = await getContratosRequest();
     setContratos(response.data);
+  }
+
+  async function getContrato(id){
+    try {
+      const response = await getContratoRequest(id);
+    return response.data
+    } catch (error) {
+      console.error(error);
+    }
   }
   return(
     <ContratoContext.Provider value={{

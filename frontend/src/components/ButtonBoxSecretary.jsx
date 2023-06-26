@@ -33,18 +33,7 @@ function ButtonBoxSecretary() {
         </div>
 
       </button>
-      <button
-        className="hvr-fade hvr-icon-forward"
-        onClick={()=>navigate("/secretary/regpayment")}
-      >
-        <FontAwesomeIcon icon={faDollarSign} />
-        Registrar Pago
-        <div
-          className="hvr-icon"
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </div>
-      </button>
+
       <button
         className="hvr-fade hvr-icon-forward"
         onClick={() => navigate("/secretary/contract")}

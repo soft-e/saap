@@ -8,9 +8,10 @@ import { EmpleadoContext } from "../context/context-rodrigo/EmpleadoContext";
 import { useDocentes } from "../context/context-rodrigo/DocenteProvider";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const {docentes,loadDocentes}=useDocentes();
-  const [correo, setCorreo] = useState();
-  const [password, setPassword] = useState();
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
   const { isLoggedIn, user, login, logout } = useContext(SessionContext);
   const { personas, loadPersonas } = useContext(PersonaContext);
   const {empleados,loadEmpleados}=useContext(EmpleadoContext);
@@ -30,7 +31,7 @@ function LoginPage() {
     const findedPerson = personas.find((persona) => {
       return (persona.email === correo && persona.password === password);
     })
-    console.log(findedPerson);
+    //console.log(findedPerson);
     //console.log(findedPerson);
     //if (findedPerson!==undefined) {
       
@@ -39,18 +40,15 @@ function LoginPage() {
     //setUsers(findedPerson);
     //console.log(findedPerson);
     //setCurrentUser(findedPerson);
-
     return findedPerson;
-
 
     //return !findedPerson?null:findedPerson;
 
   }
   const onPressedLoginButton = (event,correo, password) => {
-    
     event.preventDefault();
-    console.log(correo);
-    console.log(password);
+    //console.log(correo);
+    //console.log(password);
     //console.log(personas);
     //console.log(personas);
     //console.log(searchUserbyEmailAndPassword(correo,password))
@@ -59,16 +57,13 @@ function LoginPage() {
     //searchUserbyEmailAndPassword(correo,password);
     //console.log(searchUserbyEmailAndPassword(correo,password));
     const usuario = (searchUserbyEmailAndPassword(correo, password))
-    console.log(usuario);
+    //console.log(usuario);
     if (usuario) {
       login(usuario);
       //console.log(empleados);
       //console.log(usuario.id)
-      
       const rol = searchUserRolByPersonId(usuario.id);
-      
-
-      console.log (rol);
+      //console.log (rol);
       if(isLoggedIn){
         if(rol==="administrador"){
           navigate("/admin");
@@ -77,10 +72,12 @@ function LoginPage() {
           navigate("/secretary");
         }
         if (rol==="docente") {
-          navigate("/client")
+          navigate("/clientr")
         }
         
       }
+    }else{
+      alert("Usuario o contraseña incorrectos"); 
     }
     //console.log(findedPerson);
     //console.log(aux);
@@ -108,15 +105,17 @@ function LoginPage() {
     return !rol?"docente":rol.nombre_cargo;
   }
   //console.log(personas);
-  const navigate = useNavigate();
+  
   return <>
     <Navbar accion="dashboard" />
     <div className="divFormulario">
-    </div>
+  
+
+    
     <div id="titulo">
-      <h1>
-        Sistema de Apoyo a la Administracion de Parqueos <br />
-      </h1>
+      <p>
+      Este sistema esta restringido a personas que no posean permisos de ingreso al mismo, para ingresar debe llenar los campos que se le solicitan en la parte inferior, es decir el correo de usuario y el password o contraseña de acceso.
+      </p>
     </div>
     <div
       className="formularioLogin"
@@ -137,6 +136,7 @@ function LoginPage() {
             id="correo"
             placeholder="Escribe un correo"
             onChange={(e) => setCorreo(e.target.value)}
+            required
           />
         </div>
         <div
@@ -151,6 +151,7 @@ function LoginPage() {
             id="password"
             placeholder="Escribe una contraseña"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="espacioBoton">
@@ -169,7 +170,8 @@ function LoginPage() {
 
       </form>
     </div>
-
+    
+    </div>
   </>
 }
 export default LoginPage;

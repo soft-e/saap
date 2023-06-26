@@ -41,7 +41,7 @@ function Parqueos() {
 
     if (parqueos.length === 0) {
         return <>
-        <Navbar/>
+        <Navbar accion="cerrar sesion" />
         <div className='espacioPagina'>
             <ButtonBoxAdmin/>
             <div className='espacioDeTrabajo'>
@@ -51,14 +51,14 @@ function Parqueos() {
                             parqueos
                         </h2>
                         <button 
-                            className='botonInicioSesion' 
+                             
                             id='botonRegistrarParqueo'
                             onClick={()=>navigate('/registroparqueo')}
                         >
                             <h4>Registrar Parqueo</h4>
                         </button>
                         <button 
-                        className='botonInicioSesion'
+                        
                         id='nuevoBoton'
                         onClick={()=>navigate('/sitios')}
                         >
@@ -74,7 +74,7 @@ function Parqueos() {
         </> 
     }else{
     return <>
-        <Navbar/>
+        <Navbar accion="cerrar sesion" />
         <div className='espacioPagina'>
             <ButtonBoxAdmin/>
             <div className='espacioDeTrabajo'>
@@ -84,14 +84,14 @@ function Parqueos() {
                             parqueos
                         </h2>
                         <button 
-                            className='botonInicioSesion' 
+                            
                             id='botonRegistrarParqueo'
                             onClick={()=>navigate('/registroparqueo')}
                         >
                             <h4>Registrar Parqueo</h4>
                         </button>
                         <button 
-                        className='botonInicioSesion'
+                        
                         id='nuevoBoton'
                         onClick={()=>navigate('/sitios')}
                         >

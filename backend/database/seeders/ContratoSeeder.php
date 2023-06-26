@@ -19,7 +19,7 @@ class ContratoSeeder extends Seeder
             [
                 [
                     'sitio_id'=>1,
-                    'docente_id'=>100,
+                    'docente_id'=>1,
                     'vehiculo_id'=>1,
                     'bloque'=>'asfalto',
                     'created_at'=>'2023-03-05 02:44:01.000',
@@ -27,7 +27,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>2,
-                    'docente_id'=>101,
+                    'docente_id'=>2,
                     'vehiculo_id'=>2,
                     'bloque'=>'asfalto',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -35,7 +35,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>3,
-                    'docente_id'=>102,
+                    'docente_id'=>3,
                     'vehiculo_id'=>3,
                     'bloque'=>'asfalto',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -43,7 +43,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>4,
-                    'docente_id'=>103,
+                    'docente_id'=>4,
                     'vehiculo_id'=>4,
                     'bloque'=>'asfalto',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -51,7 +51,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>5,
-                    'docente_id'=>104,
+                    'docente_id'=>5,
                     'vehiculo_id'=>5,
                     'bloque'=>'asfalto',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -59,7 +59,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>6,
-                    'docente_id'=>105,
+                    'docente_id'=>6,
                     'vehiculo_id'=>6,
                     'bloque'=>'empedrado',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -67,7 +67,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>7,
-                    'docente_id'=>106,
+                    'docente_id'=>7,
                     'vehiculo_id'=>7,
                     'bloque'=>'empedrado',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -75,7 +75,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>8,
-                    'docente_id'=>107,
+                    'docente_id'=>8,
                     'vehiculo_id'=>8,
                     'bloque'=>'empedrado',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -83,7 +83,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>9,
-                    'docente_id'=>108,
+                    'docente_id'=>9,
                     'vehiculo_id'=>9,
                     'bloque'=>'empedrado',
                     'created_at'=>'2023-04-05 02:44:01.000',
@@ -91,7 +91,7 @@ class ContratoSeeder extends Seeder
                 ],
                 [
                     'sitio_id'=>10,
-                    'docente_id'=>109,
+                    'docente_id'=>10,
                     'vehiculo_id'=>10,
                     'bloque'=>'empedrado',
                     'created_at'=>'2023-04-05 02:44:01.000',
