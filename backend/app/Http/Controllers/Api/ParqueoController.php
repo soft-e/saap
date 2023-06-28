@@ -31,6 +31,7 @@ class ParqueoController extends Controller
         $parqueo->nombre_bloque = $request->nombre_bloque;
         $parqueo->cantidad_sitios = $request->cantidad_sitios;
         $parqueo->empleado_id = $request->empleado_id;
+      
         $parqueo->save();
         return response()->json([$parqueo], 201);
     }

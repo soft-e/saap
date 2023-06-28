@@ -26,6 +26,7 @@ use App\Http\Controllers\Api\SolicitarContratoController;
 use App\Models\VehiculosExtras;
 use App\Http\Controllers\Api\SaldoController;
 use App\Http\Controllers\Api\PlazaRodrigoController;
+use App\Http\Controllers\api\SitiosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,3 +101,4 @@ Route::prefix('plazas')->group(function () {
 Route::resource('/responderquejas', ResponderQuejaController::class);
 
 Route::resource('/plazarodrigo',PlazaRodrigoController::class);
+Route::resource('/sitios',SitiosController::class);

@@ -21,15 +21,40 @@ function RegistroParqueo() {
     useEffect(()=>{
         loadEmpleados();
     },[]);
+
     console.log(empleados);
-    const store=async(e)=>{
+
+    const store = async (e) => {
         e.preventDefault();
-        await axios.post(`${URL_API}/parqueos`,{
-        nombre_bloque:nombre_bloque,
-        cantidad_sitios:cantidad_sitios,
-        empleado_id:empleado_id})
-        navigate('/parqueos');
-    }
+    
+        try {
+          // Registrar el parqueo en la tabla 'parqueos'
+          const responseParqueo = await axios.post(`${URL_API}/parqueos`, {
+            nombre_bloque: nombre_bloque,
+            cantidad_sitios: cantidad_sitios,
+           
+            empleado_id: empleado_id
+          });
+    
+          const nuevoParqueo = responseParqueo.data;
+    
+          // Crear registros en la tabla 'sitios' para cada sitio del parqueo
+          const sitios = [];
+          for (let i = 1; i <= cantidad_sitios; i++) {
+            sitios.push({
+              parqueoId: nuevoParqueo.id,
+              nombre_bloque: nombre_bloque,
+              numero_sitio: i,
+              estado: 'libre'
+            });
+          }
+          await axios.post(`${URL_API}/sitios`, sitios);
+       
+          navigate('/parqueos');
+        } catch (error) {
+          console.error('Error al registrar el parqueo:', error);
+        }
+      };
     function handleCancel(event) {
         event.preventDefault();
         setnombre_bloque('');

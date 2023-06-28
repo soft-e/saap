@@ -11,16 +11,22 @@ class CreateSitiosTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('sitios', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('parqueo_id');
-            $table->string('estado');
-            $table->timestamps();
-            $table->foreign('parqueo_id')->references('id')->on('parqueos')->onDelete('cascade');
-        });
-    }
+   
+     public function up()
+     {
+         Schema::create('sitios', function (Blueprint $table) {
+             $table->id();
+             $table->unsignedBigInteger('parqueo_id');
+             $table->string('nombre_bloque');
+             $table->integer('numero_sitio');
+             $table->string('estado');
+             $table->timestamps();
+             //claves foranias 
+             
+             $table->foreign('parqueo_id')->references('id')->on('parqueos')->onDelete('cascade');
+         });
+     }
+ 
 
     /**
      * Reverse the migrations.

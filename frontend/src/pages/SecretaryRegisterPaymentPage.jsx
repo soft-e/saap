@@ -153,7 +153,8 @@ setSaldo(saldoTarifa.toString());
         //tarifa ==a costo tarifa mensual
         const tarifaRegistrada = tarifaTotal.costo_tarifa;
             
-        const montoAPagar = parseFloat(montoPago) + saldoAnterior;
+        //const montoAPagar = parseFloat(montoPago) + saldoAnterior;
+        const montoAPagar = parseFloat(montoPago) + parseFloat(saldoAnterior);
         console.log("monto pagado", montoAPagar);
         const saldoTarifa =
           tarifaRegistrada + saldoAnterior - parseFloat(montoPago);

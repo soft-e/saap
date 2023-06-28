@@ -22,7 +22,6 @@
     flex-direction: column;
     padding: 2%;
     overflow: auto;
-    max-height: calc(100vh - 100px); 
 }
 .contenedorBotonesVerContratos{
     display: flex;

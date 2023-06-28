@@ -29,7 +29,7 @@ function LoginPage() {
 
   const searchUserbyEmailAndPassword = (correo, password) => {
     const findedPerson = personas.find((persona) => {
-      return (persona.email === correo && persona.password === password);
+      return (persona.email === correo && persona.password === password );
     })
     //console.log(findedPerson);
     //console.log(findedPerson);

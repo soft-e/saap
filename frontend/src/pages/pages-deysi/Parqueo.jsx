@@ -96,7 +96,6 @@ const Parqueo = () => {
                 </option>
               ))}
             </select>
-
             </nav>
             <div className="parqueo">
         {bloqueSeleccionado !==""&&  (
@@ -123,17 +122,12 @@ const Parqueo = () => {
             </div>
         )
         
-        }
-         
-            
-          </div>
+        }  </div>
         </div>
         </div>
       </div>
     </>
   );
 };
-
-
 export default Parqueo;
 
