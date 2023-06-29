@@ -1,14 +1,14 @@
 import '../../assets/css/css-jose/formularioRegistroPersonas.css'
-import React from 'react';
 import { Formik } from "formik";
 import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate}  from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate }  from 'react-router-dom';
 import { URL_API } from "../../services/EndPoint"
 
 const endPoint= URL_API+'/registrarempleados';
+const endPointRescatar = URL_API+'/personas';
 
-export function FormularioRegistroPersonas() {
+/**export function FormularioRegistroPersonas() {
 
     const [ci, setCi] = useState('')
     const [nombre, setNombre] = useState('')
@@ -154,14 +154,61 @@ export function FormularioRegistroPersonas() {
         </div>
     );
     
-}
-/**
+}*/
+
 export const FormularioRegistroPersonas = () => {
 
     const navigate = useNavigate()
+    const [personas, setPersonas] = useState( [] );
+
+    useEffect( () => {
+        obtenerEmpleado();
+    }, []);
+
+    const obtenerEmpleado = async () => {
+        const response = await axios.get(endPointRescatar);
+        setPersonas(response.data);
+    }    
+
+    function handleClick (){
+        navigate('/personal')
+    }
+
+    function ciExistente(dato){
+        let response = false;
+        for(let i = 0; i< personas.length; i++){
+            if(personas[i].ci.toString() == dato.toString()){
+                response = true;
+                break;
+            }
+        }
+        return response;
+    }
+
+    function telefonoExistente(dato){
+        let response = false;
+        for(let i = 0; i< personas.length; i++){
+            if(personas[i].telefono.toString() == dato.toString()){
+                response = true;
+                break;
+            }
+        }
+        return response;
+    }
+
+    function emailExistente(dato){
+        let response = false;
+        for(let i = 0; i< personas.length; i++){
+            if(personas[i].email.toString() == dato.toString()){
+                response = true;
+                break;
+            }
+        }
+        return response;
+    }
 
     return(
-        <div className='cardRegistroPersonal'>
+        <div className='cardRegistroPersonal_j'>
             <Formik
                 initialValues={{
                     ci: '',
@@ -169,9 +216,9 @@ export const FormularioRegistroPersonas = () => {
                     apellido_paterno: '',
                     apellido_materno: '',
                     telefono: '',
-                    nombre_cargo:'Guardia',
+                    nombre_cargo:'',
                     email: '',
-                    password:'',
+                    password:'',        
                 }}
 
                 validate={(valores) => {
@@ -180,6 +227,10 @@ export const FormularioRegistroPersonas = () => {
                     //validacion Celula de Identidad
                     if(!valores.ci){
                         errores.ci = 'el campo Celula de Intentidad es requerido obligatoriamente';
+                    }else if(!/^[0-9\s]{1,9}$/.test(valores.ci)){
+                        errores.ci = 'no es un numero';
+                    }else if(ciExistente(valores.ci)){
+                        errores.ci = 'el numero de carnet ya fue registrado';
                     }
 
 
@@ -209,25 +260,38 @@ export const FormularioRegistroPersonas = () => {
                         errores.telefono = 'el campo Telefono es requerido obligatoriamente';
                     }else if(!/^[0-9\s]{1,10}$/.test(valores.telefono)){
                         errores.telefono = 'el campo no pude tener letras o caracteres especiales';
+                    }else if(telefonoExistente(valores.telefono)){
+                        errores.telefono = 'el numero de telefono ya fue registrado';
                     }
 
                     //validacion correo electronio
                     if(!valores.email){
-                        errores.email = 'el campo Correlo Electronico es requerido obligatoriamente';
+                        errores.email = 'el campo Correo Electronico es requerido obligatoriamente';
                     }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)){
                         errores.email = 'el campo solo puede tener letras, numeros, gion y guion bajo';
+                    }else if(emailExistente(valores.email)){
+                        errores.email = 'el correo electronico ya fue registrado';
                     }
 
                     return errores;
                 }}
 
-                onSubmit={ async (valores, {resetForm}, e) => {
-                    resetForm();
-                    console.log(valores);
-                    e.preventDefault()
-                    await axios.post(endPoint,{valores})
-                    navigate('/');
-                    console.log('formulario Enviado');
+                onSubmit={ (valores) => {
+                    const store = async (e) => {
+                        e.preventDefault()
+                        await axios.post(endPoint, {
+                            ci: valores.ci,
+                            nombre: valores.nombre,
+                            apellido_paterno: valores.apellido_paterno,
+                            apellido_materno: valores.apellido_materno,
+                            telefono: valores.telefono,
+                            nombre_cargo: valores.nombre_cargo,
+                            email: valores.email,
+                            password: valores.password,
+                        });
+                        navigate('/personal');
+                    }
+                    store(event);
                 }}
             >
                 {({values, errors, touched, handleSubmit, handleChange, handleBlur, resetForm}) => (
@@ -235,6 +299,7 @@ export const FormularioRegistroPersonas = () => {
                     <div>
                         <label htmlFor='ci'>Celula de Identidad</label>
                         <input 
+                            className='input_j'
                             type='text'
                             id='ci'
                             name='ci'
@@ -243,11 +308,12 @@ export const FormularioRegistroPersonas = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.ci && errors.ci && <div className='styleErrores'>{errors.ci}</div>}
+                        {touched.ci && errors.ci && <div className='styleErrores_j'>{errors.ci}</div>}
                     </div>
                     <div>
                         <label htmlFor='nombre'>nombres</label>
                         <input 
+                            className='input_j'
                             type='text'
                             id='nombre'
                             name='nombre'
@@ -256,11 +322,12 @@ export const FormularioRegistroPersonas = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.nombre && errors.nombre && <div className='styleErrores'>{errors.nombre}</div>}
+                        {touched.nombre && errors.nombre && <div className='styleErrores_j'>{errors.nombre}</div>}
                     </div>
                     <div>
                         <label htmlFor='apellido_paterno'>Apellido Paterno</label>
                         <input 
+                            className='input_j'
                             type='text'
                             id='apellido_paterno'    
                             name='apellido_paterno'
@@ -269,11 +336,12 @@ export const FormularioRegistroPersonas = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.apellido_paterno && errors.apellido_paterno && <div className='styleErrores'>{errors.apellido_paterno}</div>}
+                        {touched.apellido_paterno && errors.apellido_paterno && <div className='styleErrores_j'>{errors.apellido_paterno}</div>}
                     </div>
                     <div>
                         <label htmlFor='apellido_materno'>Apellido Materno</label>
                         <input 
+                            className='input_j'
                             type='text'
                             id='apellido_materno'
                             name='apellido_materno'
@@ -282,11 +350,12 @@ export const FormularioRegistroPersonas = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.apellido_materno && errors.apellido_materno && <div className='styleErrores'>{errors.apellido_materno}</div>}
+                        {touched.apellido_materno && errors.apellido_materno && <div className='styleErrores_j'>{errors.apellido_materno}</div>}
                     </div>
                     <div>
                         <label htmlFor='telefono'>Telefono</label>
                         <input 
+                            className='input_j'
                             type='text'
                             id='telefono'
                             name='telefono'
@@ -295,14 +364,17 @@ export const FormularioRegistroPersonas = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.telefono && errors.telefono && <div className='styleErrores'>{errors.telefono}</div>}
+                        {touched.telefono && errors.telefono && <div className='styleErrores_j'>{errors.telefono}</div>}
                     </div>
                     <div>
                         <label htmlFor='nombre_cargo'>Empleado</label>
                         <select 
+                            className='input_j'
                             type='text' 
                             id='nombre_cargo'
                             name="nombre_cargo"
+                            value={values.email}
+                            onChange={handleChange}
                         >
                             <option value='Administrador'> Administrador </option>
                             <option value='Guardia'> Guardia </option>
@@ -312,6 +384,7 @@ export const FormularioRegistroPersonas = () => {
                     <div>
                         <label htmlFor='email'>Correo Electronico</label>
                         <input 
+                            className='input_j'
                             type='email'
                             id='email'
                             name='email'
@@ -320,11 +393,12 @@ export const FormularioRegistroPersonas = () => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {touched.correo && errors.correo && <div className='styleErrores'>{errors.correo}</div>}
+                        {touched.email && errors.email && <div className='styleErrores_j'>{errors.email}</div>}
                     </div>
                     <div>
                         <label htmlFor='password'>Contraseña</label>
                         <input 
+                            className='input_j'
                             type='password'
                             id='password'
                             name='password'
@@ -334,10 +408,17 @@ export const FormularioRegistroPersonas = () => {
                             onBlur={handleBlur}
                         />
                     </div>
-                    <div className="espacioBoton">
-                        <button  className='stylesButton' type="submit">
-                            Guardar
-                        </button>
+                    <div className="espacioBotones_j">
+                        <div className="espacioBoton_j">
+                            <button  className='stylesButton_j' type="submit">
+                                Guardar
+                            </button>
+                        </div>
+                        <div className="espacioBoton_j">
+                            <button className='stylesButton_j' onClick={ handleClick }>
+                                Cancelar
+                            </button>
+                        </div>
                     </div>
                 </form>
                 )}
@@ -346,4 +427,3 @@ export const FormularioRegistroPersonas = () => {
         </div>
     );
 }
- */
