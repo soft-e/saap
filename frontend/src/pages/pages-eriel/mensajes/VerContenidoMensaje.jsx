@@ -30,7 +30,7 @@ function VerContenidoMensaje() {
            <div className='ModalContenidoMensaje' onClick={()=>{navigate('/vermensajes')}}>
                <div className='contenedorMensajeModal'>
                    <h3 className='tituloMensajeModal'>Destinatario:</h3>
-                   <h3 className='contenidoMensajeModal'>{mensaje.destinatario}</h3>
+                   <h3 className='contenidoMensajeModal'>{mensaje.destino}</h3>
                    <h3 className='tituloMensajeModal'>asunto:</h3>
                    <h3 className='contenidoMensajeModal'>{mensaje.asunto}</h3>
                    <h3 className='tituloMensajeModal'>contenido:</h3>
