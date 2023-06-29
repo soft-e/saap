@@ -116,7 +116,8 @@ function Parqueos() {
                                 </button>
                             
                                 <button className='botonEliminarParqueos'
-                                        onClick={()=>eliminarParqueo(parqueos.id)}
+                                        /*onClick={()=>eliminarParqueo(parqueos.id)}*/
+                                        onClick={()=>navigate(`/eliminarparqueo/${parqueos.id}`)}
                                 >
                                     <h4>Eliminar</h4>
                                 </button>
