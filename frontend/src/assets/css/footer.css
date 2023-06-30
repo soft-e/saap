@@ -28,7 +28,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 15px;
-  width: 300px;
+  width: 400px;
 }
 .ladoDerecho{
   display: flex;
@@ -39,7 +39,7 @@
 .ladoDerecho p {
   display: flex;
   justify-content: flex-end;
-  width: 300px;
+  width: 400px;
 }
 #input label{
   padding-bottom: 2%;

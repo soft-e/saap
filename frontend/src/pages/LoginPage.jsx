@@ -107,7 +107,7 @@ function LoginPage() {
   //console.log(personas);
   
   return <>
-    <Navbar accion="dashboard" />
+    <Navbar accion="pagina principal" />
     <div className="divFormulario">
   
 
