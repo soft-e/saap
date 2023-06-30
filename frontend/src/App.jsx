@@ -13,6 +13,7 @@ import RegistrarMensaje from "./pages/pages-jose/RegistrarMensaje";
 import Contratos from "./pages/pages-jose/Contratos";
 import ContratosVerIndependiente from "./pages/pages-jose/ContratosVerIndependiente";
 import VehiculosExtras from "./pages/pages-eriel/vehiculo/VehiculosExtras"
+import EliminarParqueo from "./pages/pages-eriel/parqueos/EliminarParqueo";
 //import AdminPageR from "./pages/AdminPageR";
 import NotFound from "./pages/NotFound";
 import TemplatePage from "./pages/TemplatePage";
@@ -64,6 +65,9 @@ import { DocenteContextProvider } from "./context/context-rodrigo/DocenteProvide
 import { MensajeContextProvider } from "./context/context-rodrigo/MensajeProvider";
 import SecretaryContractPage2 from "./pages/SecretaryContractPage2";
 import { VehiculoContextProvider } from "./context/context-rodrigo/VehiculoProvider";
+import AnunciosPage from "./pages/pages-rodrigo/AnunciosPage";
+import UbicacionPage from "./pages/pages-rodrigo/UbicacionPage";
+import RegistroVehiculoSitioPage from "./pages/pages-rodrigo/RegistroVehiculoSitioPage";
 /*import Parqueo from "./pages/pages-deysi/Parqueo";
 import RegistrarPlaza from "./pages/pages-deysi/RegistrarPlaza";
 import AsignarSitio from "./pages/pages-deysi/AsignarSitio";*/
@@ -142,6 +146,11 @@ function App() {
                                 <Route path="/client/complaints/new/:id" element={<ClientComplaintNew />} />
                                 <Route path="/client/messages/:id" element={<ClientMessagePage />} />
                                 <Route path="/client/contract/:id" element={<ClientContractPage />} />
+                                <Route path="/anuncios" element ={<AnunciosPage/>}/>
+                                <Route path="/ubicacion" element={<UbicacionPage/>}/>
+                                <Route path="/registrositiovehiculo/:id" element={<RegistroVehiculoSitioPage/>}/>
+                                <Route path="/vehiculo/:id" element={<VehiculosExtras/>}/>
+                                <Route path="/eliminarparqueo/:id" element={<EliminarParqueo />}/>
                               </Routes>
                             </VehiculoContextProvider>
                           </MensajeContextProvider>

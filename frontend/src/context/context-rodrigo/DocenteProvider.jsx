@@ -1,11 +1,12 @@
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import {
-  getDocentesRequest
-}from "../../api/docente.api";
+  getDocentesRequest,
+  getDocenteRequest,
+} from "../../api/docente.api";
 import { DocenteContext } from "./DocenteContext";
 
 
-export const useDocentes = ()=>{
+export const useDocentes = () => {
   const context = useContext(DocenteContext);
   if (!context) {
     throw new Error(
@@ -15,18 +16,29 @@ export const useDocentes = ()=>{
   return context;
 };
 
-export const DocenteContextProvider = ({children})=>{
+export const DocenteContextProvider = ({ children }) => {
   const [docentes, setDocentes] = useState([]);
 
-  async function loadDocentes(){
+  async function loadDocentes() {
     const response = await getDocentesRequest();
     setDocentes(response.data);
   }
+  const getDocente = async (id) => {
+    try {
+      const response = await getDocenteRequest(id);
+      //console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  return(
+
+  return (
     <DocenteContext.Provider value={{
       docentes,
-      loadDocentes
+      loadDocentes,
+      getDocente
     }}>
       {children}
     </DocenteContext.Provider>

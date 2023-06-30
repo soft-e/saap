@@ -63,7 +63,7 @@ function LoginPage() {
       //console.log(empleados);
       //console.log(usuario.id)
       const rol = searchUserRolByPersonId(usuario.id);
-      //console.log (rol);
+      console.log (rol);
       if(isLoggedIn){
         if(rol==="Administrador" || rol==="administrador"){
           navigate("/admin");
@@ -107,7 +107,7 @@ function LoginPage() {
   //console.log(personas);
   
   return <>
-    <Navbar accion="dashboard" />
+    <Navbar accion="pagina principal" />
     <div className="divFormulario">
   
 

@@ -1,9 +1,11 @@
 .registrarPersonal_j{
     width: 80%;
-    height: 100%;
+    height: 95%;
     display: flex;
+    
     justify-content: center;
-    padding: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
     overflow: auto;
 }
 

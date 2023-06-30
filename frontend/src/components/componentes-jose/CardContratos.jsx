@@ -111,11 +111,11 @@ const CardContratos = () => {
           <td className="td_j">
             {getApellidosDocente(contratos[i].docente_id)}
           </td>
-          <td className="td_j">{contratos[i].sitio_id}</td>
+          <td className="td_j_sitio">{contratos[i].sitio_id}</td>
           <td className="td_j">{contratos[i].bloque}</td>
           <td>
             <Link to={`show/${contratos[i].id}`} className="stylesButton_j">
-              ver
+              mas informacion
             </Link>
           </td>
 
@@ -135,7 +135,7 @@ const CardContratos = () => {
                 placeholder="buscar contratos por nombre"
                 onChange={ handleChange } 
             />*/}
-        <h2>docentes asignados a un sitio</h2>
+        <h2>Informaci&oacute;n de sitios asignados hasta ahora</h2>
       </div>
       <div className="contenedorTabla_j">
         <table className="table_j">
@@ -143,7 +143,7 @@ const CardContratos = () => {
             <tr>
               <th className="th_j">Nombre</th>
               <th className="th_j">Apellidos</th>
-              <th className="th_j">Sitio</th>
+              <th className="th_j_sitio">Sitio</th>
               <th className="th_j">Bloque</th>
               <th className="th_j"> </th>
             </tr>

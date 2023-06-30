@@ -11,7 +11,7 @@ export const useSession =()=>{
 };
 
 export const SessionContextProvider = ({children})=>{
-  const [isLoggedIn,setLoggedIn]=useState(false);
+  const [isLoggedIn,setLoggedIn]=useState(()=>localStorage.getItem("session"));
   const [user,setUser]=useState(null);
 
   useEffect(()=>{

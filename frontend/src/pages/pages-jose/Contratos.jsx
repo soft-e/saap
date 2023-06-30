@@ -19,13 +19,13 @@ function Contratos(){
                     <button
                         className="styleButonVerDocentes_j"
                         onClick={()=>navigate('/listarDocentes?estado=false') }
-                    > Lista de Docentes
+                    > Asignar un sitio
                     </button>
                     <button 
                         className="styleButonVerDocentes_j"
                         onClick={()=>navigate('/listarDocentes?estado=true')}
                     >
-                        Solicitud de contratos
+                        Solicitudes de Sitio
                     </button>
                 </div>
                 <div>
