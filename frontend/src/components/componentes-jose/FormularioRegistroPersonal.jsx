@@ -262,7 +262,7 @@ export const FormularioRegistroPersonas = () => {
                         errores.telefono = 'el campo no pude tener letras o caracteres especiales';
                     }else if(telefonoExistente(valores.telefono)){
                         errores.telefono = 'el numero de telefono ya fue registrado';
-                    }
+                    }personal
 
                     //validacion correo electronio
                     if(!valores.email){
