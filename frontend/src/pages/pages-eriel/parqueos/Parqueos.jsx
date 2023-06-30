@@ -114,13 +114,6 @@ function Parqueos() {
                                         >
                                             Editar
                                         </button>
-
-                                        <button className='botonEliminarParqueos'
-                                            /*onClick={()=>eliminarParqueo(parqueos.id)}*/
-                                            onClick={() => navigate(`/eliminarparqueo/${parqueos.id}`)}
-                                        >
-                                            Eliminar
-                                        </button>
                                     </div>
                                 </div>
                             ))}
