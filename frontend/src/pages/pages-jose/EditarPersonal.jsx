@@ -87,8 +87,8 @@ function EditarPersonal() {
                 <div
                     className="espacioFormularioEdicionDePersonal"
                 >
-                    <div className='cardRegistroPersonal_j'>
-                        {console.log(persona)}
+                    {persona.ci > 1 ? (
+                        <div className='cardRegistroPersonal_j'>
                         <Formik
                             initialValues={{
                                 ci: persona.ci,
@@ -291,7 +291,12 @@ function EditarPersonal() {
                         </Formik>
 
                     </div>
-                </div>
+                    ):(
+                        <div>
+                            cargando datos ....
+                        </div>
+                    )}
+                </div>    
             </div>
         </div>
     </>
