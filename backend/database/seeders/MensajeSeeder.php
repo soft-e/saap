@@ -19,8 +19,8 @@ class MensajeSeeder extends Seeder
             [
                 'origen'=>'1',
                 'destino' => 'todos',
-                'asunto' => 'lorem ipsum',
-                'contenido' => 'Lorem ipsum dolor sit amet dolores gubergren eum lorem ea kasd vel magna commodo stet ut duo nulla esse aliquyam sea vero tempor erat erat',
+                'asunto' => 'saludo con el primer comunicado',
+                'contenido' => 'este es el primer comunicado para las personas en general',
                 'estado'=> 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -28,8 +28,8 @@ class MensajeSeeder extends Seeder
             [
                 'origen'=>'1',
                 'destino' => 'todos',
-                'asunto' => 'lorem ipsum',
-                'contenido' => 'Lorem ipsum dolor sit amet sed esse tincidunt nulla vulputate elit amet euismod nulla duo lorem ut vulputate diam lorem ut ut in dolore praesent',
+                'asunto' => 'El dia viernes 30 de junio se llevaran a cabo las elecciones en la U',
+                'contenido' => 'se solicita a todos los clientes a personar a la Universidad a complir con su vito',
                 'estado'=> 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -37,8 +37,8 @@ class MensajeSeeder extends Seeder
             [
                 'origen'=>'1',
                 'destino' => 'todos',
-                'asunto' => 'lorem ipsum',
-                'contenido' => 'Lorem ipsum dolor sit amet ipsum at dolor gubergren ea consectetuer amet sed lobortis sanctus nonummy sit kasd justo sed dolor et tempor nonumy kasd',
+                'asunto' => 'El bloque empedrado estara en mejoramiento',
+                'contenido' => 'Se comunica a los clientes que a partir de la primera semana de agosto se procedera a instalar sombrillas a los sitios',
                 'estado'=> 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
