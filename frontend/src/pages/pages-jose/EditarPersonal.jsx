@@ -75,7 +75,19 @@ function EditarPersonal() {
         <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
-            <div className="registrarPersonal_j">
+            <div className="espacioDeTrabajo">
+            <p
+    className="botonAtras"
+    onClick={()=>navigate("/personal")}
+  >IR ATRAS</p>
+                <h1
+                className="tituloAtencion"
+                >
+                    Formulario de edición de los datos personales del empleado
+                </h1>
+                <div
+                    className="espacioFormularioEditarPersona"
+                >
                 {console.log()}
                 {persona.ci > 1 ? (
                     <div className='cardRegistroPersonal_j'>
@@ -279,13 +291,15 @@ function EditarPersonal() {
                         </form>
                         )}
                     </Formik>
+                    
                 </div>
+                
                 ) : (
                     <div>
                         Cargando datos...
                     </div>
                 )}
-                
+                </div>
             </div>
         </div>
     </>

@@ -81,7 +81,7 @@ function VehiculosExtras() {
             <div className="espacioDeTrabajo">
                 <p
                     className="botonAtras"
-                    onClick={() => navigate("/contratos")}
+                    onClick={() => window.history.back()}
                 >IR ATRAS</p>
                 <h1
                     className="tituloAtencion"
