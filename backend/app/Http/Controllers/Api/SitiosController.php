@@ -4,8 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Sitios;
-use App\Models\Parqueo;
 
 class SitiosController extends Controller
 {
@@ -16,8 +14,7 @@ class SitiosController extends Controller
      */
     public function index()
     {
-        $sitios = Sitios::all();
-        return response()->json($sitios);
+        //
     }
 
     /**
@@ -28,18 +25,7 @@ class SitiosController extends Controller
      */
     public function store(Request $request)
     {
-        $sitios = $request->all(); // Obtener la matriz de sitios enviada
-    
-        foreach ($sitios as $sitio) {
-            $nuevoSitio = new Sitios;
-            $nuevoSitio->parqueo_id = $sitio['parqueo_id'];
-            $nuevoSitio->numero_sitio = $sitio['numero_sitio'];
-            $nuevoSitio->estado_sitio = $sitio['estado_sitio'];
-            $nuevoSitio->save(); 
-        }
-    
-    return response()->json(['message' => 'Sitios creados exitosamente'], 201);
-
+        //
     }
 
     /**
@@ -50,8 +36,7 @@ class SitiosController extends Controller
      */
     public function show($id)
     {
-        $sitio = Sitios::findOrFail($id);
-        return response()->json($sitio);
+        //
     }
 
     /**
@@ -75,25 +60,5 @@ class SitiosController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function getSitiosByParqueo($parqueo_id)
-    {
-        $sitios = Sitios::where('parqueo_id', $parqueo_id)->get();
-        return response()->json($sitios);
-    }
-
-    public function getNombreBloque($sitioId)
-    {
-        // Obtén el nombre del bloque asociado al sitio
-        $sitio = Sitios::findOrFail($sitioId);
-        $parqueo = Parqueo::findOrFail($sitio->parqueo_id);
-        $nombreBloque = $parqueo->nombre_bloque;
-
-        return $nombreBloque;
-    }
-    public function obtenerSitiosLibres($id)
-    {
-        $sitiosLibres = Sitios::where('parqueo_id', $id )->get();
-        return response()->json($sitiosLibres);
     }
 }
