@@ -16,7 +16,10 @@ class CreateSitiosTable extends Migration
         Schema::create('sitios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('parqueo_id');
-            $table->string('estado');
+            $table->string('estado_sitio');
+            //$table->string('estado_sitio')->default('libre');
+            
+            $table->integer('numero_sitio');
             $table->timestamps();
             $table->foreign('parqueo_id')->references('id')->on('parqueos')->onDelete('cascade');
         });
