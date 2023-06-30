@@ -7,15 +7,32 @@ import { usePersonas } from "../context/context-rodrigo/PersonaProvider";
 function SecretaryHomePage(){
   const {user}=useSession();
   const [currentUser,setCurrentUser]=useState();
-  const [password,setPassword]=useState();
+  const [password,setPassword]=useState('');
   const {updatePersona}=usePersonas();
-
+  const [newPassword,setNewPassword]=useState("");
+  
   useEffect(()=>{
     if(user){
       setCurrentUser(user);
-      setPassword(user.password);
+      setPassword("");
     }
   })
+  const onPressedUpdatePassword = (event) => {
+    event.preventDefault();
+
+    if(newPassword.length>=5){
+      
+      updatePersona(currentUser.id, {
+        ...currentUser,
+        password,
+      });
+      console.log(newPassword)
+      alert("password actualizado con exito");
+    }else{
+      alert("tu nuevo password debe tener 5 o mas caracteres")
+    }
+    
+  }
 
   return <>
     <Navbar accion="cerrar sesion"/>
@@ -48,12 +65,15 @@ function SecretaryHomePage(){
             <p>password:</p>
             <form action="">
               <input
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="nuevo password"
+                required
               />
               <button
-                onClick={() => onPressedUpdatePassword(event, password)}
+                className="botonActualizaPassword"
+                onClick={() => onPressedUpdatePassword(event)}
               >Actualizar</button>
             </form>
           </div>

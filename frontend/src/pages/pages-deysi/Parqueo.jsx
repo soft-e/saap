@@ -10,7 +10,7 @@ import Navbar from "../../components/Navbar";
 import PlazasOcupadas from "./PlazasOcupadas";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import PlazasDisponibles from "./PlazasDisponibles";
-import {URL_API} from '../../services/EndPoint'
+import { URL_API } from '../../services/EndPoint'
 
 import { useNavigate } from "react-router-dom";
 
@@ -71,63 +71,67 @@ const Parqueo = () => {
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">
-        <div className='padre'> 
-         
-        <nav className='cabezeraParqueo'>
-                        <h2 id='tituloParqueos'>
-                            sitios
-                        </h2>
-                        <button 
-                            
-                            id='botonRegistrarParqueo'
-                            onClick={()=>navigate('/registrarSitio')}
-                        >
-                            <h4>Registrar sitio</h4>
-                        </button>
-                        <select
-              value={bloqueSeleccionado}
-              onChange={(e) => handleBloqueSelect(e.target.value)}
-              className="select-bloque"
-            >
-              <option value="">selecione Bloques</option>
-              {bloques.map((bloque) => (
-                <option key={bloque} value={bloque}>
-                  Bloque {bloque}
-                </option>
-              ))}
-            </select>
+        <p
+    className="botonAtras"
+    onClick={()=>window.history.back()}
+  >IR ATRAS</p>
+          <div className='padre'>
+
+            <nav className='cabezeraParqueo'>
+              <h2 id='tituloParqueos'>
+                sitios
+              </h2>
+              <button
+
+                id='botonRegistrarParqueo'
+                onClick={() => navigate('/registrarSitio')}
+              >
+                <h4>Registrar sitio</h4>
+              </button>
+              <select
+                value={bloqueSeleccionado}
+                onChange={(e) => handleBloqueSelect(e.target.value)}
+                className="select-bloque"
+              >
+                <option value="">selecione Bloques</option>
+                {bloques.map((bloque) => (
+                  <option key={bloque} value={bloque}>
+                    Bloque {bloque}
+                  </option>
+                ))}
+              </select>
 
             </nav>
             <div className="parqueo">
-        {bloqueSeleccionado !==""&&  (
-          <div className="plazas-disponibles">
-            {plazasDisponibles.length > 0 ? (
-              <PlazasDisponibles
-                plazas={plazasDisponibles}
-                handleClick={handleClick}
-                bloqueSeleccionado={bloqueSeleccionado}
-              />
-            ) : (
-              <p>No hay plazas disponibles en este bloque.</p>
-            )}
-          </div>
-        )}
-        {bloqueSeleccionado !==""&&(
-            <div className="plaza-ocupadas">
-            
-           <PlazasOcupadas
-              plazas={plazasOcupadas}
-              handleClick={handleClick}
-              bloqueSeleccionado={bloqueSeleccionado}
-            />
+              {bloqueSeleccionado !== "" && (
+                <div className="plazas-disponibles">
+                  {plazasDisponibles.length > 0 ? (
+                    <PlazasDisponibles
+                      plazas={plazasDisponibles}
+                      handleClick={handleClick}
+                      bloqueSeleccionado={bloqueSeleccionado}
+                    />
+                  ) : (
+                    <p>No hay plazas disponibles en este bloque.</p>
+                  )}
+                </div>
+              )}
+              {bloqueSeleccionado !== "" && (
+                <div className="plaza-ocupadas">
+
+                  <PlazasOcupadas
+                    plazas={plazasOcupadas}
+                    handleClick={handleClick}
+                    bloqueSeleccionado={bloqueSeleccionado}
+                  />
+                </div>
+              )
+
+              }
+
+
             </div>
-        )
-        
-        }
-         
-            
           </div>
-        </div>
         </div>
       </div>
     </>

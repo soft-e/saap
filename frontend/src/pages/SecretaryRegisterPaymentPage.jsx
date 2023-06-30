@@ -12,26 +12,26 @@ import "../assets/css/css-deysi/formularioResponderQueja.css";
 function SecretaryRegisterPaymentPage() {
   const [tarifaTotal, setTarifaTotal] = useState({});
   const [montoPago, setMontoPago] = useState("");
- // const montoAPagar = parseFloat(e.target.value) + saldoAnterior;
+  // const montoAPagar = parseFloat(e.target.value) + saldoAnterior;
 
   const [saldoAnterior, setSaldoAnterior] = useState(null);
   const [saldo, setSaldo] = useState(null);
   const [fechaPagoRegistrada, setFechaPagoRegistrada] = useState(null);
   const [total, setTotal] = useState(null);
   const params = useParams();
-  const [tarifaRegistrada ,setTarifaRegistrada]=useState(null);
+  const [tarifaRegistrada, setTarifaRegistrada] = useState(null);
   const navigate = useNavigate();
 
- /* const handleChange = (e) => {
-    setSaldo( parseFloat(tarifaRegistrada) + parseFloat(saldoAnterior) - parseFloat(montoPago));
-    setMontoPago(e.target.value);
-  };*/
+  /* const handleChange = (e) => {
+     setSaldo( parseFloat(tarifaRegistrada) + parseFloat(saldoAnterior) - parseFloat(montoPago));
+     setMontoPago(e.target.value);
+   };*/
 
 
   //actualizaciones-----------------------------------
 
   useEffect(() => {
-    console.log("fechas vemos ",fechaPagoRegistrada);
+    console.log("fechas vemos ", fechaPagoRegistrada);
     axios
       .get(`${URL_API}/tarifa2/ultima`)
       .then((response) => {
@@ -56,7 +56,7 @@ function SecretaryRegisterPaymentPage() {
       .get(`${URL_API}/pagos/fechapago/${params.id}`)
       .then((response) => {
         const fechaPago = response.data;
-        console.log("fecha a pagarr",fechaPago);
+        console.log("fecha a pagarr", fechaPago);
         setFechaPagoRegistrada(fechaPago);
       })
       .catch((error) => {
@@ -71,11 +71,11 @@ function SecretaryRegisterPaymentPage() {
     const fechaMoment = moment.utc(
       fechaPagoRegistrada,
       "YYYY-MM-DDTHH:mm:ss.SSSSZ"
-      
+
     );
     const fechaRegistroMes = fechaMoment.format("M");
     const fechaRegistroAño = fechaMoment.format("YYYY");
-    
+
     const fechaActualMes = moment().format("M");
     const fechaActualAño = moment().format("YYYY");
     console.log("Fecha de registro - Mes:", fechaRegistroMes);
@@ -84,13 +84,13 @@ function SecretaryRegisterPaymentPage() {
     console.log("Fecha actual - Año:", fechaActualAño);
 
 
-    if ( fechaPagoRegistrada === null || fechaPagoRegistrada === undefined) {
+    if (fechaPagoRegistrada === null || fechaPagoRegistrada === undefined) {
       setTarifaRegistrada(tarifaTotal.costo_tarifa);
       const saldoTarifa = parseFloat(tarifaRegistrada) + parseFloat(saldoAnterior) - parseFloat(montoPago);
       setSaldo(saldoTarifa.toString());
       //const total = parseFloat(e.target.value) + saldoAnterior;
- setTotal( parseFloat(e.target.value)+saldoTarifa.costo_tarifa+ saldoAnterior);
-      console.log("cual es",fechaPagoRegistrada);
+      setTotal(parseFloat(e.target.value) + saldoTarifa.costo_tarifa + saldoAnterior);
+      console.log("cual es", fechaPagoRegistrada);
       // Registro de pago sin verificaciones adicionales cuando no hay
       const pagos = {
         tarifa2_id: tarifaTotal.id,
@@ -98,7 +98,7 @@ function SecretaryRegisterPaymentPage() {
         contrato_id: params.id,
         saldo: saldo,
       };
-  
+
       axios
         .post(`${URL_API}/pagos`, pagos)
         .then((response) => {
@@ -109,7 +109,7 @@ function SecretaryRegisterPaymentPage() {
           console.error("Error al registrar el pago:", error);
         });
     }
-//hay igual
+    //hay igual
     if (
       fechaRegistroMes === fechaActualMes &&
       fechaRegistroAño === fechaActualAño
@@ -119,16 +119,16 @@ function SecretaryRegisterPaymentPage() {
       if (saldoAnterior > 0) {
         //tarifa le convierto en o
         const tarifaRegistrada = 0;
-         const saldoTarifa = saldoAnterior - parseInt(montoPago);
-         console.log("saldo anterior-monto pago",saldoTarifa);
-       // const saldoTarifa = parseFloat(tarifaTotal.costo_tarifa) + parseFloat(saldoAnterior) - parseFloat(montoPago);
-setSaldo(saldoTarifa.toString());
+        const saldoTarifa = saldoAnterior - parseInt(montoPago);
+        console.log("saldo anterior-monto pago", saldoTarifa);
+        // const saldoTarifa = parseFloat(tarifaTotal.costo_tarifa) + parseFloat(saldoAnterior) - parseFloat(montoPago);
+        setSaldo(saldoTarifa.toString());
 
-       // setSaldo(tarifaRegistrada + saldoAnterior - parseInt(montoPago));
+        // setSaldo(tarifaRegistrada + saldoAnterior - parseInt(montoPago));
         setTotal(tarifaRegistrada + saldoAnterior);
-        
+
         const pagos = {
-          tarifa2_id:tarifaTotal.id,
+          tarifa2_id: tarifaTotal.id,
           monto_pagado: montoPago,
           contrato_id: params.id,
           saldo: saldoTarifa.toString(),
@@ -152,7 +152,7 @@ setSaldo(saldoTarifa.toString());
       if (saldoAnterior > 0) {
         //tarifa ==a costo tarifa mensual
         const tarifaRegistrada = tarifaTotal.costo_tarifa;
-            
+
         const montoAPagar = parseFloat(montoPago) + saldoAnterior;
         console.log("monto pagado", montoAPagar);
         const saldoTarifa =
@@ -189,7 +189,7 @@ setSaldo(saldoTarifa.toString());
         };
 
 
-        
+
 
 
 
@@ -220,6 +220,20 @@ setSaldo(saldoTarifa.toString());
       <div className="espacioPagina">
         <ButtonBoxSecretary />
         <div className="espacioDeTrabajo">
+          <p
+            className="botonAtras"
+            onClick={() => window.history.back()}
+          >IR ATRAS</p>
+          <h1
+            className="tituloAtencion"
+          >
+            Registro de Pagos
+          </h1>
+          <p
+            className="informativo"
+          >
+            En este apartado podras registrar los pagos realizados por el cliente
+          </p>
           <div className="padreParqueo">
             <form className="formularioParqueo" onSubmit={handleSubmit}>
               <div className="contenedorParqueo">
@@ -229,7 +243,7 @@ setSaldo(saldoTarifa.toString());
                   Deuda Anterior:{saldoAnterior}
                 </div>
                 <div style={{ color: "blue" }}>Total Pago:{total}</div>
-                
+
 
                 <label htmlFor="tarifaTotal" className="textoAsunto">
                   Tarifa:
@@ -253,9 +267,9 @@ setSaldo(saldoTarifa.toString());
                     type="number"
                     id="montoPago"
                     value={montoPago}
-                   // onChange={handleChange}
-                      onChange={(e) => setMontoPago(e.target.value)}
-                    
+                    // onChange={handleChange}
+                    onChange={(e) => setMontoPago(e.target.value)}
+
                     style={{ textAlign: "center" }}
                   />
                 </div>

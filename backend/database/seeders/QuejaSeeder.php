@@ -17,23 +17,16 @@ class QuejaSeeder extends Seeder
     {
         DB::table('quejas')->insert([
             [
-                'contenido' => 'hola quiero presentar una queja, mi parqueo estaba ocupado por otro vehiculo',
+                'id_docente'=>100,
                 'asunto' => 'Queja parqueo',
+                'contenido' => 'hola quiero presentar una queja, mi parqueo estaba ocupado por otro vehiculo',
+                'respuesta'=>'ya fuimos notificados por el guardia y ya corregimos el problema',
+                'estado_adm'=>0,
+                'estado_clt'=>0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
-            [
-                'contenido' => 'hola Quiero presentar una queja alguien rayo mi automovil',
-                'asunto' => 'auto daniado',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'contenido' => 'La siguiente queja es por que no respetaron el horario del parqueo y cerraron mas antes',
-                'asunto' => 'queja respecto a horarios',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ]
+            
         ]);
     }
 }

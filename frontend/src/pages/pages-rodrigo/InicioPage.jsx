@@ -76,7 +76,7 @@ function InicioPage() {
             >si deseas cambiar tu password <br />escribe uno nuevo en la caja <br /> de texto abajo </p>
             <form action="">
               <input
-                type="text"
+                type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="nuevo password"
