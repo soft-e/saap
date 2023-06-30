@@ -7,9 +7,9 @@ import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import "../../assets/css/css-deysi/asignarSitio.css";
 import { useParams } from "react-router-dom";
 
-import {URL_API} from '../../services/EndPoint'
+import { URL_API } from '../../services/EndPoint'
 function AsignarSitio() {
-const [bloques, setBloques] = useState([]);
+  const [bloques, setBloques] = useState([]);
 
 
   const [selectedBloque, setSelectedBloque] = useState("");
@@ -19,16 +19,16 @@ const [bloques, setBloques] = useState([]);
 
   const params = useParams();
   //obtenemos  bloques de la tabla plazas
- 
-  
+
+
 
   useEffect(() => {
     obtenerBloques();
-   
+
     console.log(params.idc);
     console.log(params.idv);
-   
-    
+
+
   }, []);
 
   const obtenerBloques = () => {
@@ -118,7 +118,7 @@ const [bloques, setBloques] = useState([]);
         setSelectedSitio("");
 
         navigate("/contratos");
-          
+
       })
       .catch((error) => {
         console.error("Error al registrar la asignación:", error);
@@ -134,9 +134,13 @@ const [bloques, setBloques] = useState([]);
 
   return (
     <>
-      <Navbar accion="iniciar sesión" />
+      <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
+        <p
+          className="botonAtras"
+          onClick={() => navigate("/registrovehiculo")}
+        >IR ATRAS</p>
         <div className="espacioDeTrabajo">
           <div className="padreParqueo">
             <form className="formularioParqueo">
@@ -147,7 +151,7 @@ const [bloques, setBloques] = useState([]);
                   <select
                     value={selectedBloque}
                     onChange={handleBloqueChange}
-                    // onChange={(event) => setSelectedBloque(event.target.value)}
+                  // onChange={(event) => setSelectedBloque(event.target.value)}
                   >
                     <option value="">Selecciona un bloque</option>
                     {bloques.map((bloque) => (

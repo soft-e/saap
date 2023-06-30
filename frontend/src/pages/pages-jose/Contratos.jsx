@@ -11,7 +11,7 @@ function Contratos(){
     const navigate = useNavigate();
 
     return <>
-        <Navbar accion="iniciar sesion"/>
+        <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="contenedorContrato_j">
@@ -19,13 +19,13 @@ function Contratos(){
                     <button
                         className="styleButonVerDocentes_j"
                         onClick={()=>navigate('/listarDocentes?estado=false') }
-                    > Lista de Docentes
+                    > Asignar un sitio
                     </button>
                     <button 
                         className="styleButonVerDocentes_j"
                         onClick={()=>navigate('/listarDocentes?estado=true')}
                     >
-                        Solicitud de contratos
+                        Solicitudes de Sitio
                     </button>
                 </div>
                 <div>

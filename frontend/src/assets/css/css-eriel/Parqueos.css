@@ -20,6 +20,7 @@
     margin-left: 3%;
 }
 #botonRegistrarParqueo{
+    background-color: #debc40;
     margin-right: 3%;
     border-radius: 5px;
 }
@@ -91,7 +92,7 @@
 }
 
 #nuevoBoton{
-
+    background-color: #debc40;
     margin-right: 3%;
     border-radius: 5px;
 }

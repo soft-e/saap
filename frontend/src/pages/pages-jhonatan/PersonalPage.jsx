@@ -29,7 +29,7 @@ function PersonalPage() {
   };
   return (
     <>
-      <Navbar accion="iniciar sesion" />
+      <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="contenedorPersonal_b">
@@ -39,13 +39,19 @@ function PersonalPage() {
           onClick={ () => navigate("/personal/registrar") }
           >Registrar Personal</button>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {empleados.map((empleado) => (
-              <CardPersonal
-                key={empleado.id}
-                empleado={empleado}
-                eliminarEmpleado={eliminarEmpleado}
-              />
-            ))}
+            {empleados.map((empleado) => {
+                if (empleado.nombre_cargo !== "administrador") {
+                  return (
+                    <CardPersonal
+                      key={empleado.id}
+                      empleado={empleado}
+                      eliminarEmpleado={eliminarEmpleado}
+                    />
+                  );
+                } else {
+                  return null; 
+                }
+              })}
           </div>
         </div>
       </div>

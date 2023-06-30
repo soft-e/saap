@@ -11,23 +11,37 @@ function InicioPage() {
   const { user } = useSession();
   const [currentUser, setCurrentUser] = useState();
   const [password, setPassword] = useState();
+  const [newPassword,setNewPassword]=useState("");
   
   const {updatePersona}=usePersonas();
 
   useEffect(()=>{
     if(user){ 
       setCurrentUser(user);
-      setPassword(user.password);
+      setPassword("");
     }
     
-  },[user])
-  const onPressedUpdatePassword = (event, password) => {
+  },[])
+  const onPressedUpdatePassword = (event) => {
     event.preventDefault();
-    updatePersona(currentUser.id, {
-      ...currentUser,
-      password,
-    });
-    console.log(password)
+
+    if(newPassword.length>=5){
+      
+      updatePersona(currentUser.id, {
+        ...currentUser,
+        password,
+      });
+      console.log(newPassword)
+      alert("password actualizado con exito");
+    }else{
+      alert("tu nuevo password debe tener 5 o mas caracteres")
+    }
+    
+    
+  }
+  const cambiarPassword =(newPassword)=>{
+    alert("password cambiado");
+
   }
   return <>
       <Navbar accion="cerrar sesion" />
@@ -41,7 +55,7 @@ function InicioPage() {
           <div
             className="tituloInicio"
           >
-            <h1>informacion personal</h1>
+            <h1>Informaci&oacute;n Personal</h1>
           </div>
           <div
             className="cardUserInicio"
@@ -54,15 +68,22 @@ function InicioPage() {
             <p>apellido materno: {user?.apellido_materno}</p>
             <p>ci: {user?.ci}</p>
             <p>telefono: {user?.telefono}</p>
+
             <p>password:</p>
+            <p
+              className="mensajeParrafo"
+            >si deseas cambiar tu password <br />escribe uno nuevo en la caja <br /> de texto abajo </p>
             <form action="">
               <input
                 type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="nuevo password"
+                required
               />
               <button
-                onClick={() => onPressedUpdatePassword(event, password)}
+                className="botonActualizaPassword"
+                onClick={() => onPressedUpdatePassword(event)}
               >Actualizar</button>
             </form>
           </div>

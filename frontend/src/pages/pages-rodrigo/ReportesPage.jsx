@@ -92,9 +92,9 @@ function ReportesPage() {
     for (let i = 0; i < contratos.length; i++) {
       let contratoID = contratos[i].id;
       let cantPagosRealizados = acumularPagosPorContrato(contratos[i].id);
-      console.log(cantPagosRealizados);
+      //console.log(cantPagosRealizados);
       let cantPagosEsperados = acumularTarifasPorContrato(contratos[i].id, contratos[i].created_at);
-      console.log(cantPagosEsperados);
+      //console.log(cantPagosEsperados);
       //console.log(cantPagosEsperados)
       //console.log(cantPagosEsperados);
       //if(cantPagosRealizados<cantPagosEsperados){
@@ -142,10 +142,43 @@ function ReportesPage() {
     });
     return acumulador;
   }
+  const getMes=(mes)=>{
+    const monthNames=[
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre'
+    ]
+    return monthNames[mes]
+  }
 
-  const selectMonth = () => {
+  
+  const loadMonths = () => {
+    //console.log(pagos);
+    //const [fecha,setFecha]=useState();
     
+    const [mes,setMes]=useState([]);
+    pagos.map((pago,index)=>{
+      //console.log(pago.created_at);
+      const fecha = new Date(pago.created_at);
+      //console.log(monthNames[fecha.getMonth()]);
+      const nombreMes=getMes([fecha.getMonth()]);
+      //console.log(nombreMes);
+      //<option key={index} value={index}>{nombreMes}</option>
+      
+      
+    })
+
     return (
+      
       <select name="selectMonth" id="selectMonth"
         className="selectMonth"
       >
@@ -172,18 +205,7 @@ function ReportesPage() {
           <div
             className="espacioReportes"
           >
-            <div
-              className="espacioSelects"
-            >
-              <h2>seleccionar un mes y una semana</h2>
-              {selectMonth()}
-              <select name="selectWeek" id="selectWeek"
-                className="selectWeek"
-              >
-                <option value="1">Semana 3</option>
-                <option value="2">Semana 4</option>
-              </select>
-            </div>
+            
             <div
               className="espacioCardsReportes"
             >

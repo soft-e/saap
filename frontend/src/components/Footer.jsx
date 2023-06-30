@@ -1,24 +1,40 @@
-import {FaFacebook} from 'react-icons/fa';
-import {BsWhatsapp} from 'react-icons/bs';
-import {SiGmail} from 'react-icons/si'
+import { FaFacebook } from 'react-icons/fa';
+import { BsWhatsapp } from 'react-icons/bs';
+import { SiGmail } from 'react-icons/si'
 import "../assets/css/footer.css"
 
-function Footer(){
-  return(
-    <>
-      <nav id="footer">
-        <div className="contenedorFooder">
-            <div>
-              <h3 className='correoMailFooder'>softwareentrepreneurs299@gmail.com</h3>
+function Footer() {
+  return (
+    
+      <div className="footer">
+            <div
+              className='ladoIzquierdo'
+            >
+              <p>
+                Facultad de Ciencias y Tecnología (UMSS).
+              </p>
+              <p>
+              Correo Electrónico: webmaster@fcyt.umss.edu.bo
+              </p>
             </div>
-            <div className='contenedorDeIconosFooder'>
-              <a className='facebook' href="https://www.facebook.com/fcytumssOficial" id="a"><h1><FaFacebook/></h1></a>
-              <a className='whatsapp' href="https://web.whatsapp.com/send?phone=591 69475511" id="a"><h1><BsWhatsapp/></h1></a>
-              <a className='gmail' href="mailto:softwareentrepreneurs299@gmail.com" id="a"><h1><SiGmail/></h1></a>
+            <div
+              className='centro'
+            >
+              <p>Cochabamba - Bolivia</p>
             </div>
-        </div>
-      </nav>      
-    </>
+            <div
+              className='ladoDerecho'
+            >
+              <p>
+              Calle Sucre y parque la Torre.
+              </p>
+              <p>
+              Fono: 591-4-4231765
+              </p>
+            </div>
+        
+      </div>
+    
   )
 }
 export default Footer;

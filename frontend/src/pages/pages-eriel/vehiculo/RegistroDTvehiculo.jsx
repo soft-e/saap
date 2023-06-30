@@ -28,6 +28,10 @@ function RegistroDTvehiculo() {
         setData([dato, nuevoRegistroConID]);
         navigate(`/asignarSitio/${id}/${nuevoRegistroConID.id}`) 
     }
+
+    const handleGoBack = () => {
+        window.history.back();
+    };
     /*function handleCancel(event) {
         event.preventDefault();
         setvehiculoDato('');
@@ -51,6 +55,7 @@ function RegistroDTvehiculo() {
                                 <label>placa</label>
                                 <input 
                                     type="text" 
+                                    maxLength={20}
                                     value={placa}
                                     onChange={(e)=>setvehiculoDato(e.target.value)}
                                     id='inputText'
@@ -62,6 +67,7 @@ function RegistroDTvehiculo() {
                                 <label>Color</label>
                                 <input
                                     value={color}
+                                    maxLength={20}
                                     onChange={(e)=>setcolor(e.target.value)}
                                     type="text" 
                                     id='inputText'
@@ -74,6 +80,7 @@ function RegistroDTvehiculo() {
                                 <input 
                                     type="text" 
                                     value={marca}
+                                    maxLength={20}
                                     onChange={(e)=>setmarca(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese la marca'
@@ -85,6 +92,7 @@ function RegistroDTvehiculo() {
                                 <input 
                                     type="text" 
                                     value={modelo}
+                                    maxLength={20}
                                     onChange={(e)=>setmodelo(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese el modelo'
@@ -100,7 +108,8 @@ function RegistroDTvehiculo() {
                                     id="botonCancelarVH"
                                     className='botonInicioSesion' 
                                     type='submit'
-                                    onClick={()=>navigate('/listarDocentes')}
+                                    onClick={handleGoBack}
+                                    /*onClick={()=>navigate('/listarDocentes')}*/
                                 >
                                     Cancelar
                                 </button>
