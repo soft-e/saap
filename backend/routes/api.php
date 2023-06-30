@@ -21,11 +21,12 @@ use App\Http\Controllers\Api\Tarifa2Controller;
 use App\Http\Controllers\Api\PagoController;
 use App\Http\Controllers\Api\ResponderQuejaController;
 use App\Http\Controllers\Api\Mensaje2Controller;
-use App\Http\Controllers\api\VehiculosExtrasController;
+use App\Http\Controllers\Api\VehiculosExtrasController;
 use App\Http\Controllers\Api\SolicitarContratoController;
 use App\Models\VehiculosExtras;
 use App\Http\Controllers\Api\SaldoController;
 use App\Http\Controllers\Api\PlazaRodrigoController;
+use App\Http\Controllers\Api\SitiosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,10 @@ Route::put('editarqueja/{id}', [QuejaController::class, 'update']);
 Route::resource('solicitarcontrato', SolicitarContratoController::class);
 Route::post('savesolicitarcontrato', [SolicitarContratoController::class, 'store']);
 Route::put('editsolicitarcontrato', [SolicitarContratoController::class, 'update']);
+
+Route::get('/sitios/disponibles/{id}', [SitiosController::class, 'obtenerSitiosLibres']);
+Route::get('/parqueos', [ParqueoController::class, 'show']);
+Route::resource('/sitios',SitiosController::class);
 //Route::resource('cargos',CargoController::class);
 
 //Route::resource('contrataciones',ContratacionController::class);
