@@ -57,6 +57,7 @@ function InicioPage() {
           >
             <h1>Informaci&oacute;n Personal</h1>
           </div>
+          <p>Se presenta la información personal del usuario actual</p>
           <div
             className="cardUserInicio"
           >

@@ -16,7 +16,7 @@ function AtencionPage(){
 
   const navigate = useNavigate();
   function renderMain(){
-    if(atenciones.length ===0)return<h1>no se tiene horarios de atencion registrado</h1>
+    if(atenciones.length ===0)return<h1>no se tiene horarios de atención registrado</h1>
     return atenciones.map((atencion)=><CardAtencion atencion={atencion} key={atencion.id}/>);
   }
 
@@ -32,12 +32,12 @@ function AtencionPage(){
         <div
             className="tituloAtencion"
           >
-            <h1>Horario de Atencion</h1>
+            <h1>Horario de Atenci&oacute;n</h1>
             <button
               onClick={()=>navigate("/atencion/new")}
               className="botonAtencion hvr-fade"
 
-            >Registrar Horario de Atencion</button>
+            >Registrar Horario de Atenci&oacute;n</button>
           </div>
           <div
             className="cardsAtencion"

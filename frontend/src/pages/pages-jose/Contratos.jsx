@@ -14,6 +14,12 @@ function Contratos(){
         <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
+            <div
+            className="tituloAtencion"
+            >
+                <h1>Gestión de Sitios</h1>
+            </div>
+            
             <div className="contenedorContrato_j">
             <div className="contenedorBotonesVerContratos">
                     <button
