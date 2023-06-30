@@ -75,20 +75,22 @@ function EditarPersonal() {
         <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
-
             <div className="espacioDeTrabajo">
-                <p
-                    className="botonAtras"
-                    onClick={() => navigate("/personal")}
-                >IR ATRAS</p>
+            <p
+    className="botonAtras"
+    onClick={()=>navigate("/personal")}
+  >IR ATRAS</p>
                 <h1
-                    className="tituloAtencion"
-                >Formulario de edición de personal</h1>
-                <div
-                    className="espacioFormularioEdicionDePersonal"
+                className="tituloAtencion"
                 >
-                    {persona.ci > 1 ? (
-                        <div className='cardRegistroPersonal_j'>
+                    Formulario de edición de los datos personales del empleado
+                </h1>
+                <div
+                    className="espacioFormularioEditarPersona"
+                >
+                {console.log()}
+                {persona.ci > 1 ? (
+                    <div className='cardRegistroPersonal_j'>
                         <Formik
                             initialValues={{
                                 ci: persona.ci,

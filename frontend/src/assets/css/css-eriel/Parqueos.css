@@ -36,6 +36,7 @@
     grid-template-columns: auto auto auto;
     gap: 1px;
     padding: 1%;
+    overflow-y: auto;
 }
 
 .datosParqueo{
