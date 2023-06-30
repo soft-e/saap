@@ -51,7 +51,7 @@ function VerMensajes() {
                           <div className="barraDeAbajo" key={mensaje.id} onClick={()=>navigate(`/vercontenidodemensaje/${mensaje.id}`)}>
                                 <h3>{index+1}</h3>
                                 <h3>asunto: {mensaje.asunto}</h3>
-                                <h3>Destinatario: {mensaje.destinatario}</h3>
+                                <h3>Destinatario: {mensaje.destino}</h3>
                           </div>
                         ))}
                         </div>

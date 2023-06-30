@@ -14,8 +14,11 @@ function VehiculosExtras() {
     const [marca,setmarca]=useState(''); 
     const [modelo,setmodelo]=useState('');
     const navigate=useNavigate();
-
-
+   
+    /*const handleGoBack = () => {
+        window.history.back();
+    };*/
+      
     const store=async(e)=>{
             e.preventDefault();
             const response=await axios.post(`${URL_API}/vehiculosExtras`,{
@@ -43,6 +46,7 @@ function VehiculosExtras() {
                                 <input 
                                     type="text" 
                                     value={placa}
+                                    maxLength={20}
                                     onChange={(e)=>setvehiculoDato(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese la placa del viculo'
@@ -53,6 +57,7 @@ function VehiculosExtras() {
                                 <label>Color</label>
                                 <input
                                     value={color}
+                                    maxLength={20}
                                     onChange={(e)=>setcolor(e.target.value)}
                                     type="text" 
                                     id='inputText'
@@ -65,6 +70,7 @@ function VehiculosExtras() {
                                 <input 
                                     type="text" 
                                     value={marca}
+                                    maxLength={20}
                                     onChange={(e)=>setmarca(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese la marca'
@@ -76,6 +82,7 @@ function VehiculosExtras() {
                                 <input 
                                     type="text" 
                                     value={modelo}
+                                    maxLength={20}
                                     onChange={(e)=>setmodelo(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese el modelo'
@@ -91,7 +98,8 @@ function VehiculosExtras() {
                                     id="botonCancelarVH"
                                     className='botonInicioSesion' 
                                     type='submit'
-                                    
+                                    /*onClick={handleGoBack}*/
+                                    onClick={()=>navigate('/contratos/show/'+id)}
                                 >
                                     Cancelar
                                 </button>

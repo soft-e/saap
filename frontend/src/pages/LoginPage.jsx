@@ -63,7 +63,7 @@ function LoginPage() {
       //console.log(empleados);
       //console.log(usuario.id)
       const rol = searchUserRolByPersonId(usuario.id);
-      //console.log (rol);
+      console.log (rol);
       if(isLoggedIn){
         if(rol==="administrador"){
           navigate("/admin");
