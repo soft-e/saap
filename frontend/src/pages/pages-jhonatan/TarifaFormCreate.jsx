@@ -33,12 +33,14 @@ function TarifaFormCreate() {
                   <div className="contenedorInputs">
                     <h2 className="h2Tarifa">Costo de la tarifa</h2>
                     <input
+                    pattern="[0-9]*" title="Por favor, ingresa solo números."
                       className="inputTarifa"
                       type="text"
                       name="costo_tarifa"
                       placeholder="costo de la tarifa"
                       onChange={handleChange}
                       value={values.costo_tarifa}
+                      required
                     />
                   </div>
 

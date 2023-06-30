@@ -1,3 +1,9 @@
+.espacioFormularioEdicionDePersonal{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .cardRegistroPersonal_j{
     display: flex;
     justify-content: center;
@@ -14,6 +20,7 @@
     border: 1px solid rgba(251, 181, 0, 0.69);
     color: black;
 }
+
 
 .input_j{
     width: 100%;

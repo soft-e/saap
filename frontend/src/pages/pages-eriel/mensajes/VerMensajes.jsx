@@ -36,7 +36,8 @@ function VerMensajes() {
             <div className="espacioDeTrabajo">
                 <div className="padreVerMensajes">
                     <nav className="menuVerMensajes">
-                        <h2 className="tituloMenuDeMensajes">mensajes</h2>
+                        <h1>Mensajes</h1>
+                        
                         <button 
                             className="botonMenuDeMensajes"
                             onClick={ handleClick }
@@ -46,6 +47,11 @@ function VerMensajes() {
                     </nav>
                     <div className="contenedorDeMensajes">
                         <h2>Mensajes Redactados</h2>
+                        <p
+                        className=""
+                        >
+                        
+                        </p>
                         <div className="listaDeMensaje">
                         {mensajes.map((mensaje,index)=>(
                           <div className="barraDeAbajo" key={mensaje.id} onClick={()=>navigate(`/vercontenidodemensaje/${mensaje.id}`)}>

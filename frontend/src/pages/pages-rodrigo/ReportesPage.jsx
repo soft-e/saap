@@ -201,6 +201,7 @@ function ReportesPage() {
             className="tituloPagina"
           >
             <h1>Reportes</h1>
+            <p>Esta sección presenta el estado actual del servicio de parqueos</p>
           </div>
           <div
             className="espacioReportes"

@@ -8,40 +8,40 @@ import { useParams, useNavigate } from "react-router-dom";
 import { URL_API } from "../../services/EndPoint";
 import axios from "axios";
 
-const endPointRescatar = URL_API+"/personas";
-const endPointActualizar = URL_API+"/actualizarpersona";
+const endPointRescatar = URL_API + "/personas";
+const endPointActualizar = URL_API + "/actualizarpersona";
 
 
-function EditarPersonal(){
+function EditarPersonal() {
 
     const navigate = useNavigate()
-    const [personas, setPersonas] = useState( [] );
-    const [persona, setPersona] = useState( [] );
-    const { id }= useParams();
+    const [personas, setPersonas] = useState([]);
+    const [persona, setPersona] = useState([]);
+    const { id } = useParams();
 
-    useEffect( () => {
+    useEffect(() => {
         obtenerEmpleado();
         obtenerPersona();
     }, []);
 
     const obtenerPersona = async () => {
-        const response = await axios.get(endPointRescatar+"/"+id)
+        const response = await axios.get(endPointRescatar + "/" + id)
         setPersona(response.data);
     }
-    
+
     const obtenerEmpleado = async () => {
         const response = await axios.get(endPointRescatar);
         setPersonas(response.data);
-    }    
+    }
 
-    function handleClick (){
+    function handleClick() {
         navigate('/personal')
     }
 
-    function ciExistente(dato){
+    function ciExistente(dato) {
         let response = false;
-        for(let i = 0; i< personas.length; i++){
-            if(personas[i].ci.toString() == dato.toString() && personas[i].id != id){
+        for (let i = 0; i < personas.length; i++) {
+            if (personas[i].ci.toString() == dato.toString() && personas[i].id != id) {
                 response = true;
                 break;
             }
@@ -49,10 +49,10 @@ function EditarPersonal(){
         return response;
     }
 
-    function telefonoExistente(dato){
+    function telefonoExistente(dato) {
         let response = false;
-        for(let i = 0; i< personas.length; i++){
-            if(personas[i].telefono.toString() == dato.toString() && personas[i].id != id){
+        for (let i = 0; i < personas.length; i++) {
+            if (personas[i].telefono.toString() == dato.toString() && personas[i].id != id) {
                 response = true;
                 break;
             }
@@ -60,10 +60,10 @@ function EditarPersonal(){
         return response;
     }
 
-    function emailExistente(dato){
+    function emailExistente(dato) {
         let response = false;
-        for(let i = 0; i< personas.length; i++){
-            if(personas[i].email.toString() == dato.toString() && personas[i].id != id){
+        for (let i = 0; i < personas.length; i++) {
+            if (personas[i].email.toString() == dato.toString() && personas[i].id != id) {
                 response = true;
                 break;
             }
@@ -71,7 +71,7 @@ function EditarPersonal(){
         return response;
     }
 
-    return(<>
+    return (<>
         <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
@@ -79,71 +79,71 @@ function EditarPersonal(){
                 {console.log()}
                 {persona.ci > 1 ? (
                     <div className='cardRegistroPersonal_j'>
-                    <Formik
-                        initialValues={{
-                            ci: persona.ci,
-                            nombre: persona.nombre,
-                            apellido_paterno: persona.apellido_paterno,
-                            apellido_materno: persona.apellido_materno,
-                            telefono: persona.telefono,
-                            email: persona.email,
-                            password: persona.password,
-                        }}
+                        <Formik
+                            initialValues={{
+                                ci: persona.ci,
+                                nombre: persona.nombre,
+                                apellido_paterno: persona.apellido_paterno,
+                                apellido_materno: persona.apellido_materno,
+                                telefono: persona.telefono,
+                                email: persona.email,
+                                password: persona.password,
+                            }}
 
-                        validate={(valores) => {
-                            let errores = {};
+                            validate={(valores) => {
+                                let errores = {};
 
-                            //validacion Celula de Identidad
-                            if(!valores.ci){
-                                errores.ci = 'el campo Celula de Intentidad es requerido obligatoriamente';
-                            }else if(!/^[0-9\s]{1,9}$/.test(valores.ci)){
-                                errores.ci = 'no es un numero';
-                            }else if(ciExistente(valores.ci)){
-                                errores.ci = 'el numero de carnet ya fue registrado';
-                            }
+                                //validacion Celula de Identidad
+                                if (!valores.ci) {
+                                    errores.ci = 'el campo Celula de Intentidad es requerido obligatoriamente';
+                                } else if (!/^[0-9\s]{1,9}$/.test(valores.ci)) {
+                                    errores.ci = 'no es un numero';
+                                } else if (ciExistente(valores.ci)) {
+                                    errores.ci = 'el numero de carnet ya fue registrado';
+                                }
 
 
-                            //validacion para el nombre
-                            if(!valores.nombre){
-                                errores.nombre = 'el campo nombre es requerido obligatoriamente';
-                            }else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)){
-                                errores.nombre = 'el campo no pude tener numeros';
-                            }
+                                //validacion para el nombre
+                                if (!valores.nombre) {
+                                    errores.nombre = 'el campo nombre es requerido obligatoriamente';
+                                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)) {
+                                    errores.nombre = 'el campo no pude tener numeros';
+                                }
 
-                            //validacion apellido Paterno
-                            if(!valores.apellido_paterno){
-                                errores.apellido_paterno = 'el campo Apellido Paterno es requerido obligatoriamente';
-                            }else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido_paterno)){
-                                errores.apellido_paterno = 'el campo no pude tener numeros';
-                            }
+                                //validacion apellido Paterno
+                                if (!valores.apellido_paterno) {
+                                    errores.apellido_paterno = 'el campo Apellido Paterno es requerido obligatoriamente';
+                                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido_paterno)) {
+                                    errores.apellido_paterno = 'el campo no pude tener numeros';
+                                }
 
-                            //validacion apellido Materno
-                            if(!valores.apellido_materno){
-                                errores.apellido_materno = 'el campo Apellido Materno es requerido obligatoriamente';
-                            }else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido_materno)){
-                                errores.apellido_materno = 'el campo no pude tener numeros';
-                            }
+                                //validacion apellido Materno
+                                if (!valores.apellido_materno) {
+                                    errores.apellido_materno = 'el campo Apellido Materno es requerido obligatoriamente';
+                                } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido_materno)) {
+                                    errores.apellido_materno = 'el campo no pude tener numeros';
+                                }
 
-                            //validacion Telefono
-                            if(!valores.telefono){
-                                errores.telefono = 'el campo Telefono es requerido obligatoriamente';
-                            }else if(!/^[0-9\s]{1,10}$/.test(valores.telefono)){
-                                errores.telefono = 'el campo no pude tener letras o caracteres especiales';
-                            }else if(telefonoExistente(valores.telefono)){
-                                errores.telefono = 'el numero de telefono ya fue registrado';
-                            }
+                                //validacion Telefono
+                                if (!valores.telefono) {
+                                    errores.telefono = 'el campo Telefono es requerido obligatoriamente';
+                                } else if (!/^[0-9\s]{1,10}$/.test(valores.telefono)) {
+                                    errores.telefono = 'el campo no pude tener letras o caracteres especiales';
+                                } else if (telefonoExistente(valores.telefono)) {
+                                    errores.telefono = 'el numero de telefono ya fue registrado';
+                                }
 
-                            //validacion correo electronio
-                            if(!valores.email){
-                                errores.email = 'el campo Correo Electronico es requerido obligatoriamente';
-                            }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)){
-                                errores.email = 'el campo solo puede tener letras, numeros, gion y guion bajo';
-                            }else if(emailExistente(valores.email)){
-                                errores.email = 'el correo electronico ya fue registrado';
-                            }
+                                //validacion correo electronio
+                                if (!valores.email) {
+                                    errores.email = 'el campo Correo Electronico es requerido obligatoriamente';
+                                } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)) {
+                                    errores.email = 'el campo solo puede tener letras, numeros, gion y guion bajo';
+                                } else if (emailExistente(valores.email)) {
+                                    errores.email = 'el correo electronico ya fue registrado';
+                                }
 
-                            return errores;
-                        }}
+                                return errores;
+                            }}
 
                         onSubmit={ (valores) => {
                             const store = async (e) => {
@@ -288,7 +288,7 @@ function EditarPersonal(){
                 
             </div>
         </div>
-        </>
+    </>
     );
 }
 export default EditarPersonal;

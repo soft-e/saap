@@ -8,14 +8,14 @@ import ContratosDataPersona from "../components/componentes-jose/ContratosDataPe
 import AlertaMensaje from "../components/componentes-jose/AlertaMensaje"
 import { URL_API } from '../services/EndPoint'
 
-const endPoint = URL_API+'/docentes';
+const endPoint = URL_API + '/docentes';
 
 function ClientPage() {
 
-    const [docentes, setDocente] = useState( [] )
+    const [docentes, setDocente] = useState([])
     const { user } = useSession();
 
-    useEffect ( () => {
+    useEffect(() => {
         getAllDocentes();
     }, []);
 
@@ -24,7 +24,7 @@ function ClientPage() {
         setDocente(response.data);
     }
 
-    function obtenerIdDocente(buscar){
+    function obtenerIdDocente(buscar) {
         let res;
         for(let i = 0; i < docentes.length; i++){
             if(docentes[i].persona_id == buscar){
@@ -38,13 +38,13 @@ function ClientPage() {
         <>
             <Navbar accion="cerrar sesion" />
             <div className="espacioPagina">
-                <ButtonBoxClient docente_id={ obtenerIdDocente(user.id) }/>
-                <div >
-                    <div className="contenedorContrato_j">
-                        <div>
-                            <ContratosDataPersona id_docente={ obtenerIdDocente(user.id) }/>
-                        </div> 
-                    </div>
+                <ButtonBoxClient docente_id={obtenerIdDocente(user.id)} />
+                <div
+                    className="espacioDeMensaje"
+                >
+                    <p>
+                        Bienvenido, la caja de botones a la izquierda de tu pantalla, son todas las funcionalidades a las que tienes acceso.
+                    </p>
                 </div>
             </div>
         </>
