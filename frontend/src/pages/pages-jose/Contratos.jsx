@@ -14,6 +14,16 @@ function Contratos(){
         <Navbar accion="cerrar sesion" />
         <div className="espacioPagina">
             <ButtonBoxAdmin />
+            <div
+            className="tituloAtencion"
+            >
+                <h1>Gestión de Sitios</h1>
+            </div>
+            <p
+                className="informativo2"
+            >
+                Esta sección gestiona los sitios, ya sea visualizar la informacion o asignacion a un cliente.
+            </p>
             <div className="contenedorContrato_j">
             <div className="contenedorBotonesVerContratos">
                     <button

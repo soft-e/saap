@@ -64,22 +64,22 @@ function ClientComplaintPage(){
             </>);
         }else if(solicitoContrato(docente_id)){
             dato = (<>
-                <label> Actualmente no cuentas con un contrato, 
-                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un contrato
-                    con el boton que se muestra: Solicitar un Contrato </label>
+                <label> Actualmente no cuentas con un Sitio, 
+                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un Sitio
+                    con el boton que se muestra: Solicitar un Sitio </label>
                 <br></br>
-                <label> usted ya tiene ina solicitud de contrato pendiente, 
+                <label> usted ya tiene una solicitud de Sitio pendiente, 
                     debe de esperar que los Administradores acepten la solicitud</label>
             </>)
         }else{
             dato = (<>
-                <label> Actualmente no cuentas con un contrato, 
-                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un contrato
-                    con el boton que se muestra: Solicitar un Contrato </label>
+                <label> Actualmente no cuentas con un Sitio, 
+                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un Sitio
+                    con el boton que se muestra: Solicitar un Sitio </label>
                 <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
                         <button className='stylesButton_j' onClick={ update }>
-                            Solicitar un Contrato
+                            Solicitar un Sitio
                         </button>
                     </div>
                 </div>

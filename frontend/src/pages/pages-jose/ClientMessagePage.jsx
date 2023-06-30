@@ -52,18 +52,18 @@ function ClientMessagePage(){
             </>);
         }else if(solicitoContrato(docente_id)){
             dato = (<>
-                <label> Actualmente no cuentas con un contrato, 
-                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un contrato
-                    con el boton que se muestra: Solicitar un Contrato </label>
+                <label> Actualmente no cuentas con un sitio, 
+                    Solo los cliente pueden mandar una queja caso contrario puede solucitar un sitio
+                    con el boton que se muestra: Solicitar un sitio </label>
                 <br></br>
-                <label> usted ya tiene ina solicitud de contrato pendiente, 
+                <label> usted ya tiene una solicitud de sitio pendiente, 
                     debe de esperar que los Administradores acepten la solicitud</label>
             </>)
         }else{
             dato = (<>
-                <label> Actualmente no cuentas con un contrato,
+                <label> Actualmente no cuentas con un sitio,
                     Solo los cliente pueden mandar un Mensaje 
-                    caso contrario puede solucitar un contrato con el boton que se muestra: Solicitar un Contrato</label>
+                    caso contrario puede solucitar un sitio con el boton que se muestra: Solicitar un Contrato</label>
                 <div className="espacioBotones_j">
                     <div className="espacioBoton_j">
                         <button className='stylesButton_j' onClick={ update }>

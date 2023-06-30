@@ -34,7 +34,7 @@ function VerQuejas() {
               <h2 className="tituloMenuDeMensajes">Quejas</h2>
             </nav>
             <div className="contenedorDeMensajes">
-              <h2>Quejas Redactadas</h2>
+              <h2>Quejas Recibidas</h2>
               {quejas.map((queja, index) => (
                 <div
                   className="barraDeAbajo"
@@ -44,13 +44,13 @@ function VerQuejas() {
                   <h3>{index + 1}</h3>
                   <h3>Asunto: {queja.asunto}</h3>
                   <button
-                    className="botonMenuDeMensajes"
+                    className="botonResponderQueja"
                     onClick={(event) => {
                       event.stopPropagation();
                       navigate(`/responderquejas/${queja.id}`);
                     }}
                   >
-                    Responder Quejas
+                    Responder Queja
                   </button>
                 </div>
               ))}
