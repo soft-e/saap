@@ -157,149 +157,148 @@ function EditarPersonal() {
                                 return errores;
                             }}
 
-                        onSubmit={ (valores) => {
-                            const store = async (e) => {
-                                e.preventDefault()
-                                await axios.put(endPointActualizar+"/"+id, {
-                                    ci: valores.ci,
-                                    nombre: valores.nombre,
-                                    apellido_paterno: valores.apellido_paterno,
-                                    apellido_materno: valores.apellido_materno,
-                                    telefono: valores.telefono,
-                                    email: valores.email,
-                                    password: valores.password,
-                                });
-                                navigate('/personal');
-                            }
-                            store(event);
-                        }}
-                    >
-                        {({values, errors, touched, handleSubmit, handleChange, handleBlur, resetForm}) => (
-                            <form onSubmit={handleSubmit}>
-                            <div>
-                                <h3>Editar persona</h3>
-                            </div>
-                            <div>
-                                <label htmlFor='ci'>Celula de Identidad</label>
-                                <input 
-                                    className='input_j'
-                                    type='text'
-                                    id='ci'
-                                    name='ci'
-                                    placeholder='escribe tu numero de carnet'
-                                    value={values.ci}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.ci && errors.ci && <div className='styleErrores_j'>{errors.ci}</div>}
-                            </div>
-                            <div>
-                                <label htmlFor='nombre'>nombres</label>
-                                <input 
-                                    className='input_j'
-                                    type='text'
-                                    id='nombre'
-                                    name='nombre'
-                                    placeholder='escribe tu nombre'
-                                    value={values.nombre}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.nombre && errors.nombre && <div className='styleErrores_j'>{errors.nombre}</div>}
-                            </div>
-                            <div>
-                                <label htmlFor='apellido_paterno'>Apellido Paterno</label>
-                                <input 
-                                    className='input_j'
-                                    type='text'
-                                    id='apellido_paterno'    
-                                    name='apellido_paterno'
-                                    placeholder='escribe tu apellido Paterno'
-                                    value={values.apellido_paterno}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.apellido_paterno && errors.apellido_paterno && <div className='styleErrores_j'>{errors.apellido_paterno}</div>}
-                            </div>
-                            <div>
-                                <label htmlFor='apellido_materno'>Apellido Materno</label>
-                                <input 
-                                    className='input_j'
-                                    type='text'
-                                    id='apellido_materno'
-                                    name='apellido_materno'
-                                    placeholder='escribe tu apellido Materno'
-                                    value={values.apellido_materno}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.apellido_materno && errors.apellido_materno && <div className='styleErrores_j'>{errors.apellido_materno}</div>}
-                            </div>
-                            <div>
-                                <label htmlFor='telefono'>Telefono</label>
-                                <input 
-                                    className='input_j'
-                                    type='text'
-                                    id='telefono'
-                                    name='telefono'
-                                    placeholder='escribe tu numero de Telefono'
-                                    value={values.telefono}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.telefono && errors.telefono && <div className='styleErrores_j'>{errors.telefono}</div>}
-                            </div>
-                            <div>
-                                <label htmlFor='email'>Correo Electronico</label>
-                                <input 
-                                    className='input_j'
-                                    type='email'
-                                    id='email'
-                                    name='email'
-                                    placeholder='escribe tu Correo Electronio'
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {touched.email && errors.email && <div className='styleErrores_j'>{errors.email}</div>}
-                            </div>
-                            <div>
-                                <label htmlFor='password'>Contraseña</label>
-                                <input 
-                                    className='input_j'
-                                    type='password'
-                                    id='password'
-                                    name='password'
-                                    placeholder='escribe tu contraseña aqui'
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                            </div>
-                            <div className="espacioBotones_j">
-                                <div className="espacioBoton_j">
-                                    <button  className='stylesButton_j' type="submit">
-                                        Guardar
-                                    </button>
-                                </div>
-                                <div className="espacioBoton_j">
-                                    <button className='stylesButton_j' onClick={ handleClick }>
-                                        Cancelar
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        )}
-                    </Formik>
-                    
-                </div>
-                
-                ) : (
-                    <div>
-                        Cargando datos...
+                            onSubmit={(valores) => {
+                                const store = async (e) => {
+                                    e.preventDefault()
+                                    await axios.put(endPointActualizar + "/" + id, {
+                                        ci: valores.ci,
+                                        nombre: valores.nombre,
+                                        apellido_paterno: valores.apellido_paterno,
+                                        apellido_materno: valores.apellido_materno,
+                                        telefono: valores.telefono,
+                                        email: valores.email,
+                                        password: valores.password,
+                                    });
+                                    navigate('/personal');
+                                }
+                                store(event);
+                            }}
+                        >
+                            {({ values, errors, touched, handleSubmit, handleChange, handleBlur, resetForm }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <div>
+                                        <h3>Editar persona</h3>
+                                    </div>
+                                    <div>
+                                        <label htmlFor='ci'>Celula de Identidad</label>
+                                        <input
+                                            className='input_j'
+                                            type='text'
+                                            id='ci'
+                                            name='ci'
+                                            placeholder='escribe tu numero de carnet'
+                                            value={values.ci}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {touched.ci && errors.ci && <div className='styleErrores_j'>{errors.ci}</div>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor='nombre'>nombres</label>
+                                        <input
+                                            className='input_j'
+                                            type='text'
+                                            id='nombre'
+                                            name='nombre'
+                                            placeholder='escribe tu nombre'
+                                            value={values.nombre}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {touched.nombre && errors.nombre && <div className='styleErrores_j'>{errors.nombre}</div>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor='apellido_paterno'>Apellido Paterno</label>
+                                        <input
+                                            className='input_j'
+                                            type='text'
+                                            id='apellido_paterno'
+                                            name='apellido_paterno'
+                                            placeholder='escribe tu apellido Paterno'
+                                            value={values.apellido_paterno}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {touched.apellido_paterno && errors.apellido_paterno && <div className='styleErrores_j'>{errors.apellido_paterno}</div>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor='apellido_materno'>Apellido Materno</label>
+                                        <input
+                                            className='input_j'
+                                            type='text'
+                                            id='apellido_materno'
+                                            name='apellido_materno'
+                                            placeholder='escribe tu apellido Materno'
+                                            value={values.apellido_materno}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {touched.apellido_materno && errors.apellido_materno && <div className='styleErrores_j'>{errors.apellido_materno}</div>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor='telefono'>Telefono</label>
+                                        <input
+                                            className='input_j'
+                                            type='text'
+                                            id='telefono'
+                                            name='telefono'
+                                            placeholder='escribe tu numero de Telefono'
+                                            value={values.telefono}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {touched.telefono && errors.telefono && <div className='styleErrores_j'>{errors.telefono}</div>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor='email'>Correo Electronico</label>
+                                        <input
+                                            className='input_j'
+                                            type='email'
+                                            id='email'
+                                            name='email'
+                                            placeholder='escribe tu Correo Electronio'
+                                            value={values.email}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                        {touched.email && errors.email && <div className='styleErrores_j'>{errors.email}</div>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor='password'>Contraseña</label>
+                                        <input
+                                            className='input_j'
+                                            type='password'
+                                            id='password'
+                                            name='password'
+                                            placeholder='escribe tu contraseña aqui'
+                                            value={values.password}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />
+                                    </div>
+                                    <div className="espacioBotones_j">
+                                        <div className="espacioBoton_j">
+                                            <button className='stylesButton_j' type="submit">
+                                                Guardar
+                                            </button>
+                                        </div>
+                                        <div className="espacioBoton_j">
+                                            <button className='stylesButton_j' onClick={handleClick}>
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            )}
+                        </Formik>
+
                     </div>
-                )}
-                </div>
+                    ):(
+                        <div>
+                            cargando datos ....
+                        </div>
+                    )}
+                </div>    
             </div>
         </div>
     </>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sitios extends Model
 {
     use HasFactory;
-    protected $fillable = ['estado_sitio','numero_sitio'];
+    protected $fillable = ['estado'];
 
     public function parqueo()
     {
