@@ -25,7 +25,7 @@ function ButtonBoxSecretary() {
         
       >
         <FontAwesomeIcon icon={faHouse} />
-        Inicio
+        Info. Personal
         <div
           className="hvr-icon"
         >
@@ -40,7 +40,7 @@ function ButtonBoxSecretary() {
         //onClick={() => navigate("/secretary/pagos")}
       >
         <FontAwesomeIcon icon={faFileContract} />
-        Contratos
+        Sitios
         <div
           className="hvr-icon"
         >

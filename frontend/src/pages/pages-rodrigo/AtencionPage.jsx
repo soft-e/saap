@@ -33,6 +33,11 @@ function AtencionPage(){
             className="tituloAtencion"
           >
             <h1>Horario de Atenci&oacute;n</h1>
+            <p
+              className=""
+            >
+              Esta sección gestiona los horarios de atención, ya sea edición o creación. 
+            </p>
             <button
               onClick={()=>navigate("/atencion/new")}
               className="botonAtencion hvr-fade"

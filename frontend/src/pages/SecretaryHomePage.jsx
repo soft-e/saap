@@ -29,8 +29,11 @@ function SecretaryHomePage(){
                   <div
             className="tituloInicio"
           >
-            <h1>informacion personal</h1>
+            <h1>Información Personal</h1>
           </div>
+          <p
+            className="informativo"
+          >Esta sección presenta la información personal del usuario actual.</p>
           <div
             className="cardUserInicio"
           >

@@ -36,8 +36,6 @@ function InicioPage() {
     }else{
       alert("tu nuevo password debe tener 5 o mas caracteres")
     }
-    
-    
   }
   const cambiarPassword =(newPassword)=>{
     alert("password cambiado");
@@ -57,7 +55,9 @@ function InicioPage() {
           >
             <h1>Informaci&oacute;n Personal</h1>
           </div>
-          <p>Se presenta la información personal del usuario actual</p>
+          <p
+            className="informativo"
+          >Esta sección presenta la información personal del usuario actual.</p>
           <div
             className="cardUserInicio"
           >

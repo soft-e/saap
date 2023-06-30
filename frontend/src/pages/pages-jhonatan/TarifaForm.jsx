@@ -34,6 +34,15 @@ function TarifaForm() {
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">
+        <p
+    className="botonAtras"
+    onClick={()=>navigate("/tarifa")}
+  >IR ATRAS</p>
+  <h1
+    className="titulo"
+  >
+    actualizar tarifa
+  </h1>
           <div className="formularioTarifa">
             <Formik
               initialValues={tarifa}
@@ -54,10 +63,12 @@ function TarifaForm() {
                   <div className="contenedorInputs">
                     <h2 className="h2Tarifa">Costo de la tarifa</h2>
                     <input
+                    pattern="[0-9]*" title="Por favor, ingresa solo números."
                       className="inputTarifa"
                       type="text"
                       name="costo_tarifa"
                       placeholder="introduce un nuevo costo de tarifa"
+                      required
                       onChange={handleChange}
                       value={values.costo_tarifa}
                     />

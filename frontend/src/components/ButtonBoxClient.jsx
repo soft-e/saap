@@ -24,7 +24,7 @@ function ButtonBoxClient(props){
         onClick={()=>navigate("/client/home/"+id)}
       >
         <FontAwesomeIcon icon={faHouse}/>
-        Inicio
+        Info. Personal
         <div
           className="hvr-icon"
         >
@@ -56,7 +56,7 @@ function ButtonBoxClient(props){
         onClick={()=>navigate("/client/contract/"+id)}
       >
         <FontAwesomeIcon icon={faFileContract}/>
-        Contrato
+        Sitio
         <FontAwesomeIcon icon={faChevronRight}/>
       </button>
     </div>

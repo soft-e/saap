@@ -44,13 +44,13 @@ function VerQuejas() {
                   <h3>{index + 1}</h3>
                   <h3>Asunto: {queja.asunto}</h3>
                   <button
-                    className="botonMenuDeMensajes"
+                    className="botonResponderQueja"
                     onClick={(event) => {
                       event.stopPropagation();
                       navigate(`/responderquejas/${queja.id}`);
                     }}
                   >
-                    Responder Quejas
+                    Responder Queja
                   </button>
                 </div>
               ))}

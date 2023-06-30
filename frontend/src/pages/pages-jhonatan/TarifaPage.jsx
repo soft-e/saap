@@ -42,7 +42,7 @@ function TarifaPage() {
         <div className="espacioDeTrabajo">
         <div className="tituloTarifa"> 
           <h1>Tarifa</h1>
-          <p>Solo puede editarse la tarifa del mes actual</p>
+          <p>Esta seccion gestiona la tarifa que se aplicara a los usuarios donde solo puede editarse la tarifa actual.</p>
           <div className="registrarTarifaButtonContainer">
             <button className="botonTarifa hvr-fade" onClick={handleRegistrarTarifaClick}>
               Registrar Tarifa
