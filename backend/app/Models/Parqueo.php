@@ -14,5 +14,10 @@ class Parqueo extends Model
     public function empleado(){
         return $this->belongsTo(Empleado::class);
     }
+    public function sitios()
+    {
+        return $this->hasMany(Sitio::class);
+    }
+}
     
 }
