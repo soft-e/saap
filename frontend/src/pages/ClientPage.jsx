@@ -26,7 +26,6 @@ function ClientPage() {
 
     function obtenerIdDocente(buscar){
         let res;
-        console.log(docentes.length+" "+buscar)
         for(let i = 0; i < docentes.length; i++){
             {console.log("estamos comparando: "+buscar+" con: "+docentes[i].persona_id)}
             if(docentes[i].persona_id == buscar){
@@ -40,7 +39,6 @@ function ClientPage() {
         <>
             <Navbar accion="cerrar sesion" />
             <div className="espacioPagina">
-                {console.log("imprmiendo el id de la persona: "+user)}
                 <ButtonBoxClient docente_id={ obtenerIdDocente(user.id) }/>
                 <div >
                     <div className="contenedorContrato_j">
