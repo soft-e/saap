@@ -1,9 +1,10 @@
 import '../../assets/css/css-jose/formularioRegistroPersonas.css'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Formik } from "formik";
+import { Formik, Field} from "formik";
 import { useNavigate}  from 'react-router-dom';
 import { URL_API } from '../../services/EndPoint'
+import Select from 'react-select';
 
 const endPoint= URL_API+'/registrarmensaje';
 const endPointRescatar = URL_API+'/personas';
@@ -13,10 +14,12 @@ export const FormularioRegistroMensaje = () => {
 
     const navigate = useNavigate()
     const [personas, setPersonas] = useState( [] );
+    const [selectedEmail, setSelectedEmail] = useState('');
 
     useEffect( () => {
         obtenerPersonas();
     }, []);
+
 
     const obtenerPersonas = async () => {
         const response = await axios.get(endPointRescatar);
@@ -38,6 +41,40 @@ export const FormularioRegistroMensaje = () => {
         return response;
     }
 
+    function guardarIndividual(valores){
+        const store = async (e) => {
+            e.preventDefault()
+            await axios.post(endPoint, {
+                origen: valores.origen,
+                destino: selectedEmail,
+                asunto: valores.asunto,
+                contenido: valores.contenido,
+                estado: false,
+            });
+            navigate('/vermensajes');
+        }
+        store(event);
+    }
+
+    function guardarGrupal(valores){
+        const store = async (e) => {
+            e.preventDefault()
+            await axios.post(endPoint, {
+                origen: valores.origen,
+                destino: 'todos',
+                asunto: valores.asunto,
+                contenido: valores.contenido,
+                estado: true,
+            });
+            navigate('/vermensajes');
+        }
+        store(event);
+    }
+
+    const handleEmailChange = (option) => {
+        setSelectedEmail(option ? option.email : ''); // Almacenar el correo electrónico seleccionado
+    };
+
     return(
         <div className='cardRegistroPersonal_j'>
             <Formik
@@ -46,19 +83,19 @@ export const FormularioRegistroMensaje = () => {
                     destino: '',
                     asunto: '',
                     contenido: '',
-                    estado: false,       
                 }}
 
                 validate={(valores) => {
                     let errores = {};
 
-                    //validacion de destino
-                    if(!valores.destino){
-                        errores.destino = 'el campo Destino es requerido obligatoriamente';
-                    }else if(!destinoExistente(valores.destino)){
-                        errores.destino = 'debe ingresar un destino valido';
-                    }
-
+                    /**validacion de destino
+                    if(valores.tipo === 'Individual'){
+                        if(!valores.destino){
+                            errores.destino = 'el campo Destino es requerido obligatoriamente';
+                        }else if(!destinoExistente(valores.destino)){
+                            errores.destino = 'debe ingresar un destino valido';
+                        }
+                    }*/
 
                     //validacion para asunto
                     if(!valores.asunto){
@@ -69,7 +106,7 @@ export const FormularioRegistroMensaje = () => {
 
                     //validacion para contenido
                     if(!valores.contenido){
-                        errores.contenido = 'el campo Apellido Paterno es requerido obligatoriamente';
+                        errores.contenido = 'el campo contenido es requerido obligatoriamente';
                     }else if(!/^[0-9-a-zA-ZÀ-ÿ\s]{1,250}$/.test(valores.contenido)){
                         errores.contenido = 'el campo no pude tener caracteres especiales';
                     }
@@ -78,19 +115,12 @@ export const FormularioRegistroMensaje = () => {
                 }}
 
                 onSubmit={ (valores) => {
-                    const store = async (e) => {
-                        e.preventDefault()
-                        console.log(valores);
-                        await axios.post(endPoint, {
-                            origen: valores.origen,
-                            destino: valores.destino,
-                            asunto: valores.asunto,
-                            contenido: valores.contenido,
-                            estado: valores.estado,
-                        });
-                        navigate('/vermensajes');
+                    console.log(valores);
+                    if(valores.tipo === 'Individual'){
+                        guardarIndividual(valores);
+                    }else{
+                        guardarGrupal(valores);
                     }
-                    store(event);
                 }}
             >
                 {({values, errors, touched, handleSubmit, handleChange, handleBlur, resetForm}) => (
@@ -133,25 +163,51 @@ export const FormularioRegistroMensaje = () => {
                             value={values.tipo}
                             onChange={handleChange}
                         >
-                            <option value='Administrador'> Global </option>
-                            <option value='Guardia'> Individual </option>
+                            <option value='Global'> Global </option>
+                            <option value='Individual'> Individual </option>
                         </select>
                     </div>
-                    <div>
-                        <label htmlFor='destino'>Destino</label>
-                        <input 
-                            className='input_j'
-                            type='text'
-                            id='destino'
-                            name='destino'
-                            placeholder='escribe el correo del destino'
-                            value={values.destino}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.destino && errors.destino && <div className='styleErrores_j'>{errors.destino}</div>}
-                    </div>
-                    
+                    {values.tipo === 'Individual' ? (
+                        /**<div>
+                            <label htmlFor='destino'>Destino</label>
+                            <input 
+                                className='input_j'
+                                type='text'
+                                id='destino'
+                                name='destino'
+                                placeholder='escribe el correo del destino'
+                                value={values.destino}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            {touched.destino && errors.destino && <div className='styleErrores_j'>{errors.destino}</div>}
+                        </div>*/
+                        <div>
+                            <label htmlFor="destino">Destino:</label>
+                            <Field name="destino">
+                            {({ field }) => (
+                                <Select
+                                {...field}
+                                className='input_j'
+                                type='texto'
+                                id="destino"
+                                name="destino"
+                                placeholder="ingresar el correo electronico"
+                                value={personas.find((option) => option.email === selectedEmail)} // Establecer la opción seleccionada en el autocompletado
+                                onChange={handleEmailChange}
+                                options={personas}
+                                getOptionLabel={(option) => option.email}
+                                getOptionValue={(option) => option.id}
+                                isClearable
+                                />
+                            )}
+                            </Field>
+                        </div>
+                    ) : (
+                        <div>
+                            
+                        </div>
+                    )}
                     <div className="espacioBotones_j">
                         <div className="espacioBoton_j">
                             <button  className='stylesButton_j' type="submit">

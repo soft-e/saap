@@ -262,7 +262,7 @@ export const FormularioRegistroPersonas = () => {
                         errores.telefono = 'el campo no pude tener letras o caracteres especiales';
                     }else if(telefonoExistente(valores.telefono)){
                         errores.telefono = 'el numero de telefono ya fue registrado';
-                    }personal
+                    }
 
                     //validacion correo electronio
                     if(!valores.email){
@@ -373,12 +373,11 @@ export const FormularioRegistroPersonas = () => {
                             type='text' 
                             id='nombre_cargo'
                             name="nombre_cargo"
-                            value={values.email}
+                            value={values.nombre_cargo}
                             onChange={handleChange}
                         >
-                            <option value='Administrador'> Administrador </option>
-                            <option value='Guardia'> Guardia </option>
-                            <option value='Secretaria'>Secretaria</option>
+                            <option value='guardia'> Guardia </option>
+                            <option value='secretaria'>Secretaria</option>
                         </select>
                     </div>
                     <div>

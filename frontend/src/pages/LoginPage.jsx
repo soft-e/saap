@@ -65,10 +65,10 @@ function LoginPage() {
       const rol = searchUserRolByPersonId(usuario.id);
       console.log (rol);
       if(isLoggedIn){
-        if(rol==="Administrador" || rol==="administrador"){
+        if(rol==="administrador"){
           navigate("/admin");
         }
-        if(rol==="Secretaria" || rol==="secretaria"){
+        if(rol==="secretaria"){
           navigate("/secretary");
         }
         if (rol==="docente") {
