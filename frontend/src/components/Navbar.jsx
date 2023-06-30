@@ -3,10 +3,12 @@ import "../assets/css/navbar.css"
 //import Logo from '../../assets/images/images-deysi/lu.png';
 import Logo from '../assets/images/images-deysi/lu.png';
 import { useSession } from "../context/context-rodrigo/SessionProvider";
-
+import logoFcyt from "../assets/images/logo-fcyt.png";
+import { useNavigate } from "react-router-dom";
 
 function Navbar(props) {
-const {logout}= useSession();
+  const navigate = useNavigate();
+  const { logout } = useSession();
 
   function Login() {
     return <Link to="/login">{props.accion}</Link>
@@ -17,13 +19,13 @@ const {logout}= useSession();
   function Logout() {
 
     return <Link to="/">{props.accion}</Link>
-    
+
   }
   function Accion() {
     if (props.accion == "iniciar sesion") {
       return Login();
     }
-    if (props.accion == "dashboard") {
+    if (props.accion == "pagina principal") {
       return Dashboard();
     }
     if (props.accion == "cerrar sesion") {
@@ -32,25 +34,42 @@ const {logout}= useSession();
   }
 
   return (
-    
-      <nav id="navbar">
-        <div className="container">
-          <div className="logo-container">
-            <img src={Logo} alt="Logo" className="logo-image" />
-            
-          </div>
-          <h1 className="textologo">
-            Sistema de apoyo a la administracion de parqueos
-            </h1>
-            <div
-              className="botonSesion"
-            >
-              <Accion />
-            </div>
-            
+
+    <nav id="navbar">
+      <div className="container">
+        <div className="logo-container"
+          onClick={()=>navigate("/")}
+        >
+          <img src={logoFcyt} alt="Logo" className="logo-image" />
+
         </div>
-      </nav>
-    
+        <div
+          className="espacioLinks"
+        >
+        <div
+          className="navLink"
+        >
+          <p
+          onClick={()=>navigate("/anuncios")}
+          >Anuncios</p>
+        </div>
+        <div
+          className="navLink"
+        >
+          <p
+            onClick={()=>navigate("/ubicacion")}
+          >Ubicaci&oacute;n</p>
+        </div>
+        
+        </div>
+        <div
+          className="botonSesion"
+        >
+          <Accion />
+        </div>
+      </div>
+    </nav>
+
   );
 };
 export default Navbar;

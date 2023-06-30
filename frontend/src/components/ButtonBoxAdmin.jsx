@@ -29,7 +29,7 @@ function ButtonBoxAdmin(){
       onClick={()=>navigate("/inicio")}
     >
       <FontAwesomeIcon icon={faHouse}/>
-      Inicio
+      Info. Personal
       <div
         className="hvr-icon"
       >
@@ -42,7 +42,7 @@ function ButtonBoxAdmin(){
       onClick={()=>navigate("/contratos")}
     >
       <FontAwesomeIcon icon={faFileContract} />
-      Contratos
+      Sitios
       <div
         className="hvr-icon"
       >

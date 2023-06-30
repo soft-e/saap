@@ -2,9 +2,21 @@
   display: flex;
   height: 84%;
   width: 100%;
-  justify-content: space-evenly;
   align-items: center;
-  color: black  ;
+  justify-content: center;
+  
+}
+.portada{
+  
+  width: 70%;
+
+}
+.tituloPortada{
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+.mensajePortada{
+  padding-bottom: 1%;
 }
 
 .cardFotoParqueo{
@@ -32,21 +44,7 @@ border: 1px solid rgba(251, 181, 0, 0.69);
     font-weight:bold;
   }
 
-.cardMensajesGlobales{
-  color: aliceblue;
-  width: 45%;
-  height: 90%;
-  justify-content: center;
-  /* From https://css.glass */
-  background: rgba(0, 0, 0, 0.651);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(251, 181, 0, 0.69);
-overflow-y: auto;
 
-}
 
 .tituloComunicados{
   padding: 5px;
@@ -60,23 +58,18 @@ overflow-y: auto;
   align-items: center;
   
 }
-.mensajeGlobal{
-  width: 90%;
-  font-size: large;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background: rgba(255, 255, 255, 0.212);
-  border-radius: 5px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+.todaLaPortada{
+  width: 80%;
   
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(251, 181, 0, 0.69);
-  padding-left: 5px;
-  margin-top: 5px;
-  
-}
-
-.mensajeGlobal:hover{
-  background: rgba(0, 0, 0, 0.192);  
-  color:  rgba(253, 211, 104, 0.842);
+  padding-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.651);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(251, 181, 0, 0.69);
 }

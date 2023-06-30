@@ -107,6 +107,7 @@ const CardDocentes = () => {
                     <td>
                         <Link 
                             className="stylesButton_j"
+                            
                             to={`/registrovehiculo/${docentes[i].id}`}
                         >asignar sitio</Link>
                     </td> 
@@ -132,14 +133,6 @@ const CardDocentes = () => {
                         >asignar sitio</Link>
                     </td> 
                 </tr>)
-            }else{
-                datos.push(<tr className="tr_j" key={docentes[i].id}>
-                    <td className="td_j">{ docentes[i].persona.nombre }</td>
-                    <td className="td_j">{ docentes[i].persona.apellido_paterno }</td>
-                    <td className="td_j">{ docentes[i].persona.apellido_materno }</td>
-                    <td className="td_j">{ docentes[i].persona.ci }</td>
-                    <td className="td_j">docente ya registrado</td> 
-                </tr>)
             }
         }
         return datos;
@@ -147,7 +140,7 @@ const CardDocentes = () => {
 
     return <div className="contenedorListarDocentes_j">
         <div>
-            <h2>Lista de los Docentes</h2>
+            <h2>Lista de los Docentes que aun no tienen un sitio asignado</h2>
         </div>
         <div className="divBuscar_j" >
             <input
@@ -162,7 +155,7 @@ const CardDocentes = () => {
                 <thead className="thead_j">
                     <tr>
                         <th className="th_j">Nombre</th>
-                        <th className="th_j">Apellido Materno</th>
+                        <th className="th_j">Apellido Paterno</th>
                         <th className="th_j">Apellido Materno</th>
                         <th className="th_j">Numero de Carnet</th>
                         <th className="th_j"> </th>

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { useMensajes } from "../context/context-rodrigo/MensajeProvider";
 import parqueo1 from "../assets/images/parqueo1.jpg";
 import parqueo2 from "../assets/images/parqueo2.png";
+import portada from "../assets/images/Decanato_fcyt.jpg"
 
 function PrincipalPage() {
   const { mensajes, loadMensajes } = useMensajes();
@@ -17,8 +18,8 @@ function PrincipalPage() {
 
   //console.log(mensajes);
   const loadGlobalmessages = () => {
-    const filteredMessages = mensajes.filter((mensaje)=>{
-    return mensaje.destinatario ==="todos"
+    const filteredMessages = mensajes.filter((mensaje) => {
+      return mensaje.destinatario === "todos"
     })
     setGlobalMessages(filteredMessages);
     //return filteredMessages;
@@ -33,10 +34,10 @@ function PrincipalPage() {
       </p>
     </div>)
   }
-  function renderGlobalMessages () {
+  function renderGlobalMessages() {
     //console.log(mensajes)
     if (mensajes.length === 0) return <p>no hay mensajes globales</p>
-    return mensajes.map((mensaje,index)=>
+    return mensajes.map((mensaje, index) =>
       <div
         key={index}
         className="mensajeGlobal"
@@ -55,22 +56,17 @@ function PrincipalPage() {
       className="dashboard"
     >
       <div
-        className="cardFotoParqueo"
+        className="todaLaPortada"
       >
-        <p>Disposicion de parqueos</p>
-        <img src={parqueo1} alt="imagen de parqueo 1" width="370px"/>
-        <img src={parqueo2} alt="imagen de parqueo 2" width="370px"/>
-        
-      </div>
-      <div
-        className="cardMensajesGlobales"
-      >
-        <div className="tituloComunicados">
-          <h2>Comunicados</h2>
-        </div>
-        <div className="mensajesGlobales">
-          {renderGlobalMessages()}
-        </div>
+        <h1 className="tituloPortada">
+          Sistema de Apoyo a la Administraci&oacute;n de Parqueos
+        </h1>
+        <p
+          className="mensajePortada"
+        >Bienvenido al sistema de apoyo a la administracion de parqueos de la Faculta de Ciencias y Tecnolog&iacute;a</p>
+        <img
+          className="portada"
+          src={portada} alt="" />
       </div>
     </div></>
 }
