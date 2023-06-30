@@ -22,11 +22,11 @@ function FormularioResponderQueja() {
   }, []);
 
   const getQueja = async () => {
-    console.log("entrnado a obtener queja: "+ `${URL_API}/quejas/${params.id}`);
+    console.log("entrnado a obtener queja: " + `${URL_API}/quejas/${params.id}`);
     const response = await axios.get(`${URL_API}/quejas/${params.id}`);
     setQueja(response.data);
-    console.log("esto es: "+ queja.id);
-}
+    console.log("esto es: " + queja.id);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,10 +39,10 @@ function FormularioResponderQueja() {
       estado_adm: true,
       estado_clt: false,
     };
-    console.log("respondiendo queja: "+`${URL_API}/editarqueja/${params.id}`+ respuestaQueja.respuesta)
+    console.log("respondiendo queja: " + `${URL_API}/editarqueja/${params.id}` + respuestaQueja.respuesta)
     axios
       .put(`${URL_API}/editarqueja/${params.id}`, respuestaQueja)
-      
+
       .then((response) => {
         console.log("Respuesta enviada:", response.data);
         navigate("/verquejas");
@@ -64,6 +64,10 @@ function FormularioResponderQueja() {
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">
+          <p
+            className="botonAtras"
+            onClick={() => navigate("/verquejas")}
+          >IR ATRAS</p>
           <div className="padreParqueo">
             <form className="formularioParqueo" onSubmit={handleSubmit}>
               <div className="contenedorParqueo">

@@ -54,7 +54,7 @@ function ButtonBoxAdmin(){
       onClick={()=>navigate("/atencion")}
     >
       <FontAwesomeIcon icon={faCalendarDays} />
-      Atencion
+      Atención
       <div
         className="hvr-icon"
       >

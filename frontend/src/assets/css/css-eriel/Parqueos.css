@@ -11,18 +11,19 @@
 .cabezeraParqueo{
     display: flex;
     flex-direction: row;
-    padding-top: 3%;
+    
     padding-bottom: 2%;
     justify-content: space-between;
-    width: 100%;
+    
 }
 #tituloParqueos{
     margin-left: 3%;
 }
 #botonRegistrarParqueo{
     background-color: #debc40;
-    margin-right: 3%;
+    padding: 1%;
     border-radius: 5px;
+    font-family: inherit;
 }
 #botonRegistrarParqueo:hover{
     scale: 1.1;
@@ -38,6 +39,9 @@
 }
 
 .datosParqueo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border:1px solid rgba(251, 181, 0, 0.69);
     border-radius: 5px;
     height:min-content;
@@ -69,12 +73,14 @@
     width: 100px;
     cursor: pointer;
     background: #debc40;
-    color: black;
-    padding-top: 9px;
-    border-color: black;
+    
+    font-family: inherit;
+    
+    
 }
 .botonEliminarParqueos{
-    border-color: black;
+    font-family: inherit;
+    
     border-radius: 5px;
     height:40px;
     width: 100px;
