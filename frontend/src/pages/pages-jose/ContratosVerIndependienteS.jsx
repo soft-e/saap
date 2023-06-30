@@ -32,7 +32,7 @@ function ContratosVerIndependienteS(){
     }
 
     function handleClik(){
-        navigate('/contratos');
+        navigate('/secretary/contract');
     }
 
     return <>
@@ -56,7 +56,10 @@ function ContratosVerIndependienteS(){
                 </div>
                 <br></br>
                 <div>
-                    <ContratosDataVehiculo vehiculo_id={ contrato.vehiculo_id }/>                    
+                    <ContratosDataVehiculo 
+                        vehiculo_id={ contrato.vehiculo_id }
+                        contrato_id={id}
+                    />                    
                 </div>
             </div>
         </div>

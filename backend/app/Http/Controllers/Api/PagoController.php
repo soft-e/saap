@@ -46,10 +46,18 @@ class PagoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+  
     public function show($id)
-    {
-        //
+{
+    $pago = Pago::find($id);
+
+    if (!$pago) {
+        return response()->json(['error' => 'Pago no encontrado'], 404);
     }
+
+    return response()->json($pago);
+}
+
 
     /**
      * Update the specified resource in storage.
@@ -81,5 +89,31 @@ class PagoController extends Controller
             ->value('saldo');
 
         return response()->json(['saldo' => $saldo]);
+    }
+
+    public function getUpdatedDatesByContratoId($contratoId)
+    {
+        $pagos = Pago::where('contrato_id', $contratoId)
+            ->orderBy('updated_at', 'desc')
+            ->pluck('updated_at');
+
+        return response()->json(['updated_dates' => $pagos]);
+    }
+
+
+
+
+    public function getUltimaFechaRegistroPorContratoId($contratoId)
+    {
+        $ultimoRegistro = Pago::where('contrato_id', $contratoId)
+            ->latest('created_at')
+            ->first();
+
+        if ($ultimoRegistro) {
+            $ultimaFechaRegistro = $ultimoRegistro->created_at;
+            return response()->json($ultimaFechaRegistro);
+        } else {
+            return response()->json(null);
+        }
     }
 }
