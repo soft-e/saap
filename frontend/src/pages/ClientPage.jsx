@@ -27,7 +27,6 @@ function ClientPage() {
     function obtenerIdDocente(buscar){
         let res;
         for(let i = 0; i < docentes.length; i++){
-            {console.log("estamos comparando: "+buscar+" con: "+docentes[i].persona_id)}
             if(docentes[i].persona_id == buscar){
                 res = docentes[i].id;
             }
