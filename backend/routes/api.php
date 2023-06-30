@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\Tarifa2Controller;
 use App\Http\Controllers\Api\PagoController;
 use App\Http\Controllers\Api\ResponderQuejaController;
 use App\Http\Controllers\Api\Mensaje2Controller;
-use App\Http\Controllers\api\VehiculosExtrasController;
+use App\Http\Controllers\Api\VehiculosExtrasController;
 use App\Http\Controllers\Api\SolicitarContratoController;
 use App\Models\VehiculosExtras;
 use App\Http\Controllers\Api\SaldoController;
