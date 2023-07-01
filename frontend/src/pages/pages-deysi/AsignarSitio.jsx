@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -6,34 +5,24 @@ import Navbar from "../../components/Navbar";
 import ButtonBoxAdmin from "../../components/ButtonBoxAdmin";
 import "../../assets/css/css-deysi/asignarSitio.css";
 import { useParams } from "react-router-dom";
+import { URL_API } from '../../services/EndPoint';
 
-import { URL_API } from '../../services/EndPoint'
 function AsignarSitio() {
   const [bloques, setBloques] = useState([]);
-
-
   const [selectedBloque, setSelectedBloque] = useState("");
   const [selectedSitio, setSelectedSitio] = useState("");
-
+  const [nombre, setNombre] = useState("");
   const navigate = useNavigate();
 
   const params = useParams();
-  //obtenemos  bloques de la tabla plazas
-
-
 
   useEffect(() => {
     obtenerBloques();
-
-    console.log(params.idc);
-    console.log(params.idv);
-
-
   }, []);
 
   const obtenerBloques = () => {
     axios
-      .get(`${URL_API}/plazas/obtener-bloques`)
+      .get(`${URL_API}/parqueos`)
       .then((response) => {
         const bloques = response.data;
         setBloques(bloques);
@@ -44,39 +33,23 @@ function AsignarSitio() {
   };
 
   const handleBloqueChange = (event) => {
-    const bloque = event.target.value;
-    setSelectedBloque(bloque);
-    if (bloque) {
-      console.log("Bloque seleccionado:", bloque);
-      obtenerPrimerSitioLibre(bloque);
+    const bloqueId = event.target.value;
+    setSelectedBloque(bloqueId);
+    if (bloqueId) {
+      obtenerPrimerSitioLibre(bloqueId);
     } else {
       setSelectedSitio("");
     }
   };
 
-  /* const obtenerPrimerSitioLibre = (bloque) => {
+  const obtenerPrimerSitioLibre = (bloqueId) => {
     axios
-  .get(`http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}`)
- // http://localhost:8000/api/plazas/primer-sitio-libre/${bloque}
-  .then((response) => {
-    const primerSitioLibre = response.data.sitio.numero;
-    setSelectedSitio(primerSitioLibre);
-  })
-  .catch((error) => {
-    console.error('Error al obtener el primer sitio libre:', error);
-  });
-
-  };*/
-
-  const obtenerPrimerSitioLibre = (bloque) => {
-    axios
-      .get(`${URL_API}/plazas/primer-sitio-libre/${bloque}`)
+      .get(`${URL_API}/sitios/${bloqueId}`)
       .then((response) => {
         const primerSitioLibre = response.data;
         console.log(primerSitioLibre);
         if (primerSitioLibre && primerSitioLibre.numero) {
           setSelectedSitio(primerSitioLibre.numero);
-          console.log("Sitio libre obtenido:", primerSitioLibre.numero);
         } else {
           console.log("No hay sitios libres en el bloque seleccionado");
         }
@@ -100,17 +73,13 @@ function AsignarSitio() {
     }
 
     //finaliza la asignacion y actualiza el estado del sitio
-
     axios
       .post(`${URL_API}/contrato`, {
-        // bloque_id: selectedBloque,//mm datos no utilizado
         sitio_id: selectedSitio,
         bloque: selectedBloque,
         docente_id: params.idc,
         vehiculo_id: params.idv,
-
       })
-
       .then((response) => {
         console.log("Asignación registrada con éxito:", response.data);
 
@@ -118,7 +87,6 @@ function AsignarSitio() {
         setSelectedSitio("");
 
         navigate("/contratos");
-
       })
       .catch((error) => {
         console.error("Error al registrar la asignación:", error);
@@ -137,10 +105,9 @@ function AsignarSitio() {
       <Navbar accion="cerrar sesion" />
       <div className="espacioPagina">
         <ButtonBoxAdmin />
-        <p
-          className="botonAtras"
-          onClick={() => navigate("/registrovehiculo")}
-        >IR ATRAS</p>
+        <p className="botonAtras" onClick={() => navigate("/registrovehiculo")}>
+          IR ATRAS
+        </p>
         <div className="espacioDeTrabajo">
           <div className="padreParqueo">
             <form className="formularioParqueo">
@@ -148,15 +115,11 @@ function AsignarSitio() {
                 <h1 id="tituloParqueo">Datos del parqueo</h1>
                 <div id="entradaP" className="entradaP1">
                   <label>Bloque:</label>
-                  <select
-                    value={selectedBloque}
-                    onChange={handleBloqueChange}
-                  // onChange={(event) => setSelectedBloque(event.target.value)}
-                  >
+                  <select value={selectedBloque} onChange={handleBloqueChange}>
                     <option value="">Selecciona un bloque</option>
                     {bloques.map((bloque) => (
-                      <option key={bloque} value={bloque}>
-                        {bloque}
+                      <option key={bloque.id} value={bloque.id}>
+                        {bloque.nombre_bloque}
                       </option>
                     ))}
                   </select>
