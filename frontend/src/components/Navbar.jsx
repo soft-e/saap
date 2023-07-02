@@ -29,6 +29,7 @@ function Navbar(props) {
       return Dashboard();
     }
     if (props.accion == "cerrar sesion") {
+      
       return Logout();
     }
   }
