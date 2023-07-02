@@ -9,7 +9,9 @@ import { URL_API } from "../../services/EndPoint";
 import "../../assets/css/css-deysi/plazasDisponibles.css";
 import "../../assets/css/css-deysi/plazasOcupadas.css";
 const Parqueo = () => {
-  const { id } = useParams();
+ // const { id } = useParams();
+  const params = useParams();
+  
   const [sitiosDisponibles, setSitiosDisponibles] = useState([]);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const Parqueo = () => {
   const obtenerSitiosDisponibles = async () => {
     try {
       // Aquí puedes especificar el ID del parqueo para obtener los sitios disponibles
-      const response = await axios.get(`${URL_API}/disponibles/${id}`);
+      const response = await axios.get(`${URL_API}/disponibles/${params.id}`);
       const sitiosDisponiblesData = response.data;
       setSitiosDisponibles(sitiosDisponiblesData);
       console.log(response);
@@ -45,11 +47,14 @@ const Parqueo = () => {
         <div className="espacioDeTrabajo">
           <div className="padre">
             <nav className="cabezeraParqueo">
-              <h2 id="tituloParqueos">Sitios</h2>
+            <h2 id="tituloParqueosDisponibles">Sitios libres parqueo {params.n}</h2>
+              <h2 id="tituloParqueosOcupados">Sitios Ocupados parqueo {params.n}</h2>
+            
             </nav>
             <div className="contenedorSitios">
-              
+           
               <div className="plazas-disponibles">
+              
                 {libres.map((sitio) => (
                   <div key={sitio.id} className="plaza-disponible">
                     <h3>{sitio.numero_sitio}</h3>

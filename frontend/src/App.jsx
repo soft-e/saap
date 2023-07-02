@@ -151,7 +151,7 @@ function App() {
                                 <Route path="/registrositiovehiculo/:id" element={<RegistroVehiculoSitioPage/>}/>
                                 <Route path="/vehiculo/:id" element={<VehiculosExtras/>}/>
                                 <Route path="/eliminarparqueo/:id" element={<EliminarParqueo />}/>
-                                <Route path="/sitios/:id" element={<Parqueo/>}/>
+                                <Route path="/sitios/:id/:n" element={<Parqueo/>}/>
                               </Routes>
                             </VehiculoContextProvider>
                           </MensajeContextProvider>

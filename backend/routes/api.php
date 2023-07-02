@@ -114,3 +114,6 @@ Route::get('/disponibles/{id}', [SitiosController::class, 'obtenerSitiosLibres']
 
 Route::get('/parqueos/{id}', [ParqueoController::class, 'show']);
 
+Route::get('/primersitiolibre/{idBloque}', [SitiosController::class,'obtenerPrimerSitioLibre']);
+Route::put('/actualizaestados/{id}', [SitiosController::class,'actualizarEstadoSitio']);
+

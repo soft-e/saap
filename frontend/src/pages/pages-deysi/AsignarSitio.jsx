@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +12,16 @@ function AsignarSitio() {
   const [bloques, setBloques] = useState([]);
   const [selectedBloque, setSelectedBloque] = useState("");
   const [selectedSitio, setSelectedSitio] = useState("");
-  const [nombre, setNombre] = useState("");
+  const [primerSitioLibre, setPrimerSitioLibre] = useState("");
+  const [selectedBloqueNombre, setSelectedBloqueNombre] = useState("");
+  
   const navigate = useNavigate();
-
   const params = useParams();
 
   useEffect(() => {
     obtenerBloques();
+    console.log(params.idc);
+    console.log(params.idv);
   }, []);
 
   const obtenerBloques = () => {
@@ -25,7 +29,15 @@ function AsignarSitio() {
       .get(`${URL_API}/parqueos`)
       .then((response) => {
         const bloques = response.data;
-        setBloques(bloques);
+        console.log(bloques);
+     
+        const bloquesUnicos = bloques.filter(
+          (bloque, index, self) =>
+            index === self.findIndex((b) => b.nombre_bloque === bloque.nombre_bloque)           
+        );
+  
+        setBloques(bloquesUnicos);
+        console.log(bloquesUnicos);
       })
       .catch((error) => {
         console.error("Error al obtener los bloques:", error);
@@ -35,21 +47,31 @@ function AsignarSitio() {
   const handleBloqueChange = (event) => {
     const bloqueId = event.target.value;
     setSelectedBloque(bloqueId);
+  
     if (bloqueId) {
       obtenerPrimerSitioLibre(bloqueId);
+      console.log(bloqueId);
     } else {
       setSelectedSitio("");
     }
+  
+    const selectedBloqueObj = bloques.find((bloque) => bloque.id === parseInt(bloqueId));
+    console.log(selectedBloqueObj);
+    const selectedBloqueNombre = selectedBloqueObj ? selectedBloqueObj.nombre_bloque : '';
+    setSelectedBloqueNombre(selectedBloqueNombre);
+    console.log(selectedBloqueNombre);
   };
-
+  
   const obtenerPrimerSitioLibre = (bloqueId) => {
     axios
-      .get(`${URL_API}/sitios/${bloqueId}`)
+      .get(`${URL_API}/primersitiolibre/${bloqueId}`)
       .then((response) => {
         const primerSitioLibre = response.data;
-        console.log(primerSitioLibre);
-        if (primerSitioLibre && primerSitioLibre.numero) {
-          setSelectedSitio(primerSitioLibre.numero);
+       
+        console.log(primerSitioLibre.id);
+        if (primerSitioLibre && primerSitioLibre.numero_sitio) {
+          setSelectedSitio(primerSitioLibre.numero_sitio);
+          setPrimerSitioLibre(primerSitioLibre);
         } else {
           console.log("No hay sitios libres en el bloque seleccionado");
         }
@@ -72,31 +94,26 @@ function AsignarSitio() {
       return;
     }
 
-    //finaliza la asignacion y actualiza el estado del sitio
     axios
       .post(`${URL_API}/contrato`, {
-        sitio_id: selectedSitio,
-        bloque: selectedBloque,
+        sitio_id: primerSitioLibre.id,
+        bloque: selectedBloqueNombre,
         docente_id: params.idc,
         vehiculo_id: params.idv,
       })
-      .then((response) => {
-        console.log("Asignación registrada con éxito:", response.data);
+      
+        
+     
 
-        setSelectedBloque("");
-        setSelectedSitio("");
-
-        navigate("/contratos");
-      })
-      .catch((error) => {
-        console.error("Error al registrar la asignación:", error);
-      });
+        navigate("/contratos"); // Redirecciona a la página de contratos después de registrar la asignación
+     
   };
 
   const handleCancel = (event) => {
     event.preventDefault();
     setSelectedBloque("");
     setSelectedSitio("");
+    setPrimerSitioLibre("");
     navigate("/listardocentes");
   };
 

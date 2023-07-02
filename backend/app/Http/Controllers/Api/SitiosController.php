@@ -118,5 +118,45 @@ public function getSitiosByParqueo($parqueo_id)
     return response()->json($sitiosLibres);
 }
 
+public function obtenerPrimerSitioLibre($idBloque)
+{
+    // Obtener el primer sitio libre en el bloque
+    $primerSitioLibre = Sitios::where('parqueo_id', $idBloque)
+        ->where('estado_sitio', 'libre')
+        ->orderBy('numero_sitio')
+        ->first();
+        
+    return response()->json($primerSitioLibre);
+}
+
+
+
+
+/*public function actualizarEstadoSitio($id)
+{
+    // Buscar el sitio por su ID
+    $sitio = Sitios::findOrFail($id);
+
+    // Actualizar el estado del sitio
+    $sitio->update(['estado_sitio' => 'ocupado']);
+
+    // Retornar la respuesta apropiada (puede ser un JSON, redirección, etc.)
+    // ...
+} */
+public function actualizarEstadoSitio($id)
+{
+    // Buscar el sitio por su ID
+    $sitio = Sitios::findOrFail($id);
+
+    // Actualizar el estado del sitio
+    $sitio->estado_sitio = 'ocupado';
+    $sitio->save();
+
+    // Retornar la respuesta apropiada (puede ser un JSON, redirección, etc.)
+    // ...
+}
+
+
+
 
 }
