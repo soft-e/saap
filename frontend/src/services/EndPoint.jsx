@@ -1,1 +1,1 @@
-export const URL_API = 'http://swentrepreneurs.tis.cs.umss.edu.bo/api';
+export  const URL_API='http://127.0.0.1:8000/api';

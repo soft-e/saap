@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contrato;
-use App\Models\Plaza;
+use App\Models\Sitios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,17 +45,19 @@ class ContratoController extends Controller
         ]);
        // $plaza = DB::table('plazas')->where('numero', $request->input('sitio_id'))->first();
        
-        $plaza = Plaza::where('numero', $request->input('sitio_id'))->where('bloque', $request->input('bloque'))->first();
- 
+       //tabla sitios id y tabla contratos sitio_id
+        $sitio = Sitios::where('id', $request->input('sitio_id'))->first();
+
+           
         //  dd($plaza);
-        $plaza->estado = 'ocupado';
-        $plaza->save();
+        $sitio->estado_sitio = 'ocupado';
+        $sitio->save();
 
         // Devolver una respuesta JSON
         return response()->json([
             'success' => true,
             'message' => 'Contrato creado correctamente',
-            'data' => $plaza,
+            'data' => $sitio,
         ]);
     }
 
