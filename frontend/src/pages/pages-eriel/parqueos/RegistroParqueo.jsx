@@ -15,21 +15,49 @@ function RegistroParqueo() {
     const [nombre_bloque,setnombre_bloque]=useState('');
     const [cantidad_sitios,setcantidad_sitios]=useState(0); 
     const empleado_id=user.id;
+    //const parqueo_id=parqueo_id;
     console.log(empleado_id);
     const navigate=useNavigate();
 
     useEffect(()=>{
         loadEmpleados();
     },[]);
+
     console.log(empleados);
-    const store=async(e)=>{
+
+    const store = async (e) => {
         e.preventDefault();
-        await axios.post(`${URL_API}/parqueos`,{
-        nombre_bloque:nombre_bloque,
-        cantidad_sitios:cantidad_sitios,
-        empleado_id:empleado_id})
-        navigate('/parqueos');
-    }
+    
+        try {
+          // Registrar el parqueo en la tabla 'parqueos'
+          const responseParqueo = await axios.post(`${URL_API}/parqueos`, {
+            nombre_bloque: nombre_bloque,
+            cantidad_sitios: cantidad_sitios,
+        
+            empleado_id: empleado_id
+          });
+    
+          const nuevoParqueo = responseParqueo.data;
+          console.log("parqueo_id:", nuevoParqueo.id);
+
+          // Crear registros en la tabla 'sitios' para cada sitio del parqueo
+          const sitios = [];
+          for (let i = 1; i <= cantidad_sitios; i++) {
+            console.log("queeee essssssssss", responseParqueo.data.id);
+           // console.log("queeee essssssssss", nuevoParqueo);
+            sitios.push({
+              parqueo_id: nuevoParqueo.id,
+              numero_sitio: i,
+              estado_sitio: 'libre'
+            });
+          }
+          await axios.post(`${URL_API}/sitio`, sitios);
+       
+          navigate('/parqueos');
+        } catch (error) {
+          console.error('Error al registrar el parqueo:', error);
+        }
+      };
     function handleCancel(event) {
         event.preventDefault();
         setnombre_bloque('');
@@ -79,6 +107,7 @@ function RegistroParqueo() {
                                     >
                                         Cancelar
                                     </button>
+                                    
                                 </div>
                             </div>
                     </form>

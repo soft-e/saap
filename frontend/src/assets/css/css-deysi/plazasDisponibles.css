@@ -1,16 +1,27 @@
 .plazas-disponibles {
   width: 48%;
-  
+  overflow: hidden;
+    overflow: auto;
   display: grid;
 grid-template-columns: repeat(4, 1fr);
 grid-gap: 10px;
 margin-right: 2%;
+padding: 1%;
+
 }
+.tituloSitiosDisponibles {
+  text-align: center;
+  margin-bottom: 10px;
+ 
+
+}
+
 
 .plaza-disponible {
   width: 80px;
   height: 100px;
   display: flex;
+ padding: 0.5%;
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -33,4 +44,19 @@ margin-right: 2%;
   display: inline-block;
   vertical-align: middle;
   max-width: 100%;
+}
+
+.contenedorSitios{
+ overflow: autos;
+ height: 86%;
+
+  display: flex;
+
+  background: rgba(105, 92, 92, 0.281);
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
+
+max-height: calc(100vh - 100px);
+
 }

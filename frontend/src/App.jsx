@@ -119,7 +119,7 @@ function App() {
                                 <Route path="/tarifa" element={<TarifaPage />} />
                                 <Route path="/verquejas" element={<VerQuejas />} />
                                 <Route path="/vercontenidodequeja/:id" element={<VerContenidoQueja />} />
-                                <Route path="sitios" element={<Parqueo />} />
+                                
                                 <Route path="/registrarSitio" element={<RegistrarPlaza />} />
                                 <Route path="/asignarSitio/:idc/:idv" element={<AsignarSitio />} />
                                 <Route path="/inicio" element={<InicioPage />} />
@@ -151,6 +151,7 @@ function App() {
                                 <Route path="/registrositiovehiculo/:id" element={<RegistroVehiculoSitioPage/>}/>
                                 <Route path="/vehiculo/:id" element={<VehiculosExtras/>}/>
                                 <Route path="/eliminarparqueo/:id" element={<EliminarParqueo />}/>
+                                <Route path="/sitios/:id/:n" element={<Parqueo/>}/>
                               </Routes>
                             </VehiculoContextProvider>
                           </MensajeContextProvider>

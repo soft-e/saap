@@ -27,6 +27,8 @@ use App\Models\VehiculosExtras;
 use App\Http\Controllers\Api\SaldoController;
 use App\Http\Controllers\Api\PlazaRodrigoController;
 
+use App\Http\Controllers\Api\SitiosController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -95,8 +97,23 @@ Route::prefix('plazas')->group(function () {
     Route::resource('/', PlazaController::class);
     Route::get('primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
     Route::get('obtener-bloques', [PlazaController::class, 'obtenerBloques']);
+    
 });
 
 Route::resource('/responderquejas', ResponderQuejaController::class);
 
 Route::resource('/plazarodrigo',PlazaRodrigoController::class);
+Route::resource('/sitio',SitiosController::class);
+// routes/api.php
+
+Route::get('/parqueos/{parqueo_id}/sitios', [SitiosController::class, 'getSitiosByParqueo']);
+Route::get('/sitio', [SitiosController::class, 'index']);
+Route::get('/parqueos', [ParqueoController::class, 'index']);
+//funciona
+Route::get('/disponibles/{id}', [SitiosController::class, 'obtenerSitiosLibres']);
+
+Route::get('/parqueos/{id}', [ParqueoController::class, 'show']);
+
+Route::get('/primersitiolibre/{idBloque}', [SitiosController::class,'obtenerPrimerSitioLibre']);
+Route::put('/actualizaestados/{id}', [SitiosController::class,'actualizarEstadoSitio']);
+
