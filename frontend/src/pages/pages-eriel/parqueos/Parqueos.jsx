@@ -84,7 +84,13 @@ function Parqueos() {
                         >
                             <h4>Registrar Parqueo</h4>
                         </button>
-                       
+                        <button 
+                        
+                        id='nuevoBoton'
+                        onClick={()=>navigate('/sitios')}
+                        >
+                            <h4>Ver sitios</h4>
+                        </button>
                     </nav>
                     <div className='contenedorParqueos'>
                         {parqueos?.map((parqueos,index)=>(
@@ -108,7 +114,11 @@ function Parqueos() {
                                 >
                                     <h4>Eliminar</h4>
                                 </button>
-                                
+                                <button className='botonEliminarParqueos'
+                                         onClick={() =>navigate(`/sitios/${parqueos.id}/${parqueos.nombre_bloque}`)}
+                                >
+                                    <h4>Ver sitios</h4>
+                                </button>
                             </div>
                         </div>
                         ))}
