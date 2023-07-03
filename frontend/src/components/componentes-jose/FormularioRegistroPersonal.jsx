@@ -216,7 +216,7 @@ export const FormularioRegistroPersonas = () => {
                     apellido_paterno: '',
                     apellido_materno: '',
                     telefono: '',
-                    nombre_cargo:'',
+                    nombre_cargo:'guardia',
                     email: '',
                     password:'',        
                 }}
