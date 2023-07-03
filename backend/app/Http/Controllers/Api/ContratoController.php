@@ -43,12 +43,12 @@ class ContratoController extends Controller
             'vehiculo_id' => $request->input('vehiculo_id'),
             'bloque' => $request->input('bloque'),
         ]);
-       // $plaza = DB::table('plazas')->where('numero', $request->input('sitio_id'))->first();
-       
-       //tabla sitios id y tabla contratos sitio_id
+        // $plaza = DB::table('plazas')->where('numero', $request->input('sitio_id'))->first();
+
+        //tabla sitios id y tabla contratos sitio_id
         $sitio = Sitios::where('id', $request->input('sitio_id'))->first();
 
-           
+
         //  dd($plaza);
         $sitio->estado_sitio = 'ocupado';
         $sitio->save();
@@ -98,5 +98,9 @@ class ContratoController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function eliminarRegistros($name)
+    {
+        Contrato::where('bloque', $name)->delete();
     }
 }

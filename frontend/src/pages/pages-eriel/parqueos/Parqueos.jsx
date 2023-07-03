@@ -27,18 +27,6 @@ function Parqueos() {
         }
     }
 
-    const eliminarParqueo = async (parqueoId) => {
-        try {
-          await axios.delete(`${URL_API}/parqueos/${parqueoId}`);
-          fetchEmployeesData() 
-        } catch (error) {
-          console.error('Error al eliminar el empleado:', error);
-        }
-    };
-    if (Array.isArray(parqueos)){
-        console.log("true");
-    }
-
     if (parqueos.length === 0) {
         return <>
         <Navbar accion="cerrar sesion" />
@@ -84,13 +72,6 @@ function Parqueos() {
                         >
                             <h4>Registrar Parqueo</h4>
                         </button>
-                        <button 
-                        
-                        id='nuevoBoton'
-                        onClick={()=>navigate('/sitios')}
-                        >
-                            <h4>Ver sitios</h4>
-                        </button>
                     </nav>
                     <div className='contenedorParqueos'>
                         {parqueos?.map((parqueos,index)=>(
@@ -110,7 +91,7 @@ function Parqueos() {
                                 </button>
                             
                                 <button className='botonEliminarParqueos'
-                                       onClick={()=>navigate(`/eliminarparqueo/${parqueos.id}`)}
+                                       onClick={()=>navigate(`/eliminarparqueo/${parqueos.id}/${parqueos.nombre_bloque}`)}
                                 >
                                     <h4>Eliminar</h4>
                                 </button>

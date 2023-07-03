@@ -8,8 +8,7 @@ import { useEffect,useState} from 'react';
 function EliminarParqueo() {
     const [parqueos,setParqueos]=useState([]);
     const navigate = useNavigate();
-    const {id}=useParams();
-    
+    const {id,nombre}=useParams();
     useEffect(()=>{
         fetchEmployeesData();
     },[]);
@@ -18,15 +17,16 @@ function EliminarParqueo() {
         try {
           const response = await axios.get(`${URL_API}/parqueos`); 
           setParqueos(response.data);
-          console.log(response.data);
+          parqueos
         } catch (error) {
           console.error('Error al obtener los datos de los empleados:', error);
         }
     }
-
-    const eliminarParqueo = async (parqueoId) => {
+    
+    const eliminarParqueo = async (parqueoId,nombre) => {
         try {
           await axios.delete(`${URL_API}/parqueos/${parqueoId}`);
+          await axios.delete(`${URL_API}/contratos/eliminarRegistros/${nombre}`);
           fetchEmployeesData() 
         } catch (error) {
           console.error('Error al eliminar el empleado:', error);
@@ -40,7 +40,7 @@ function EliminarParqueo() {
         <div className='Modal'>
         <div className='padreEditarParqueo' >
             <div className='tituloEditarParqueo'>
-                <h2>Seguro de Eliminar</h2>
+                <h3>Seguro de Eliminar , esta accion eliminar tanto los contratos que esten registrados en el parqueo</h3>
             </div>
             <div className='botonEditarParqueo'>
                     <button 
@@ -52,7 +52,7 @@ function EliminarParqueo() {
                     </button>
                     <button 
                        className='botonCancelarEditarParqueo'
-                       onClick={()=>eliminarParqueo(id)}
+                       onClick={()=>eliminarParqueo(id,nombre)}
                     >
                         Eliminar
                     </button>

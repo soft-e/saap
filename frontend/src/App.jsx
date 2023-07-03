@@ -135,7 +135,7 @@ function App() {
                                   <Route path="/clientr/complaints" element={<ClientComplaintPage />} />
                                   <Route path="/clientr/messages" element={<ClientMessagePage />} />
                                   <Route path="/clientr/contract" element={<ClientContractPage />} />
-                                  /**rutas secretaria */
+                                  {/**rutas secretaria **/}
                                   <Route path="/secretary/regpayment/:id" element={<SecretaryRegisterPaymentPage />} />
                                   <Route path="/secretary/contract" element={<SecretaryContractPage />} />
                                   <Route path="/secretary/contract/show/:id" element={<ContratosVerIndependienteS />} />
@@ -151,7 +151,7 @@ function App() {
                                   <Route path="/ubicacion" element={<UbicacionPage />} />
                                   <Route path="/registrositiovehiculo/:id" element={<RegistroVehiculoSitioPage />} />
                                   <Route path="/vehiculo/:id" element={<VehiculosExtras />} />
-                                  <Route path="/eliminarparqueo/:id" element={<EliminarParqueo />} />
+                                  <Route path="/eliminarparqueo/:id/:nombre" element={<EliminarParqueo />} />
                                   <Route path="/sitios/:id/:n" element={<Parqueo />} />
                                 </Routes>
                               </VehiculoContextProvider>

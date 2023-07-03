@@ -14,9 +14,7 @@ function RegistroDTvehiculo() {
     const [marca,setmarca]=useState(''); 
     const [modelo,setmodelo]=useState('');
     const [dato, setData] = useState([]);
-    const [placas1,setplacas1]=useState('');
-    const [placas2,setplacas2]=useState('');
-    const [placaRepetida, setPlacaRepetida] = useState(false);
+    const [placas,setplacas]=useState([]);
     const navigate=useNavigate();
     
 
@@ -27,40 +25,31 @@ function RegistroDTvehiculo() {
     const fetchEmployeesData = async () => {
         try {
           const placas1 = await axios.get(`${URL_API}/vehiculos`); 
-          setplacas1(placas1.data);
+          const data1=await placas1.data;
           const placas2 = await axios.get(`${URL_API}/vehiculosExtras`); 
-          setplacas2(placas2.data);
-          console.log(placas1.data);
-          console.log(placas2.data);
-          
+          const data2=await placas2.data;
+          const lista = [...data1, ...data2];
+          setplacas(lista);   
         } catch (error) {
           console.error('Error al obtener los datos de los empleados:', error);
         }
     }
-
-    const validar=()=>{
-        for (let i = 0; i<placas1.length; i++) {
-            if (placas1[i].placa === placa){
-                setPlacaRepetida(true);
-                break;
-            }
-        }
-        for (let i = 0; i<placas2.length; i++) {
-            if (placas2[i].placa === placa){
-                setPlacaRepetida(true);
-                break;
-            }
-        }
-        console.log(placaRepetida)
+ 
+    const handleSubmit =async (e) => {
+        e.preventDefault();
+        await validar();
     }
 
+    const validar=async()=>{
+        const placaExistente = placas.find((item) => item.placa === placa);
+        if (placaExistente) {
+            alert("La placa ya existe. No se puede registrar.");
+        } else {
+            await store();
+        }
+    }
 
-    const verificar2 = () => {
-        setPlacaRepetida(false)
-    };
-
-    const store=async(e)=>{  
-        e.preventDefault();
+    async function store(){  
         const response=await axios.post(`${URL_API}/vehiculos`,{
             placa:placa,
             color:color,
@@ -73,53 +62,39 @@ function RegistroDTvehiculo() {
     }
 
     const handleGoBack = () => {
-        window.history.back();
+        navigate("/listarDocentes?estado=false")
     };
-    /*function handleCancel(event) {
-        event.preventDefault();
-        setvehiculoDato('');
-        setcolor('');
-        setmarca('');
-        setmodelo('');
-        
-    }*/
 
+    const handleChange = (event) => {
+        setplaca(event.target.value);
+    };
 
     return<>
         <Navbar accion="iniciar sesion"/>
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="espacioDeTrabajo">
-            <p
-    className="botonAtras"
-    onClick={()=>navigate("/listarDocentes?estado=false")}
-  >IR ATRAS</p>
-                <div className="padreVehiculo" onSubmit={store}>
-                    <form action="" className='formularioDTvehiculo'>
+                <div className="padreVehiculo">
+                    <form action="" className='formularioDTvehiculo' onSubmit={handleSubmit}>
                         <div className='contenedorDTvehiculo'>
                             <h1 id='tituloRegistroVH'>Datos del Vehiculo</h1>
                             <div id='entradaVH' className='entradaVH1'>
                                 <label>placa</label>
                                 <input 
-                                    onClick={validar}
                                     type="text" 
-                                    pattern="^\d{3,4}[A-Za-z]{3}$" title="Debe contener entre 3 o 4 números seguidos de 3 letras, por ejemplo 123ert o 5467yuh"
-                                    
+                                    maxLength={15}
                                     value={placa}
-                                    onChange={(e)=>setplaca(e.target.value)}
-                                    id='inputText'
-                                    placeholder='Ingrese la placa del viculo'
+                                    pattern="^\d{3,4}[A-Za-z]{3}$" title="Debe contener entre 3 o 4 números seguidos de 3 letras, por ejemplo 123ert o 5467yuh"
+                                    onChange={handleChange}                                    placeholder='Ingrese la placa del viculo'
                                     required
                                 />
-                                {placaRepetida && <p>la placa existe</p>}
                             </div>
                             <div id='entradaVH' className='entradaVH2'>
                                 <label>Color</label>
                                 <input
-                                    onClick={verificar2}
                                     value={color}
                                     pattern="[A-Za-z]+" title="solo se permiten letras"
-                                    
+                                    maxLength={15}
                                     onChange={(e)=>setcolor(e.target.value)}
                                     type="text" 
                                     id='inputText'
@@ -132,6 +107,7 @@ function RegistroDTvehiculo() {
                                 <input 
                                     type="text" 
                                     value={marca}
+                                    maxLength={15}
                                     pattern="[A-Za-z]+" title="solo se permiten letras"
                                     onChange={(e)=>setmarca(e.target.value)}
                                     id='inputText'
@@ -148,6 +124,7 @@ function RegistroDTvehiculo() {
                                     onChange={(e)=>setmodelo(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese el modelo'
+                                    maxLength={15}
                                     required
                                 />
                             </div>

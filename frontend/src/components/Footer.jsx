@@ -29,7 +29,7 @@ function Footer() {
               Calle Sucre y parque la Torre.
               </p>
               <p>
-              Fono: 591-4-4231765
+              Contactos:591-4-4231765
               </p>
             </div>
         

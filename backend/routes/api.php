@@ -46,14 +46,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('personas', PersonaController::class);
 Route::resource('tarifa2s', Tarifa2Controller::class);
-Route::resource('saldos',SaldoController::class);
+Route::resource('saldos', SaldoController::class);
 
 Route::get('/tarifa2/ultima', [Tarifa2Controller::class, 'ultimaTarifa']);
-Route::resource('pagos',PagoController::class);
-Route::resource('mensajes2',Mensaje2Controller::class);
-Route::post('pagos',[PagoController::class, 'store']);
+Route::resource('pagos', PagoController::class);
+Route::resource('mensajes2', Mensaje2Controller::class);
+Route::post('pagos', [PagoController::class, 'store']);
 Route::get('/pagos/saldo/{id}', [PagoController::class, 'getSaldoByContratoId']);
-Route::get('/pagos/fechapago/{id}',[PagoController::class, 'getUltimaFechaRegistroPorContratoId']);
+Route::get('/pagos/fechapago/{id}', [PagoController::class, 'getUltimaFechaRegistroPorContratoId']);
 
 //Route::resource('administradores',AdministradorController::class);
 Route::resource('empleados', EmpleadoController::class);
@@ -80,6 +80,7 @@ Route::resource('hatencion', HorarioAtencionController::class);
 Route::resource('mensajes', MensajeController::class);
 Route::resource('vehiculosExtras', VehiculosExtrasController::class);
 Route::get('vehiculosExtras/getbyidContract/{id}', [VehiculosExtrasController::class, 'getbyidContract']);
+Route::delete('contratos/eliminarRegistros/{name}', [ContratoController::class, 'eliminarRegistros']);
 //RUTAS DE ERIEL
 
 
@@ -97,13 +98,12 @@ Route::prefix('plazas')->group(function () {
     Route::resource('/', PlazaController::class);
     Route::get('primer-sitio-libre/{bloque}', [PlazaController::class, 'obtenerPrimerSitioLibre']);
     Route::get('obtener-bloques', [PlazaController::class, 'obtenerBloques']);
-    
 });
 
 Route::resource('/responderquejas', ResponderQuejaController::class);
 
-Route::resource('/plazarodrigo',PlazaRodrigoController::class);
-Route::resource('/sitio',SitiosController::class);
+Route::resource('/plazarodrigo', PlazaRodrigoController::class);
+Route::resource('/sitio', SitiosController::class);
 // routes/api.php
 
 Route::get('/parqueos/{parqueo_id}/sitios', [SitiosController::class, 'getSitiosByParqueo']);
@@ -114,6 +114,5 @@ Route::get('/disponibles/{id}', [SitiosController::class, 'obtenerSitiosLibres']
 
 Route::get('/parqueos/{id}', [ParqueoController::class, 'show']);
 
-Route::get('/primersitiolibre/{idBloque}', [SitiosController::class,'obtenerPrimerSitioLibre']);
-Route::put('/actualizaestados/{id}', [SitiosController::class,'actualizarEstadoSitio']);
-
+Route::get('/primersitiolibre/{idBloque}', [SitiosController::class, 'obtenerPrimerSitioLibre']);
+Route::put('/actualizaestados/{id}', [SitiosController::class, 'actualizarEstadoSitio']);

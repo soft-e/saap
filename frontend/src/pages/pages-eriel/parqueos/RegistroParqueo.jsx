@@ -7,61 +7,78 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {URL_API} from '../../../services/EndPoint';
 import { useSession } from '../../../context/context-rodrigo/SessionProvider';
-import { useEmpleados } from '../../../context/context-rodrigo/EmpleadoProvider';
 
 function RegistroParqueo() {
     const { user } = useSession();
-    const {empleados,loadEmpleados} = useEmpleados();
     const [nombre_bloque,setnombre_bloque]=useState('');
     const [cantidad_sitios,setcantidad_sitios]=useState(0); 
+    const [data,setData]=useState("");
+    const [parqueos,setParqueos]=useState([]);
     const empleado_id=user.id;
-    //const parqueo_id=parqueo_id;
-    console.log(empleado_id);
     const navigate=useNavigate();
 
     useEffect(()=>{
-        loadEmpleados();
+        fetchEmployeesData()
     },[]);
 
-    console.log(empleados);
+    const fetchEmployeesData = async () => {
+        try {
+            const response = await axios.get(`${URL_API}/parqueos`); 
+            setParqueos(response.data);
+            console.log(response.data);
+          } catch (error) {
+            console.error('Error al obtener los datos de los empleados:', error);
+          }
+    }
 
-    const store = async (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
+        await validar();
+    }
+
+    const validar=async()=>{
+        const nombreExistente = parqueos.find((item) => item.nombre_bloque === nombre_bloque);
+        if (nombreExistente) {
+            alert("El nombre de parqueo ya existe. No se puede registrar.");
+        } else {
+            await store();
+        }
+    }
+
+
+    async function store() {
     
         try {
           // Registrar el parqueo en la tabla 'parqueos'
-          const responseParqueo = await axios.post(`${URL_API}/parqueos`, {
+          const response = await axios.post(`${URL_API}/parqueos`, {
             nombre_bloque: nombre_bloque,
-            cantidad_sitios: cantidad_sitios,
-        
+            cantidad_sitios: cantidad_sitios,    
             empleado_id: empleado_id
           });
-    
-          const nuevoParqueo = responseParqueo.data;
-          console.log("parqueo_id:", nuevoParqueo.id);
-
+          const nuevoRegistroConID = response.data;
+          setData([data, nuevoRegistroConID]);
           // Crear registros en la tabla 'sitios' para cada sitio del parqueo
           const sitios = [];
-          for (let i = 1; i <= cantidad_sitios; i++) {
-            console.log("queeee essssssssss", responseParqueo.data.id);
+          for (let i = 1; i <= nuevoRegistroConID.cantidad_sitios; i++) {
            // console.log("queeee essssssssss", nuevoParqueo);
             sitios.push({
-              parqueo_id: nuevoParqueo.id,
+              parqueo_id: nuevoRegistroConID.id,
               numero_sitio: i,
               estado_sitio: 'libre'
             });
           }
           await axios.post(`${URL_API}/sitio`, sitios);
-       
           navigate('/parqueos');
         } catch (error) {
           console.error('Error al registrar el parqueo:', error);
         }
-      };
+      }
+
     function handleCancel(event) {
         event.preventDefault();
         setnombre_bloque('');
         setcantidad_sitios('');
+        navigate("/parqueos")
     }
 
     return<>
@@ -73,8 +90,8 @@ function RegistroParqueo() {
     className="botonAtras"
     onClick={()=>window.history.back()}
   >IR ATRAS</p>
-                <div className='padreParqueo' onSubmit={store}>
-                    <form action="" className='formularioParqueo'>
+                <div className='padreParqueo'>
+                    <form action="" className='formularioParqueo' onSubmit={handleSubmit}>
                             <div className='contenedorParqueo'>
                                 <h1 id='tituloParqueo'>Registro de Parqueo</h1>
                                 <div id='entradaP' className='entradaP1'>
@@ -107,7 +124,7 @@ function RegistroParqueo() {
                                         id='botonCancelarP'
                                         className='botonInicioSesion' 
                                         type='submit'
-                                        onClick={()=>{window.history.back()}}
+                                        onClick={handleCancel}
                                     >
                                         Cancelar
                                     </button>
