@@ -14,13 +14,7 @@ function VehiculosExtras() {
     const [marca, setmarca] = useState('');
     const [modelo, setmodelo] = useState('');
     const navigate = useNavigate();
-    const [placas1, setplacas1] = useState('');
-    const [placas2, setplacas2] = useState('');
-    const [placaRepetida, setPlacaRepetida] = useState(false);
-
-    /*const handleGoBack = () => {
-        window.history.back();
-    };*/
+    const [placas,setplacas] = useState([]);
 
     useEffect(() => {
         fetchEmployeesData();
@@ -28,52 +22,50 @@ function VehiculosExtras() {
 
     const fetchEmployeesData = async () => {
         try {
-            const placas1 = await axios.get(`${URL_API}/vehiculos`);
-            setplacas1(placas1.data);
-            const placas2 = await axios.get(`${URL_API}/vehiculosExtras`);
-            setplacas2(placas2.data);
-            console.log(placas1.data);
-            console.log(placas2.data);
-
+            const placas1 = await axios.get(`${URL_API}/vehiculos`); 
+            const data1=await placas1.data;
+            const placas2 = await axios.get(`${URL_API}/vehiculosExtras`); 
+            const data2=await placas2.data;
+            const lista = [...data1, ...data2];
+            setplacas(lista);   
         } catch (error) {
             console.error('Error al obtener los datos de los empleados:', error);
         }
     }
 
-    const validar = () => {
-        for (let i = 0; i < placas1.length; i++) {
-            if (placas1[i].placa === placa) {
-                setPlacaRepetida(true);
-                break;
-            }
+    const validar=async()=>{
+        const placaExistente = placas.find((item) => item.placa === placa);
+        if (placaExistente) {
+            alert("La placa ya existe. No se puede registrar.");
+        } else {
+            await store();
         }
-        for (let i = 0; i < placas2.length; i++) {
-            if (placas2[i].placa === placa) {
-                setPlacaRepetida(true);
-                break;
-            }
-        }
-        console.log(placaRepetida)
     }
-
-
-    const verificar2 = () => {
-        setPlacaRepetida(false)
-    };
-
-    const store = async (e) => {
+    
+    const handleSubmit =async (e) => {
         e.preventDefault();
-        const response = await axios.post(`${URL_API}/vehiculosExtras`, {
+        await validar()
+    }
+    async function store(){
+        await axios.post(`${URL_API}/vehiculosExtras`, {
             contrato_id: id,
             placa: placa,
             color: color,
             marca: marca,
             modelo: modelo
         })
-        console.log(response)
         navigate('/contratos/show/' + id)
 
     }
+
+    const handleChange = (event) => {
+        setplaca(event.target.value);
+    }
+    
+    const handleGoBack = () => {
+        navigate('/contratos/show/' + id)
+    }
+
     return <>
         <Navbar accion="iniciar sesion" />
         <div className="espacioPagina">
@@ -93,30 +85,27 @@ function VehiculosExtras() {
                 >
                     El vehiculo adicional que se registre solo puede usar el sitio al que esta relacionado el titular del sitio
                 </p>
-                <div className="padreVehiculo" onSubmit={store}>
-                    <form action="" className='formularioDTvehiculo'>
+                <div className="padreVehiculo" >
+                    <form action="" className='formularioDTvehiculo' onSubmit={handleSubmit}>
                         <div className='contenedorDTvehiculo'>
                             <h1 id='tituloRegistroVH'>Datos del Vehiculo</h1>
                             <div id='entradaVH' className='entradaVH1'>
                                 <label>placa</label>
                                 <input
-                                    onClick={validar}
                                     type="text"
+                                    maxLength={15}
                                     value={placa}
                                     pattern="^\d{3,4}[A-Za-z]{3}$" title="Debe contener entre 3 o 4 números seguidos de 3 letras, por ejemplo 123ert o 5467yuh"
-                                    onChange={(e) => setplaca(e.target.value)}
-                                    id='inputText'
-                                    placeholder='Ingrese la placa del viculo'
+                                    onChange={handleChange}                                    placeholder='Ingrese la placa del viculo'
                                     required
                                 />
-                                {placaRepetida && <p>la placa existe</p>}
                             </div>
                             <div id='entradaVH' className='entradaVH2'>
                                 <label>Color</label>
                                 <input
-                                    onClick={verificar2}
                                     value={color}
                                     pattern="[A-Za-z]+" title="solo se permiten letras"
+                                    maxLength={15}
                                     onChange={(e) => setcolor(e.target.value)}
                                     type="text"
                                     id='inputText'
@@ -129,7 +118,7 @@ function VehiculosExtras() {
                                 <input
                                     type="text"
                                     pattern="[A-Za-z]+" title="solo se permiten letras"
-
+                                    maxLength={15}
                                     onChange={(e) => setmarca(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese la marca'
@@ -145,6 +134,7 @@ function VehiculosExtras() {
                                     onChange={(e) => setmodelo(e.target.value)}
                                     id='inputText'
                                     placeholder='Ingrese el modelo'
+                                    maxLength={15}
                                     required
                                 />
                             </div>
@@ -157,8 +147,7 @@ function VehiculosExtras() {
                                     id="botonCancelarVH"
                                     className='botonInicioSesion'
                                     type='submit'
-                                    /*onClick={handleGoBack}*/
-                                    onClick={() => navigate('/contratos/show/' + id)}
+                                    onClick={handleGoBack}
                                 >
                                     Cancelar
                                 </button>
