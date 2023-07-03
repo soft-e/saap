@@ -13,7 +13,7 @@ function EditarParqueo() {
     const [cantidad_sitios,setSitios]=useState(); 
     const empleado_id=user.id;
     const navigate=useNavigate();
-
+    
     const update=async(e)=>{
         e.preventDefault();
         await axios.put(`${URL_API}/parqueos/${id}`,{
@@ -21,18 +21,30 @@ function EditarParqueo() {
             cantidad_sitios:cantidad_sitios,
             empleado_id:empleado_id
         })
+        registrarSitios()
         navigate('/parqueos')
     }
     useEffect(()=>{
         const getParqueoById=async()=>{
-            const response=await axios.get(`${URL_API}/parqueos/${id}`)
-            console.log(response.data)
+            await axios.get(`${URL_API}/parqueos/${id}`)
             setnombre(nombre)
             setSitios(cantidad)
         }
         getParqueoById();
     },[]);
-
+    
+    const registrarSitios = async () => {
+        const sitios = [];
+        for (let i = parseInt(cantidad)+1; i <= cantidad_sitios; i++) {
+          sitios.push({
+            parqueo_id: id,
+            numero_sitio: i,
+            estado_sitio: "libre",
+          });
+        }
+        await axios.post(`${URL_API}/sitio`, sitios);
+    }
+    
     return(
     <div className='editarParqueoPadre'>
         <Parqueos/>

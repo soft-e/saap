@@ -74,10 +74,6 @@ function RegistroDTvehiculo() {
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="espacioDeTrabajo">
-            <p
-    className="botonAtras"
-    onClick={()=>navigate("/listarDocentes?estado=false")}
-  >IR ATRAS</p>
                 <div className="padreVehiculo">
                     <form action="" className='formularioDTvehiculo' onSubmit={handleSubmit}>
                         <div className='contenedorDTvehiculo'>

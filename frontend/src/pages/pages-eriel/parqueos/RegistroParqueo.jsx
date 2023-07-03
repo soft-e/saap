@@ -13,14 +13,40 @@ function RegistroParqueo() {
     const [nombre_bloque,setnombre_bloque]=useState('');
     const [cantidad_sitios,setcantidad_sitios]=useState(0); 
     const [data,setData]=useState("");
+    const [parqueos,setParqueos]=useState([]);
     const empleado_id=user.id;
     const navigate=useNavigate();
 
     useEffect(()=>{
+        fetchEmployeesData()
     },[]);
 
-    const store = async (e) => {
+    const fetchEmployeesData = async () => {
+        try {
+            const response = await axios.get(`${URL_API}/parqueos`); 
+            setParqueos(response.data);
+            console.log(response.data);
+          } catch (error) {
+            console.error('Error al obtener los datos de los empleados:', error);
+          }
+    }
+
+    const handleSubmit =async (e) => {
         e.preventDefault();
+        await validar();
+    }
+
+    const validar=async()=>{
+        const nombreExistente = parqueos.find((item) => item.nombre_bloque === nombre_bloque);
+        if (nombreExistente) {
+            alert("El nombre de parqueo ya existe. No se puede registrar.");
+        } else {
+            await store();
+        }
+    }
+
+
+    async function store() {
     
         try {
           // Registrar el parqueo en la tabla 'parqueos'
@@ -46,7 +72,7 @@ function RegistroParqueo() {
         } catch (error) {
           console.error('Error al registrar el parqueo:', error);
         }
-      };
+      }
 
     function handleCancel(event) {
         event.preventDefault();
@@ -60,8 +86,12 @@ function RegistroParqueo() {
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="espacioDeTrabajo">
-                <div className='padreParqueo' onSubmit={store}>
-                    <form action="" className='formularioParqueo'>
+            <p
+    className="botonAtras"
+    onClick={()=>window.history.back()}
+  >IR ATRAS</p>
+                <div className='padreParqueo'>
+                    <form action="" className='formularioParqueo' onSubmit={handleSubmit}>
                             <div className='contenedorParqueo'>
                                 <h1 id='tituloParqueo'>Registro de Parqueo</h1>
                                 <div id='entradaP' className='entradaP1'>
