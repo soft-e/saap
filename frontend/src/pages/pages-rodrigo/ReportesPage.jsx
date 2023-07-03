@@ -7,19 +7,23 @@ import { useTarifa2 } from "../../context/context-rodrigo/Tarifa2Provider";
 import { useParqueos } from "../../context/context-rodrigo/ParqueoProvider";
 import { usePlazas } from "../../context/context-rodrigo/PlazaProvider";
 import { useContratos } from "../../context/context-rodrigo/ContratoProvider";
+import { useSitios } from "../../context/context-rodrigo/SitioProvider";
+
 function ReportesPage() {
   const { pagos, loadPagos } = usePagos();
   const { tarifa2s, loadTarifa2s } = useTarifa2();
   const { parqueos, loadParqueos } = useParqueos();
-  const { plazas, loadPlazas } = usePlazas();
+  //const { plazas, loadPlazas } = usePlazas();
   const { contratos, loadContratos } = useContratos();
+  const {sitios, loadSitios}=useSitios();
 
   useEffect(() => {
     loadPagos();
     loadTarifa2s();
     loadParqueos();
-    loadPlazas();
+    //loadPlazas();
     loadContratos();
+    loadSitios();
   }, []);
   //console.log(pagos);
   //console.log(tarifa2s);
@@ -37,22 +41,14 @@ function ReportesPage() {
   }
 
   const getAssignedSpaces = () => {
-    let assignedSpaces = 0;
-    let nameParks = [];
-    for (let i = 0; i < parqueos.length; i++) {
-      nameParks[i] = parqueos[i].nombre_bloque;
-    }
-    //console.log(nameParks);
-    for (let i = 0; i < nameParks.length; i++) {
-      let namePark = nameParks[i];
-      for (let j = 0; j < plazas.length; j++) {
-        if (namePark === plazas[j].bloque) {
-          assignedSpaces++;
-        }
+    
+    let ocupados = 0;
+    for (let i = 0; i < sitios.length; i++) {
+      if (sitios[i].estado_sitio==="ocupado") {
+        ocupados++;  
       }
     }
-    //console.log(assignedSpaces);
-    return assignedSpaces;
+    return ocupados;
   }
 
   const getUnAssignedSpaces = () => {

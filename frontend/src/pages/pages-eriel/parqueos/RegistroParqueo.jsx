@@ -69,6 +69,10 @@ function RegistroParqueo() {
         <div className="espacioPagina">
             <ButtonBoxAdmin />
             <div className="espacioDeTrabajo">
+            <p
+    className="botonAtras"
+    onClick={()=>window.history.back()}
+  >IR ATRAS</p>
                 <div className='padreParqueo' onSubmit={store}>
                     <form action="" className='formularioParqueo'>
                             <div className='contenedorParqueo'>
@@ -103,7 +107,7 @@ function RegistroParqueo() {
                                         id='botonCancelarP'
                                         className='botonInicioSesion' 
                                         type='submit'
-                                        onClick={handleCancel}
+                                        onClick={()=>{window.history.back()}}
                                     >
                                         Cancelar
                                     </button>

@@ -103,6 +103,10 @@ function RegistrarPlaza() {
       <div className="espacioPagina">
         <ButtonBoxAdmin />
         <div className="espacioDeTrabajo">
+        <p
+    className="botonAtras"
+    onClick={()=>window.history.back()}
+  >IR ATRAS</p>
           <div className="padreParqueo">
             <form className="formularioParqueo">
               <div className="contenedorParqueo">
