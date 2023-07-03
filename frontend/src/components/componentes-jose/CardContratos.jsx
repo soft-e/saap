@@ -7,12 +7,14 @@ import { URL_API } from "../../services/EndPoint";
 
 const endPointDocentes = URL_API + "/docentes";
 const endPointContrato = URL_API + "/contrato";
+const endPointSitio = URL_API + "/sitio";
 
 const CardContratos = () => {
   const navigate = useNavigate();
   const [contratos, setContratos] = useState([]);
   const [tableContratos, setTableContratos] = useState([]);
   const [docentes, setDocentes] = useState([]);
+  const [sitios, setSitios] = useState([]);
   //const [datos, setDatos] = useState( [] )
   //const [tableDatos, setTableDatos] = useState( [] )
   const [busqueda, setBusqueda] = useState("");
@@ -21,8 +23,14 @@ const CardContratos = () => {
   useEffect(() => {
     getAllDocentes();
     getAllContratos();
+    getAllSitios();
     //getAllDatos();
   }, []);
+
+  const getAllSitios = async () => {
+    const response = await axios.get(endPointSitio);
+    setSitios(response.data);
+  };
 
   const getAllDocentes = async () => {
     const response = await axios.get(endPointDocentes);
@@ -102,6 +110,18 @@ const CardContratos = () => {
     return apellidosDocente;
   }
 
+function getNumerSitio(id){
+  let response = "buscando sitio...";
+    for (let i = 0; i < sitios.length; i++) {
+      if (sitios[i].id === id) {
+        console.log(sitios+"asd");
+        response = sitios[i].numero_sitio;
+        break;
+      }
+    }
+    return response;
+}
+
   function imprimirContratos() {
     let datos = [];
     for (let i = 0; i < contratos.length; i++) {
@@ -111,7 +131,7 @@ const CardContratos = () => {
           <td className="td_j">
             {getApellidosDocente(contratos[i].docente_id)}
           </td>
-          <td className="td_j_sitio">{contratos[i].sitio_id}</td>
+          <td className="td_j_sitio">{getNumerSitio(contratos[i].sitio_id)}</td>
           <td className="td_j">{contratos[i].bloque}</td>
           <td>
             <Link to={`show/${contratos[i].id}`} className="stylesButton_j">
