@@ -55,6 +55,7 @@ function EditarParqueo() {
                         type="number" 
                         onChange={(e)=>setSitios(e.target.value)}
                         value={cantidad_sitios}
+                        min={cantidad}
                         required
                     />
                 </div>
